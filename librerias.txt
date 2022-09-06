@@ -2,4 +2,4 @@ Pillow
 werkzeug
 cx_Oracle
 fpdf
-hola manu uwu
+hola manu uwu.
