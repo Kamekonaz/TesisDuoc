@@ -1,0 +1,48 @@
+{% extends 'cliente/base.html' %}
+{% block head %}
+<title>Reporte Accidente</title>
+{% endblock head %}
+
+{% block body %}
+
+
+<div class="container"style="margin-left:20%;">
+    <div class="mt-5" >
+
+        <h1><dd>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Visitas</h1>
+        <br>
+    </div>
+
+
+<div class="row "style="margin-right:30%;">
+  <div class="col-lg-7">
+    <div class="card mt-2 mx-auto p-4 bg-dark">
+        <div class="card-body bg-dark text-light">
+            <form>
+              
+                <div class="mb-3">
+                  <label class="form-label">Fecha</label>
+                  <input type="date" class="form-control">
+                  </div>
+                  <div class="mb-3">
+              <label class="form-label">Tipo de Visita</label>
+                  <select class="form-select" >
+                    <option selected>Selecione tipo de accidente</option>
+                    <option value="1">Normal</option>
+                    <option value="2">Especial</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label  class="form-label">Motivo visita especial</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-light float-end">Submit</button>
+              </form>
+      
+            
+        </div>
+    </div>
+</div>
+   
+
+{% endblock body %}
