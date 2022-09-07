@@ -3,14 +3,14 @@ from tkinter import messagebox,ttk
 from tkinter.font import BOLD
 import util.generic as utl
 
-class App:
+class MenuDesigner:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title('Menu Administrador')
         self.window.geometry('800x500')
         self.window.resizable(width=0,height=0)
         utl.center_window(self.window,800,500)
-       
+   
         
     
         #Frame form
@@ -47,4 +47,3 @@ class App:
         general.place(relx=0.7, rely=0.3)
         self.window.mainloop()
         
-App()

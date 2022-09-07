@@ -5,14 +5,11 @@ import util.generic as utl
 
 
 class FormLoginDesigner:
+    def registro(self):
+        pass
     
    
-    def check(self):
-        pass
-    def isUser(self):
-        pass
-    def isPassword(self):
-        pass
+
     def __init__(self):
         self.window = tk.Tk()
         self.window.title('Inicio de seccion')

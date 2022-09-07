@@ -48,8 +48,16 @@ class crearUsuarioDesigner:
         self.password = ttk.Entry(frame_form,font=('Times',14))
         self.password.pack()
         self.password.place(relx=0.28, rely=0.45,relwidth=0.4)
+        self.password.config(show="\u2022")
         
-       
+        label_confirmarPassword = tk.Label(frame_form,text="Contraseña",font=('Times',20),fg="#666a88",bg="white")
+        label_confirmarPassword.pack()
+        label_password.place(relx=0.45, rely=0.38)
+        self.password = ttk.Entry(frame_form,font=('Times',14))
+        self.password.pack()
+        self.password.place(relx=0.28, rely=0.45,relwidth=0.4)
+        self.password.config(show="\u2022")
+        
         
         
         atras = tk.Button(frame_form,text="Atras",font=('Times',15,BOLD),fg="white",bg="black")
@@ -61,3 +69,5 @@ class crearUsuarioDesigner:
         fin.place(relx=0.70, rely=0.75)
         
         self.window.mainloop()
+        
+
