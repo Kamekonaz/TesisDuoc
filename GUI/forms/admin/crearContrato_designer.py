@@ -4,6 +4,8 @@ from tkinter.font import BOLD
 import util.generic as utl
 from tkcalendar import DateEntry
 class crearContratoDesigner:
+    def registroContrato(self):
+        pass
     def __init__(self):
         self.window = tk.Tk()
         self.window.title('Crear Cliente')

@@ -1,19 +1,18 @@
 import tkinter as tk
 from tkinter.font import BOLD
 
-from forms.admin.crearCliente_designer import crearClientDesigner
+from forms.admin.crearContrato_designer import crearContratoDesigner
 from db.db import conect
 
-class RegistroCliente(crearClientDesigner):
+class RegistroContrato(crearContratoDesigner):
         
-    def registro(self):
+    def registroContrato(self):
         cursor = conect()
-        rut = self.rut
-        email = self.email
-        nombre = self.nombre
-        apellido = self.apellido
-        telefono = self.telefono
-        if not rut and not email and not nombre and not apellido and not telefono :
+        fechaInicio = self.fechaInicio
+        fechaFinal = self.fechaFinal
+        estado = self.estado
+       
+        if not fechaInicio and not fechaFinal and not estado :
             
             if():
                 self.window.destroy()
