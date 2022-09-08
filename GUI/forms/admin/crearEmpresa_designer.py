@@ -4,6 +4,8 @@ from tkinter.font import BOLD
 import util.generic as utl
 
 class crearEmpresaDesigner:
+    def registro(self):
+        pass
     def __init__(self):
         self.window = tk.Tk()
         self.window.title('Crear Empresa')

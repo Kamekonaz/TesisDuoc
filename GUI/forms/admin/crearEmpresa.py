@@ -4,7 +4,7 @@ from tkinter.font import BOLD
 from forms.admin.crearEmpresa_designer import crearEmpresaDesigner
 from db.db import conect
 
-class RegistroCliente(crearEmpresaDesigner):
+class RegistroEmpresa(crearEmpresaDesigner):
         
     def registro(self):
         cursor = conect()

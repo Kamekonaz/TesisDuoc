@@ -1,4 +1,4 @@
 from forms.login.formLogin import FormLogin
-from forms.admin.crearUsuario_designer import crearUsuarioDesigner
+from forms.admin.crearContrato import RegistroContrato
 
-crearUsuarioDesigner()
+RegistroContrato()

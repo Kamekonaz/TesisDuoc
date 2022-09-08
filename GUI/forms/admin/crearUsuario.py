@@ -1,10 +1,10 @@
 import tkinter as tk
 from tkinter.font import BOLD
 
-from forms.admin.crearCliente_designer import crearClientDesigner
+from forms.admin.crearUsuario_designer import crearUsuarioDesigner
 from db.db import conect
 
-class RegistroCliente(crearClientDesigner):
+class RegistroUsuario(crearUsuarioDesigner):
         
     def registroUsuario(self):
         user = self.user

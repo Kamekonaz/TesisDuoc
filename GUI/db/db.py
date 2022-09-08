@@ -24,10 +24,10 @@ class conect():
     def commint(self):
         self.conexion.commint()
 
-
+"""
 if __name__ =='__main__':
     nexo = conect()
     datos = nexo.sentenciaCompuesta("select usuario_empleado from empleado where usuario_empleado ='duesa'")
     print(datos)
     for fila in nexo.sentenciaCompuesta('select * from empleado'):
-        print(fila)
+        print(fila)"""
