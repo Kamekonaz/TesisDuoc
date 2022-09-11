@@ -4,7 +4,7 @@ from tkinter.font import BOLD
 from forms.admin.crearContrato_designer import crearContratoDesigner
 from db.db import conect
 
-class RegistroContrato(crearContratoDesigner):
+class CrearContrato(crearContratoDesigner):
         
     def registroContrato(self):
         cursor = conect()

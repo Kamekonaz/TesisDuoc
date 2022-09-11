@@ -1,10 +1,10 @@
 import cx_Oracle
-
+cx_Oracle.init_oracle_client(lib_dir=r"C:\instantclient_21_6")
 class conect():
     def __init__(self):
-        self.clave = str(123)
+        self.clave = "GURO"
         try:
-            self.conexion = cx_Oracle.connect(user='ESTUDIANTE', password=self.clave, dsn="localhost:1521/orcl",encoding='UTF-8')
+            self.conexion = cx_Oracle.connect(user='GURO', password=self.clave, dsn="localhost:1521/xe",encoding='UTF-8')
         except Exception as ex:
             print (ex)
             print("Error")
@@ -17,6 +17,11 @@ class conect():
         cursor = self.conexion.cursor()
         cursor.execute(sentencia)
         datos = cursor.fetchall()
+        cursor.close()
+        return datos
+    def funcionCompuesta(self, nombre_funcion, parametros, tipo_retorno):
+        cursor = self.conexion.cursor()
+        datos = cursor.callfunc(nombre_funcion, tipo_retorno, parametros)
         cursor.close()
         return datos
     def close(self):

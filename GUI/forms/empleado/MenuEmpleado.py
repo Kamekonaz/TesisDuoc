@@ -3,7 +3,7 @@ from tkinter import messagebox,ttk
 from tkinter.font import BOLD
 import util.generic as utl
 
-class pop:
+class MenuEmpleado:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title('Menu Empleado')

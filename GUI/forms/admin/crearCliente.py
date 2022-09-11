@@ -4,7 +4,7 @@ from tkinter.font import BOLD
 from forms.admin.crearCliente_designer import crearClientDesigner
 from db.db import conect
 
-class RegistroCliente(crearClientDesigner):
+class CrearCliente(crearClientDesigner):
         
     def registro(self):
         cursor = conect()

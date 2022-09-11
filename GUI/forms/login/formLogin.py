@@ -1,21 +1,36 @@
 import tkinter as tk
 from tkinter.font import BOLD
-
 from forms.login.formlogin_designer import FormLoginDesigner
 from util.encoding_decoding import decrypt
 from db.db import conect
-from ..empleado.MenuEmpleado import pop
+from ..empleado.MenuEmpleado import MenuEmpleado
+from ..admin.menuAdmin_designer import MenuAdminDesigner
 class FormLogin(FormLoginDesigner):
     
     def check(self):
-        cursor = conect()
+        db = conect()
         usuario = self.user.get()
         contrasena = self.password.get()
-        if decrypt(self,contrasena):
-            status = True
+        contrasenabd = db.funcionCompuesta('pkg_login.fn_login_fetch_username',[usuario],str)
+       
+        if (contrasenabd != None):
+            if decrypt(contrasenabd,contrasena):
+                tipo = db.funcionCompuesta('pkg_login.fn_get_user_type',[usuario],int)
+                if (tipo == 2):
+                    self.window.destroy()
+                    MenuEmpleado()
+                elif (tipo==1):
+                    self.window.destroy()
+                    MenuAdminDesigner()
+                else:
+                    tk.messagebox.showerror(title='Error Tipo de Usuario', message='Usted no tiene acceso a esta aplicacion' )
+                      
+                
+            else:
+                tk.messagebox.showerror(title='Error Contraseña', message='No es correcto' )
         else:
-            status = False
-        cursor.close()
+            tk.messagebox.showerror(title='Error Usuario', message='Usuario no existe' )
+        
         """if user['estado']:
             if (user['rol']=='admin'):
                 self.window.destroy()

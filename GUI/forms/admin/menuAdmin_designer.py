@@ -3,7 +3,7 @@ from tkinter import messagebox,ttk
 from tkinter.font import BOLD
 import util.generic as utl
 
-class MenuDesigner:
+class MenuAdminDesigner:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title('Menu Administrador')
@@ -14,13 +14,13 @@ class MenuDesigner:
         
     
         #Frame form
-        frame_form = tk.Frame(self.window, bd=0,relief=tk.SOLID,padx=10,pady=10,bg='#F3E5AB')
+        frame_form = tk.Frame(self.window, bd=0,relief=tk.SOLID,padx=10,pady=10,bg='#E6EEFF')
         frame_form.pack(side="top", expand=tk.YES,fill=tk.BOTH)
         
         #Frame form Top
         Imglogo = utl.read_image("./imagenes/logo.png",(120,100))
 
-        logo = tk.Label(frame_form,image=Imglogo,bg="#F3E5AB")
+        logo = tk.Label(frame_form,image=Imglogo,bg="#E6EEFF")
         logo.pack()
         logo.place(relx=0.01, rely=0.01)
         
