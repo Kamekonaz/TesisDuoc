@@ -12,10 +12,10 @@ class FormLoginDesigner:
 
     def __init__(self):
         self.window = tk.Tk()
-        self.window.title('Inicio de seccion')
-        self.window.geometry('800x500')
+        self.window.title('Inicio de sesión')
+        self.window.geometry('1366x768')
         self.window.resizable(width=0,height=0)
-        utl.center_window(self.window,800,500)
+        utl.center_window(self.window,1366,768)
        
         
         logo = utl.read_image("./imagenes/logo.png",(200,200))
@@ -33,7 +33,7 @@ class FormLoginDesigner:
         #Frame form Top
         frame_form_top = tk.Frame(frame_form,height=50,bd=0,relief=tk.SOLID,bg='black')
         frame_form_top.pack(side="top",fill=tk.X)
-        title = tk.Label(frame_form_top,text="Inicio de seccion",font=('Times',30),fg="#666a88",bg='#fcfcfc',pady=50)
+        title = tk.Label(frame_form_top,text="Inicio de sesión",font=('Times',30),fg="#666a88",bg='#fcfcfc',pady=50)
         title.pack(expand=tk.YES,fill=tk.BOTH)
         
         #Frame form fill
@@ -51,7 +51,7 @@ class FormLoginDesigner:
         self.password.pack(fill=tk.X,padx=20,pady=10)
         self.password.config(show="\u2022")
         
-        inicio = tk.Button(frame_form_fill,text="Iniciar seccion", command=lambda:self.check(),font=('Times',15,BOLD),fg="#fff",bg="#3a7ff6")
+        inicio = tk.Button(frame_form_fill,text="Iniciar sesión", command=lambda:self.check(),font=('Times',15,BOLD),fg="#fff",bg="#3a7ff6")
         inicio.pack(fill=tk.X,padx=20,pady=20)
         
         

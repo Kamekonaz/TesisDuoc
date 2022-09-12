@@ -9,6 +9,8 @@ class MenuAdminDesigner:
     def cliente (self):
         self.window.destroy
         #crearCliente()
+
+        
     def __init__(self):
         self.window = tk.Tk()
         self.window.title('Menu Administrador')
@@ -29,7 +31,7 @@ class MenuAdminDesigner:
         logo.pack()
         logo.place(relx=0.01, rely=0.01)
         
-        cerrar = tk.Button(frame_form,text="Cerrar secion",font=('Times',15,BOLD),bg="#3880FF",fg="white")
+        cerrar = tk.Button(frame_form,text="Cerrar sesion",font=('Times',15,BOLD),bg="#3880FF",fg="white")
         cerrar.pack()
         cerrar.place(relx=0.80, rely=0.05)
       

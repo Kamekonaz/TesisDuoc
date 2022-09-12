@@ -10,9 +10,11 @@ class conect():
             print("Error")
         else:
             print('Conexcion establecida')
-    def sentenciaSimple(self,sentencia):
+    def crearCursor(self):
         cursor = self.conexion.cursor()
-        cursor.execute(sentencia)
+        return cursor
+    def cerrarCursor(self, cursor):
+        cursor.close()
     def sentenciaCompuesta(self,sentencia):
         cursor = self.conexion.cursor()
         cursor.execute(sentencia)

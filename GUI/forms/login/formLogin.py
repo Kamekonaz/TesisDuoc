@@ -4,8 +4,12 @@ from forms.login.formlogin_designer import FormLoginDesigner
 from util.encoding_decoding import decrypt
 from db.db import conect
 from ..empleado.MenuEmpleado import MenuEmpleado
-from ..admin.menuAdmin_designer import MenuAdminDesigner
+#from ..admin.menuAdmin_designer import MenuAdminDesigner
+from ..admin.menuAdmin.menuAdmin import MenuAdmin
+
 from forms.admin.crearUsuario import crearUsuario
+
+
 class FormLogin(FormLoginDesigner):
     
     def check(self):
@@ -23,7 +27,7 @@ class FormLogin(FormLoginDesigner):
                     MenuEmpleado()
                 elif (tipo==1):
                     self.window.destroy()
-                    crearUsuario()
+                    MenuAdmin()
                 else:
                     tk.messagebox.showerror(title='Error Tipo de Usuario', message='Usted no tiene acceso a esta aplicacion' )
                       
