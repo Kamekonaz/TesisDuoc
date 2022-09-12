@@ -3,7 +3,12 @@ from tkinter import messagebox,ttk
 from tkinter.font import BOLD
 import util.generic as utl
 
+
+
 class MenuAdminDesigner:
+    def cliente (self):
+        self.window.destroy
+        #crearCliente()
     def __init__(self):
         self.window = tk.Tk()
         self.window.title('Menu Administrador')
@@ -31,7 +36,7 @@ class MenuAdminDesigner:
         
         
         ImgCliente = utl.read_image("./imagenes/Cliente.png",(140,180))
-        cliente = tk.Button(frame_form,image =ImgCliente,text="Cliente",font=('Times',15,BOLD),bg="#3880FF",fg="white",compound = 'top')
+        cliente = tk.Button(frame_form,image =ImgCliente,text="Cliente", command=lambda:self.cliente(),font=('Times',15,BOLD),bg="#3880FF",fg="white",compound = 'top')
         cliente.pack()
         cliente.place(relx=0.1, rely=0.3)
         

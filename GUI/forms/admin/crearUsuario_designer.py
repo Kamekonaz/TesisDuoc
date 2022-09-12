@@ -61,11 +61,11 @@ class crearUsuarioDesigner:
         self.password2.place(relx=0.28, rely=0.62,relwidth=0.4)
         self.password2.config(show="\u2022")
         
-        atras = tk.Button(frame_form,text="Atras",font=('Times',15,BOLD),fg="white",bg="black")
-        atras.pack()
-        atras.place(relx=0.15, rely=0.75)
+        # atras = tk.Button(frame_form,text="Atras",font=('Times',15,BOLD),fg="white",bg="black")
+        # atras.pack()
+        # atras.place(relx=0.15, rely=0.75)
         
-        fin = tk.Button(frame_form,text="Finalizar",font=('Times',15,BOLD),fg="white",bg="black")
+        fin = tk.Button(frame_form,text="Siguiente", command=lambda:self.registroUsuario(),font=('Times',15,BOLD),fg="white",bg="black")
         fin.pack()
         fin.place(relx=0.70, rely=0.75)
         

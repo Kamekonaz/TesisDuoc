@@ -3,7 +3,7 @@ from tkinter import messagebox,ttk
 from tkinter.font import BOLD
 import util.generic as utl
 
-class crearClientDesigner:
+class crearClienteDesigner:
     def registro(self):
         pass
     def __init__(self):
@@ -76,7 +76,7 @@ class crearClientDesigner:
         
         
         
-        siguente = tk.Button(frame_form,text="Siguiente",font=('Times',15,BOLD),fg="white",bg="black")
+        siguente = tk.Button(frame_form,text="Siguiente", command=lambda:self.registro(),font=('Times',15,BOLD),fg="white",bg="black")
         siguente.pack()
         siguente.place(relx=0.70, rely=0.75)
         

@@ -5,11 +5,13 @@ from util.encoding_decoding import decrypt
 from db.db import conect
 from ..empleado.MenuEmpleado import MenuEmpleado
 from ..admin.menuAdmin_designer import MenuAdminDesigner
+from forms.admin.crearUsuario import crearUsuario
 class FormLogin(FormLoginDesigner):
     
     def check(self):
         db = conect()
         usuario = self.user.get()
+        usuario = usuario.lower()
         contrasena = self.password.get()
         contrasenabd = db.funcionCompuesta('pkg_login.fn_login_fetch_username',[usuario],str)
        
@@ -21,7 +23,7 @@ class FormLogin(FormLoginDesigner):
                     MenuEmpleado()
                 elif (tipo==1):
                     self.window.destroy()
-                    MenuAdminDesigner()
+                    crearUsuario()
                 else:
                     tk.messagebox.showerror(title='Error Tipo de Usuario', message='Usted no tiene acceso a esta aplicacion' )
                       

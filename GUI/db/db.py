@@ -24,6 +24,13 @@ class conect():
         datos = cursor.callfunc(nombre_funcion, tipo_retorno, parametros)
         cursor.close()
         return datos
+    def procedimientoAlmacenado(self, nombre_funcion, parametros):
+        cursor = self.conexion.cursor()
+        salida = cursor.var(cx_Oracle.NUMBER)
+        cursor.callproc(nombre_funcion, parametros)
+        cursor.close()
+        return salida
+    
     def close(self):
         self.conexion.close()
     def commint(self):
