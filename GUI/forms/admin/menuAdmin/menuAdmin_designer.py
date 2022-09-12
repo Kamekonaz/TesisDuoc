@@ -74,17 +74,17 @@ class MenuAdminDesigner:
     
         #HACER QUE SE PUEDA HACER SCROLL https://blog.teclado.com/tkinter-scrollable-frames/
 
-        self.scrollbar = tk.Scrollbar(self.bodyFrame, orient=VERTICAL)
-        self.scrollbar.pack(side="right",fill="y")
+        # self.scrollbar = tk.Scrollbar(self.bodyFrame, orient=VERTICAL)
+        # self.scrollbar.pack(side="right",fill="y")
 
-        for i in range(10):
-            random_frame = tk.Frame(self.bodyFrame, bg= "#5C6BC0", width=700, height=120)
-            random_frame.pack(pady=20)
-            tk.Label(random_frame, text='NOMBRE APELLIDO',bg='#C6CCF0', font=("", 15, "bold")).place(x=10, y=10)
-            tk.Label(random_frame, text='ROL: PROFESIONAL',bg='#C6CCF0', font=("", 15, "bold")).place(x=10, y=65)
+        # for i in range(10):
+        #     random_frame = tk.Frame(self.bodyFrame, bg= "#5C6BC0", width=700, height=120)
+        #     random_frame.pack(pady=20)
+        #     tk.Label(random_frame, text='NOMBRE APELLIDO',bg='#C6CCF0', font=("", 15, "bold")).place(x=10, y=10)
+        #     tk.Label(random_frame, text='ROL: PROFESIONAL',bg='#C6CCF0', font=("", 15, "bold")).place(x=10, y=65)
             
-            tk.Button(random_frame, text="Borrar", bg='#C6CCF0', font=("", 13, "bold"), bd=0, cursor="hand2", activebackground='#ffffff').place(x=600, y=10)
-            tk.Button(random_frame, text="Editar", bg='#C6CCF0', font=("", 13, "bold"), bd=0, cursor="hand2", activebackground='#ffffff').place(x=600, y=65)
+        #     tk.Button(random_frame, text="Borrar", bg='#C6CCF0', font=("", 13, "bold"), bd=0, cursor="hand2", activebackground='#ffffff').place(x=600, y=10)
+        #     tk.Button(random_frame, text="Editar", bg='#C6CCF0', font=("", 13, "bold"), bd=0, cursor="hand2", activebackground='#ffffff').place(x=600, y=65)
         
         
         self.window.mainloop()
