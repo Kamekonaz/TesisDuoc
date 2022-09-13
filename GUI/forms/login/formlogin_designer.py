@@ -13,9 +13,9 @@ class FormLoginDesigner:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title('Inicio de sesión')
-        self.window.geometry('1366x768')
+        self.window.geometry('800x500')
         self.window.resizable(width=0,height=0)
-        utl.center_window(self.window,1366,768)
+        utl.center_window(self.window,800,500)
        
         
         logo = utl.read_image("./imagenes/logo.png",(200,200))

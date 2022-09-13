@@ -69,8 +69,8 @@ class MenuAdmin(MenuAdminDesigner):
       
         
     
-    def deleteUser(self, userID):
-        print(f"Borrando al usuario de id {userID}")
+    def viewUser(self, userID):
+        print(f"Viendo al usuario de id {userID}")
         
     def __init__(self):
         super().__init__()
