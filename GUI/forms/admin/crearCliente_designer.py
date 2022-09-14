@@ -73,6 +73,13 @@ class crearClienteDesigner:
         self.telefono.pack()
         self.telefono.place(relx=0.33, rely=0.55, relwidth=0.08)
         
+        label_usuario = tk.Label(frame_form,text="usuario",font=('Times',14),fg="#666a88",bg="white",anchor="w")
+        label_usuario.pack()
+        label_usuario.place(relx=0.24, rely=0.65)
+        self.usuario = ttk.Entry(frame_form,font=('Times',14))
+        self.usuario.pack()
+        self.usuario.place(relx=0.33, rely=0.65, relwidth=0.08)
+        
         
         
         

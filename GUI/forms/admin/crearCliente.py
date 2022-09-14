@@ -1,24 +1,28 @@
 import tkinter as tk
 from tkinter.font import BOLD
-
 from forms.admin.crearCliente_designer import crearClienteDesigner
+from forms.admin.crearEmpresa import crearEmpresa
 from db.db import conect
 
 class crearCliente(crearClienteDesigner):
         
     def registro(self):
         db = conect()
-        rut = self.rut
-        email = self.email
-        nombre = self.nombre
-        apellido = self.apellido
-        telefono = self.telefono
-        #idCuenta  = db.funcionCompuesta('pkg_login.fn_login_fetch_username',[],str)
-        datos = [rut,nombre,apellido,email,telefono]
+        rut = self.rut.get()
+        email = self.email.get()
+        nombre = self.nombre.get()
+        apellido = self.apellido.get()
+        telefono = self.telefono.get()
+        usuario = self.usuario.get()
+        idCuenta  = db.funcionCompuesta('pkg_register.fn_get_account_id',[usuario],int)
+        datos = [rut,nombre,apellido,email,telefono,idCuenta]
         #if not rut and not email and not nombre and not apellido and not telefono :
         
-        salida = db.procedimientoAlmacenado('pkg_login.pcr_create_user',datos)
-        print(salida)
+        db.procedimientoAlmacenado('pkg_register.pcr_create_user',datos)
+        self.window.destroy()
+        crearEmpresa()
+        
+        
         #else:
             #tk.messagebox.showerror(title='Error', message='Hay campos vacio' )
        

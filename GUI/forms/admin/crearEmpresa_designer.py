@@ -71,13 +71,19 @@ class crearEmpresaDesigner:
         self.telefono.pack()
         self.telefono.place(relx=0.33, rely=0.55, relwidth=0.08)
         
+        label_rutCliente = tk.Label(frame_form,text="usuario",font=('Times',14),fg="#666a88",bg="white",anchor="w")
+        label_rutCliente.pack()
+        label_rutCliente.place(relx=0.24, rely=0.65)
+        self.rutCliente = ttk.Entry(frame_form,font=('Times',14))
+        self.rutCliente.pack()
+        self.rutCliente.place(relx=0.33, rely=0.65, relwidth=0.08)
         
         atras = tk.Button(frame_form,text="Atras",font=('Times',15,BOLD),fg="white",bg="black")
         atras.pack()
-        atras.place(relx=0.15, rely=0.75)
+        atras.place(relx=0.15, rely=0.85)
         
-        siguente = tk.Button(frame_form,text="Siguiente",font=('Times',15,BOLD),fg="white",bg="black")
+        siguente = tk.Button(frame_form,text="Siguiente", command=lambda:self.registro(),font=('Times',15,BOLD),fg="white",bg="black")
         siguente.pack()
-        siguente.place(relx=0.70, rely=0.75)
+        siguente.place(relx=0.70, rely=0.85)
         
         self.window.mainloop()

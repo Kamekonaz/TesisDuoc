@@ -3,25 +3,25 @@ from tkinter.font import BOLD
 
 from forms.admin.crearEmpresa_designer import crearEmpresaDesigner
 from db.db import conect
+from forms.admin.crearContrato import CrearContrato
 
-class RegistroEmpresa(crearEmpresaDesigner):
+class crearEmpresa(crearEmpresaDesigner):
         
     def registro(self):
-        cursor = conect()
-        rut = self.rut
-        nombre = self.email
-        ubicacion = self.nombre
-        razonSocial = self.razonSocial
-        telefono = self.telefono
-        if not rut and not nombre and not ubicacion and not razonSocial and not telefono :
-            
-            if():
-                self.window.destroy()
-                
-            pass
-        else:
-            tk.messagebox.showerror(title='Error', message='Hay campos vacio' )
-       
+        db = conect()
+        rut = self.rut.get()
         
+        ubicacion = self.ubicacion.get()
+        nombre = self.nombre.get()
+        razonSocial = self.razonSocial.get()
+        telefono = int(self.telefono.get())
+        rutCliente = self.rutCliente.get()
+        #procedure pcr_create_business(f_rut varchar, f_ubicacion varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar);
+        datos = [rut,ubicacion,razonSocial,telefono,nombre,rutCliente]
+        #if not rut and not email and not nombre and not apellido and not telefono :
+        
+        db.procedimientoAlmacenado('pkg_register.pcr_create_business',datos)
+        self.window.destroy()
+        CrearContrato()
     def __init__(self):
         super().__init__()
