@@ -1,0 +1,114 @@
+<%- include('_header.ejs') %>
+<link rel="stylesheet" href="/css/bannerlayers.css">
+
+<style>
+    .banner, .banner-bg{
+        top: 0;
+        height: 850px;
+    }
+    .banner-bg{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-image: url("/images/banner.jpg");
+    }
+
+    @keyframes bounce {
+        0% {
+            transform: translate(0, -20px);
+        }
+        100% {
+            transform: translate(0, 20px);
+        }
+    }
+
+    .banner-logo {
+    position: relative;
+    animation: bounce 2s infinite ease-in-out;
+    animation-direction: alternate;
+    }
+
+</style>
+
+
+<div class="banner-bg">
+    <div class="custom-shape-divider-bottom-1661027471">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+    <div class="custom-shape-divider-bottom-1661027168">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+    
+    <div class="w-full h-full bg-black" style="opacity: 0.3;"> </div>
+
+    <div class="custom-shape-divider-bottom-1661026047">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+        </svg>
+    </div> 
+    
+
+</div>
+
+<div class="banner grid grid-row-2 lg:grid-cols-2">
+    <div class="flex flex-col order-2 lg:order-1" style="z-index: 1;">
+        <div class="text-white lg:ml-20 lg:mt-36" style="width: fit-content; height: fit-content;">
+            <div style="font-size: 68px;">Turismo Real</div>
+            <p style="font-size: 18px;">Turismo real es una orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Viverra aliquet eget sit amet tellus 
+                cras adipiscing enim eu. Velit scelerisque in dictum non consectetur a erat. 
+            </p>
+        </div>
+        <div class="text-white lg:ml-auto flex space-x-2 lg:block" style="width: 100%; height: fit-content; margin-top: 50px; width: fit-content;">
+            <div><p style="font-size: 18px;"> Crea una cuenta y arrienda tu primer hotel!</p></div>
+            <div class="register-button">
+                <div class="text-center lg:text-left flex">
+                    <button
+                    style="min-width: 120px;"
+                        type="button"
+                        class="ml-auto inline-block px-7 py-3 bg-white text-black border-2 border-green-600 font-medium text-sm 
+                        leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:border-green-700 hover:shadow-lg hover:text-white
+                        focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out"
+                    >
+                        Register
+                    </button>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex select-none order-1 lg:order-2">
+        <div class="m-auto">
+            <div class="banner-logo w-64 lg:w-96">
+                <img src="/images/turismoreal_ico.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about flex flex-col mx-auto" style="max-width: 1200px;">
+    <div class="text-center w-full flex justify-between" style="font-size: 42px; margin-top: 20px;">
+        <span class="w-full h-1 my-auto p-0.5 bg-green-600"></span>
+        <div style="min-width: 440px;">¿Por qué Turismo Real?</div>
+        <span class="w-full h-1 my-auto p-0.5 bg-green-600"></span>
+    </div>
+    <div class="text-center w-full" style="font-size: 20px; margin-top: 20px;">
+        <p>
+            Turismo Real es una lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+            incididunt ut labore et dolore magna aliqua. Viverra aliquet eget sit amet tellus 
+            cras adipiscing enim eu. Velit scelerisque in dictum non consectetur a erat. 
+            Ac turpis egestas integer eget aliquet nibh praesent tristique magna. 
+            Quis ipsum suspendisse ultrices gravida dictum fusce ut. Velit sed ullamcorper morbi tincidunt ornare massa. 
+            Felis donec et odio pellentesque diam volutpat commodo. Diam quis enim lobortis scelerisque. 
+            Justo laoreet sit amet cursus sit amet dictum sit amet. 
+            Neque sodales ut etiam sit amet nisl. Eu non diam phasellus vestibulum lorem sed risus.
+        </p>
+    </div>     
+</div>
+
+
+<%- include('_footer') %>
