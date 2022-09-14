@@ -14,17 +14,17 @@ class crearCliente(crearClienteDesigner):
         apellido = self.apellido.get()
         telefono = self.telefono.get()
         usuario = self.usuario.get()
-        idCuenta  = db.funcionCompuesta('pkg_register.fn_get_account_id',[usuario],int)
-        datos = [rut,nombre,apellido,email,telefono,idCuenta]
-        #if not rut and not email and not nombre and not apellido and not telefono :
         
-        db.procedimientoAlmacenado('pkg_register.pcr_create_user',datos)
-        self.window.destroy()
-        crearEmpresa()
+        if (len(rut) != 0 and len(email) != 0 and  len(nombre) != 0 and  len(apellido) != 0 and  len(telefono) != 0 and len(usuario)!=0 ):
+            idCuenta  = db.funcionCompuesta('pkg_register.fn_get_account_id',[usuario],int)
+            datos = [rut,nombre,apellido,email,telefono,idCuenta]
+            db.procedimientoAlmacenado('pkg_register.pcr_create_user',datos)
+            self.window.destroy()
+            crearEmpresa()
         
         
-        #else:
-            #tk.messagebox.showerror(title='Error', message='Hay campos vacio' )
+        else:
+            tk.messagebox.showerror(title='Error', message='Hay campos vacio' )
        
         
     def __init__(self):

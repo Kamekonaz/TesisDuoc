@@ -1,4 +1,4 @@
 from forms.login.formLogin import FormLogin
-from forms.admin.crearEmpresa import crearEmpresa
+from forms.admin.crearContrato import CrearContrato
 
-crearEmpresa()
+FormLogin()

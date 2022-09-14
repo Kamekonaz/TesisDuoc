@@ -27,7 +27,7 @@ class FormLogin(FormLoginDesigner):
                     MenuEmpleado()
                 elif (tipo==1):
                     self.window.destroy()
-                    MenuAdmin()
+                    crearUsuario()
                 else:
                     tk.messagebox.showerror(title='Error Tipo de Usuario', message='Usted no tiene acceso a esta aplicacion' )
                       
@@ -37,16 +37,7 @@ class FormLogin(FormLoginDesigner):
         else:
             tk.messagebox.showerror(title='Error Usuario', message='Usuario no existe' )
         
-        """if user['estado']:
-            if (user['rol']=='admin'):
-                self.window.destroy()
-                tk.messagebox.showerror(title='Error', message='No existe usuario' )
-            elif (user['rol']=='especialista'):
-                self.window.destroy()
-                pop()"""
       
-        
-    
 
     
         
