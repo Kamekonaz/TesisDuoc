@@ -1,4 +1,8 @@
 <%- include('_header.ejs') %>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
 <div class="flex items-center min-h-screen bg-white dark:bg-gray-900">
     <div class="container mx-auto">
         <div class="max-w-md mx-auto my-10">
@@ -10,7 +14,7 @@
                 <form action="/login" method="post">
                     <div class="mb-6">
                         <label for="guro_username" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Nombre de usuario</label>
-                        <input type="text" id="guro_username" placeholder="Robert99FM" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                        <input type="text" id="guro_username" name="guro_username" placeholder="Robert99FM" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
                     </div>
                     <div class="mb-6">
                         <div class="flex justify-between mb-2">
@@ -20,7 +24,7 @@
                         <a href="#!" class="text-sm text-gray-400 focus:outline-none focus:text-indigo-500 hover:text-indigo-500 dark:hover:text-indigo-300">¿Olvidaste tu contraseña?</a>
                     </div>
                     <div class="mb-6">
-                        <button type="button" onclick="login()" class="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none">Iniciar Sesión</button>
+                        <button type="submit" class="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none">Iniciar Sesión</button>
                     </div>
                 </form>
             </div>
@@ -31,7 +35,7 @@
 
 <!-- Footer Mentions -->
 <div class="fixed bottom-5 w-full text-center text-gray-400">
-	Todos los derechos reservados
+	© 2022 GuroCompany | Todos los derechos reservados.
 </div>
 
 
@@ -39,18 +43,20 @@
     const username = document.getElementById("guro_username");
     const password = document.getElementById("password");   
     async function login(){
-        console.log(username.value, password.value)
+        const login_data = {
+            username: username.value,
+            password: password.value
+        }
         
-        const res = await fetch(window.location.href, {
-            method: 'POST',
-            headers: {
-                "Content-Type": 'application/json'
-            },
-            body: JSON.stringify({
-                username: username.value,
-                password: password.value
+        await axios({
+            method: 'post',
+            url: window.location.href,
+            headers: {'Content-Type' : 'application/json'},
+            data: login_data
             })
-        })
+            .then(function (response) {
+                console.log("sent")
+        });
         
     }
 </script>
