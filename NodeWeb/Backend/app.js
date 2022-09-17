@@ -4,6 +4,8 @@ const app = express()
 const path = require('path')
 const routes = require('./routes')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
 
 const PORT = 3000
 
@@ -16,7 +18,12 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));       
 app.use(express.static('public'));
-
+app.use(cookieParser());
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: "secret"
+}))
 
 
 app.use(routes)  

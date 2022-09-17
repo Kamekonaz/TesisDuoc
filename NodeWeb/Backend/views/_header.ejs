@@ -9,6 +9,7 @@
   <meta name="description" content="A simple HTML5 Template for new projects.">
   <meta name="author" content="SitePoint">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 
   <link rel="stylesheet" href="/css/scrollbar.css">
@@ -66,65 +67,88 @@
 
 <body>
 
-<div id="header-container">
-    <section class="w-full px-8 text-gray-700 bg-white fixed z-10 bg-gray-100">
-        <div class="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
-            <div class="relative flex flex-col md:flex-row">
-                <a href="#_" class="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
-                    <img src="/images/tr_ico.png" alt="" width="30px">
-                </a>
-                <!-- <nav class="flex flex-wrap items-center mb-5 text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-200">
-                    <a href="#_" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Home</a>
-                    <a href="#_" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Features</a>
-                    <a href="#_" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Pricing</a>
-                    <a href="#_" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Blog</a>
-                </nav> -->
-            </div>
-    
-            <div class="inline-flex items-center ml-5 space-x-6 lg:justify-end">
-                <a href="/login" class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
-                    Login
-                </a>
-            </div>
-        </div>
-    </section>
-    <!-- <nav class="navbar flex justify-between">
-        <div class="navbar-logo select-none">
-            <div style="margin: auto;">
-                <img src="/images/tr_ico.png" style="margin-left:10px; width: 70%;" alt="">
-            </div>
-        </div>
-        <div class="authentication-container flex my-auto mr-5 space-x-2 select-none">
-            <div class="login-button">
-                <div class="text-center lg:text-left">
-                    <a href="/login">
-                        <button
-                        style="min-width: 120px;"
-                            type="button"
-                            class="inline-block px-7 py-3 bg-green-600 
-                            border-2 border-green-600
-                            text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-800 hover:border-green-800 hover:shadow-lg focus:shadow-lg focus:outline-none 
-                            focus:ring-0 active:shadow-lg transition duration-150 ease-in-out"
-                        >
-                            Login
-                        </button>
-                    </a>
-                    </div>
-            </div>
+<script>
+    const usuario = <%- JSON.stringify(usuario ? usuario : '') %>;
+</script>
 
+<div id="header-container">
+    <header class="flex items-center h-20 px-6 w-full sm:px-10 bg-gray-100 fixed z-10" x-data="{ panel: false }">
+        <div class="mr-8 cursor-pointer" >
+            <a href="/">
+                <img src="/images/tr_ico.png" alt="" width="65px">
+            </a>
+        </div>
+        <% if(usuario){ %>
+        <div class="relative w-full max-w-md sm:-ml-2">
+          <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" class="absolute h-6 w-6 mt-2.5 ml-2 text-gray-400">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+          </svg>
+          <input type="text" role="search" placeholder="Search..." class="py-2 pl-10 pr-4 w-full border-4 border-transparent placeholder-gray-400 focus:bg-gray-50 rounded-lg" />
         </div>
         
-    </nav>
-    <nav class="navbar-bg">
+        <div class="flex flex-shrink-0 items-center ml-auto">
+          <button class="relative inline-flex items-center p-2 hover:bg-gray-200 focus:bg-gray-100 rounded-lg" @click="panel = !panel" @click.away="panel = false">
+            <span class="sr-only">User Menu</span>
+            <div class="hidden md:flex md:flex-col md:items-end md:leading-tight" >
+              <span class="font-semibold"><%= usuario["NOMBRES"].split(" ")[0] %> <%= usuario["APELLIDOS"].split(" ")[0] %></span>
+              <span class="text-sm text-gray-600">Nombre empresa</span>
+            </div>
+            <span class="h-12 w-12 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
+              <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="user profile photo" class="h-full w-full object-cover">
+            </span>
+            <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" class="hidden sm:block h-6 w-6 text-gray-300">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg> 
+          </button>
+          <div class="absolute top-20 bg-white border rounded-md p-2 w-56" x-show="panel" style="display:none">
+            <div class="p-2 hover:bg-blue-100 cursor-pointer">Profile</div>
+            <div class="p-2 hover:bg-blue-100 cursor-pointer">Messages</div>
+            <div class="p-2 hover:bg-blue-100 cursor-pointer">To-Do's</div>
+          </div>
+          <div class="border-l pl-3 ml-3 space-x-1">
+            <button class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
+              <span class="sr-only">Notifications</span>
+              <span class="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-red-500 rounded-full"></span>
+              <span class="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-red-500 rounded-full animate-ping"></span>
+              <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </button>
+            <a href="/logout">
+                <button class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
+                <span class="sr-only">Log out</span>
+                <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                </button>
+            </a>
+          </div>
+        </div>
+        <% } else{ %> 
+        <div class="flex flex-shrink-0 items-center ml-auto">
 
-    </nav> -->
+            <div class="border-l pl-3 ml-3 space-x-1">
+                <a href="/login">
+                    <button class="relative p-2 bg-green-600 rounded-md text-white hover:bg-green-700 focus:bg-green-800" style="width: 70px;">
+                    Login
+                    </button>
+                </a>
+            </div>
+        <% } %>
+      </header>
 </div>
 
 <script>
+
+    console.log(usuario);
     const header = document.getElementById("header-container")
+
+    if (usuario){
+        
+    }
     //header.classList.add("hidden")
-    if (window.location.href.includes("/login")) header.classList.add("hidden")
-    if (window.location.href.includes("/cliente/dashboard")) header.classList.add("hidden")
+    // if (window.location.href.includes("/login")) header.classList.add("hidden")
+    // if (window.location.href.includes("/cliente/dashboard")) header.classList.add("hidden")
     
 </script>
 

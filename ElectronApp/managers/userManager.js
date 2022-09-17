@@ -27,6 +27,7 @@ class UserManager {
     try{
         password_status = undefined;
         const Connection = await oracledb.getConnection(db_credentials);
+
         const query = `select * from cuenta`
         
 
@@ -44,7 +45,6 @@ class UserManager {
   static async login(username, password){
     try{
       const Connection = await oracledb.getConnection(db_credentials);
-
       const result = await Connection.execute(
         `BEGIN
           :return := pkg_login.fn_login_fetch_username(:v_username);
@@ -55,7 +55,6 @@ class UserManager {
         }
       );
 
-      
       comparePassword(result.outBinds["return"], password)
       await sleep(500)
 
