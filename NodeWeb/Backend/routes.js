@@ -7,11 +7,16 @@ router.get("/", (req, res) =>{
 })
 
 router.get("/cliente/dashboard", async (req, res) =>{
-    if(!req.session.user) return res.redirect("http://localhost:3000/login")
+    if(!req.session.user) return res.redirect("/login")
 
     res.render("dashboardCliente", { usuario: req.session.user })
 })
 
+router.get("/cliente/ReportarAccidente", async (req, res) =>{
+    if(!req.session.user) return res.redirect("/login")
+
+    res.render("reportarAccidente", { usuario: req.session.user })
+})
 
 router.get("/login", (req, res) =>{
     res.render("login", { usuario: req.session.user })
@@ -19,7 +24,7 @@ router.get("/login", (req, res) =>{
 
 router.get("/logout", (req, res) =>{
     req.session.destroy()
-    res.redirect("http://localhost:3000/")
+    res.redirect("/")
 })
 
 router.post("/login", async (req, res) =>{
@@ -35,7 +40,7 @@ router.post("/login", async (req, res) =>{
         delete userData[0]["PASSWORD"];
         req.session.user = userData[0];
         req.session.save()
-        res.redirect("http://localhost:3000/cliente/dashboard");
+        res.redirect("/cliente/ReportarAccidente");
     }
 })
 
