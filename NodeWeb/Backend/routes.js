@@ -40,7 +40,7 @@ router.post("/login", async (req, res) =>{
         delete userData[0]["PASSWORD"];
         req.session.user = userData[0];
         req.session.save()
-        res.redirect("/cliente/ReportarAccidente");
+        res.redirect("/cliente/dashboard");
     }
 })
 
