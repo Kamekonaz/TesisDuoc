@@ -23,20 +23,31 @@ async function comparePassword(encryptedPass, inputPass){
 
 
 class UserManager {
-  static async get_profesionals(){
+  static async get_users_by_usertype(usertype){
     try{
         password_status = undefined;
         const Connection = await oracledb.getConnection(db_credentials);
+    
+        const result = await Connection.execute(
+          `BEGIN
+            pkg_list.pcr_list_by_usertype(:v_usertype, :v_users);
+           END;`,
+          {  
+            v_usertype: usertype,
+            v_users: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+          }
+        );
+        const cursor = result.outBinds.v_users;
+        const filas = await cursor.getRows();
 
-        const query = `select * from cuenta`
+        
+        //console.log(filas)
+
         
 
-        const result = await Connection.execute(query, [], { outFormat: oracledb.OUT_FORMAT_OBJECT });
-      
-        console.log(result)
-
-
         Connection.close()
+
+        return filas;
       } catch(err){
           console.log(err)
       }
