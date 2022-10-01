@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="C8B395E2-FF09-9B4A-8E7E-9CF531DD5564" containerWithKeyObject="C2D8FF9B-F2CE-980E-D2B9-3D919FD301FB" localFKIndex="75B686D3-AA57-B394-9D52-02288F22C55A" name="PARTICIPANTE_CHAT_SALA_CHAT_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:28 UTC</createdTime>
+<generatorID>D2D39F96-1123-EC23-CE38-6AD8B7B23DEC</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<referredTableLongName>SALA_CHAT</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>9C7B42E8-A142-B2AD-77E1-75B3D63E6BA2</referredTableID>
+<keyObject>36B337C4-A28F-2591-C3B7-2D01FB26D0CF</keyObject>
+<referredKeyID>36B337C4-A28F-2591-C3B7-2D01FB26D0CF</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_sala</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

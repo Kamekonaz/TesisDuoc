@@ -38,8 +38,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>255</dataTypePrecision>
-<ownDataTypeParameters>,255,</ownDataTypeParameters>
+<dataTypePrecision>25</dataTypePrecision>
+<ownDataTypeParameters>,25,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="coste_servicios_extras" id="A020F578-4CE4-B0F0-8EEB-CDCD491A705B">
 <createdBy>CETECOM</createdBy>
@@ -51,8 +51,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>255</dataTypePrecision>
-<ownDataTypeParameters>,255,</ownDataTypeParameters>
+<dataTypePrecision>25</dataTypePrecision>
+<ownDataTypeParameters>,25,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="id_pago" id="2D3CF399-7350-F436-CC2C-6EA05EC77AC5">
 <createdBy>CETECOM</createdBy>
@@ -75,8 +75,9 @@
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-09-29 19:13:17 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F188AD00-D5F0-3271-A3DC-22A6B97E4039" containerWithKeyObject="5A10110B-FB58-8735-54FF-11A7C8F8FEC5" localFKIndex="D781E094-41C9-6E19-02D8-5B2F85D10486" name="PAGO_CONTRATO_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:28 UTC</createdTime>
+<generatorID>F0355AD3-7562-E342-4284-B07BC2A519D6</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<referredTableLongName>CONTRATO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A3433163-2E66-45FE-953A-516C2CB7868C</referredTableID>
+<keyObject>577F90CA-D161-7224-452F-47FE7BEED080</keyObject>
+<referredKeyID>577F90CA-D161-7224-452F-47FE7BEED080</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_contrato</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

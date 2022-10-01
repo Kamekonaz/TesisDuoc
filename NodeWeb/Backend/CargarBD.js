@@ -63,7 +63,7 @@ async function loadBD(){
 
 async function executeQueries(todoScript, credentials, areProcedures){
     const connection = await oracledb.getConnection(credentials);
-    const queries = (areProcedures) ? clearProceduresScript(todoScript) : await clearScript(todoScript);
+    const queries = (areProcedures) ? await clearProceduresScript(todoScript) : await clearScript(todoScript);
 
     for (query of queries){
         const cachedQuery = query;

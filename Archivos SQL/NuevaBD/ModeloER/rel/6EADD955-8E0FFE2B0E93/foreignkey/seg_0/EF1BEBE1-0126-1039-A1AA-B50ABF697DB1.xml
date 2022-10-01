@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="EF1BEBE1-0126-1039-A1AA-B50ABF697DB1" containerWithKeyObject="784DCF1F-DFA1-4BDA-1A22-DE1EC7B0D5A4" localFKIndex="A574F280-7BAE-ABED-9611-ADD5438F47AF" name="VISITA_CHECKLIST_VISITA_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:28 UTC</createdTime>
+<generatorID>C49BEFB8-4F0A-3176-A1FF-B2987E09BA95</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<referredTableLongName>CHECKLIST_VISITA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>FE6476F1-8736-5160-A79A-EF0757497D27</referredTableID>
+<keyObject>73390C83-3E9D-98E8-EE7B-A19F21E1BB69</keyObject>
+<referredKeyID>73390C83-3E9D-98E8-EE7B-A19F21E1BB69</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_checklist</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

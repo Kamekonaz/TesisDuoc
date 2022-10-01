@@ -1,0 +1,128 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2A3237E9-9531-069E-2A67-733FFE84683D" name="ACCIDENTE">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:27 UTC</createdTime>
+<generatorID>F6B5E1E9-F803-7E8A-4B5C-28115104AFFE</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_accidente" id="A753FAC6-E7F7-6B79-CFD0-C660D8C0E06C">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:27 UTC</createdTime>
+<generatorID>7B6A7A3F-7938-A21D-A84D-FEB50C2E44B8</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rut_usuario" id="2615933C-1FDF-6BEB-F228-BF30F85FA4C1">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:27 UTC</createdTime>
+<generatorID>43FEC10C-96E5-9527-64EB-5AB969C88DBC</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FB148191-C21B-7716-FD84-AC21FCB999F6" referredColumn="CAB23A60-1187-B8EC-96E7-DE5AD050BD11"/>
+</associations>
+</Column>
+<Column name="descripcion" id="6A41C5B9-D216-3971-6EAA-331171B725E0">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:27 UTC</createdTime>
+<generatorID>1AD78349-4231-0668-1CDB-EAFE2998BDD6</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2000</dataTypeSize>
+<ownDataTypeParameters>2000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipo" id="67875710-4C0B-04CB-6157-EF19395B1F89">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:27 UTC</createdTime>
+<generatorID>1F58FF9E-BB82-1EC7-E142-F07C47E122A5</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_sala" id="956A6363-23C8-C3D5-181F-E4297A5C36CD">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:27 UTC</createdTime>
+<generatorID>FFC16B84-3578-36F5-0083-1773D4436778</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7D67407F-AC02-FAAD-9A76-09CC0BB76806" referredColumn="FDFE0CBB-87AE-B53D-303C-5A8D76BF405D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A010BCBD-B3DA-E2DC-397C-6D749EDB6191" name="ACCIDENTE_PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:27 UTC</createdTime>
+<generatorID>1437FE2A-7ECC-5A8B-1B82-B9F1F939E148</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A753FAC6-E7F7-6B79-CFD0-C660D8C0E06C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5CBAF061-BFE8-40E0-146D-63C449C2BC5F" name="ACCIDENTE__IDX">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:28 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>2AC274BC-F1E1-6406-FDF5-7C884110AAED</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="956A6363-23C8-C3D5-181F-E4297A5C36CD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B01358F8-D31B-F21C-D9F6-AB3C4B1A7C98" name="ACCIDENTE_SALA_CHAT_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:28 UTC</createdTime>
+<generatorID>2AC274BC-F1E1-6406-FDF5-7C884110AAED</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="956A6363-23C8-C3D5-181F-E4297A5C36CD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AEB52FE7-E633-D73E-CEEE-C244157883B4" name="ACCIDENTE_USUARIO_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:28 UTC</createdTime>
+<generatorID>9D86C3D0-99FE-18A2-3193-599F5286427C</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2615933C-1FDF-6BEB-F228-BF30F85FA4C1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

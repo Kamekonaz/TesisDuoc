@@ -109,21 +109,6 @@
 <dataTypePrecision>12</dataTypePrecision>
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_detallepago" id="F03CB441-5928-C2BE-CF9B-563048BC4F14">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-09-29 19:13:18 UTC</createdTime>
-<generatorID>AC585B2F-E4B7-6296-E9E9-9093EF8CE120</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
-</engineerTo>
-<referedAttribute>21126071-9FFF-4FAE-4F83-AC7DF48CFF93</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="03185EAE-AED2-BA09-4E39-F5A0152E7AEA" name="BOLETA PK">

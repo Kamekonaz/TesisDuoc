@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D21289AE-34D9-6AA4-76C9-A5268308979F" containerWithKeyObject="45987AE9-F0AD-D77D-92FA-B62A486C323B" localFKIndex="D1DE28CE-9843-BF1A-B004-8801812D48E4" name="PLAN_MEJORA_VISITA_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-01 20:18:28 UTC</createdTime>
+<generatorID>B61406A2-20AB-1AD1-8C39-D161F8953D70</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<referredTableLongName>VISITA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>784DCF1F-DFA1-4BDA-1A22-DE1EC7B0D5A4</referredTableID>
+<keyObject>6EE24F0B-7708-9E95-49BE-828024346A1D</keyObject>
+<referredKeyID>6EE24F0B-7708-9E95-49BE-828024346A1D</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_visita</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
