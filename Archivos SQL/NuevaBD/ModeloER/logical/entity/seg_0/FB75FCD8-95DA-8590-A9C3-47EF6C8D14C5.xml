@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="FB75FCD8-95DA-8590-A9C3-47EF6C8D14C5" name="TIPO_USUARIO">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-15 04:36:32 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_tipo" id="08172252-4ED5-3842-10FE-9ECA48B3C43A">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-15 04:36:42 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="0DCEFB00-5CE7-EBE9-8E7D-B9520B160994">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-15 04:36:53 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="10D1DF77-0D3F-640C-739C-80CEC9FDD27C" name="usertype PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-15 04:36:52 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>08172252-4ED5-3842-10FE-9ECA48B3C43A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

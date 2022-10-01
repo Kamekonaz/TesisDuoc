@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relacion_Accidente_Sala" directorySegmentName="seg_0" id="2AC274BC-F1E1-6406-FDF5-7C884110AAED">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 18:50:08 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<sourcePk>1437FE2A-7ECC-5A8B-1B82-B9F1F939E148</sourcePk>
+<targetPk>B4B7FB61-E5CE-289B-CC24-CE8D62DAE369</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>F6B5E1E9-F803-7E8A-4B5C-28115104AFFE</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>8E181F11-D764-9AB7-C3D0-1F43E1E3778A</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

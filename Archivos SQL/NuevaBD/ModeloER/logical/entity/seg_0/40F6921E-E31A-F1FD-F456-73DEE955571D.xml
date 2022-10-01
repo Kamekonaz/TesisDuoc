@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="40F6921E-E31A-F1FD-F456-73DEE955571D" name="CAPACITACION">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-26 18:02:03 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_capacitacion" id="50337B57-BB83-82E8-5789-1ED620525925">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-28 19:14:21 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descripcion_capacitacion" id="DAB3BFC8-1D94-3772-32C2-92811D6B513B">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-28 19:16:39 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2000</dataTypeSize>
+<ownDataTypeParameters>2000,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descripcion_material" id="A3318461-AC4A-DE9A-F071-2A1AFABAF801">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-28 19:15:51 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2000</dataTypeSize>
+<ownDataTypeParameters>2000,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_capacitacion" id="39E8AB5A-A093-BA43-87D9-CCCE6489B29E">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-29 23:14:17 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="estado" id="C1762793-C9ED-6A73-959D-E45018B2EA6F">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-29 23:14:27 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="88AB87CE-D5CD-84EB-20F1-2585C5B9715E" name="CAPACITACION PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-28 19:14:28 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>50337B57-BB83-82E8-5789-1ED620525925</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

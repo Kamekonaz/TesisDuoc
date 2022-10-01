@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_1" id="893A05F6-4F96-C18A-0D95-760E6A4D6098" name="PLAN_MEJORA">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:19:56 UTC</createdTime>
+<generatorID>92DC4295-0688-3297-4B20-530B83A0F189</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_plan" id="865F68A5-5D58-FBC7-866D-F7C865CF87D2">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:19:56 UTC</createdTime>
+<generatorID>AB80E6BB-1097-99C2-6EDA-533462E85733</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="4F71D1F0-AA75-D348-044D-35D64D3462EC">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:19:56 UTC</createdTime>
+<generatorID>67C92DBE-645D-3A2D-38AB-6BC93F96F2B6</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2000</dataTypeSize>
+<ownDataTypeParameters>2000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_visita" id="77496036-6D27-8FCE-F039-6106D34BEDA1">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:19:56 UTC</createdTime>
+<generatorID>C8CD4EAE-F097-7631-774B-83D8EB5361ED</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8D0E7887-13F5-ACCA-AED4-7B9F4BA1B8CD" referredColumn="B313E357-EDD7-7EC6-A38B-FFCC6FCBEACD"/>
+</associations>
+</Column>
+<Column name="estado" id="3F67BBA9-FE19-D4AD-A159-09889EC821C5">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:19:56 UTC</createdTime>
+<generatorID>07A7B28D-7A7B-A792-5AED-BF9412801785</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4FB324D1-7007-AAAB-EE29-171AA38D6E1F" name="PLAN_MEJORA_PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:19:56 UTC</createdTime>
+<generatorID>00407CFB-6343-EFFE-B030-3682F524A19D</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="865F68A5-5D58-FBC7-866D-F7C865CF87D2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="57F165BB-07CD-7716-BF93-B1C52E147746" name="PLAN_MEJORA__IDX">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:19:56 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>B61406A2-20AB-1AD1-8C39-D161F8953D70</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="77496036-6D27-8FCE-F039-6106D34BEDA1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EA786C9B-9090-598B-B376-957B8016129A" name="PLAN_MEJORA_VISITA_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:19:56 UTC</createdTime>
+<generatorID>B61406A2-20AB-1AD1-8C39-D161F8953D70</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="77496036-6D27-8FCE-F039-6106D34BEDA1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

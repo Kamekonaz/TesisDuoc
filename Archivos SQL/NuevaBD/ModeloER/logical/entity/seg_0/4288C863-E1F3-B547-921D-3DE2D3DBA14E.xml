@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4288C863-E1F3-B547-921D-3DE2D3DBA14E" name="PARTICIPANTE">
+<createdBy>CETECOM</createdBy>
+<createdTime>2022-09-29 11:54:53 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_asignacion" id="AC21E953-0A08-D855-EECF-80D45830736E">
+<createdBy>CETECOM</createdBy>
+<createdTime>2022-09-29 11:55:39 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_actividad" id="563D5118-79FF-0822-4FF3-22644E0CF5A4">
+<createdBy>CETECOM</createdBy>
+<createdTime>2022-09-29 12:07:01 UTC</createdTime>
+<generatorID>CA471DEA-AEF0-8B11-A11C-FE839FC17064</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>E1F6FE18-E298-D836-31D4-DAB345FA895D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rut_usuario" id="316DBDBB-0F89-DC93-484D-6D07934C9C7B">
+<createdBy>CETECOM</createdBy>
+<createdTime>2022-09-29 12:13:27 UTC</createdTime>
+<generatorID>DB40A1D6-369C-3D2B-4391-BCA49D0D91F9</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>091B978B-7DE0-031A-9F07-13B6C7977ED1</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2FFDB6DE-B052-0B06-DFEC-C9349AB91563" name="ASIGNACION PK">
+<createdBy>CETECOM</createdBy>
+<createdTime>2022-09-29 11:55:54 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>AC21E953-0A08-D855-EECF-80D45830736E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

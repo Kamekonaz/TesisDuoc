@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_Contrato_Boleta" directorySegmentName="seg_0" id="F0355AD3-7562-E342-4284-B07BC2A519D6">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-26 18:21:55 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<sourcePk>8D3A9C92-5F43-7939-6A65-73DAC0F1B72B</sourcePk>
+<targetPk>03185EAE-AED2-BA09-4E39-F5A0152E7AEA</targetPk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>F48FB8EB-D934-C003-B72D-156B04CEA5F2</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>07C1B8E5-3FA0-A969-64C4-AF0E678104DD</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

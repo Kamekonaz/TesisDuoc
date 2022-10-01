@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_Capacitacion_Actividad" directorySegmentName="seg_0" id="E554D9D4-FFC3-77D9-C02C-EC2C33C4A822">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-28 18:43:51 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<sourcePk>88AB87CE-D5CD-84EB-20F1-2585C5B9715E</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>40F6921E-E31A-F1FD-F456-73DEE955571D</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>6ACF408C-067F-B998-5D2B-AA09D827C53F</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

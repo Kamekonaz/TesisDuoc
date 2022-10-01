@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relacion_Pago_Detalle" directorySegmentName="seg_0" id="AC585B2F-E4B7-6296-E9E9-9093EF8CE120">
+<createdBy>CETECOM</createdBy>
+<createdTime>2022-09-29 12:52:32 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<sourcePk>03185EAE-AED2-BA09-4E39-F5A0152E7AEA</sourcePk>
+<targetPk>9A5527F8-15DB-B2B5-0443-1D63D32D6BDF</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>07C1B8E5-3FA0-A969-64C4-AF0E678104DD</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>F0786B59-F702-DAA3-6CF7-CF5E42566919</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

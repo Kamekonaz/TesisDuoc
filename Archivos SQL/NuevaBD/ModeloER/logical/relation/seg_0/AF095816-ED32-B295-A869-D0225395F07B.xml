@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_Contrato_Usuario" directorySegmentName="seg_0" id="AF095816-ED32-B295-A869-D0225395F07B">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-26 18:21:49 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<sourcePk>8D3A9C92-5F43-7939-6A65-73DAC0F1B72B</sourcePk>
+<targetPk>B6F1A9C7-560C-B950-AF3A-358AF3450B54</targetPk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>F48FB8EB-D934-C003-B72D-156B04CEA5F2</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>526B77B5-313C-9F70-4E1F-13EFEDFEA8F0</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

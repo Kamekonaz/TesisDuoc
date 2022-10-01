@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_Visita_Actividad" directorySegmentName="seg_0" id="CA198DF0-0643-F0B3-C9CF-478C17E4B350">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-28 18:43:59 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<sourcePk>B78DA4DA-B88E-F08F-A1B1-CBE62E767789</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>3219C177-48ED-E0A2-D1C5-D7136E6F8CC0</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>6ACF408C-067F-B998-5D2B-AA09D827C53F</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relacion_Tipo_Coste" directorySegmentName="seg_0" id="5B5C918F-855B-130E-6192-98F87512A1D2">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:18:37 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<sourcePk>10291F7E-4BA8-E001-2402-9B39FF11344D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>359DA620-0F5C-6B57-530F-FA189369E121</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>08355DDE-6CA8-CD25-E6F6-F92A8A86A253</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

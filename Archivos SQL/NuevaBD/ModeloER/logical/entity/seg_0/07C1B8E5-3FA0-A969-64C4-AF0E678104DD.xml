@@ -1,0 +1,143 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="07C1B8E5-3FA0-A969-64C4-AF0E678104DD" name="PAGO">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-26 18:20:21 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_pago" id="F6A07674-C4E4-FB51-9345-C6E0CD4D537A">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-28 05:49:33 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_pago" id="A5E0484D-3AB2-A140-AB1A-183E4943C322">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-05 22:57:49 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="estado" id="CE3065B0-E68D-5E04-15F7-B38F69364160">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-28 05:49:43 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="monto" id="556A5204-D919-7565-66DF-07160957D587">
+<createdBy>CETECOM</createdBy>
+<createdTime>2022-09-29 12:17:04 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_contrato" id="7EEE5AF7-F16F-0EA9-37BA-6A135947EECD">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-06 00:14:41 UTC</createdTime>
+<generatorID>F0355AD3-7562-E342-4284-B07BC2A519D6</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>2CC7ED88-B139-B466-4DF2-74E3B2D71D8C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tipo_recibo" id="724677CE-7F03-1837-2B60-262299D19D63">
+<createdBy>CETECOM</createdBy>
+<createdTime>2022-09-29 12:47:23 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_mediopago" id="1A307F38-3064-3D9D-1503-6DF98B8A03B6">
+<createdBy>CETECOM</createdBy>
+<createdTime>2022-09-29 12:44:48 UTC</createdTime>
+<generatorID>4E5CC2CA-A78F-AFF9-DC25-353802427F1B</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>F529CF54-950C-1631-1151-957B2106C602</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_detallepago" id="F03CB441-5928-C2BE-CF9B-563048BC4F14">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:13:18 UTC</createdTime>
+<generatorID>AC585B2F-E4B7-6296-E9E9-9093EF8CE120</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>21126071-9FFF-4FAE-4F83-AC7DF48CFF93</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="03185EAE-AED2-BA09-4E39-F5A0152E7AEA" name="BOLETA PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-28 05:49:41 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F6A07674-C4E4-FB51-9345-C6E0CD4D537A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="08355DDE-6CA8-CD25-E6F6-F92A8A86A253" name="COSTE_ACT">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:17:18 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_coste" id="16DEC4A4-DC65-3899-1C1D-91FA6E78BF6D">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:17:31 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="costo_fijo" id="7462ED71-D37E-8BE3-1EB2-93073ED8EAB4">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:17:42 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>24</dataTypePrecision>
+<ownDataTypeParameters>,24,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="costo_extra" id="49488E85-D26F-E3E0-7DE9-F2A5BE4FC555">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:17:53 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>24</dataTypePrecision>
+<ownDataTypeParameters>,24,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_tipoactividad" id="D0794EAA-4551-605C-0563-5EC1A4A0F0A0">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:18:37 UTC</createdTime>
+<generatorID>5B5C918F-855B-130E-6192-98F87512A1D2</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>8B2C15E6-8D7D-5905-0A28-B809D3DEBEF9</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C3CF41DD-97C2-CD45-FAED-CD97C06F8BAA" name="COSTE_ACT PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-09-29 19:17:40 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>16DEC4A4-DC65-3899-1C1D-91FA6E78BF6D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

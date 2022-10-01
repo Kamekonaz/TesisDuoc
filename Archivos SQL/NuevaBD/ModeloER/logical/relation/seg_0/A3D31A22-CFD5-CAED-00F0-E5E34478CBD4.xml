@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relacion_Usuario_Mensaje" directorySegmentName="seg_0" id="A3D31A22-CFD5-CAED-00F0-E5E34478CBD4">
+<createdBy>CETECOM</createdBy>
+<createdTime>2022-09-29 13:26:26 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<sourcePk>B6F1A9C7-560C-B950-AF3A-358AF3450B54</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>526B77B5-313C-9F70-4E1F-13EFEDFEA8F0</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>0CFFB174-A5E7-BA76-993C-D9C16859686D</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,6 +1,7 @@
-const { User } = require('discord.js');
 const { screen, app, BrowserWindow, ipcMain  } = require('electron');
+const nunjucks = require('nunjucks')
 const path = require("path")
+const fs = require('fs')
 
 const createWindow = () => {
     //const size = screen.getPrimaryDisplay().workAreaSize;
@@ -20,7 +21,11 @@ const createWindow = () => {
         }
     });
     //win.removeMenu()
-    win.loadFile('./views/login.html')
+    render('./views/login.html')
+    // const html = nunjucks.render('./views/login.html', { foo: 'bar' });
+	// win.loadURL('data:text/html;charset=utf-8,' + encodeURI(html));
+    console.log("loaded entre comillas")
+    //win.loadFile('./views/login.html')
     ///win.loadFile('./views/adminDashboard.html')
 }
 
@@ -56,3 +61,14 @@ ipcMain.on("login-clicked", async (event, data) => {
     }
 
   });
+
+
+function render(htmlPath, context={}){
+    //nunjucks.configure('views', { autoescape: true });
+    //nunjucks.configure({ autoescape: true });
+    const html = nunjucks.render(htmlPath, context);
+    const ola = fs.writeFileSync(html)
+    console.log("login", ola)
+    win.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
+
+}

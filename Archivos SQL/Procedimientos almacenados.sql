@@ -1,4 +1,4 @@
--- Package de login ejecutar desde acá
+-- Package de login ejecutar desde acï¿½
 -------------------------------------------------------------
 create or replace package pkg_login AS 
     function fn_login_fetch_username(f_username varchar)
@@ -7,10 +7,10 @@ create or replace package pkg_login AS
         return number;
 end pkg_login;
 -------------------------------------------------------------
--- Hasta acá
+-- Hasta acï¿½
 /
 
--- Package body de login ejecutar desde acá
+-- Package body de login ejecutar desde acï¿½
 -------------------------------------------------------------
 create or replace package body pkg_login as
     function fn_login_fetch_username(f_username varchar)
@@ -66,11 +66,11 @@ create or replace package body pkg_login as
 
 end pkg_login;
 -------------------------------------------------------------
--- Hasta acá
+-- Hasta acï¿½
 /
 
 
--- Package de login ejecutar desde acá
+-- Package de login ejecutar desde acï¿½
 -------------------------------------------------------------
 create or replace package pkg_register as
     function fn_get_account_id (f_username varchar)
@@ -84,11 +84,11 @@ create or replace package pkg_register as
     procedure pcr_create_business(f_rut varchar, f_ubicacion varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar);
 end pkg_register;
 -------------------------------------------------------------
--- Hasta acá
+-- Hasta acï¿½
 
 /
 
--- Package de login ejecutar desde acá
+-- Package de login ejecutar desde acï¿½
 -------------------------------------------------------------
 create or replace package body pkg_register as
     function fn_get_account_id (f_username varchar)
@@ -202,7 +202,7 @@ create or replace package body pkg_register as
     
 end pkg_register;
 -------------------------------------------------------------
--- Hasta acá
+-- Hasta acï¿½
 
 /
 create or replace package pkg_list as

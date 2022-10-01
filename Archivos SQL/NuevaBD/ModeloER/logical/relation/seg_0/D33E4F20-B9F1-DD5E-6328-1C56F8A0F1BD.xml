@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_Asesoria_Evento" directorySegmentName="seg_0" id="D33E4F20-B9F1-DD5E-6328-1C56F8A0F1BD">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-08-26 18:40:32 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<targetPk>84CAFB52-AB82-E4EA-97FA-887FB6DAF92D</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>903DD9AB-2856-4A8F-A671-73097C44C977</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>39BDBFBD-DB0F-D259-A9A0-B24C724661F0</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
