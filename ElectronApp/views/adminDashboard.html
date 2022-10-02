@@ -1,178 +1,96 @@
-<!--
+<!-- 
+https://flowbite.com/docs/components/sidebar/ -->
 
-=========================================================
-* Notus Tailwind JS - v1.1.0 based on Tailwind Starter Kit by Creative Tim
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/notus-js
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md)
-
-* Tailwind Starter Kit Page: https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
--->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <link rel="shortcut icon" href="../../assets/img/favicon.ico" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
-    />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>GURO Desktop App</title>
+
+    <style>
+      
+        /* width */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        
+        opacity: 0.0;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: black;
+        border-radius: 7px;
+      }
+      
+    </style>
   </head>
-  <body class="text-blueGray-700 antialiased bg-gray-200">
+  <body class="text-blueGray-700 antialiased bg-gray-700">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root">
-      <nav
-        class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6"
-      >
-        <div
-          class="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto"
-        >
-          <button
-            class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
-            type="button"
-            onclick="toggleNavbar('example-collapse-sidebar')"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
-          <div
-            id="adminNameDiv"
-            class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm capitalize font-bold p-4 px-0"
-          >
-            Nombre Admin
-        </div>
-          <div
-            class="md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded hidden"
-            id="example-collapse-sidebar"
-          >
-            <div
-              class="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200"
-            >
-              <div class="flex flex-wrap">
-                <div class="w-6/12">
-
-                </div>
-                <div class="w-6/12 flex justify-end">
-
-                </div>
-              </div>
-            </div>
-            <form class="mt-6 mb-4 md:hidden">
-              <div class="mb-3 pt-0">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  class="border-0 px-3 py-2 h-12 border border-solid border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
-                />
-              </div>
-            </form>
-            <!-- Divider -->
-            <hr class="my-4 md:min-w-full" />
-
-            <ul class="md:flex-col md:min-w-full flex flex-col list-none">
-              <li class="items-center">
-                <button
-                class="text-xs uppercase py-2 my-2 w-full bg-gray-200 rounded-lg font-bold block text-blueGray-700 hover:text-blueGray-500"
-                >
-                  <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
-                  Dashboard
-                </button>
+    <div id="root w-full" style="height: 100vh;">
+      <aside class="w-64 fixed h-full" aria-label="Sidebar">
+        <div class="overflow-y-auto bg-gray-800 h-full">
+           <div class="flex items-center pl-2.5 mb-5 mt-8 mb-12">
+              <img src="https://randomuser.me/api/portraits/men/68.jpg" class="mr-3 h-16 rounded-full" alt="Flowbite Logo" />
+              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white" id="adminNameDiv">Admin Name</span>
+           </div>
+           <ul class="space-y-2">
+            {% set dashboardOptions =  
+              ["Dashboard",
+              "Profesionales", 
+              "Clientes",
+              "Controlar Pagos",
+              "Calcular Accidentabilidad",
+              "Visualizar Actividades",
+              "Notificar Atrasos",
+              "Generar reporte cliente",
+              "Generar reporte global"]  
+            %}
+            {% set dashboardOptionIcons =  
+              ["fa-sharp fa-solid fa-house",
+              "fa-solid fa-user", 
+              "fa-solid fa-user",
+              "fa-solid fa-money-bill",
+              "fa-solid fa-circle-info",
+              "fa-solid fa-layer-group",
+              "fa-solid fa-clock",
+              "fa-solid fa-chart-simple",
+              "fa-solid fa-chart-simple"]  
+            %}
+            {% set counter = 0 %}
+            {% for dashboardOption in dashboardOptions -%}
+              <li>
+                 <div class="flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 select-none dashboardOptions" id="dashboardOption{{counter}}">
+                    <div class="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
+                      <div class="{{ dashboardOptionIcons[counter] }}"></div>
+                    </div>
+                    <span class="ml-3">{{ dashboardOption }}</span>
+                 </div>
               </li>
-
-              <li class="items-center">
-                <button
-                  class="text-xs uppercase py-2 my-2 w-full bg-gray-200 rounded-lg font-bold block text-blueGray-700 hover:text-blueGray-500"
-                >
-                  <i class="fas fa-tools mr-2 text-sm text-blueGray-300"></i>
-                  Profesionales
-                </button>
-              </li>
-
-              <li class="items-center">
-                <button
-                  class="text-xs uppercase py-2 my-2 w-full bg-gray-200 rounded-lg font-bold block text-blueGray-700 hover:text-blueGray-500"
-                >
-                  <i class="fas fa-table mr-2 text-sm text-blueGray-300"></i>
-                  Clientes
-                </button>
-              </li>
-
-              <li class="items-center">
-                <button
-                  class="text-xs uppercase py-2 my-2 w-full bg-gray-200 rounded-lg font-bold block text-blueGray-700 hover:text-blueGray-500"
-                >
-                  <i
-                    class="fas fa-map-marked mr-2 text-sm text-blueGray-300"
-                  ></i>
-                  Controlar pagos
-                </button>
-              </li>
-
-              <li class="items-center">
-                <button
-                  class="text-xs uppercase py-2 my-2 w-full bg-gray-200 rounded-lg font-bold block text-blueGray-700 hover:text-blueGray-500"
-                >
-                  <i
-                    class="fas fa-map-marked mr-2 text-sm text-blueGray-300"
-                  ></i>
-                  Calcular accidentabilidad
-                </button>
-              </li>
-
-              <li class="items-center">
-                <button
-                  class="text-xs uppercase py-2 my-2 w-full bg-gray-200 rounded-lg font-bold block text-blueGray-700 hover:text-blueGray-500"
-                >
-                  <i
-                    class="fas fa-map-marked mr-2 text-sm text-blueGray-300"
-                  ></i>
-                  Visualizar actividades
-                </button>
-              </li>
-
-              <li class="items-center">
-                <button
-                  class="text-xs uppercase py-2 my-2 w-full bg-gray-200 rounded-lg font-bold block text-blueGray-700 hover:text-blueGray-500"
-                >
-                  <i
-                    class="fas fa-map-marked mr-2 text-sm text-blueGray-300"
-                  ></i>
-                  Notificar atrasos
-                </button>
-              </li>
-
-              <li class="items-center">
-                <button
-                  class="text-xs uppercase py-2 my-2 w-full bg-gray-200 rounded-lg font-bold block text-blueGray-700 hover:text-blueGray-500"
-                >
-                  <i
-                    class="fas fa-map-marked mr-2 text-sm text-blueGray-300"
-                  ></i>
-                  Generar reportes
-                </button>
-              </li>
-            </ul>
-
+            {% set counter = counter + 1 %}
+            {%- endfor %} 
+             
           
-          </div>
+           </ul>
         </div>
-      </nav>
+     </aside>
+     <div id="viewContent border" class="h-full ml-64">
 
-      <div id="clientListContainer" class="ml-64 flex flex-col space-y-4">
 
-        <div class="relative shadow rounded-lg overflow-hidden m-auto" style="width: 600px;">
+      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
+
+      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
+
+      <div id="clientListContainer" class="dashboardOptionsBody hidden flex flex-col space-y-4">
+
+        <div class="relative shadow rounded-lg overflow-hidden m-auto" style="width: 600px; min-height: 400px;">
           <div class="h-full flex flex-col">
             <div class="h-14 bg-green-500" style="display: grid; width: 100%; grid-template-columns: 100px 0.8fr 1fr 1fr 16px;">
               <div class="flex m-auto">Imagen</div>
@@ -202,82 +120,23 @@
             </div>
             </div>
           </div>
+        </div>  
+      </div>
 
+      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
 
+      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
 
-        <div class="flex justify-center">
-          <div class="block p-3 rounded-lg shadow-lg bg-white" style="width: 550px;">
-            <div class="grid">
-              <div class="flex flex-col" style="grid-row: 3/6;">
-                <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Nombre Apellido</h5>
-                <div>Email</div>
-                <div>Telefono</div>
-              </div>
-              <div class="my-auto" style="grid-row: 2/6;">
-                <div>Nombre Empresa</div>
-              </div>
-              <div class="m-auto" style="grid-row: 1/6;">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="border-8 border-gray-300 border-solid transition ease-in-out h-20 w-20 hover:scale-110 object-cover rounded-full duration-200">
-              </div>
-            </div>     
-          </div>
-        </div>
+      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
 
-        <div class="flex justify-center">
-          <div class="block p-3 rounded-lg shadow-lg bg-white" style="width: 550px;">
-            <div class="grid">
-              <div class="flex flex-col" style="grid-row: 3/6;">
-                <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Nombre Apellido</h5>
-                <div>Email</div>
-                <div>Telefono</div>
-              </div>
-              <div class="my-auto" style="grid-row: 2/6;">
-                <div>Nombre Empresa</div>
-              </div>
-              <div class="m-auto" style="grid-row: 1/6;">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="border-8 border-gray-300 border-solid transition ease-in-out h-20 w-20 hover:scale-110 object-cover rounded-full duration-200">
-              </div>
-            </div>     
-          </div>
-        </div>
+      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
 
-        <div class="flex justify-center">
-          <div class="block p-3 rounded-lg shadow-lg bg-white" style="width: 550px;">
-            <div class="grid">
-              <div class="flex flex-col" style="grid-row: 3/6;">
-                <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Nombre Apellido</h5>
-                <div>Email</div>
-                <div>Telefono</div>
-              </div>
-              <div class="my-auto" style="grid-row: 2/6;">
-                <div>Nombre Empresa</div>
-              </div>
-              <div class="m-auto" style="grid-row: 1/6;">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="border-8 border-gray-300 border-solid transition ease-in-out h-20 w-20 hover:scale-110 object-cover rounded-full duration-200">
-              </div>
-            </div>     
-          </div>
-        </div>
+      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
 
-        <div class="flex justify-center">
-          <div class="block p-3 rounded-lg shadow-lg bg-white" style="width: 550px;">
-            <div class="grid">
-              <div class="flex flex-col" style="grid-row: 3/6;">
-                <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Nombre Apellido</h5>
-                <div>Email</div>
-                <div>Telefono</div>
-              </div>
-              <div class="my-auto" style="grid-row: 2/6;">
-                <div>Nombre Empresa</div>
-              </div>
-              <div class="m-auto" style="grid-row: 1/6;">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="border-8 border-gray-300 border-solid transition ease-in-out h-20 w-20 hover:scale-110 object-cover rounded-full duration-200">
-              </div>
-            </div>     
-          </div>
-        </div>
-      </div>  
-    </div>
+      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
+
+     </div>
+      
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
       charset="utf-8"

@@ -9,10 +9,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^20.1.4"
+    "electron": "^20.3.0"
   },
   "dependencies": {
     "fs": "^0.0.1-security",
+    "fs-extra": "^10.1.0",
     "nunjucks": "^3.2.3",
     "oracledb": "^5.5.0",
     "python-shell": "^3.0.1"

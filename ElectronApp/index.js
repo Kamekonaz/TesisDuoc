@@ -1,7 +1,11 @@
 const { screen, app, BrowserWindow, ipcMain  } = require('electron');
 const nunjucks = require('nunjucks')
 const path = require("path")
-const fs = require('fs')
+const fs = require('fs-extra');
+
+
+
+
 
 const createWindow = () => {
     //const size = screen.getPrimaryDisplay().workAreaSize;
@@ -17,19 +21,18 @@ const createWindow = () => {
         webPreferences: {
             contextIsolation: true,
             nodeIntegration: true,
-            preload: path.join(__dirname, './preload.js'),
+            //partition: 'persist:someName',
+            //enableRemoteModule: true,
+            preload: path.join(__dirname, './preload.js')
         }
-    });
+    }); 
     //win.removeMenu()
-    render('./views/login.html')
-    // const html = nunjucks.render('./views/login.html', { foo: 'bar' });
-	// win.loadURL('data:text/html;charset=utf-8,' + encodeURI(html));
+    render('login.html')
+
     console.log("loaded entre comillas")
-    //win.loadFile('./views/login.html')
-    ///win.loadFile('./views/adminDashboard.html')
 }
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
     createWindow()
 })
 
@@ -52,7 +55,7 @@ ipcMain.on("login-clicked", async (event, data) => {
         const userData = (await UserManager.getUserData(data["inputUsername"]))[0];
         if (userData["ID_TIPO"] == 1){
             console.log(userData)
-            win.loadFile("./views/adminDashboard.html");
+            render("adminDashboard.html");
             win.webContents.on("did-finish-load", () => {
                 win.webContents.send("loadData", userData);
             })
@@ -62,13 +65,42 @@ ipcMain.on("login-clicked", async (event, data) => {
 
   });
 
+//   ipcMain.on("changeDashboardOption", async (event, data) =>{
+//     render("adminDashboard.html");
+//     win.webContents.on("did-finish-load", () => {
+//         win.webContents.send("loadData", data);
+//     })
+//   })
 
-function render(htmlPath, context={}){
-    //nunjucks.configure('views', { autoescape: true });
-    //nunjucks.configure({ autoescape: true });
-    const html = nunjucks.render(htmlPath, context);
-    const ola = fs.writeFileSync(html)
-    console.log("login", ola)
-    win.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
 
+
+  async function render(template, context = {}){
+    cacheFile = "views/Cache.html"
+    async function writeCache(s){    
+        fs.readFile(cacheFile, 'utf8', async (err,data) => {
+            fs.writeFile(cacheFile, s, 'utf8', function (err) {
+               if (err) return console.log(err);
+            });
+        });
+    }
+    const universalContext = {
+    }
+
+    const html = await nunjucks.render("views/"+template, context + universalContext);
+    await writeCache(html)
+        
+        
+    let procesing = false;
+    const interval = setInterval(async ()=>{
+        const ascodelenguaje = fs.readFileSync(cacheFile, 'utf8')
+        if(ascodelenguaje && !procesing){
+            procesing = true
+            //await win.loadURL(`file://${__dirname}/${cacheFile}`)
+            await win.loadFile(cacheFile)
+            writeCache(" ")
+            clearInterval()
+        }
+    },[100])
 }
+
+
