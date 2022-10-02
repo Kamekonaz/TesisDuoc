@@ -48,7 +48,7 @@ ipcMain.on("login-clicked", async (event, data) => {
     console.log(test)
     console.log(login_result)
     if (!login_result["isUsernameCorrect"] || !login_result["isPasswordCorrect"]){
-        win.webContents.send("login", undefined)
+        
     }
     
     else{
@@ -59,6 +59,9 @@ ipcMain.on("login-clicked", async (event, data) => {
             win.webContents.on("did-finish-load", () => {
                 win.webContents.send("loadData", userData);
             })
+        }
+        else{
+            win.webContents.send("login", undefined)
         }
         
     }
