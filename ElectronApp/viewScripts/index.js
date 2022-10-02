@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () =>{
-
+    document.getElementById("guro_username").value = "robert_mansen"
+    document.getElementById("password").value = "1234"
 })
 let loging_in = false
 
