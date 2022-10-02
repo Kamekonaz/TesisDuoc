@@ -77,30 +77,17 @@ ipcMain.on("login-clicked", async (event, data) => {
   async function render(template, context = {}){
     cacheFile = "views/Cache.html"
     async function writeCache(s){    
-        fs.readFile(cacheFile, 'utf8', async (err,data) => {
-            fs.writeFile(cacheFile, s, 'utf8', function (err) {
-               if (err) return console.log(err);
-            });
-        });
+        fs.writeFileSync(cacheFile, s, 'utf8', function (err) {
+            if (err) return console.log(err);
+        })
     }
     const universalContext = {
     }
 
     const html = await nunjucks.render("views/"+template, context + universalContext);
-    await writeCache(html)
-        
-        
-    let procesing = false;
-    const interval = setInterval(async ()=>{
-        const ascodelenguaje = fs.readFileSync(cacheFile, 'utf8')
-        if(ascodelenguaje && !procesing){
-            procesing = true
-            //await win.loadURL(`file://${__dirname}/${cacheFile}`)
-            await win.loadFile(cacheFile)
-            writeCache(" ")
-            clearInterval()
-        }
-    },[100])
+    writeCache(html)
+    await win.loadFile(cacheFile)
+    writeCache(" ")
 }
 
 

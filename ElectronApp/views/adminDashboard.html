@@ -20,7 +20,6 @@ https://flowbite.com/docs/components/sidebar/ -->
 
       /* Track */
       ::-webkit-scrollbar-track {
-        
         opacity: 0.0;
       }
 
@@ -32,110 +31,102 @@ https://flowbite.com/docs/components/sidebar/ -->
       
     </style>
   </head>
-  <body class="text-blueGray-700 antialiased bg-gray-700">
+  <body class="text-blueGray-700 antialiased bg-gray-700" spellcheck="false">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root w-full" style="height: 100vh;">
-      <aside class="w-64 fixed h-full" aria-label="Sidebar">
-        <div class="overflow-y-auto bg-gray-800 h-full">
-           <div class="flex items-center pl-2.5 mb-5 mt-8 mb-12">
-              <img src="https://randomuser.me/api/portraits/men/68.jpg" class="mr-3 h-16 rounded-full" alt="Flowbite Logo" />
-              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white" id="adminNameDiv">Admin Name</span>
-           </div>
-           <ul class="space-y-2">
-            {% set dashboardOptions =  
-              ["Dashboard",
-              "Profesionales", 
-              "Clientes",
-              "Controlar Pagos",
-              "Calcular Accidentabilidad",
-              "Visualizar Actividades",
-              "Notificar Atrasos",
-              "Generar reporte cliente",
-              "Generar reporte global"]  
-            %}
-            {% set dashboardOptionIcons =  
-              ["fa-sharp fa-solid fa-house",
-              "fa-solid fa-user", 
-              "fa-solid fa-user",
-              "fa-solid fa-money-bill",
-              "fa-solid fa-circle-info",
-              "fa-solid fa-layer-group",
-              "fa-solid fa-clock",
-              "fa-solid fa-chart-simple",
-              "fa-solid fa-chart-simple"]  
-            %}
-            {% set counter = 0 %}
-            {% for dashboardOption in dashboardOptions -%}
-              <li>
-                 <div class="flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 select-none dashboardOptions" id="dashboardOption{{counter}}">
-                    <div class="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
-                      <div class="{{ dashboardOptionIcons[counter] }}"></div>
-                    </div>
-                    <span class="ml-3">{{ dashboardOption }}</span>
-                 </div>
-              </li>
-            {% set counter = counter + 1 %}
-            {%- endfor %} 
-             
-          
-           </ul>
-        </div>
-     </aside>
-     <div id="viewContent border" class="h-full ml-64">
 
 
-      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
+      <div class="fixed grid w-64 bg-gray-800" style="grid-template-rows: 150px 1fr; height: 100vh">
 
-      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
-
-      <div id="clientListContainer" class="dashboardOptionsBody hidden flex flex-col space-y-4">
-
-        <div class="relative shadow rounded-lg overflow-hidden m-auto" style="width: 600px; min-height: 400px;">
-          <div class="h-full flex flex-col">
-            <div class="h-14 bg-green-500" style="display: grid; width: 100%; grid-template-columns: 100px 0.8fr 1fr 1fr 16px;">
-              <div class="flex m-auto">Imagen</div>
-              <div class="flex m-auto">Rut</div>
-              <div class="flex m-auto">Cliente</div>
-              <div class="flex m-auto">Empresa</div>
-              <div></div>
-            </div>
-          
-            <div class="h-full">
-              <div class="absolute w-full h-full overflow-y-scroll overflow-hidden rounded-b-lg bg-green-200">
-              <table class="w-full">
-                <tbody>
-                  <tr class="h-16 border-b bg-red-300 border-gray-400 hover:bg-green-300" style="display: grid; width: 100%; grid-template-columns: 100px 0.8fr 1fr 1fr;">
-                    <td class="flex m-auto">
-                      <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="border-solid border-2 border-black h-12 w-12 object-cover rounded-full">
-                    </td>
-                    <td class="flex m-auto">12.123.123-3</td>
-                    <td class="flex m-auto">Manuel Fuentes</td>
-                    <td class="flex m-auto">Sin empresa</td>
-                  </tr>
-
-
-                  
-                </tbody>
-              </table>
-            </div>
-            </div>
+        <div class="flex items-center pl-2.5 mb-5 mt-8 mb-12">
+          <img src="https://randomuser.me/api/portraits/men/68.jpg" class="mr-3 h-16 rounded-full" alt="Flowbite Logo" />
+          <div class="self-center whitespace-nowrap flex flex-col">
+            <span class="text-xl font-semibold text-white flex flex-wrap space-x-2" id="adminNameDiv">
+              <div>Nombre</div>
+              <div>Apellido</div>
+            </span>
+            <span class="text-sm font-medium italic text-gray-200">Administrador</span>
           </div>
-        </div>  
+       </div>
+
+        <div class="overflow-y-auto flex flex-col space-y-2 border-t border-gray-900 shadow-lg">
+          {% set dashboardOptions =  
+            ["Dashboard",
+            "Profesionales", 
+            "Clientes",
+            "Controlar Pagos",
+            "Calcular Accidentabilidad",
+            "Visualizar Actividades",
+            "Notificar Atrasos",
+            "Generar reporte cliente",
+            "Generar reporte global"]  
+          %}
+          {% set dashboardOptionIcons =  
+            ["fa-sharp fa-solid fa-house",
+            "fa-solid fa-user", 
+            "fa-solid fa-user",
+            "fa-solid fa-money-bill",
+            "fa-solid fa-circle-info",
+            "fa-solid fa-layer-group",
+            "fa-solid fa-clock",
+            "fa-solid fa-chart-simple",
+            "fa-solid fa-chart-simple"]  
+          %}
+          {% set counter = 0 %}
+          {% for dashboardOption in dashboardOptions -%}
+               <div class="flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700 select-none dashboardOptions" id="dashboardOption{{counter}}">
+                  <div class="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
+                    <div class="{{ dashboardOptionIcons[counter] }}"></div>
+                  </div>
+                  <span class="ml-3">{{ dashboardOption }}</span>
+               </div>
+          {% set counter = counter + 1 %}
+          {%- endfor %} 
+        </div>
       </div>
 
-      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
+      <div id="viewContent border" class="h-full ml-64">
 
-      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
+        <div class="dashboardOptionsBody hidden flex flex-col space-y-4">
+          {% include 'views/adminDashboardOptions/dashboard.html' %}
+        </div>
+  
+        <div class="dashboardOptionsBody hidden flex flex-col space-y-4">
+          {% include 'views/adminDashboardOptions/profesionales.html' %}
+        </div>
+  
+        <div class="dashboardOptionsBody hidden flex flex-col space-y-4">
+          {% include 'views/adminDashboardOptions/clientes.html' %}
+        </div>
+  
+        <div class="dashboardOptionsBody hidden flex flex-col space-y-4">
+          {% include 'views/adminDashboardOptions/controlar_pagos.html' %}
+        </div>
+  
+        <div class="dashboardOptionsBody hidden flex flex-col space-y-4">
+          {% include 'views/adminDashboardOptions/calcular_accidentabilidad.html' %}
+        </div>
+  
+        <div class="dashboardOptionsBody hidden flex flex-col space-y-4">
+          {% include 'views/adminDashboardOptions/visualizar_actividades.html' %}
+        </div>
+  
+        <div class="dashboardOptionsBody hidden flex flex-col space-y-4">
+          {% include 'views/adminDashboardOptions/notificar_atrasos.html' %}
+        </div>
+  
+        <div class="dashboardOptionsBody hidden flex flex-col space-y-4">
+          <!-- {% include 'views/adminDashboardOptions/profesionales.html' %} -->
+        </div>
+  
+        <div class="dashboardOptionsBody hidden flex flex-col space-y-4">
+          <!-- {% include 'views/adminDashboardOptions/profesionales.html' %} -->
+        </div>
+  
+       </div>
+    </div>
 
-      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
-
-      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
-
-      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
-
-      <div class="dashboardOptionsBody hidden flex flex-col space-y-4"></div>
-
-     </div>
+    
       
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"

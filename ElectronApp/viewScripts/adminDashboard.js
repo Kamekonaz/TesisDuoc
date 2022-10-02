@@ -9,11 +9,16 @@ const dashboardOptionsBody = document.getElementsByClassName("dashboardOptionsBo
 
 
 function getNameAndLastname(names, lastnames){
-    return `${names.split(" ")[0]} ${lastnames.split(" ")[0]}`;
+    return  {
+        nombre: names.split(" ")[0],
+        apellido: lastnames.split(" ")[0]
+    };
 }   
 
 window.indexBridge.loadData((event, userData) =>{
-    adminNameDiv.innerText = getNameAndLastname(userData["NOMBRES"], userData["APELLIDOS"])
+    const full_name_splitted = getNameAndLastname(userData["NOMBRES"], userData["APELLIDOS"]);
+    adminNameDiv.children[0].innerHTML = full_name_splitted["nombre"];
+    adminNameDiv.children[1].innerHTML = full_name_splitted["apellido"];
 });
 
 

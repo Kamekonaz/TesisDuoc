@@ -92,6 +92,8 @@ class UserManager {
       select * from cuenta
       join usuario on
       cuenta.id_cuenta = usuario.id_cuenta
+      join tipo_usuario on
+      tipo_usuario.id_tipo = cuenta.id_tipo
       where cuenta.username = '${username}'
       `
 
