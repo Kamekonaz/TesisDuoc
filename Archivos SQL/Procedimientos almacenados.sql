@@ -80,8 +80,8 @@ create or replace package pkg_register as
     function fn_business_rut_available (f_business_rut varchar)
         return boolean;    
     procedure pcr_create_account(f_username varchar, f_password varchar, f_id_tipo number);
-    procedure pcr_create_user(f_rut varchar, f_nombres varchar, f_apellidos varchar, f_email varchar, f_telefono number, id_cuenta number);
-    procedure pcr_create_business(f_rut varchar, f_ubicacion varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar);
+    procedure pcr_create_user(f_rut varchar, f_nombres varchar, f_apellidos varchar, f_email varchar, f_telefono number, f_imagen blob, id_cuenta number);
+    procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar);
 end pkg_register;
 -------------------------------------------------------------
 -- Hasta ac�
@@ -157,12 +157,13 @@ create or replace package body pkg_register as
                 v_id_cuenta,
                 f_username,
                 f_password,
+                0,
                 f_id_tipo
             );
         end if;
     end;
     
-    procedure pcr_create_user(f_rut varchar, f_nombres varchar, f_apellidos varchar, f_email varchar, f_telefono number, id_cuenta number)
+    procedure pcr_create_user(f_rut varchar, f_nombres varchar, f_apellidos varchar, f_email varchar, f_telefono number, f_imagen blob, id_cuenta number)
     is
         v_rut_count number(10);
     begin
@@ -175,13 +176,14 @@ create or replace package body pkg_register as
                 f_apellidos,
                 f_email,
                 f_telefono,
+                f_imagen,
                 id_cuenta
             );
         end if;
     
     end;
     
-    procedure pcr_create_business(f_rut varchar, f_ubicacion varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar)
+    procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar)
     is
         v_rut_count number(10);
     begin
@@ -190,7 +192,6 @@ create or replace package body pkg_register as
         if v_rut_count = 0 then
             insert into empresa values(
                 f_rut,
-                f_ubicacion,
                 f_razon_social,
                 f_telefono,
                 f_nombre,
@@ -219,6 +220,8 @@ create or replace package body pkg_list as
         select * from usuario
         join cuenta on
         usuario.id_cuenta = cuenta.id_cuenta
+        join tipo_usuario on
+        tipo_usuario.id_tipo = cuenta.id_tipo
         where cuenta.id_tipo = f_usertype;
 
     end;
