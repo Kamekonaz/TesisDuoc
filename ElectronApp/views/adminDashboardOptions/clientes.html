@@ -1,261 +1,32 @@
-<div class="border-b border-gray-800 shadow-lg w-full h-16 grid select-none" style="grid-template-columns: 150px 0.9fr 1fr;">
-    <div class="flex m-auto space-x-2">
-        <i class="m-auto text-gray-200 fa-solid fa-pen-to-square"></i>
-        <div class="italic text-white font-bold">Clientes</div>
-    </div>
-    <div class="text-gray-200 font-medium flex mr-auto my-auto space-x-4">
-        <div class="px-2 rounded-lg hover:bg-gray-600 bg-gray-800">Todos</div>
-        <div class="px-2 rounded-lg hover:bg-gray-600">Activos</div>
-        <div class="px-2 rounded-lg hover:bg-gray-600">Inactivos</div>
-        <div class="px-2 rounded-lg hover:bg-gray-600">Empresas</div>
-    </div>
-    <div class="text-gray-200 font-medium flex space-x-3 ml-auto pr-4">
-        <div class="px-3 py-1 rounded-lg bg-green-600 hover:bg-green-700 my-auto">Añadir Cliente</div>
-        <div class="px-3 py-1 rounded-lg bg-orange-700 hover:bg-orange-800 my-auto">Añadir Empresa</div>
-    </div>
-</div>
-
-<div class="py-2 w-full flex my-auto pl-6">
-    <input class="border rounded-lg h-12 w-96 pl-2 text-gray-200 text-xl bg-gray-800 border-gray-900 border-2 focus:border-black focus:outline-none focus:border-3" type="text" placeholder="Buscar"/>
-</div>
-
-<div class="p-2 text-gray-100 select-none overflow-y-auto">
-
-    <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl">
-        <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
-        display: grid; grid-template-columns: 64px 0.8fr 1fr 0.5fr 1fr;">
-            <div class="flex m-auto">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="h-12 w-12 object-cover rounded-full">
-            </div>
-            <div class="flex pl-2 mr-auto my-auto flex-col">
-                <div>Robert Mansen</div> 
-                <div class="italic text-xs text-gray-200">11.111.111-1</div>
-            </div>
-            <div class="flex m-auto">
-                Sin empresa
-            </div>
-            <div class="flex m-auto font-medium">
-                <div class="px-2 rounded-lg bg-green-600">
-                    Activo
-                </div>     
-            </div>
-            <div class="flex my-auto ml-auto pr-4 space-x-4">
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-pen"></i></div>
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-minus"></i></div>
-            </div>
+<div class="mainView">
+    <div class="border-b border-gray-800 shadow-lg w-full h-16 grid select-none" style="grid-template-columns: 150px 0.9fr 1fr;">
+        <div class="flex ml-4 mr-auto my-auto space-x-2">
+            <i class="m-auto text-gray-200 fa-solid fa-pen-to-square"></i>
+            <div class="italic text-white font-bold">Clientes</div>
+        </div>
+        <div class="text-gray-200 font-medium flex mr-auto my-auto space-x-4" id="clientsDisplayOptionContainer">
+            <div class="clientsDisplayOption px-2 rounded-lg hover:bg-gray-600 bg-gray-800 active" option="1" onclick="toggleClientsDisplay(this)">Todos</div>
+            <div class="clientsDisplayOption px-2 rounded-lg hover:bg-gray-600" option="2"  onclick="toggleClientsDisplay(this)">Activos</div>
+            <div class="clientsDisplayOption px-2 rounded-lg hover:bg-gray-600" option="3"  onclick="toggleClientsDisplay(this)">Inactivos</div>
+            <div class="clientsDisplayOption px-2 rounded-lg hover:bg-gray-600" option="4"  onclick="toggleClientsDisplay(this)">Empresas</div>
+        </div>
+        <div class="text-gray-200 font-medium flex space-x-3 ml-auto pr-4">
+            <div class="px-3 py-1 rounded-lg bg-green-600 hover:bg-green-700 my-auto">Añadir Cliente</div>
+            <div class="px-3 py-1 rounded-lg bg-orange-700 hover:bg-orange-800 my-auto">Añadir Empresa</div>
         </div>
     </div>
-
-    <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl">
-        <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
-        display: grid; grid-template-columns: 64px 0.8fr 1fr 0.5fr 1fr;">
-            <div class="flex m-auto">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="h-12 w-12 object-cover rounded-full">
-            </div>
-            <div class="flex pl-2 mr-auto my-auto flex-col">
-                <div>Robert Mansen</div> 
-                <div class="italic text-xs text-gray-200">11.111.111-1</div>
-            </div>
-            <div class="flex m-auto">
-                Sin empresa
-            </div>
-            <div class="flex m-auto font-medium">
-                <div class="px-2 rounded-lg bg-green-600">
-                    Activo
-                </div>     
-            </div>
-            <div class="flex my-auto ml-auto pr-4 space-x-4">
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-pen"></i></div>
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-minus"></i></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl">
-        <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
-        display: grid; grid-template-columns: 64px 0.8fr 1fr 0.5fr 1fr;">
-            <div class="flex m-auto">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="h-12 w-12 object-cover rounded-full">
-            </div>
-            <div class="flex pl-2 mr-auto my-auto flex-col">
-                <div>Robert Mansen</div> 
-                <div class="italic text-xs text-gray-200">11.111.111-1</div>
-            </div>
-            <div class="flex m-auto">
-                Sin empresa
-            </div>
-            <div class="flex m-auto font-medium">
-                <div class="px-2 rounded-lg bg-green-600">
-                    Activo
-                </div>     
-            </div>
-            <div class="flex my-auto ml-auto pr-4 space-x-4">
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-pen"></i></div>
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-minus"></i></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl">
-        <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
-        display: grid; grid-template-columns: 64px 0.8fr 1fr 0.5fr 1fr;">
-            <div class="flex m-auto">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="h-12 w-12 object-cover rounded-full">
-            </div>
-            <div class="flex pl-2 mr-auto my-auto flex-col">
-                <div>Robert Mansen</div> 
-                <div class="italic text-xs text-gray-200">11.111.111-1</div>
-            </div>
-            <div class="flex m-auto">
-                Sin empresa
-            </div>
-            <div class="flex m-auto font-medium">
-                <div class="px-2 rounded-lg bg-red-600">
-                    Inactivo
-                </div>     
-            </div>
-            <div class="flex my-auto ml-auto pr-4 space-x-4">
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-pen"></i></div>
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-minus"></i></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl">
-        <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
-        display: grid; grid-template-columns: 64px 0.8fr 1fr 0.5fr 1fr;">
-            <div class="flex m-auto">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="h-12 w-12 object-cover rounded-full">
-            </div>
-            <div class="flex pl-2 mr-auto my-auto flex-col">
-                <div>Robert Mansen</div> 
-                <div class="italic text-xs text-gray-200">11.111.111-1</div>
-            </div>
-            <div class="flex m-auto">
-                Sin empresa
-            </div>
-            <div class="flex m-auto font-medium">
-                <div class="px-2 rounded-lg bg-red-600">
-                    Inactivo
-                </div>     
-            </div>
-            <div class="flex my-auto ml-auto pr-4 space-x-4">
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-pen"></i></div>
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-minus"></i></div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl">
-        <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
-        display: grid; grid-template-columns: 64px 0.8fr 1fr 0.5fr 1fr;">
-            <div class="flex m-auto">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="h-12 w-12 object-cover rounded-full">
-            </div>
-            <div class="flex pl-2 mr-auto my-auto flex-col">
-                <div>Robert Mansen</div> 
-                <div class="italic text-xs text-gray-200">11.111.111-1</div>
-            </div>
-            <div class="flex m-auto">
-                Sin empresa
-            </div>
-            <div class="flex m-auto font-medium">
-                <div class="px-2 rounded-lg bg-red-600">
-                    Inactivo
-                </div>     
-            </div>
-            <div class="flex my-auto ml-auto pr-4 space-x-4">
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-pen"></i></div>
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-minus"></i></div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl">
-        <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
-        display: grid; grid-template-columns: 64px 0.8fr 1fr 0.5fr 1fr;">
-            <div class="flex m-auto">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="h-12 w-12 object-cover rounded-full">
-            </div>
-            <div class="flex pl-2 mr-auto my-auto flex-col">
-                <div>Robert Mansen</div> 
-                <div class="italic text-xs text-gray-200">11.111.111-1</div>
-            </div>
-            <div class="flex m-auto">
-                Sin empresa
-            </div>
-            <div class="flex m-auto font-medium">
-                <div class="px-2 rounded-lg bg-red-600">
-                    Inactivo
-                </div>     
-            </div>
-            <div class="flex my-auto ml-auto pr-4 space-x-4">
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-pen"></i></div>
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-minus"></i></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl">
-        <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
-        display: grid; grid-template-columns: 64px 0.8fr 1fr 0.5fr 1fr;">
-            <div class="flex m-auto">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="h-12 w-12 object-cover rounded-full">
-            </div>
-            <div class="flex pl-2 mr-auto my-auto flex-col">
-                <div>Robert Mansen</div> 
-                <div class="italic text-xs text-gray-200">11.111.111-1</div>
-            </div>
-            <div class="flex m-auto">
-                Sin empresa
-            </div>
-            <div class="flex m-auto font-medium">
-                <div class="px-2 rounded-lg bg-red-600">
-                    Inactivo
-                </div>     
-            </div>
-            <div class="flex my-auto ml-auto pr-4 space-x-4">
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-pen"></i></div>
-                <div class="h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-minus"></i></div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-
-
-<!-- <div class="relative shadow rounded-lg overflow-hidden m-auto" style="width: 600px; min-height: 400px;">
-    <div class="h-full flex flex-col">
-      <div class="h-14 bg-green-500" style="display: grid; width: 100%; grid-template-columns: 100px 0.8fr 1fr 1fr 16px;">
-        <div class="flex m-auto">Imagen</div>
-        <div class="flex m-auto">Rut</div>
-        <div class="flex m-auto">Cliente</div>
-        <div class="flex m-auto">Empresa</div>
-        <div></div>
-      </div>
     
-      <div class="h-full">
-        <div class="absolute w-full h-full overflow-y-scroll overflow-hidden rounded-b-lg bg-green-200">
-        <table class="w-full">
-          <tbody>
-            <tr class="h-16 border-b bg-red-300 border-gray-400 hover:bg-green-300" style="display: grid; width: 100%; grid-template-columns: 100px 0.8fr 1fr 1fr;">
-              <td class="flex m-auto">
-                <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="border-solid border-2 border-black h-12 w-12 object-cover rounded-full">
-              </td>
-              <td class="flex m-auto">12.123.123-3</td>
-              <td class="flex m-auto">Manuel Fuentes</td>
-              <td class="flex m-auto">Sin empresa</td>
-            </tr>
-
-
-            
-          </tbody>
-        </table>
-      </div>
-      </div>
+    <div class="py-2 w-full flex my-auto px-6">
+        <input id="clientesSearch" class="border rounded-lg h-12 w-full pl-2 text-gray-200 text-xl bg-gray-800 border-gray-900 border-2 focus:border-black focus:outline-none focus:border-3" type="text" placeholder="Buscar"/>
     </div>
-  </div>   -->
+    
+    <div class="p-2 text-gray-100 select-none overflow-y-auto" id="clientListContainer">
+    
+    </div>
+</div>
+    
+
+<div class="editView hidden">
+    <div class="text-white">vista de editar</div>
+</div>
+

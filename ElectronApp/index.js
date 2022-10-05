@@ -2,12 +2,12 @@ const { screen, app, BrowserWindow, ipcMain  } = require('electron');
 const nunjucks = require('nunjucks')
 const path = require("path")
 const fs = require('fs-extra');
+const loginCache = require('./cache.json')
+const axios = require('axios');
+const { SlashCommandSubcommandGroupBuilder } = require('discord.js');
+const EXPECTED_USERS = [1]
 
-
-
-
-
-const createWindow = () => {
+const createWindow = async () => {
     //const size = screen.getPrimaryDisplay().workAreaSize;
     win = new BrowserWindow({
         x: 0,
@@ -27,55 +27,85 @@ const createWindow = () => {
         }
     }); 
     //win.removeMenu()
-    render('login.html')
+    await render('login.html')
+    if (loginCache.username && loginCache.sessionKey){
+        win.webContents.send("loginCache", {cacheUsername: loginCache.username})
+    }
 
-    console.log("loaded entre comillas")
+    console.log("Aplicacion iniciada")
 }
 
 app.whenReady().then(async () => {
-    createWindow()
+    await createWindow()
 })
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()
 })
 
-const UserManager = require('./managers/userManager');
+//const UserManager = require('./managers/userManager');
 
 ipcMain.on("login-clicked", async (event, data) => {  
-    const login_result = await UserManager.login(data["inputUsername"], data["inputPassword"]);
-    const test = await UserManager.get_users_by_usertype(2);
-    console.log(test)
-    console.log(login_result)
-    if (!login_result["isUsernameCorrect"] || !login_result["isPasswordCorrect"]){
-        
-    }
-    
-    else{
-        const userData = (await UserManager.getUserData(data["inputUsername"]))[0];
-        if (userData["ID_TIPO"] == 1){
-            console.log(userData)
-            render("adminDashboard.html");
-            win.webContents.on("did-finish-load", () => {
-                win.webContents.send("loadData", userData);
-            })
+    let accountID = 0;
+    try {
+        if (loginCache.sessionKey 
+        && data["inputUsername"] == loginCache.username 
+        && data["inputPassword"] == "default"){
+
+            const login_result = (await axios({
+                method: 'post',
+                url: 'http://localhost:3001/keylogin',
+                data: {
+                sessionKey: loginCache.sessionKey,
+                expectedUserTypes: EXPECTED_USERS
+                }
+            })).data;
+            if (login_result["error"]) return win.webContents.send("login", undefined)
+            accountID = login_result["accountID"]
         }
         else{
-            win.webContents.send("login", undefined)
-        }
-        
+            const login_result = (await axios({
+                method: 'post',
+                url: 'http://localhost:3001/login',
+                data: {
+                username: data["inputUsername"],
+                password: data["inputPassword"],
+                expectedUserTypes: EXPECTED_USERS
+                }
+            })).data;
+            //console.log("normal login",login_result)
+            if (login_result["error"]) return win.webContents.send("login", undefined)
+
+            accountID = login_result["accountID"]
+
+
+            const sessionKeyCache = JSON.stringify({
+                "username": data["inputUsername"],
+                "sessionKey": login_result["sessionKey"]
+            });
+            await fs.writeFileSync('cache.json', sessionKeyCache);
     }
+   
+    const updatedLoginCache = require('./cache.json');
+    const userData = (await axios({
+        method: 'post',
+        url: 'http://localhost:3001/getwholeuserdata',
+        data: {
+        sessionKey: updatedLoginCache.sessionKey,
+        accountID: accountID
+        }
+    })).data;
+    
+    render("adminDashboard.html");
+    win.webContents.on("did-finish-load", () => {
+        win.webContents.send("loadData", { ...userData, sessionKey: updatedLoginCache.sessionKey } );
+    })
 
+    } catch (error) {
+        console.log("API ERROR")
+        win.webContents.send("login", undefined)
+    }
   });
-
-//   ipcMain.on("changeDashboardOption", async (event, data) =>{
-//     render("adminDashboard.html");
-//     win.webContents.on("did-finish-load", () => {
-//         win.webContents.send("loadData", data);
-//     })
-//   })
-
-
 
   async function render(template, context = {}){
     cacheFile = "views/Cache.html"

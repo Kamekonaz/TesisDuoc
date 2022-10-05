@@ -12,51 +12,51 @@ insert into tipo_usuario values(3, 'CLIENTE');
 -- CREAR CUENTAS
 -------ADMINISTRADORES--------------------------------------------------------------------------------------------------------------------------
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(4, 'camila_pena', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 1, 1);
+values(4, 'camila_pena', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 1, 1);
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(5, 'maximiliano_flores', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 0, 1);
+values(5, 'maximiliano_flores', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 0, 1);
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(6, 'manuel_bravo', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 1, 1);
+values(6, 'manuel_bravo', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 1, 1);
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(7, 'michael_jara', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 1, 1);
+values(7, 'michael_jara', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 1, 1);
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(8, 'jean_devaud', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 0, 1);
+values(8, 'jean_devaud', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 0, 1);
 
 -------PROFESIONALES----------------------------------------------------------------------------------------------------------------------------
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(9, 'jo_perez', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 0, 2);
+values(9, 'jo_perez', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 0, 2);
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(10, 'ma_torres', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 1, 2);
+values(10, 'ma_torres', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 1, 2);
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(11, 'fe_correa', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 0, 2);
+values(11, 'fe_correa', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 0, 2);
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(12, 'lu_flores', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 0, 2);
+values(12, 'lu_flores', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 0, 2);
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(13, 'ju_guerra', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 0, 2);
+values(13, 'ju_guerra', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 0, 2);
 
 -------CLIENTES---------------------------------------------------------------------------------------------------------------------------------
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(14, 'ama_lorenz', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 1, 3);
+values(14, 'ama_lorenz', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 1, 3);
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(15, 'fla_josefo', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 1, 3);
+values(15, 'fla_josefo', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 1, 3);
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(16, 'ari_dela', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 0, 3);
+values(16, 'ari_dela', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 0, 3);
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(17, 'dal_revis', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 1, 3);
+values(17, 'dal_revis', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 1, 3);
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
-values(18, 'liz_pizarra', 'pbkdf2:sha256:260000$yXUkfCr9aGZZJE8W$a02456628256cd096f1834e243fb7eba613283ef70360e92d9c098e8641bd600', 0, 3);
+values(18, 'liz_pizarra', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 0, 3);
 
 
 

@@ -12,6 +12,7 @@
     "electron": "^20.3.0"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "fs": "^0.0.1-security",
     "fs-extra": "^10.1.0",
     "nunjucks": "^3.2.3",

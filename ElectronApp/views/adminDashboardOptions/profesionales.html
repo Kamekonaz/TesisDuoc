@@ -1,0 +1,30 @@
+<div class="mainView">
+    <div class="border-b border-gray-800 shadow-lg w-full h-16 grid select-none" style="grid-template-columns: 200px 0.9fr 1fr;">
+        <div class="flex ml-4 mr-auto my-auto space-x-2">
+            <i class="m-auto text-gray-200 fa-solid fa-pen-to-square"></i>
+            <div class="italic text-white font-bold">Profesionales</div>
+        </div>
+        <div class="text-gray-200 font-medium flex mr-auto my-auto space-x-4" id="profesionalDisplayOptionContainer">
+            <div class="profesionalsDisplayOption px-2 rounded-lg hover:bg-gray-600 bg-gray-800 active" option="1" onclick="toggleProfesionalsDisplay(this)">Todos</div>
+            <div class="profesionalsDisplayOption px-2 rounded-lg hover:bg-gray-600" option="2"  onclick="toggleProfesionalsDisplay(this)">Activos</div>
+            <div class="profesionalsDisplayOption px-2 rounded-lg hover:bg-gray-600" option="3"  onclick="toggleProfesionalsDisplay(this)">Inactivos</div>
+        </div>
+        <div class="text-gray-200 font-medium flex space-x-3 ml-auto pr-4">
+            <div class="px-3 py-1 rounded-lg bg-green-600 hover:bg-green-700 my-auto">Añadir Profesional</div>
+        </div>
+    </div>
+
+    <div class="py-2 w-full flex my-auto px-6">
+        <input id="profesionalesSearch" class="border rounded-lg h-12 w-full pl-2 text-gray-200 text-xl bg-gray-800 border-gray-900 border-2 focus:border-black focus:outline-none focus:border-3" type="text" placeholder="Buscar"/>
+    </div>
+
+    <div class="p-2 text-gray-100 select-none overflow-y-auto" id="profesionalListContainer">
+
+    </div>
+</div>
+
+<div class="editView hidden">
+    <div class="text-white">vista de editar</div>
+</div>
+
+

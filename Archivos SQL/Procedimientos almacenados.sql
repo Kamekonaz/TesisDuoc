@@ -1,18 +1,68 @@
--- Package de login ejecutar desde ac�
+-- Package de login ejecutar desde ac?
 -------------------------------------------------------------
 create or replace package pkg_login AS 
+    procedure pcr_create_sessionkey(f_sessionkey varchar, f_accountID varchar);
+    function fn_get_account_by_key(f_sessionkey varchar)
+        return number;
     function fn_login_fetch_username(f_username varchar)
         return varchar;
     function fn_get_user_type(f_username varchar)
         return number;
 end pkg_login;
 -------------------------------------------------------------
--- Hasta ac�
+-- Hasta ac?
 /
 
--- Package body de login ejecutar desde ac�
+-- Package body de login ejecutar desde ac?
 -------------------------------------------------------------
 create or replace package body pkg_login as
+    procedure pcr_create_sessionkey(f_sessionkey varchar, f_accountID varchar) 
+        is
+        v_sesionID varchar(12);
+        v_expiration timestamp;
+        begin
+            select (count(*)+1) into v_sesionID from sesion;
+            if v_sesionID > 1 then
+                select (max(id_sesion)+1) into v_sesionID from sesion;
+            end if;
+            v_expiration := systimestamp  +  numtodsinterval(7, 'day');
+            
+            insert into sesion
+            values(
+                v_sesionID,
+                f_accountID,
+                f_sessionkey,
+                v_expiration
+            );
+            commit work;
+        end;
+        
+    function fn_get_account_by_key(f_sessionkey varchar)
+        return number is
+        v_key_count number(10);
+        v_accountID number(10);
+        begin
+            select
+                count(*)
+            into
+                v_key_count
+            from sesion
+            where llave = f_sessionkey;
+            
+            if v_key_count > 0 then
+            -- 0 Es considerada una cuenta invalida
+                select id_cuenta into v_accountID from
+                sesion where llave = f_sessionkey;
+                
+            end if;
+            
+            if v_key_count < 1 then
+                v_accountID := 0;
+            end if;
+            
+            return v_accountID;
+        end;
+        
     function fn_login_fetch_username(f_username varchar)
         return varchar is 
         v_cantidad_cuentas number(10);
@@ -66,11 +116,11 @@ create or replace package body pkg_login as
 
 end pkg_login;
 -------------------------------------------------------------
--- Hasta ac�
+-- Hasta ac?
 /
 
 
--- Package de login ejecutar desde ac�
+-- Package de login ejecutar desde ac?
 -------------------------------------------------------------
 create or replace package pkg_register as
     function fn_get_account_id (f_username varchar)
@@ -84,11 +134,11 @@ create or replace package pkg_register as
     procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar);
 end pkg_register;
 -------------------------------------------------------------
--- Hasta ac�
+-- Hasta ac?
 
 /
 
--- Package de login ejecutar desde ac�
+-- Package de login ejecutar desde ac?
 -------------------------------------------------------------
 create or replace package body pkg_register as
     function fn_get_account_id (f_username varchar)
@@ -106,7 +156,6 @@ create or replace package body pkg_register as
         end if;
         return v_account_id;
     end;
-
 
     function fn_user_rut_available (f_user_rut varchar)
     return boolean as
@@ -180,7 +229,7 @@ create or replace package body pkg_register as
                 id_cuenta
             );
         end if;
-    
+        commit work;
     end;
     
     procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar)
@@ -198,12 +247,13 @@ create or replace package body pkg_register as
                 f_rut_usuario
             );
         end if;
+        commit work;
     
     end;
     
 end pkg_register;
 -------------------------------------------------------------
--- Hasta ac�
+-- Hasta ac?
 
 /
 create or replace package pkg_list as

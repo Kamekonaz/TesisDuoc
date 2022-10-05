@@ -1,14 +1,23 @@
+const usernameInput = document.getElementById("guro_username");
+const passwordInput = document.getElementById("password");
+
 document.addEventListener('DOMContentLoaded', async () =>{
-    document.getElementById("guro_username").value = "robert_mansen"
-    document.getElementById("password").value = "1234"
 })
+
+
+window.indexBridge.loginCache((event, data) =>{
+    console.log("wena")
+    usernameInput.value = data.cacheUsername;
+    passwordInput.value = "default";
+});
+
+
 let loging_in = false
 
 const loginButton = document.getElementById("login_button");
 const loginError = document.getElementById("login_error");
 
-const usernameInput = document.getElementById("guro_username");
-const passwordInput = document.getElementById("password");
+
 
 const normalBorderClass = "border-gray-300";
 const errorBorderClass = "border-red-500";
