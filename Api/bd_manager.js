@@ -31,7 +31,7 @@ class BdManager {
                 }
             );
             const accountID = result.outBinds["return"];
-            console.log(accountID)
+            //console.log(accountID)
 
             await Connection.close();
             return accountID;
@@ -45,7 +45,7 @@ class BdManager {
         const sessionKey = generate_key()
         try {
             const Connection = await oracledb.getConnection(db_credentials);
-            console.log("alo?", f_accountID)
+            //console.log("alo?", f_accountID)
             const sessionCreationResult = await Connection.execute(
                 `BEGIN
                     pkg_login.pcr_create_sessionkey(:v_sessionKey, :v_accountID);
@@ -81,15 +81,49 @@ class BdManager {
           );
           const cursor = result.outBinds.v_users;
           const filas = await cursor.getRows();
+          
+          for (const fila of filas){
+            if (fila["IMAGEN"]) fila["IMAGEN"] = await fila["IMAGEN"].getData()
+          }
+          //filas[0] = await filas[0]["IMAGEN"].getData()
   
           await Connection.close()
   
           return filas;
+
         } catch(err){
             console.log(err)
         }
     }
+
+    
+    static async updateUserData(f_accountID, f_image, 
+      f_username, f_nombres, f_apellidos, 
+      f_email, f_telefono, f_estado){
+      try{
+          const Connection = await oracledb.getConnection(db_credentials);
+      
+          const result = await Connection.execute(
+            `BEGIN
+              pkg_login.pcr_update_user(:f_accountID, :f_image, 
+                :f_username, :f_nombres, :f_apellidos, 
+                :f_email, :f_telefono, :f_estado);
+             END;`,
+            {  
+              f_accountID: f_accountID, f_image: f_image, 
+            f_username: f_username, f_nombres: f_nombres, f_apellidos: f_apellidos, 
+            f_email: f_email, f_telefono: f_telefono, f_estado: f_estado
+            }
+          );
+
   
+          await Connection.close()
+  
+        } catch(err){
+            console.log(err)
+        }
+    }
+
     static async login(username, password){
       try{
         const Connection = await oracledb.getConnection(db_credentials);

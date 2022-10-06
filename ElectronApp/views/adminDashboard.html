@@ -7,7 +7,9 @@ https://flowbite.com/docs/components/sidebar/ -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Base64/1.1.0/base64.min.js" integrity="sha512-gysqkfMGKYvQSEPi68aIzL4ffmrQ0I6azOoPJ+ocle8k1bblsHJh7QVVoy4HHQG2iPzvFmRbs81d8kkVSyCkjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
@@ -33,8 +35,50 @@ https://flowbite.com/docs/components/sidebar/ -->
       }
       
     </style>
+
+<style>
+  .profile-pic {
+ color: transparent;
+ transition: all 0.3s ease;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ position: relative;
+ transition: all 0.3s ease;
+}
+.profile-pic input {
+ display: none;
+}
+.profile-pic img {
+ position: absolute;
+ object-fit: cover;
+ width: 80px;
+ height: 80px;
+ box-shadow: 0 0 10px 0 rgba(255, 255, 255, .35);
+ border-radius: 100px;
+ z-index: 0;
+}
+.profile-pic .-label {
+ cursor: pointer;
+ height: 80px;
+ width: 80px;
+}
+.profile-pic:hover .-label {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background-color: rgba(0, 0, 0, .5);
+ z-index: 10000;
+ color: #fafafa;
+ transition: background-color 0.2s ease-in-out;
+ border-radius: 100px;
+ margin-bottom: 0;
+}
+
+</style>
+
   </head>
-  <body class="text-blueGray-700 antialiased bg-gray-700" spellcheck="false">
+  <body class="text-blueGray-700 antialiased bg-gray-700 overflow-y-hidden" spellcheck="false">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root w-full" style="height: 100vh;">
 
@@ -42,7 +86,7 @@ https://flowbite.com/docs/components/sidebar/ -->
       <div class="fixed grid w-64 bg-gray-800" style="grid-template-rows: 150px 1fr; height: 100vh">
         <div class="grid" style="grid-template-rows: 1.5fr 1fr;">
           <div class="flex items-center pl-2.5">
-            <img src="https://randomuser.me/api/portraits/men/68.jpg" class="mr-3 h-16 rounded-full" alt="Flowbite Logo" />
+            <img src="https://cdn.discordapp.com/attachments/850563113178234962/1026911774554996777/unknown.png" class="mr-3 h-16 rounded-full" alt="Flowbite Logo" />
             <div class="self-center whitespace-nowrap flex flex-col">
               <span class="text-xl font-medium italic text-gray-200">Administrador</span>
             </div>

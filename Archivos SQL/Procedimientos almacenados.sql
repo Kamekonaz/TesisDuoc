@@ -1,6 +1,8 @@
 -- Package de login ejecutar desde ac?
 -------------------------------------------------------------
 create or replace package pkg_login AS 
+    procedure pcr_update_user(f_accountID varchar, f_image clob, f_username varchar, f_nombres varchar,
+    f_apellidos varchar, f_email varchar, f_telefono number, f_estado char);
     procedure pcr_create_sessionkey(f_sessionkey varchar, f_accountID varchar);
     function fn_get_account_by_key(f_sessionkey varchar)
         return number;
@@ -16,6 +18,27 @@ end pkg_login;
 -- Package body de login ejecutar desde ac?
 -------------------------------------------------------------
 create or replace package body pkg_login as
+    procedure pcr_update_user(f_accountID varchar, f_image clob, f_username varchar, f_nombres varchar,
+    f_apellidos varchar, f_email varchar, f_telefono number, f_estado char)
+    is
+    begin
+        update usuario
+        set usuario.imagen = f_image,
+        usuario.nombres = f_nombres,
+        usuario.apellidos = f_apellidos,
+        usuario.telefono = f_telefono
+        where usuario.id_cuenta = f_accountID;
+        
+
+        update cuenta
+        set username = f_username,
+        estado = f_estado
+        where id_cuenta = f_accountID;
+        
+        commit work;
+        
+    end;    
+
     procedure pcr_create_sessionkey(f_sessionkey varchar, f_accountID varchar) 
         is
         v_sesionID varchar(12);
@@ -130,7 +153,7 @@ create or replace package pkg_register as
     function fn_business_rut_available (f_business_rut varchar)
         return boolean;    
     procedure pcr_create_account(f_username varchar, f_password varchar, f_id_tipo number);
-    procedure pcr_create_user(f_rut varchar, f_nombres varchar, f_apellidos varchar, f_email varchar, f_telefono number, f_imagen blob, id_cuenta number);
+    procedure pcr_create_user(f_rut varchar, f_nombres varchar, f_apellidos varchar, f_email varchar, f_telefono number, f_imagen clob, id_cuenta number);
     procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar);
 end pkg_register;
 -------------------------------------------------------------
@@ -212,7 +235,7 @@ create or replace package body pkg_register as
         end if;
     end;
     
-    procedure pcr_create_user(f_rut varchar, f_nombres varchar, f_apellidos varchar, f_email varchar, f_telefono number, f_imagen blob, id_cuenta number)
+    procedure pcr_create_user(f_rut varchar, f_nombres varchar, f_apellidos varchar, f_email varchar, f_telefono number, f_imagen clob, id_cuenta number)
     is
         v_rut_count number(10);
     begin

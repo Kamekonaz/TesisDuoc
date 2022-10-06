@@ -15,6 +15,23 @@ app.use(express.json())
 //     })
 // });
 
+app.post('/editUser', async (req, res) =>{
+    const { f_accountID, f_image, 
+        f_username, f_nombres, f_apellidos, 
+        f_email, f_telefono, f_estado } = req.body
+
+    await BdManager.updateUserData(f_accountID, f_image, 
+        f_username, f_nombres, f_apellidos, 
+        f_email, f_telefono, f_estado)
+
+
+    res.send({
+        result: "done"
+    })
+       
+})
+
+
 app.post('/login', async(req, res) =>{
     const { username, password, expectedUserTypes } = req.body
     console.log(username, password, expectedUserTypes)
@@ -41,6 +58,22 @@ app.post('/login', async(req, res) =>{
     }   
 })
 
+app.post('/isSessionValid', async(req, res) =>{
+    console.log(req.body)
+    const { sessionKey } = req.body
+
+    
+    const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
+
+    console.log(sessionKey)
+
+    res.send({
+        //valid: false
+        valid: (accountID != 0) ? true : false
+    })
+    
+})
+
 app.post('/keylogin', async (req, res) =>{
     const { sessionKey, expectedUserTypes } = req.body
 
@@ -57,6 +90,7 @@ app.post('/keylogin', async (req, res) =>{
         })
     }   
 })
+
 
 app.post('/getwholeuserdata', async (req, res) =>{
     const { accountID, sessionKey } = req.body

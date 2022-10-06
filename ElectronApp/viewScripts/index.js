@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', async () =>{
 
 
 window.indexBridge.loginCache((event, data) =>{
-    console.log("wena")
     usernameInput.value = data.cacheUsername;
     passwordInput.value = "default";
 });

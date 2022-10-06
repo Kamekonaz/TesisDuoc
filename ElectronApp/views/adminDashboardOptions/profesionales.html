@@ -23,8 +23,156 @@
     </div>
 </div>
 
-<div class="editView hidden">
-    <div class="text-white">vista de editar</div>
+<div class="editView text-white h-full hidden">
+    <div class="grid h-full" style="grid-template-rows: 1fr 100px;">
+        <div class="flex flex-col" id="clientUserID">
+            <div class="w-full h-36 grid" style="grid-template-columns: 150px 1fr;">
+                <div class="ml-12 m-auto profile-pic flex">
+                    <label class="-label bg-gray-200 rounded-full" for="file">
+                      <span class="glyphicon glyphicon-camera"></span>
+                    </label>
+                    <input id="file" type="file" onchange="loadFile(event)"/>
+                    <img src="https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png" id="clientPFP" width="200" />
+                  </div>
+
+                  <div class="flex flex-col">
+                    <div class="text-gray-300 italic mt-12 text-xl" id="clientRutDisplay">Rut: 11.111.111-1</div>
+                    <div class="flex space-x-2">
+                        <div class="my-auto">Username:</div>
+                        <input id="clientUsernameInput" class="pl-2 font-medium border border-gray-900 bg-gray-800 h-8 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style="width:150px;" type="text">
+                    </div>
+                  </div>
+                  
+            </div>
+            
+           <div class="grid" style="grid-template-columns:1.4fr 1fr;">
+                <div class="flex flex-col space-y-4 ml-12 mt-12">
+                    <div class="grid" style="grid-template-columns: 120px 1fr;">
+                        <div class="my-auto">Nombres:</div>
+                        <input id="clientNombresInput" class="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style="width:300px;" type="text">
+                    </div>
+                    <div class="grid" style="grid-template-columns: 120px 1fr;">
+                        <div class="my-auto">Apellidos:</div>
+                        <input id="clientApellidosInput" class="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style="width:300px;" type="text">
+                    </div>
+                    <div class="grid" style="grid-template-columns: 120px 1fr;">
+                        <div class="my-auto">Email:</div>
+                        <input id="clientEmailInput" class="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style="width:300px;" type="text">
+                    </div>
+                    <div class="grid" style="grid-template-columns: 120px 1fr;">
+                        <div class="my-auto">Telefono:</div>
+                        <input id="clientTelefonoInput" class="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style="width:300px;" type="text">
+                    </div>
+                </div>
+                <div class="flex flex-col mt-12 space-y-4">
+                    <div class="mx-auto">Estado</div>
+                    <div class="mx-auto select-none" id="clientStatus" onclick="toggleClientStatus(this)">
+                        
+                    </div>
+                    <div class="mx-auto text-sm">Click para cambiar</div>
+                </div>
+           </div>
+            
+        </div>
+        
+        <div class="grid w-full grid-cols-3 select-none">
+            <div class="flex"><div class="my-auto mr-auto ml-8 px-3 py-1 rounded-lg shadow-lg bg-red-400 text-white font-medium 
+                    hover:bg-red-500 transition duration-200" onclick="leaveEditUser()">Cancelar</div></div>
+            <div class="flex">
+                <!-- <div class="m-auto px-3 py-1 rounded-lg shadow-lg bg-blue-400 text-white font-medium 
+                hover:bg-blue-500 transition duration-200">Cambiar contraseña</div> -->
+            </div>
+            <div class="flex"><div class="my-auto ml-auto mr-8 px-3 py-1 rounded-lg shadow-lg bg-green-400 text-white font-medium 
+                hover:bg-green-500 transition duration-200" onclick="uploadClientUpdate()">Aplicar</div></div>
+        </div>
+        
+    </div>
 </div>
+
+
+<script>
+
+    function toggleClientStatus(element){
+        if (element.innerHTML == inputActiveUserHTML) return element.innerHTML = inputDisabledUserHTML;
+        element.innerHTML = inputActiveUserHTML;
+    }
+    
+    const image = document.getElementById("clientPFP");
+    var loadFile = function (event) {
+        
+        image.src = URL.createObjectURL(event.target.files[0]); // Se puede usar para transformar un blob en url
+
+        const imageFile = event.target.files[0]
+
+        resize(imageFile, 80, 80, "image/png")
+
+
+        
+    };
+    const clientUsernameInput = document.getElementById("clientUsernameInput")
+    const clientNombresInput = document.getElementById("clientNombresInput")
+    const clientApellidosInput = document.getElementById("clientApellidosInput")
+    const clientEmailInput = document.getElementById("clientEmailInput")
+    const clientTelefonoInput = document.getElementById("clientTelefonoInput")
+
+    async function uploadClientUpdate(){
+        const userID = document.getElementById("clientUserID").getAttribute("userID");
+        const currentUser = cachedUsers.find((user) => user["ID_CUENTA"] == userID);
+        const userStatus = document.getElementById("clientStatus").children[0].getAttribute("status");
+
+        if(!cachedImage){
+            if(currentUser["IMAGEN"]) cachedImage = currentUser["IMAGEN"];
+            else{
+                cachedImage = null;
+            }
+        } 
+        
+        const data = { 
+            f_accountID: userID, 
+            f_image: cachedImage, 
+            f_username: clientUsernameInput.value, 
+            f_nombres: clientNombresInput.value, 
+            f_apellidos: clientApellidosInput.value, 
+            f_email: clientEmailInput.value, 
+            f_telefono: parseInt(clientTelefonoInput.value), 
+            f_estado: parseInt(userStatus)
+        }
+
+        console.log(data)
+
+
+        await axios({
+                method: 'post',
+                url: 'http://localhost:3001/editUser',
+                data: data
+            }).then(
+                Swal.fire({
+                    title: "<h5 style='color:white'>" + "Exito" + "</h5>",
+                    html: "<p style='color:white'>" + "Cambios realizados exitosamente" + "</p>",
+                    icon: 'success',
+                    background: '#272727',
+                    showCancelButton: false,
+                    confirmButtonColor: '#7BCA6F',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Aceptar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leaveEditUser()
+                    }
+                })
+            );
+
+
+    }
+
+
+
+
+
+
+
+</script>
+
+
 
 

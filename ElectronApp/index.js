@@ -48,7 +48,16 @@ app.on('window-all-closed', () => {
 ipcMain.on("login-clicked", async (event, data) => {  
     let accountID = 0;
     try {
-        if (loginCache.sessionKey 
+        //isCacheSesionValid = false
+        const isCacheSesionValid = (await axios({
+            method: 'post',
+            url: 'http://localhost:3001/isSessionValid',
+            data: {
+                sessionKey: (loginCache.sessionKey) ? loginCache.sessionKey : ""
+            }
+        })).data["valid"];
+
+        if (isCacheSesionValid
         && data["inputUsername"] == loginCache.username 
         && data["inputPassword"] == "default"){
 
@@ -102,7 +111,7 @@ ipcMain.on("login-clicked", async (event, data) => {
     })
 
     } catch (error) {
-        console.log("API ERROR")
+        console.log(error)
         win.webContents.send("login", undefined)
     }
   });

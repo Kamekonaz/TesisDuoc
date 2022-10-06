@@ -41,12 +41,9 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="7D629638-D0D1-6D18-7F45-83229A0A4EAB" referredColumn="A753FAC6-E7F7-6B79-CFD0-C660D8C0E06C"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -69,17 +66,6 @@
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>2AC274BC-F1E1-6406-FDF5-7C884110AAED</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="3AF4A52C-7C8C-8631-388D-54E01D9D4AE7"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="0A4116AD-1905-EF54-06A0-D59B033D5DBB" name="SALA_CHAT_ACCIDENTE_FK">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-10-01 20:18:28 UTC</createdTime>
-<generatorID>2AC274BC-F1E1-6406-FDF5-7C884110AAED</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="3AF4A52C-7C8C-8631-388D-54E01D9D4AE7"/>
 </indexColumnUsage>

@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', async () =>{
 var sessionKey;
 var activeDashboardOption = "0";
 
+var cachedUsers;
+var cachedImage;
+
 
 // SEPARAR VISTAS PRINCIPALES EN SUBVISTAS QUE PUEDAN SER INTERCAMBIADAS
 
@@ -78,11 +81,33 @@ function resetMainView(dashboardOptionBody){
     if (mainView) mainView.classList.remove("hidden");
 }
 
-function editUser(userID){
+async function editUser(userID){
+    cachedImage = undefined;
     for(const view of dashboardOptionsBody[activeDashboardOption].children) view.classList.add("hidden");
     dashboardOptionsBody[activeDashboardOption].querySelector(".editView").classList.remove("hidden");
 
-    console.log(userID) // MOSTRAR DATOS DE USUARIO
+
+    const userData = cachedUsers.find((user) => user["ID_CUENTA"] == userID)
+
+    const imageSRC = (userData["IMAGEN"]) ? userData["IMAGEN"]
+         : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png";
+    
+    document.getElementById("clientPFP").src = imageSRC
+    document.getElementById("clientUserID").setAttribute("userID", userID)
+    document.getElementById("clientRutDisplay").innerText = `Rut: ${userData["RUT_USUARIO"]}`
+    document.getElementById("clientUsernameInput").value = userData["USERNAME"]
+    document.getElementById("clientNombresInput").value = userData["NOMBRES"]
+    document.getElementById("clientApellidosInput").value = userData["APELLIDOS"]
+    document.getElementById("clientEmailInput").value = userData["EMAIL"]
+    document.getElementById("clientTelefonoInput").value = userData["TELEFONO"]
+    document.getElementById("clientStatus").innerHTML = (userData["ESTADO"] == "1") ? inputActiveUserHTML : inputDisabledUserHTML
+    
+    
+}
+
+function leaveEditUser(){
+    dashboardOptionFunctions(activeDashboardOption)
+    resetMainView(activeDashboardOption)
 }
 
 function clientSearch(filterValue, clientsList, firstLoad){
@@ -124,12 +149,15 @@ function clientSearch(filterValue, clientsList, firstLoad){
 
     let usersHTML = ""
     for (const client of filteredClientList){
+        const imageSRC = (client["IMAGEN"]) ? client["IMAGEN"]
+         : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png";
+
         usersHTML+=`
         <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl" onclick="editUser(${client["ID_CUENTA"]})">
             <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
             display: grid; grid-template-columns: 64px 1.3fr 1fr 0.5fr 0.5fr;">
                 <div class="flex m-auto">
-                    <img src="https://randomuser.me/api/portraits/men/68.jpg" class="h-12 w-12 object-cover rounded-full">
+                    <img src="${imageSRC}" class="h-12 w-12 object-cover rounded-full">
                 </div>
                 <div class="flex pl-2 mr-auto my-auto flex-col">
                     <div>${client["NOMBRES"]} ${client["APELLIDOS"]}</div> 
@@ -206,12 +234,14 @@ async function profesionalSearch(filterValue, profesionalsList, firstLoad){
 
     let usersHTML = ""
     for (const profesional of filteredProfesionalsList){
+        const imageSRC = (profesional["IMAGEN"]) ? profesional["IMAGEN"]
+         : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png";
         usersHTML+=`
         <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl" onclick="editUser(${profesional["ID_CUENTA"]})">
             <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
             display: grid; grid-template-columns: 64px 1.3fr 1.5fr 0.5fr;">
                 <div class="flex m-auto">
-                    <img  src="https://randomuser.me/api/portraits/men/68.jpg" class="h-12 w-12 object-cover rounded-full">
+                    <img  src="${imageSRC}" class="h-12 w-12 object-cover rounded-full">
                 </div>
                 <div class="flex pl-2 mr-auto my-auto flex-col">
                     <div>${profesional["NOMBRES"]} ${profesional["APELLIDOS"]}</div> 
@@ -286,6 +316,8 @@ async function dashboardOptionFunctions(optionID){
                 }
             })).data;
 
+            cachedUsers = profesionalesList
+
             console.log(profesionalesList)
 
             profesionalSearch(profesionalesSearch.value.toLowerCase(), profesionalesList, true)
@@ -305,6 +337,8 @@ async function dashboardOptionFunctions(optionID){
                     usertype: 3
                 }
             })).data;
+
+            cachedUsers = clientsList
 
             console.log(clientsList)
 
@@ -366,3 +400,180 @@ function isNumeric(str) {
     return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
            !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
   }
+
+
+  function dataURItoBlob(dataURI) {
+    // convert base64 to raw binary data held in a string
+    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+    var byteString = atob(dataURI.split(',')[1]);
+  
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+  
+    // write the bytes of the string to an ArrayBuffer
+    var ab = new ArrayBuffer(byteString.length);
+  
+    // create a view into the buffer
+    var ia = new Uint8Array(ab);
+  
+    // set the bytes of the buffer to the correct values
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+  
+    // write the ArrayBuffer to a blob, and you're done
+    var blob = new Blob([ab], {type: mimeString});
+    return blob;
+  
+  }
+
+
+  function resize(file, max_width, max_height, imageEncoding){
+    var fileLoader = new FileReader(),
+    canvas = document.createElement('canvas'),
+    context = null,
+    imageObj = new Image(),
+    blob = null;            
+
+    //create a hidden canvas object we can use to create the new resized image data
+    canvas.id     = "hiddenCanvas";
+    canvas.width  = max_width;
+    canvas.height = max_height;
+    canvas.style.visibility   = "hidden";   
+    document.body.appendChild(canvas);  
+
+    //get the context to use 
+    context = canvas.getContext('2d');  
+
+    // check for an image then
+    //trigger the file loader to get the data from the image         
+    if (file.type.match('image.*')) {
+        fileLoader.readAsDataURL(file);
+    } else {
+        alert('File is not an image');
+    }
+
+    // setup the file loader onload function
+    // once the file loader has the data it passes it to the 
+    // image object which, once the image has loaded, 
+    // triggers the images onload function
+    fileLoader.onload = function() {
+        var data = this.result; 
+        imageObj.src = data;
+    };
+
+    fileLoader.onabort = function() {
+        alert("The upload was aborted.");
+    };
+
+    fileLoader.onerror = function() {
+        alert("An error occured while reading the file.");
+    };  
+
+
+    // set up the images onload function which clears the hidden canvas context, 
+    // draws the new image then gets the blob data from it
+    imageObj.onload = async function() {  
+
+        // Check for empty images
+        if(this.width == 0 || this.height == 0){
+            alert('Image is empty');
+        } else {                
+
+            context.clearRect(0,0,max_width,max_height);
+            drawImageProp(context, imageObj, 0, 0, 80, 80)
+            
+            //context.drawImage(imageObj, 0, 0, this.width, this.height, 0, 0, max_width, max_height);
+
+
+            //dataURItoBlob function available here:
+            // http://stackoverflow.com/questions/12168909/blob-from-dataurl
+            // add ')' at the end of this function SO dont allow to update it without a 6 character edit
+
+            const imageDataURL = canvas.toDataURL(imageEncoding)
+            cachedImage = imageDataURL;
+
+            //console.log(imageDataURL)
+            
+                    // const profesionalesList = (await axios({
+                    //         method: 'post',
+                    //         url: 'http://localhost:3001/updateImage',
+                    //         data: {
+                    //             accountID: userID,
+                    //             blobImage: imageDataURL
+                    //         }
+                    //     })).data;
+                    // console.log(profesionalesList)
+
+        }       
+    };
+
+    imageObj.onabort = function() {
+        alert("Image load was aborted.");
+    };
+
+    imageObj.onerror = function() {
+        alert("An error occured while loading image.");
+    };
+
+}
+
+function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
+
+if (arguments.length === 2) {
+x = y = 0;
+w = ctx.canvas.width;
+h = ctx.canvas.height;
+}
+
+// default offset is center
+offsetX = typeof offsetX === "number" ? offsetX : 0.5;
+offsetY = typeof offsetY === "number" ? offsetY : 0.5;
+
+// keep bounds [0.0, 1.0]
+if (offsetX < 0) offsetX = 0;
+if (offsetY < 0) offsetY = 0;
+if (offsetX > 1) offsetX = 1;
+if (offsetY > 1) offsetY = 1;
+
+var iw = img.width,
+ih = img.height,
+r = Math.min(w / iw, h / ih),
+nw = iw * r,   // new prop. width
+nh = ih * r,   // new prop. height
+cx, cy, cw, ch, ar = 1;
+
+// decide which gap to fill    
+if (nw < w) ar = w / nw;                             
+if (Math.abs(ar - 1) < 1e-14 && nh < h) ar = h / nh;  // updated
+nw *= ar;
+nh *= ar;
+
+// calc source rectangle
+cw = iw / (nw / w);
+ch = ih / (nh / h);
+
+cx = (iw - cw) * offsetX;
+cy = (ih - ch) * offsetY;
+
+// make sure source rectangle is valid
+if (cx < 0) cx = 0;
+if (cy < 0) cy = 0;
+if (cw > iw) cw = iw;
+if (ch > ih) ch = ih;
+
+// fill image in dest. rectangle
+ctx.drawImage(img, cx, cy, cw, ch,  x, y, w, h);
+}
+
+
+var inputActiveUserHTML = `
+    <div class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700" status="1">
+        Activo
+    </div>  
+    `;
+var inputDisabledUserHTML = `
+<div class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700" status="0">
+    Inactivo
+</div>  
+`;

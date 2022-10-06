@@ -30,7 +30,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -70,12 +70,9 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="7D67407F-AC02-FAAD-9A76-09CC0BB76806" referredColumn="FDFE0CBB-87AE-B53D-303C-5A8D76BF405D"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -98,17 +95,6 @@
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>2AC274BC-F1E1-6406-FDF5-7C884110AAED</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="956A6363-23C8-C3D5-181F-E4297A5C36CD"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="B01358F8-D31B-F21C-D9F6-AB3C4B1A7C98" name="ACCIDENTE_SALA_CHAT_FK">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-10-01 20:18:28 UTC</createdTime>
-<generatorID>2AC274BC-F1E1-6406-FDF5-7C884110AAED</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="956A6363-23C8-C3D5-181F-E4297A5C36CD"/>
 </indexColumnUsage>
