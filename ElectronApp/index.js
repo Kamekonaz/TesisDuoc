@@ -4,7 +4,6 @@ const path = require("path")
 const fs = require('fs-extra');
 const loginCache = require('./cache.json')
 const axios = require('axios');
-const { SlashCommandSubcommandGroupBuilder } = require('discord.js');
 const EXPECTED_USERS = [1]
 
 const createWindow = async () => {

@@ -94,7 +94,6 @@
     </div>
 </div>
 
-
 <script>
 
     function toggleClientStatus(element){
@@ -143,8 +142,17 @@
             f_estado: parseInt(userStatus)
         }
 
-        console.log(data)
 
+
+        console.log(data["f_accountID"])
+        // Validar datos de data
+
+
+        // ES VALIDO O NO
+
+
+        // SI QUIERES CANCELAR EL EDITAR PON RETURN
+        // if(error)  return;
 
         await axios({
                 method: 'post',

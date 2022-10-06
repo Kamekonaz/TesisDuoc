@@ -81,7 +81,7 @@ function resetMainView(dashboardOptionBody){
     if (mainView) mainView.classList.remove("hidden");
 }
 
-async function editUser(userID){
+async function editUser(userID, prefix){
     cachedImage = undefined;
     for(const view of dashboardOptionsBody[activeDashboardOption].children) view.classList.add("hidden");
     dashboardOptionsBody[activeDashboardOption].querySelector(".editView").classList.remove("hidden");
@@ -92,15 +92,15 @@ async function editUser(userID){
     const imageSRC = (userData["IMAGEN"]) ? userData["IMAGEN"]
          : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png";
     
-    document.getElementById("clientPFP").src = imageSRC
-    document.getElementById("clientUserID").setAttribute("userID", userID)
-    document.getElementById("clientRutDisplay").innerText = `Rut: ${userData["RUT_USUARIO"]}`
-    document.getElementById("clientUsernameInput").value = userData["USERNAME"]
-    document.getElementById("clientNombresInput").value = userData["NOMBRES"]
-    document.getElementById("clientApellidosInput").value = userData["APELLIDOS"]
-    document.getElementById("clientEmailInput").value = userData["EMAIL"]
-    document.getElementById("clientTelefonoInput").value = userData["TELEFONO"]
-    document.getElementById("clientStatus").innerHTML = (userData["ESTADO"] == "1") ? inputActiveUserHTML : inputDisabledUserHTML
+    document.getElementById(prefix+"PFP").src = imageSRC
+    document.getElementById(prefix+"UserID").setAttribute("userID", userID)
+    document.getElementById(prefix+"RutDisplay").innerText = `Rut: ${userData["RUT_USUARIO"]}`
+    document.getElementById(prefix+"UsernameInput").value = userData["USERNAME"]
+    document.getElementById(prefix+"NombresInput").value = userData["NOMBRES"]
+    document.getElementById(prefix+"ApellidosInput").value = userData["APELLIDOS"]
+    document.getElementById(prefix+"EmailInput").value = userData["EMAIL"]
+    document.getElementById(prefix+"TelefonoInput").value = userData["TELEFONO"]
+    document.getElementById(prefix+"Status").innerHTML = (userData["ESTADO"] == "1") ? inputActiveUserHTML : inputDisabledUserHTML
     
     
 }
@@ -153,7 +153,7 @@ function clientSearch(filterValue, clientsList, firstLoad){
          : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png";
 
         usersHTML+=`
-        <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl" onclick="editUser(${client["ID_CUENTA"]})">
+        <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl" onclick="editUser(${client["ID_CUENTA"]}, 'client')">
             <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
             display: grid; grid-template-columns: 64px 1.3fr 1fr 0.5fr 0.5fr;">
                 <div class="flex m-auto">
@@ -237,7 +237,7 @@ async function profesionalSearch(filterValue, profesionalsList, firstLoad){
         const imageSRC = (profesional["IMAGEN"]) ? profesional["IMAGEN"]
          : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png";
         usersHTML+=`
-        <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl" onclick="editUser(${profesional["ID_CUENTA"]})">
+        <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl" onclick="editUser(${profesional["ID_CUENTA"]}, 'profesional')">
             <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
             display: grid; grid-template-columns: 64px 1.3fr 1.5fr 0.5fr;">
                 <div class="flex m-auto">
