@@ -38,14 +38,14 @@ app.post('/login', async(req, res) =>{
     const result = await BdManager.login(username, password);
 
     if (!result["isUsernameCorrect"] || !result["isPasswordCorrect"]){             
-        return res.status(418).send({ error: 'Credenciales incorrectas' })
+        return res.send({ error: 'Credenciales incorrectas' })
     }
     else{
         const userData = await BdManager.getUserDataByUsername(username);
         //console.log(userData)
         if (!expectedUserTypes.includes(userData["ID_TIPO"])){
             console.log(expectedUserTypes, " | " , userData["ID_TIPO"] )
-            return res.status(418).send({ error: 'Credenciales incorrectas' })
+            return res.send({ error: 'Credenciales incorrectas' })
         }
         
         const sessionKey = await BdManager.createSession(userData["ID_CUENTA"])
