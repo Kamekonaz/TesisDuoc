@@ -1,4 +1,3 @@
-Old/ElectronApp/node_modules/
-NodeWeb/Backend/node_modules/
+Old/NodeWeb/Backend/node_modules/
 Api/node_modules/
-electron-react/node_modules/
+ElectronReact/node_modules/
