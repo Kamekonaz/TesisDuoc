@@ -1,0 +1,112 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6845BA0C-4F05-7A6C-1007-BE53903AE0CE" name="ASESORIA">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>903DD9AB-2856-4A8F-A671-73097C44C977</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_asesoria" id="3AFBDF41-332D-3674-922D-050D05B77EFF">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>A3FFB553-580E-8D8A-2E7B-504A83AAF562</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_evento" id="D459CC2A-DF63-235A-990C-60F9E808B261">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>31BD1DD3-14A5-3794-196D-F5C6B324CF7C</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A233D968-930B-68E2-77B1-3F2849DBEAA4" referredColumn="F5928A6A-97F2-238D-994C-51D365A6B331"/>
+</associations>
+</Column>
+<Column name="fecha_asesoria" id="335AB273-E77B-F1CD-CBE4-0C152EDD6592">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>F1CED237-3659-4BCD-60A8-676D0DFF32C2</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="especial" id="98208AE4-9317-3737-CEF5-14E5FC55FAF8">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>F15AB9FE-4A1B-BF60-0CE7-B853C0674D71</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="estado" id="6A6150C6-14B4-684D-CBCB-67D0E1FA0549">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>2CBA7B8C-3B63-122F-FA99-DD9727A3E62C</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9E71E20F-046E-0B6A-B9C4-B164EFFD9C25" name="ASESORIA_PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>BA6DB70D-A463-10EE-C1F3-59F57CAD3F39</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3AFBDF41-332D-3674-922D-050D05B77EFF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="43ECCD64-6D76-F498-1564-51BAFB95CD13" name="ASESORIA__IDX">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>D33E4F20-B9F1-DD5E-6328-1C56F8A0F1BD</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="D459CC2A-DF63-235A-990C-60F9E808B261"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="91712042-C452-AF5C-4725-F35671C82578" name="ASESORIA_EVENTO_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>D33E4F20-B9F1-DD5E-6328-1C56F8A0F1BD</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D459CC2A-DF63-235A-990C-60F9E808B261"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

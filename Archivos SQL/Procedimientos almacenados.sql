@@ -152,9 +152,20 @@ create or replace package pkg_register as
         return boolean;
     function fn_business_rut_available (f_business_rut varchar)
         return boolean;    
-    procedure pcr_create_account(f_username varchar, f_password varchar, f_id_tipo number);
-    procedure pcr_create_user(f_rut varchar, f_nombres varchar, f_apellidos varchar, f_email varchar, f_telefono number, f_imagen clob, id_cuenta number);
+    procedure pcr_create_user(
+        f_imagen clob,
+        f_id_tipo number,
+        f_estado number,
+        f_rut varchar,
+        f_username varchar, 
+        f_password varchar, 
+        f_nombres varchar,
+        f_apellidos varchar,
+        f_email varchar,
+        f_telefono number
+    );
     procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar);
+    procedure pcr_delete_user(f_id_cuenta varchar);
 end pkg_register;
 -------------------------------------------------------------
 -- Hasta ac?
@@ -214,32 +225,54 @@ create or replace package body pkg_register as
         return v_is_available;
     end;
     
+    procedure pcr_delete_user(f_id_cuenta varchar)
+    is
+    v_rut_usuario varchar(50);
+    begin
+        select rut_usuario into v_rut_usuario from usuario where id_cuenta = f_id_cuenta;
+        delete from empresa
+        where rut_usuario = v_rut_usuario;
+        
+        delete from usuario
+        where id_cuenta = f_id_cuenta;
+        
+        delete from cuenta
+        where id_cuenta = f_id_cuenta;
+        
+        commit work;
+    end;
     
-    procedure pcr_create_account(f_username varchar, f_password varchar, f_id_tipo number) 
+    procedure pcr_create_user(
+        f_imagen clob,
+        f_id_tipo number,
+        f_estado number,
+        f_rut varchar,
+        f_username varchar, 
+        f_password varchar, 
+        f_nombres varchar,
+        f_apellidos varchar,
+        f_email varchar,
+        f_telefono number
+    ) 
     is
         v_id_cuenta number(10);
         v_usernames_count number(10);
+        v_rut_count number(10);
     begin
-        select max(id_cuenta)+1 into v_id_cuenta from cuenta;
+    
+        select max(to_number(id_cuenta))+1 into v_id_cuenta from cuenta;
         select count(*) into v_usernames_count from cuenta where username = f_username;
-        
+        select count(*) into v_rut_count from usuario where rut_usuario = f_rut;
         
         if v_usernames_count = 0 then
             insert into cuenta values(
                 v_id_cuenta,
                 f_username,
                 f_password,
-                0,
+                f_estado,
                 f_id_tipo
             );
         end if;
-    end;
-    
-    procedure pcr_create_user(f_rut varchar, f_nombres varchar, f_apellidos varchar, f_email varchar, f_telefono number, f_imagen clob, id_cuenta number)
-    is
-        v_rut_count number(10);
-    begin
-        select count(*) into v_rut_count from usuario where rut_usuario = f_rut;
         
         if v_rut_count = 0 then
             insert into usuario values(
@@ -249,11 +282,13 @@ create or replace package body pkg_register as
                 f_email,
                 f_telefono,
                 f_imagen,
-                id_cuenta
+                v_id_cuenta
             );
         end if;
+        
         commit work;
     end;
+    
     
     procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar)
     is

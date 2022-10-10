@@ -65,6 +65,61 @@ class BdManager {
             console.log(error)
         }     
     }
+    static async deleteUser(accountID){
+      try {
+          const Connection = await oracledb.getConnection(db_credentials);
+          //console.log("alo?", f_accountID)
+          const result = await Connection.execute(
+              `BEGIN
+                pkg_register.pcr_delete_user(:v_accountID);
+               END;`,
+              {  
+                v_accountID: accountID
+              }
+            );
+          await Connection.close()
+          return {
+              error: false
+          };
+
+      } catch (error) {
+          console.log(error)
+      }     
+  }
+
+
+    static async createUser(f_imagen, f_id_tipo, f_estado, f_rut, f_username,  f_password,  f_nombres, f_apellidos, f_email, f_telefono){
+        try {
+            console.log(f_telefono)
+            const Connection = await oracledb.getConnection(db_credentials);
+            //console.log("alo?", f_accountID)
+            const result = await Connection.execute(
+                `BEGIN
+                  pkg_register.pcr_create_user(:f_imagen, :f_id_tipo, :f_estado, :f_rut, :f_username, :f_password, :f_nombres, :f_apellidos, :f_email, :f_telefono);
+                END;`,
+                {  
+                  f_imagen: f_imagen, 
+                  f_id_tipo: f_id_tipo, 
+                  f_estado: f_estado, 
+                  f_rut: f_rut,
+                  f_username: f_username,  
+                  f_password: f_password,  
+                  f_nombres: f_nombres, 
+                  f_apellidos: f_apellidos, 
+                  f_email: f_email, 
+                  f_telefono: f_telefono
+                }
+              );
+            await Connection.commit()
+            await Connection.close()
+            console.log(result)
+            return result
+
+        } catch (error) {
+            console.log(error)
+        }     
+    }
+
 
     static async get_users_by_usertype(usertype){
       try{
@@ -165,10 +220,16 @@ class BdManager {
         `
   
         const result = await Connection.execute(query, [], { outFormat: oracledb.OUT_FORMAT_OBJECT });
-  
+
+        const filas = result.rows[0]
+
+        if (filas["IMAGEN"]) filas["IMAGEN"] = await filas["IMAGEN"].getData()
+
+
         await Connection.close()
-        
-        return result.rows[0];
+      
+
+        return filas;
   
         } catch(err){
         console.log(err)
@@ -190,9 +251,16 @@ class BdManager {
   
         const result = await Connection.execute(query, [], { outFormat: oracledb.OUT_FORMAT_OBJECT });
   
-        await Connection.close()
         
-        return result.rows[0];
+
+        const filas = result.rows[0]
+
+        if (filas["IMAGEN"]) filas["IMAGEN"] = await filas["IMAGEN"].getData()
+
+
+        await Connection.close()
+
+        return filas;
   
         } catch(err){
         console.log(err)

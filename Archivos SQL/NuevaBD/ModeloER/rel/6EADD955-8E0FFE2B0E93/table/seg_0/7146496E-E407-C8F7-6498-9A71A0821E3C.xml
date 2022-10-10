@@ -1,0 +1,212 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7146496E-E407-C8F7-6498-9A71A0821E3C" name="ACTIVIDAD">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>6ACF408C-067F-B998-5D2B-AA09D827C53F</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_actividad" id="42E6ECC0-FE90-809D-2C1E-165301C07F0A">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>E1F6FE18-E298-D836-31D4-DAB345FA895D</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_inicio" id="110777C6-F286-0189-EB95-7487DEC273F2">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>A328FA25-9E42-E40F-34B7-7B54753D3E1D</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_limite" id="0BF852D7-4704-2961-EF57-AFCA4F8E037A">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>C01DB2D8-6F0C-6506-BF2E-E6A9D6EE8418</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_capacitacion" id="40E685A6-B66F-7CF3-CE1D-B860F956017B">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>17CEA6CA-8604-C613-FC84-C82E00F71856</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9773037C-B679-8B7A-A1E0-80F5C8BB5A61" referredColumn="6DA80EB7-AD4D-8D47-BC05-BD016D468E43"/>
+</associations>
+</Column>
+<Column name="id_visita" id="36B10A97-B232-4010-43FA-E95067491630">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>FF36CBE9-FFC8-5E7E-EDE1-B17CB7B3A169</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CE141328-704A-98AD-1E24-DADF01C09A61" referredColumn="9E31BAE6-18AA-DE03-82C6-20B22936E274"/>
+</associations>
+</Column>
+<Column name="id_asesoria" id="68EE2C92-E9F1-5004-73D5-7DEDF779F3B6">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>FEC2F2CD-1863-DC23-DB44-37BDB4FD6316</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="399C4F66-C4EF-6DB0-4068-329D8ED1738D" referredColumn="3AFBDF41-332D-3674-922D-050D05B77EFF"/>
+</associations>
+</Column>
+<Column name="id_tipoactividad" id="A746C6A8-8175-7478-02FD-AC06899EDA9C">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>F58C96BE-CFCD-7FAC-2ED5-E756662E3AE2</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1C244B34-084A-C467-0C20-4D474A5417EE" referredColumn="697DA6A4-FD80-D8E0-268F-F001F9784B6D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="21B34768-91D7-8375-87C9-EB328FEFD420" name="ACTIVIDAD_PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>F9529F85-DB5D-5BA5-0AD6-ED736319E1EF</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="42E6ECC0-FE90-809D-2C1E-165301C07F0A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2DEA54CF-A23B-ED44-1BE4-0B8F44E9142B" name="ACTIVIDAD__IDX">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>29D3D682-D950-3D29-141F-62A1620C58F6</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="A746C6A8-8175-7478-02FD-AC06899EDA9C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="61FDAB9A-D417-0B4D-1BDF-4DF2EE66DC3C" name="ACTIVIDAD__IDXv1">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>59CB5A60-37BA-AA5E-7082-2C746747B5D2</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="68EE2C92-E9F1-5004-73D5-7DEDF779F3B6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C06E5C08-E1E3-F18C-8ABF-00F6E56EF1D2" name="ACTIVIDAD__IDXv2">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>E554D9D4-FFC3-77D9-C02C-EC2C33C4A822</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="40E685A6-B66F-7CF3-CE1D-B860F956017B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="50E214C4-3C98-95B7-AC97-173E7528B953" name="ACTIVIDAD__IDXv3">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>CA198DF0-0643-F0B3-C9CF-478C17E4B350</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="36B10A97-B232-4010-43FA-E95067491630"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0CC2C7C8-53F3-B96D-D05C-6A3B8B070DF7" name="ACTIVIDAD_TIPO_ACTIVIDAD_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>29D3D682-D950-3D29-141F-62A1620C58F6</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A746C6A8-8175-7478-02FD-AC06899EDA9C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CCF43721-A68D-04DB-60A2-D84F05B54054" name="ACTIVIDAD_ASESORIA_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>59CB5A60-37BA-AA5E-7082-2C746747B5D2</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="68EE2C92-E9F1-5004-73D5-7DEDF779F3B6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9C8056F2-965A-7439-F63F-639AACCDBE3D" name="ACTIVIDAD_CAPACITACION_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>E554D9D4-FFC3-77D9-C02C-EC2C33C4A822</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="40E685A6-B66F-7CF3-CE1D-B860F956017B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D590BB50-A44F-243A-EF29-CBE754E4548B" name="ACTIVIDAD_VISITA_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-10 01:50:36 UTC</createdTime>
+<generatorID>CA198DF0-0643-F0B3-C9CF-478C17E4B350</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="36B10A97-B232-4010-43FA-E95067491630"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

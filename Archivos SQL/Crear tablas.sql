@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 22.2.0.165.1149
---   en:        2022-10-05 20:52:04 CLST
+--   en:        2022-10-09 22:50:52 CLST
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -163,7 +163,7 @@ CREATE TABLE empresa (
     razon_social VARCHAR2(255) NOT NULL,
     telefono     NUMBER(20),
     nombre       VARCHAR2(255) NOT NULL,
-    rut_usuario  VARCHAR2(20) NOT NULL
+    rut_usuario  VARCHAR2(20)
 );
 
 ALTER TABLE empresa ADD CONSTRAINT empresa_pk PRIMARY KEY ( rut_empresa );
@@ -299,6 +299,10 @@ CREATE TABLE visita (
 ALTER TABLE visita ADD CONSTRAINT visita_pk PRIMARY KEY ( id_visita );
 
 ALTER TABLE accidente
+    ADD CONSTRAINT accidente_sala_chat_fk FOREIGN KEY ( id_sala )
+        REFERENCES sala_chat ( id_sala );
+
+ALTER TABLE accidente
     ADD CONSTRAINT accidente_usuario_fk FOREIGN KEY ( rut_usuario )
         REFERENCES usuario ( rut_usuario );
 
@@ -382,6 +386,10 @@ ALTER TABLE plan_mejora
     ADD CONSTRAINT plan_mejora_visita_fk FOREIGN KEY ( id_visita )
         REFERENCES visita ( id_visita );
 
+ALTER TABLE sala_chat
+    ADD CONSTRAINT sala_chat_accidente_fk FOREIGN KEY ( id_accidente )
+        REFERENCES accidente ( id_accidente );
+
 ALTER TABLE sesion
     ADD CONSTRAINT sesion_cuenta_fk FOREIGN KEY ( id_cuenta )
         REFERENCES cuenta ( id_cuenta );
@@ -408,7 +416,7 @@ ALTER TABLE visita
 -- 
 -- CREATE TABLE                            26
 -- CREATE INDEX                             0
--- ALTER TABLE                             52
+-- ALTER TABLE                             54
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
 -- CREATE PACKAGE                           0

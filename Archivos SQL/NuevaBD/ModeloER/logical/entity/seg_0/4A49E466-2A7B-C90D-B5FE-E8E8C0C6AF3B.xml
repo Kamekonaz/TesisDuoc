@@ -68,20 +68,21 @@
 <dataTypeSize>255</dataTypeSize>
 <ownDataTypeParameters>255,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="rut_usuario" id="F5581272-3083-8788-75CC-5BEDA63812DC">
+<Attribute name="rut_usuario" id="D0EBBDCE-8418-C248-5DE7-3E340EDB8A38">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-09-08 00:39:52 UTC</createdTime>
-<generatorID>37155F60-A617-F112-B073-D52B519D1B40</generatorID>
+<createdTime>2022-10-10 01:49:11 UTC</createdTime>
+<generatorID>BD50FE7F-D95B-33E4-8815-ED0C77F1061C</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <referedAttribute>091B978B-7DE0-031A-9F07-13B6C7977ED1</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
