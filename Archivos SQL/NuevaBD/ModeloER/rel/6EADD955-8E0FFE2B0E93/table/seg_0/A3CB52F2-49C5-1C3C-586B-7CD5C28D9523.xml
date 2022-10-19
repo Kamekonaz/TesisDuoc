@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A3CB52F2-49C5-1C3C-586B-7CD5C28D9523" name="ACTIVIDAD">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>6ACF408C-067F-B998-5D2B-AA09D827C53F</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_actividad" id="38678420-11CA-B540-D709-8EF61F375D8A">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>E1F6FE18-E298-D836-31D4-DAB345FA895D</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_inicio" id="72E69060-B9FB-7E5C-A75B-9E662737B317">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>A328FA25-9E42-E40F-34B7-7B54753D3E1D</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_limite" id="035475E8-2B3E-6B67-B1A1-9A2DB1C5CAF2">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>C01DB2D8-6F0C-6506-BF2E-E6A9D6EE8418</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_tipoactividad" id="26D642D7-C3C6-D454-9294-69D9D7BAB912">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>F58C96BE-CFCD-7FAC-2ED5-E756662E3AE2</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1E59BA27-460F-879B-0043-4A7CF3698F90" referredColumn="955EB0E5-BBAC-2CC9-F6B6-28FCC7228F43"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C8E5EF8D-F166-E37D-07A8-B17695137036" name="ACTIVIDAD_PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>F9529F85-DB5D-5BA5-0AD6-ED736319E1EF</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="38678420-11CA-B540-D709-8EF61F375D8A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CD3AC8C7-D2A1-3CEF-216F-C583C9EB386D" name="ACTIVIDAD__IDX">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>29D3D682-D950-3D29-141F-62A1620C58F6</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="26D642D7-C3C6-D454-9294-69D9D7BAB912"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="638E5636-AB9F-44BD-EF82-0DD0E9796C61" name="ACTIVIDAD_TIPO_ACTIVIDAD_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>29D3D682-D950-3D29-141F-62A1620C58F6</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="26D642D7-C3C6-D454-9294-69D9D7BAB912"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

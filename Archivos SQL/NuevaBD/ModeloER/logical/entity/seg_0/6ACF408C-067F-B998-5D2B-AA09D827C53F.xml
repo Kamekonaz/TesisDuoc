@@ -52,51 +52,6 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_capacitacion" id="17CEA6CA-8604-C613-FC84-C82E00F71856">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-08-28 19:14:29 UTC</createdTime>
-<generatorID>E554D9D4-FFC3-77D9-C02C-EC2C33C4A822</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
-</engineerTo>
-<referedAttribute>50337B57-BB83-82E8-5789-1ED620525925</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,12,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_visita" id="FF36CBE9-FFC8-5E7E-EDE1-B17CB7B3A169">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-08-28 19:14:32 UTC</createdTime>
-<generatorID>CA198DF0-0643-F0B3-C9CF-478C17E4B350</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
-</engineerTo>
-<referedAttribute>31845068-F333-76B4-AFCD-41B21607419C</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_asesoria" id="FEC2F2CD-1863-DC23-DB44-37BDB4FD6316">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-08-28 19:23:29 UTC</createdTime>
-<generatorID>59CB5A60-37BA-AA5E-7082-2C746747B5D2</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
-</engineerTo>
-<referedAttribute>A3FFB553-580E-8D8A-2E7B-504A83AAF562</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="id_tipoactividad" id="F58C96BE-CFCD-7FAC-2ED5-E756662E3AE2">
 <createdBy>CETECOM</createdBy>
 <createdTime>2022-09-29 12:58:58 UTC</createdTime>
@@ -110,7 +65,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

@@ -28,21 +28,6 @@
 <dataTypePrecision>12</dataTypePrecision>
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_evento" id="31BD1DD3-14A5-3794-196D-F5C6B324CF7C">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-08-28 19:11:48 UTC</createdTime>
-<generatorID>D33E4F20-B9F1-DD5E-6328-1C56F8A0F1BD</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
-</engineerTo>
-<referedAttribute>9AA51953-680D-A123-6D84-707F49B2DC10</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="fecha_asesoria" id="F1CED237-3659-4BCD-60A8-676D0DFF32C2">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-08-29 23:14:50 UTC</createdTime>
@@ -82,14 +67,30 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_actividad" id="1EE7118D-D521-5F6E-AD3A-F39A529826F5">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-19 17:40:23 UTC</createdTime>
+<generatorID>59CB5A60-37BA-AA5E-7082-2C746747B5D2</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>E1F6FE18-E298-D836-31D4-DAB345FA895D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="BA6DB70D-A463-10EE-C1F3-59F57CAD3F39" name="ASESORIA PK">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-08-28 19:23:29 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

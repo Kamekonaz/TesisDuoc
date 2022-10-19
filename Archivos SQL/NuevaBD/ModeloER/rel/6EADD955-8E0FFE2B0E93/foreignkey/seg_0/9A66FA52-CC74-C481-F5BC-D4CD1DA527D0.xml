@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9A66FA52-CC74-C481-F5BC-D4CD1DA527D0" containerWithKeyObject="8B8C1E67-AC6C-2D7A-7124-B8AA69D95B47" localFKIndex="2D11285B-8A2D-AC7F-81F7-62CC8ABC17CA" name="COSTE_ACT_TIPO_ACTIVIDAD_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>5B5C918F-855B-130E-6192-98F87512A1D2</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<referredTableLongName>TIPO_ACTIVIDAD</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>8ECE423F-1910-34A7-6304-3FD0F7FDBD95</referredTableID>
+<keyObject>B711CAED-C5EA-094B-71D1-6AEEB15295E9</keyObject>
+<referredKeyID>B711CAED-C5EA-094B-71D1-6AEEB15295E9</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_tipoactividad</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

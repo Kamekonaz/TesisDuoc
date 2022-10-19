@@ -35,6 +35,7 @@
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT008</logicalDatatype>
@@ -47,6 +48,7 @@
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT008</logicalDatatype>
@@ -68,31 +70,18 @@
 <dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="estado" id="60AAE925-4A6B-EB7A-7581-C8CFB2BE1C95">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-08-31 18:23:55 UTC</createdTime>
-<ownerDesignName>ModeloER</ownerDesignName>
-<engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>255</dataTypeSize>
-<ownDataTypeParameters>255,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="descripcion" id="539CD3B5-C0FB-16E5-4739-F9B3F7123189">
+<Attribute name="archivo_contrato" id="539CD3B5-C0FB-16E5-4739-F9B3F7123189">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-09-29 18:56:26 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>2000</dataTypeSize>
-<ownDataTypeParameters>2000,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

@@ -1,7 +1,7 @@
 -- Generado por Oracle SQL Developer Data Modeler 22.2.0.165.1149
---   en:        2022-10-09 22:50:52 CLST
---   sitio:      Oracle Database 11g
---   tipo:      Oracle Database 11g
+--   en:        2022-10-19 14:42:04 CLST
+--   sitio:      Oracle Database 21c
+--   tipo:      Oracle Database 21c
 
 
 
@@ -28,8 +28,6 @@ DROP TABLE detalle_pago CASCADE CONSTRAINTS;
 DROP TABLE empresa CASCADE CONSTRAINTS;
 
 DROP TABLE evento CASCADE CONSTRAINTS;
-
-DROP TABLE medio_pago CASCADE CONSTRAINTS;
 
 DROP TABLE mensaje CASCADE CONSTRAINTS;
 
@@ -65,8 +63,7 @@ CREATE TABLE accidente (
     id_accidente NUMBER(12) NOT NULL,
     rut_usuario  VARCHAR2(20),
     descripcion  VARCHAR2(2000) NOT NULL,
-    tipo         VARCHAR2(200) NOT NULL,
-    id_sala      NUMBER(12) NOT NULL
+    asunto       VARCHAR2(255) NOT NULL
 );
 
 ALTER TABLE accidente ADD CONSTRAINT accidente_pk PRIMARY KEY ( id_accidente );
@@ -75,9 +72,6 @@ CREATE TABLE actividad (
     id_actividad     NUMBER(12) NOT NULL,
     fecha_inicio     DATE NOT NULL,
     fecha_limite     DATE NOT NULL,
-    id_capacitacion  NUMBER(12) NOT NULL,
-    id_visita        NUMBER(12) NOT NULL,
-    id_asesoria      NUMBER(12) NOT NULL,
     id_tipoactividad NUMBER(12) NOT NULL
 );
 
@@ -85,10 +79,10 @@ ALTER TABLE actividad ADD CONSTRAINT actividad_pk PRIMARY KEY ( id_actividad );
 
 CREATE TABLE asesoria (
     id_asesoria    NUMBER(12) NOT NULL,
-    id_evento      NUMBER(12) NOT NULL,
     fecha_asesoria DATE,
-    especial       CHAR(1) NOT NULL,
-    estado         CHAR(1) NOT NULL
+    especial       NUMBER NOT NULL,
+    estado         NUMBER NOT NULL,
+    id_actividad   NUMBER(12) NOT NULL
 );
 
 ALTER TABLE asesoria ADD CONSTRAINT asesoria_pk PRIMARY KEY ( id_asesoria );
@@ -98,7 +92,8 @@ CREATE TABLE capacitacion (
     descripcion_capacitacion VARCHAR2(2000) NOT NULL,
     descripcion_material     VARCHAR2(2000) NOT NULL,
     fecha_capacitacion       DATE,
-    estado                   CHAR(1) NOT NULL
+    estado                   NUMBER NOT NULL,
+    id_actividad             NUMBER(12) NOT NULL
 );
 
 ALTER TABLE capacitacion ADD CONSTRAINT capacitacion_pk PRIMARY KEY ( id_capacitacion );
@@ -106,7 +101,8 @@ ALTER TABLE capacitacion ADD CONSTRAINT capacitacion_pk PRIMARY KEY ( id_capacit
 CREATE TABLE checklist_visita (
     id_checklist NUMBER(12) NOT NULL,
     descripcion  VARCHAR2(2000) NOT NULL,
-    estado       CHAR(1) NOT NULL
+    estado       NUMBER NOT NULL,
+    id_visita    NUMBER(12) NOT NULL
 );
 
 ALTER TABLE checklist_visita ADD CONSTRAINT checklist_visita_pk PRIMARY KEY ( id_checklist );
@@ -120,12 +116,11 @@ CREATE TABLE comuna (
 ALTER TABLE comuna ADD CONSTRAINT comuna_pk PRIMARY KEY ( id_comuna );
 
 CREATE TABLE contrato (
-    id_contrato   NUMBER(12) NOT NULL,
-    fecha_inicio  DATE NOT NULL,
-    fecha_termino DATE NOT NULL,
-    rut_usuario   VARCHAR2(20),
-    estado        VARCHAR2(255) NOT NULL,
-    descripcion   VARCHAR2(2000) NOT NULL
+    id_contrato      NUMBER(12) NOT NULL,
+    fecha_inicio     DATE,
+    fecha_termino    DATE,
+    rut_usuario      VARCHAR2(20),
+    archivo_contrato CLOB
 );
 
 ALTER TABLE contrato ADD CONSTRAINT contrato_pk PRIMARY KEY ( id_contrato );
@@ -140,10 +135,10 @@ CREATE TABLE coste_act (
 ALTER TABLE coste_act ADD CONSTRAINT coste_act_pk PRIMARY KEY ( id_coste );
 
 CREATE TABLE cuenta (
-    id_cuenta VARCHAR2(12) NOT NULL,
+    id_cuenta NUMBER(12) NOT NULL,
     username  VARCHAR2(200) NOT NULL,
     password  VARCHAR2(200) NOT NULL,
-    estado    CHAR(1) NOT NULL,
+    estado    NUMBER NOT NULL,
     id_tipo   NUMBER(2) NOT NULL
 );
 
@@ -169,18 +164,12 @@ CREATE TABLE empresa (
 ALTER TABLE empresa ADD CONSTRAINT empresa_pk PRIMARY KEY ( rut_empresa );
 
 CREATE TABLE evento (
-    id_evento NUMBER(12) NOT NULL,
-    detalle   VARCHAR2(2000)
+    id_evento   NUMBER(12) NOT NULL,
+    detalle     VARCHAR2(2000),
+    id_asesoria NUMBER(12) NOT NULL
 );
 
 ALTER TABLE evento ADD CONSTRAINT evento_pk PRIMARY KEY ( id_evento );
-
-CREATE TABLE medio_pago (
-    id_mediopago NUMBER(12) NOT NULL,
-    nombre       VARCHAR2(255) NOT NULL
-);
-
-ALTER TABLE medio_pago ADD CONSTRAINT medio_pago_pk PRIMARY KEY ( id_mediopago );
 
 CREATE TABLE mensaje (
     id_mensaje  NUMBER(12) NOT NULL,
@@ -192,13 +181,15 @@ CREATE TABLE mensaje (
 ALTER TABLE mensaje ADD CONSTRAINT mensaje_pk PRIMARY KEY ( id_mensaje );
 
 CREATE TABLE pago (
-    id_pago      NUMBER(12) NOT NULL,
-    fecha_pago   DATE NOT NULL,
-    estado       VARCHAR2(100) NOT NULL,
-    monto        NUMBER,
-    id_contrato  NUMBER(12) NOT NULL,
-    tipo_recibo  VARCHAR2(255) NOT NULL,
-    id_mediopago NUMBER(12) NOT NULL
+    id_pago         NUMBER(12) NOT NULL,
+    fecha_pago      DATE NOT NULL,
+    estado          VARCHAR2(100) NOT NULL,
+    monto           NUMBER(24) NOT NULL,
+    tipo_recibo     VARCHAR2(255) NOT NULL,
+    orden_compra    NUMBER(24) NOT NULL,
+    codigo_comercio NUMBER(24) NOT NULL,
+    token           VARCHAR2(255) NOT NULL,
+    id_contrato     NUMBER(12) NOT NULL
 );
 
 ALTER TABLE pago ADD CONSTRAINT pago_pk PRIMARY KEY ( id_pago );
@@ -213,7 +204,6 @@ ALTER TABLE participante ADD CONSTRAINT participante_pk PRIMARY KEY ( id_asignac
 
 CREATE TABLE participante_chat (
     id_participantechat NUMBER(12) NOT NULL,
-    estado              CHAR(1) NOT NULL,
     rut_usuario         VARCHAR2(20) NOT NULL,
     id_sala             NUMBER(12) NOT NULL
 );
@@ -224,7 +214,7 @@ CREATE TABLE plan_mejora (
     id_plan     NUMBER(12) NOT NULL,
     descripcion VARCHAR2(2000) NOT NULL,
     id_visita   NUMBER(12) NOT NULL,
-    estado      CHAR(1) NOT NULL
+    estado      NUMBER NOT NULL
 );
 
 ALTER TABLE plan_mejora ADD CONSTRAINT plan_mejora_pk PRIMARY KEY ( id_plan );
@@ -237,16 +227,18 @@ CREATE TABLE region (
 ALTER TABLE region ADD CONSTRAINT region_pk PRIMARY KEY ( id_region );
 
 CREATE TABLE sala_chat (
-    id_sala      NUMBER(12) NOT NULL,
-    asunto_sala  VARCHAR2(300) NOT NULL,
-    id_accidente NUMBER(12) NOT NULL
+    id_sala       NUMBER(12) NOT NULL,
+    asunto_sala   VARCHAR2(300) NOT NULL,
+    id_accidente  NUMBER(12) NOT NULL,
+    estado        NUMBER NOT NULL,
+    id_accidente1 NUMBER NOT NULL
 );
 
 ALTER TABLE sala_chat ADD CONSTRAINT sala_chat_pk PRIMARY KEY ( id_sala );
 
 CREATE TABLE sesion (
     id_sesion  NUMBER(12) NOT NULL,
-    id_cuenta  VARCHAR2(12),
+    id_cuenta  NUMBER(12),
     llave      VARCHAR2(300) NOT NULL,
     expiracion DATE NOT NULL
 );
@@ -283,7 +275,7 @@ CREATE TABLE usuario (
     email       VARCHAR2(200) NOT NULL,
     telefono    NUMBER(12) NOT NULL,
     imagen      CLOB,
-    id_cuenta   VARCHAR2(12) NOT NULL
+    id_cuenta   NUMBER(12) NOT NULL
 );
 
 ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY ( rut_usuario );
@@ -292,39 +284,31 @@ CREATE TABLE visita (
     id_visita    NUMBER(12) NOT NULL,
     user_role    VARCHAR2(200) NOT NULL,
     fecha_visita DATE,
-    estado       CHAR(1) NOT NULL,
-    id_checklist NUMBER(12) NOT NULL
+    estado       NUMBER NOT NULL,
+    id_actividad NUMBER(12) NOT NULL
 );
 
 ALTER TABLE visita ADD CONSTRAINT visita_pk PRIMARY KEY ( id_visita );
-
-ALTER TABLE accidente
-    ADD CONSTRAINT accidente_sala_chat_fk FOREIGN KEY ( id_sala )
-        REFERENCES sala_chat ( id_sala );
 
 ALTER TABLE accidente
     ADD CONSTRAINT accidente_usuario_fk FOREIGN KEY ( rut_usuario )
         REFERENCES usuario ( rut_usuario );
 
 ALTER TABLE actividad
-    ADD CONSTRAINT actividad_asesoria_fk FOREIGN KEY ( id_asesoria )
-        REFERENCES asesoria ( id_asesoria );
-
-ALTER TABLE actividad
-    ADD CONSTRAINT actividad_capacitacion_fk FOREIGN KEY ( id_capacitacion )
-        REFERENCES capacitacion ( id_capacitacion );
-
-ALTER TABLE actividad
     ADD CONSTRAINT actividad_tipo_actividad_fk FOREIGN KEY ( id_tipoactividad )
         REFERENCES tipo_actividad ( id_tipoactividad );
 
-ALTER TABLE actividad
-    ADD CONSTRAINT actividad_visita_fk FOREIGN KEY ( id_visita )
-        REFERENCES visita ( id_visita );
-
 ALTER TABLE asesoria
-    ADD CONSTRAINT asesoria_evento_fk FOREIGN KEY ( id_evento )
-        REFERENCES evento ( id_evento );
+    ADD CONSTRAINT asesoria_actividad_fk FOREIGN KEY ( id_actividad )
+        REFERENCES actividad ( id_actividad );
+
+ALTER TABLE capacitacion
+    ADD CONSTRAINT capacitacion_actividad_fk FOREIGN KEY ( id_actividad )
+        REFERENCES actividad ( id_actividad );
+
+ALTER TABLE checklist_visita
+    ADD CONSTRAINT checklist_visita_visita_fk FOREIGN KEY ( id_visita )
+        REFERENCES visita ( id_visita );
 
 ALTER TABLE comuna
     ADD CONSTRAINT comuna_region_fk FOREIGN KEY ( id_region )
@@ -350,6 +334,10 @@ ALTER TABLE empresa
     ADD CONSTRAINT empresa_usuario_fk FOREIGN KEY ( rut_usuario )
         REFERENCES usuario ( rut_usuario );
 
+ALTER TABLE evento
+    ADD CONSTRAINT evento_asesoria_fk FOREIGN KEY ( id_asesoria )
+        REFERENCES asesoria ( id_asesoria );
+
 ALTER TABLE mensaje
     ADD CONSTRAINT mensaje_sala_chat_fk FOREIGN KEY ( id_sala )
         REFERENCES sala_chat ( id_sala );
@@ -361,10 +349,6 @@ ALTER TABLE mensaje
 ALTER TABLE pago
     ADD CONSTRAINT pago_contrato_fk FOREIGN KEY ( id_contrato )
         REFERENCES contrato ( id_contrato );
-
-ALTER TABLE pago
-    ADD CONSTRAINT pago_medio_pago_fk FOREIGN KEY ( id_mediopago )
-        REFERENCES medio_pago ( id_mediopago );
 
 ALTER TABLE participante
     ADD CONSTRAINT participante_actividad_fk FOREIGN KEY ( id_actividad )
@@ -407,23 +391,25 @@ ALTER TABLE usuario
         REFERENCES cuenta ( id_cuenta );
 
 ALTER TABLE visita
-    ADD CONSTRAINT visita_checklist_visita_fk FOREIGN KEY ( id_checklist )
-        REFERENCES checklist_visita ( id_checklist );
+    ADD CONSTRAINT visita_actividad_fk FOREIGN KEY ( id_actividad )
+        REFERENCES actividad ( id_actividad );
+
+CREATE SEQUENCE contrato_id_contrato_seq START WITH 1 NOCACHE ORDER;
 
 
 
 -- Informe de Resumen de Oracle SQL Developer Data Modeler: 
 -- 
--- CREATE TABLE                            26
+-- CREATE TABLE                            25
 -- CREATE INDEX                             0
--- ALTER TABLE                             54
+-- ALTER TABLE                             51
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
 -- CREATE PACKAGE                           0
 -- CREATE PACKAGE BODY                      0
 -- CREATE PROCEDURE                         0
 -- CREATE FUNCTION                          0
--- CREATE TRIGGER                           0
+-- CREATE TRIGGER                           1
 -- ALTER TRIGGER                            0
 -- CREATE COLLECTION TYPE                   0
 -- CREATE STRUCTURED TYPE                   0
@@ -436,7 +422,7 @@ ALTER TABLE visita
 -- CREATE DISK GROUP                        0
 -- CREATE ROLE                              0
 -- CREATE ROLLBACK SEGMENT                  0
--- CREATE SEQUENCE                          0
+-- CREATE SEQUENCE                          1
 -- CREATE MATERIALIZED VIEW                 0
 -- CREATE MATERIALIZED VIEW LOG             0
 -- CREATE SYNONYM                           0

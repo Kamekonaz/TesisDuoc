@@ -1,0 +1,112 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_1" id="6123B3C6-7408-C5D4-5761-8E89AB809B16" name="VISITA">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>3219C177-48ED-E0A2-D1C5-D7136E6F8CC0</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_visita" id="2BF0F22E-D60C-804C-91DF-82E181A072AD">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>31845068-F333-76B4-AFCD-41B21607419C</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="user_role" id="CDE4E6C1-8734-C424-6789-E52F46A6EB3B">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>BB1A8EC7-AA7D-8FBD-9E22-91A6C03C7658</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_visita" id="30513525-CA4F-B84A-5302-AABA956AD3C9">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>1DC5E865-B7F7-3D0F-6BF3-C24F301FD3A4</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="estado" id="D799C837-82D2-E803-47C3-470BEF4DBC8F">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>EE877386-6346-0CEC-353E-0547D9797BA1</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_actividad" id="C7FDC0D9-D774-D751-8164-2525A79CA120">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-19 17:40:33 UTC</createdTime>
+<generatorID>A37E62CC-609D-D275-54A6-FE5FA31561FE</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="12984C3C-1A1A-F7D7-52C0-D245F0ED760A" referredColumn="38678420-11CA-B540-D709-8EF61F375D8A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="75C79CC6-442B-7A9F-EC17-4A40C1B72D1C" name="VISITA_PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>B78DA4DA-B88E-F08F-A1B1-CBE62E767789</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2BF0F22E-D60C-804C-91DF-82E181A072AD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5524B97C-CA4B-837D-E9B5-C794E82E8085" name="VISITA__IDX">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-19 17:40:33 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>CA198DF0-0643-F0B3-C9CF-478C17E4B350</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="C7FDC0D9-D774-D751-8164-2525A79CA120"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C7954ADF-71E5-B1AF-98CE-2E41666BBA1F" name="VISITA_ACTIVIDAD_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-19 17:40:33 UTC</createdTime>
+<generatorID>CA198DF0-0643-F0B3-C9CF-478C17E4B350</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C7FDC0D9-D774-D751-8164-2525A79CA120"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

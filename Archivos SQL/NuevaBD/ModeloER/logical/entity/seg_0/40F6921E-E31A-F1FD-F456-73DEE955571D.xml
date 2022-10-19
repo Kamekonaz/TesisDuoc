@@ -80,14 +80,30 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_actividad" id="A79E896A-8F0C-8064-C96D-8C71BD08D175">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-19 17:40:18 UTC</createdTime>
+<generatorID>E554D9D4-FFC3-77D9-C02C-EC2C33C4A822</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>E1F6FE18-E298-D836-31D4-DAB345FA895D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="88AB87CE-D5CD-84EB-20F1-2585C5B9715E" name="CAPACITACION PK">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-08-28 19:14:28 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

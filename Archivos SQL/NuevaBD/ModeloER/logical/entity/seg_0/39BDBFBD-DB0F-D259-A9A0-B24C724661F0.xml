@@ -42,6 +42,21 @@
 <dataTypeSize>2000</dataTypeSize>
 <ownDataTypeParameters>2000,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_asesoria" id="FDD932C7-3801-201C-26BC-490667BEADF7">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:45:47 UTC</createdTime>
+<generatorID>D33E4F20-B9F1-DD5E-6328-1C56F8A0F1BD</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>A3FFB553-580E-8D8A-2E7B-504A83AAF562</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="84CAFB52-AB82-E4EA-97FA-887FB6DAF92D" name="EVENTO PK">

@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="109051B2-ED5A-69B9-A92D-E96FFFC15331" name="DETALLE_PAGO">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>F0786B59-F702-DAA3-6CF7-CF5E42566919</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_detallepago" id="7AEB9E54-07DB-8826-BF92-DCF9A1A449C4">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>21126071-9FFF-4FAE-4F83-AC7DF48CFF93</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="coste_servicios_fijos" id="E696F533-DE6B-D201-7CD6-67D1EC7B87C6">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>46617829-AB49-6EEB-C9E4-A807DBE19BE4</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>25</dataTypePrecision>
+<ownDataTypeParameters>,25,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="coste_servicios_extras" id="1649BC11-518D-DE8A-2C74-76D88080272A">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>A020F578-4CE4-B0F0-8EEB-CDCD491A705B</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>25</dataTypePrecision>
+<ownDataTypeParameters>,25,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_pago" id="28DDBB2D-DD26-89F8-03AF-CB1E4EE09A7D">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>2D3CF399-7350-F436-CC2C-6EA05EC77AC5</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ABFC75EF-DFE3-74A7-B4D0-1C058102E33D" referredColumn="FD5C7518-C904-3C05-2C1A-3D1C31F1DC2D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0AE31822-B59F-3917-E73D-B9DD24D92F5B" name="DETALLE_PAGO_PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>9A5527F8-15DB-B2B5-0443-1D63D32D6BDF</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7AEB9E54-07DB-8826-BF92-DCF9A1A449C4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6E348393-07C1-DB0B-7540-C6858B555A00" name="DETALLE_PAGO__IDX">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>AC585B2F-E4B7-6296-E9E9-9093EF8CE120</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="28DDBB2D-DD26-89F8-03AF-CB1E4EE09A7D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="23F215D5-32C4-E476-9F80-0097A20DDCFE" name="DETALLE_PAGO_PAGO_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>AC585B2F-E4B7-6296-E9E9-9093EF8CE120</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="28DDBB2D-DD26-89F8-03AF-CB1E4EE09A7D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

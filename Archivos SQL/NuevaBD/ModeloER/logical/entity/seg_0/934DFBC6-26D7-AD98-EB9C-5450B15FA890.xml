@@ -40,7 +40,8 @@
 <referedAttribute>C1E4E353-8E99-5482-BCF5-0FE6BEBBF81D</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
 <dataTypeSize>12</dataTypeSize>
 <ownDataTypeParameters>12,,</ownDataTypeParameters>
 </Attribute>

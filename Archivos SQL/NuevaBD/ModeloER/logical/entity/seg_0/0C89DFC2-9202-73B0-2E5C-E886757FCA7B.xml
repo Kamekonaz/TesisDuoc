@@ -54,14 +54,30 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_visita" id="D65ACF30-1F4F-8E3A-2E24-9F9C15A69ECB">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-19 17:41:20 UTC</createdTime>
+<generatorID>C49BEFB8-4F0A-3176-A1FF-B2987E09BA95</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>31845068-F333-76B4-AFCD-41B21607419C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="F3DA552D-A50D-46D6-226A-A9C4EF8B11FB" name="CHECKLIST_VISITA PK">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-08-31 00:50:19 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

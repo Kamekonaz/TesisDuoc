@@ -67,20 +67,20 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_checklist" id="0100D7CC-F646-796A-6C2D-C1AC8E1E3EA2">
+<Attribute name="id_actividad" id="A37E62CC-609D-D275-54A6-FE5FA31561FE">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-08-31 00:50:21 UTC</createdTime>
-<generatorID>C49BEFB8-4F0A-3176-A1FF-B2987E09BA95</generatorID>
+<createdTime>2022-10-19 17:40:14 UTC</createdTime>
+<generatorID>CA198DF0-0643-F0B3-C9CF-478C17E4B350</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
 </engineerTo>
-<referedAttribute>EAF6B64B-D6B2-F0DA-6132-3FA57B68125A</referedAttribute>
+<referedAttribute>E1F6FE18-E298-D836-31D4-DAB345FA895D</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

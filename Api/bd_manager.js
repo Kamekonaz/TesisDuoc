@@ -120,6 +120,28 @@ class BdManager {
         }     
     }
 
+    static async report_accident(id_accidente, rut_usuario, descripcion, asunto){
+      try{
+          const Connection = await oracledb.getConnection(db_credentials);
+      
+          const result = await Connection.execute(
+            `BEGIN
+                pkg_client.pcr_report_accident(:v_asunto, :v_rut_usuario, :v_descripcion, :v_asunto);
+             END;`,
+            {  
+              v_asunto: id_accidente,
+              v_rut_usuario: rut_usuario,
+              v_descripcion: descripcion,
+              v_asunto: asunto,
+            }
+          );
+ 
+          await Connection.close()
+  
+        } catch(err){
+            console.log(err)
+        }
+    }
 
     static async get_users_by_usertype(usertype){
       try{

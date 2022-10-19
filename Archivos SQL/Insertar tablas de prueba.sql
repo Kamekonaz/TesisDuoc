@@ -1,4 +1,5 @@
 truncate table empresa;
+truncate table contrato;
 truncate table usuario;
 truncate table cuenta;
 truncate table tipo_usuario;
@@ -57,7 +58,6 @@ values(17, 'dal_revis', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZ
 
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)
 values(18, 'liz_pizarra', '$2b$10$k2Rqi7YuNC323rraouJzIe9ycjSVt16V79hZY3LQ/Xizd6HZDq7qu', 0, 3);
-
 
 
 

@@ -171,10 +171,11 @@ end pkg_register;
 -- Hasta ac?
 
 /
-
 -- Package de login ejecutar desde ac?
 -------------------------------------------------------------
 create or replace package body pkg_register as
+    
+
     function fn_get_account_id (f_username varchar)
     return number as
         v_account_id number(10);
@@ -336,7 +337,34 @@ create or replace package body pkg_list as
     
 end pkg_list;
 
+/
 
+
+create or replace package pkg_client as
+    procedure pcr_report_accident(f_id_accidente number, f_rut_usuario varchar, f_descripcion varchar, f_asunto varchar);
+end pkg_client;
+/
+
+create or replace package body pkg_client as
+    procedure pcr_report_accident(f_id_accidente number, f_rut_usuario varchar, f_descripcion varchar, f_asunto varchar)
+    is
+        v_id_accidente number(12);
+        v_accidentes_count number(12);
+        v_max_accidents number(12);
+    begin
+        select count(*), max(to_number(id_accidente)) into v_accidentes_count, v_max_accidents from accidente;
+        if v_accidentes_count > 0 then v_id_accidente := v_max_accidents+1;
+        else v_id_accidente := 1;
+        end if;
+        
+        insert into accidente values(
+            v_id_accidente,
+            f_rut_usuario,
+            f_descripcion,
+            f_asunto
+        );
+    end;
+end pkg_client;
 /
 
 

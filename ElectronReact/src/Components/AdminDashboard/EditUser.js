@@ -20,6 +20,7 @@ function EditUser() {
     const urlparams = new URLSearchParams(window.location.search);
     //console.log(urlparams.get("dashboardOption"))
     const previousRoute = window.location.origin + "/adminDashboard/" + (urlparams.get("dashboardOption") ? urlparams.get("dashboardOption") : "")
+    const [isClient, setIsClient] = React.useState(false)
     const [editData, setEditData] = React.useState({
         imagePFP:"", 
         username:"",
@@ -38,6 +39,7 @@ function EditUser() {
             sessionKey: cookies.get("sessionKey")
         }
         const userData = (await axios.post('http://localhost:3001/getwholeuserdata', data)).data
+        if(userData["ID_TIPO"] === 3) setIsClient(true)
         userRutDisplay.innerHTML = "Rut: "+userData["RUT_USUARIO"]
 
         setEditData({
@@ -181,7 +183,19 @@ function EditUser() {
                                 </div> 
                             </div> 
                             <div className="mx-auto text-sm">Click para cambiar</div>
+                            {
+                                (isClient) ? 
+                                <div className="flex w-36 mx-auto bg-black rounded rounded-lg overflow-hidden border border-gray-900 shadow-sm">
+                                    <img className="opacity-75 hover:opacity-50"
+                                    src="https://img.freepik.com/vector-gratis/hombre-negocios-agitando-manos-sobre-contrato-firmado_3446-646.jpg?w=2000" alt=""/>
+                                </div>
+                                :
+                                ""
+                            }
+                            
                         </div>
+
+                        
                 </div>
                     
                 </div>

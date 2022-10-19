@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FC20893F-6B8D-6312-03C0-208CF3DDD37B" name="MENSAJE">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>0CFFB174-A5E7-BA76-993C-D9C16859686D</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_mensaje" id="6CB17063-3B20-1D36-31B5-4871C050C94A">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>01BCD7AD-CA98-B042-CDC0-0E8F7BC2EB60</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mensaje" id="0C23254C-5EE7-35EE-EA4D-6FE939A85717">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>2B9928C0-2743-13CB-8FF9-7F364BC80503</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2000</dataTypeSize>
+<ownDataTypeParameters>2000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_sala" id="6060AA30-A2DC-9C48-2E61-9E3C989487A5">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>4B6F1B8C-918E-8934-A9F0-24E6399CC3FB</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="92A0558B-6CE7-89A0-2081-15D38318DB43" referredColumn="6813CCEB-0260-FA32-BB0A-20C8CF44D986"/>
+</associations>
+</Column>
+<Column name="rut_usuario" id="2AFDECC7-4E08-6F9A-B331-7A65FD2D1F00">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>1942DF11-72C1-FB56-1E36-C35A67C52F74</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2C0049B4-3AC4-379A-6318-AF0552AB36CF" referredColumn="8F21080E-3C40-4043-46D8-B4FFB17FE19B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C938EC81-5697-159D-5770-D1D64C36737B" name="MENSAJE_PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>57FE9F48-F925-2C7A-6E95-C98DFB741C8C</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6CB17063-3B20-1D36-31B5-4871C050C94A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6A3D2288-EDC0-A2D0-9C2A-FFEB764A7FC2" name="MENSAJE_SALA_CHAT_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>B1C0FE94-C310-C1F3-FBE4-455C477E6D27</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6060AA30-A2DC-9C48-2E61-9E3C989487A5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E73895E7-1175-3533-BD1D-7E49F2C7016C" name="MENSAJE_USUARIO_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>A3D31A22-CFD5-CAED-00F0-E5E34478CBD4</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2AFDECC7-4E08-6F9A-B331-7A65FD2D1F00"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -6,6 +6,7 @@ const PORT = 3001;
 const BdManager = require('./bd_manager')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const TransbankController = require('./TransbankControler')
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -54,6 +55,33 @@ app.post('/deleteUser', async (req, res) =>{
         })
     }
     
+       
+})
+
+app.post("/pagar", TransbankController.doPayment);
+app.post("/verificar", TransbankController.verifyPayment);
+app.post('/anular', TransbankController.refundPayment);
+
+app.post('/report_accident', async (req, res) =>{
+    try {
+        const { id_accidente, rut_usuario, descripcion, asunto, sessionKey } = req.body
+
+
+        const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
+        const userData = await BdManager.getUserDataById(accountID);
+
+        if(userData["ID_TIPO"] != "3") res.send({ error: "Usuario incorrecto"})
+
+        await BdManager.report_accident(id_accidente, rut_usuario, descripcion, asunto)
+
+        res.send({
+            result: "done"
+        })
+    } catch (error) {
+        res.send({
+            result: "error"
+        })  
+    }
        
 })
 
@@ -217,16 +245,17 @@ app.post('/isSessionValid', async(req, res) =>{
         const { sessionKey, expectedUserTypes } = req.body
 
         const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
+        if(accountID == 0) return res.send({valid: false}) 
         const userData = await BdManager.getUserDataById(accountID);
-        if(!expectedUserTypes.includes(userData["ID_TIPO"])) res.send({valid: false})
+        if(!expectedUserTypes.includes(userData["ID_TIPO"])) return res.send({valid: false})
 
-        res.send({
+        return res.send({
             //valid: false
             valid: (accountID != 0) ? true : false
         })
         
     } catch (error) {
-        res.send({
+        return res.send({
             valid: false
         })
     } 

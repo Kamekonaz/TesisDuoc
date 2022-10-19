@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_1" id="B4D4818F-7625-FC4D-44C4-30E3E12FB016" containerWithKeyObject="CB89E4F1-F8B1-2259-BC2D-3867FCA6FAC5" localFKIndex="62701DA6-1975-AB89-68C5-995E5D3ACBDD" name="SUCURSAL_EMPRESA_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>A48092CB-EE05-F23C-927A-090D3C47C6CE</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<referredTableLongName>EMPRESA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>2260D841-AF94-28FF-7209-F804C8BDED9C</referredTableID>
+<keyObject>E1DA256B-4F4C-0606-7400-2413E5247CFC</keyObject>
+<referredKeyID>E1DA256B-4F4C-0606-7400-2413E5247CFC</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>rut_empresa</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

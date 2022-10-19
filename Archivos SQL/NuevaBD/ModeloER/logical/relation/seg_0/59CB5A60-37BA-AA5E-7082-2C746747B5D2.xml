@@ -7,9 +7,10 @@
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
 </engineerTo>
 <sourcePk>BA6DB70D-A463-10EE-C1F3-59F57CAD3F39</sourcePk>
+<targetPk>F9529F85-DB5D-5BA5-0AD6-ED736319E1EF</targetPk>
 <identifying>false</identifying>
-<optionalSource>true</optionalSource>
-<optionalTarget>false</optionalTarget>
+<optionalSource>false</optionalSource>
+<optionalTarget>true</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
 <sourceEntity>903DD9AB-2856-4A8F-A671-73097C44C977</sourceEntity>
 <targetCardinalityString>1</targetCardinalityString>

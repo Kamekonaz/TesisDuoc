@@ -9,9 +9,9 @@
 <sourcePk>B78DA4DA-B88E-F08F-A1B1-CBE62E767789</sourcePk>
 <targetPk>F3DA552D-A50D-46D6-226A-A9C4EF8B11FB</targetPk>
 <identifying>false</identifying>
-<optionalSource>false</optionalSource>
-<optionalTarget>true</optionalTarget>
-<sourceCardinality>*</sourceCardinality>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
 <sourceEntity>3219C177-48ED-E0A2-D1C5-D7136E6F8CC0</sourceEntity>
 <targetCardinalityString>1</targetCardinalityString>
 <targetEntity>0C89DFC2-9202-73B0-2E5C-E886757FCA7B</targetEntity>

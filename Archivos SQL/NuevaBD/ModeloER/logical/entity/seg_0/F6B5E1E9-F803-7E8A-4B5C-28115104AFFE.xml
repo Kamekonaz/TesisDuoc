@@ -57,7 +57,7 @@
 <dataTypeSize>2000</dataTypeSize>
 <ownDataTypeParameters>2000,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="tipo" id="1F58FF9E-BB82-1EC7-E142-F07C47E122A5">
+<Attribute name="asunto" id="1F58FF9E-BB82-1EC7-E142-F07C47E122A5">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-08-28 00:12:01 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
@@ -67,23 +67,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>200</dataTypeSize>
-<ownDataTypeParameters>200,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_sala" id="FFC16B84-3578-36F5-0083-1773D4436778">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-09-29 18:50:11 UTC</createdTime>
-<generatorID>2AC274BC-F1E1-6406-FDF5-7C884110AAED</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
-</engineerTo>
-<referedAttribute>8173F657-EEB4-1108-483B-C04A052F36BB</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -91,8 +76,9 @@
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-08-26 19:16:14 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
