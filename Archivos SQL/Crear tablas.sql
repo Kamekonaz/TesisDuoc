@@ -1,7 +1,7 @@
 -- Generado por Oracle SQL Developer Data Modeler 22.2.0.165.1149
---   en:        2022-10-19 14:42:04 CLST
---   sitio:      Oracle Database 21c
---   tipo:      Oracle Database 21c
+--   en:        2022-10-26 13:37:33 CLST
+--   sitio:      Oracle Database 11g
+--   tipo:      Oracle Database 11g
 
 
 
@@ -70,19 +70,17 @@ ALTER TABLE accidente ADD CONSTRAINT accidente_pk PRIMARY KEY ( id_accidente );
 
 CREATE TABLE actividad (
     id_actividad     NUMBER(12) NOT NULL,
-    fecha_inicio     DATE NOT NULL,
-    fecha_limite     DATE NOT NULL,
+    fecha_actividad  DATE NOT NULL,
     id_tipoactividad NUMBER(12) NOT NULL
 );
 
 ALTER TABLE actividad ADD CONSTRAINT actividad_pk PRIMARY KEY ( id_actividad );
 
 CREATE TABLE asesoria (
-    id_asesoria    NUMBER(12) NOT NULL,
-    fecha_asesoria DATE,
-    especial       NUMBER NOT NULL,
-    estado         NUMBER NOT NULL,
-    id_actividad   NUMBER(12) NOT NULL
+    id_asesoria  NUMBER(12) NOT NULL,
+    especial     CHAR(1) NOT NULL,
+    estado       CHAR(1) NOT NULL,
+    id_actividad NUMBER(12) NOT NULL
 );
 
 ALTER TABLE asesoria ADD CONSTRAINT asesoria_pk PRIMARY KEY ( id_asesoria );
@@ -91,8 +89,7 @@ CREATE TABLE capacitacion (
     id_capacitacion          NUMBER(12) NOT NULL,
     descripcion_capacitacion VARCHAR2(2000) NOT NULL,
     descripcion_material     VARCHAR2(2000) NOT NULL,
-    fecha_capacitacion       DATE,
-    estado                   NUMBER NOT NULL,
+    estado                   CHAR(1) NOT NULL,
     id_actividad             NUMBER(12) NOT NULL
 );
 
@@ -101,7 +98,7 @@ ALTER TABLE capacitacion ADD CONSTRAINT capacitacion_pk PRIMARY KEY ( id_capacit
 CREATE TABLE checklist_visita (
     id_checklist NUMBER(12) NOT NULL,
     descripcion  VARCHAR2(2000) NOT NULL,
-    estado       NUMBER NOT NULL,
+    estado       CHAR(1) NOT NULL,
     id_visita    NUMBER(12) NOT NULL
 );
 
@@ -138,7 +135,7 @@ CREATE TABLE cuenta (
     id_cuenta NUMBER(12) NOT NULL,
     username  VARCHAR2(200) NOT NULL,
     password  VARCHAR2(200) NOT NULL,
-    estado    NUMBER NOT NULL,
+    estado    CHAR(1) NOT NULL,
     id_tipo   NUMBER(2) NOT NULL
 );
 
@@ -214,7 +211,7 @@ CREATE TABLE plan_mejora (
     id_plan     NUMBER(12) NOT NULL,
     descripcion VARCHAR2(2000) NOT NULL,
     id_visita   NUMBER(12) NOT NULL,
-    estado      NUMBER NOT NULL
+    estado      CHAR(1) NOT NULL
 );
 
 ALTER TABLE plan_mejora ADD CONSTRAINT plan_mejora_pk PRIMARY KEY ( id_plan );
@@ -230,8 +227,8 @@ CREATE TABLE sala_chat (
     id_sala       NUMBER(12) NOT NULL,
     asunto_sala   VARCHAR2(300) NOT NULL,
     id_accidente  NUMBER(12) NOT NULL,
-    estado        NUMBER NOT NULL,
-    id_accidente1 NUMBER NOT NULL
+    estado        CHAR(1) NOT NULL,
+    id_accidente1 NUMBER(12) NOT NULL
 );
 
 ALTER TABLE sala_chat ADD CONSTRAINT sala_chat_pk PRIMARY KEY ( id_sala );
@@ -282,9 +279,7 @@ ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY ( rut_usuario );
 
 CREATE TABLE visita (
     id_visita    NUMBER(12) NOT NULL,
-    user_role    VARCHAR2(200) NOT NULL,
-    fecha_visita DATE,
-    estado       NUMBER NOT NULL,
+    estado       CHAR(1) NOT NULL,
     id_actividad NUMBER(12) NOT NULL
 );
 

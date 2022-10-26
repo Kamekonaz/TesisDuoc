@@ -5,6 +5,7 @@ import axios from "axios";
 import Cookies from 'universal-cookie';
 import ClientSidebar from "./ClientSidebar";
 import { NavLink } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 
 
@@ -22,6 +23,29 @@ function ReportarAccidente() {
         const userData = loadUserData();
         console.log(userData)
         console.log(asunto, descripcion)
+        const data = {
+            rut_usuario: userData["RUT_USUARIO"], 
+            descripcion: descripcion, 
+            asunto: asunto,
+            sessionKey: cookies.get("sessionKey")
+        }
+
+        await axios.post('http://localhost:3001/report_accident', data).then(
+            Swal.fire({
+                title: "<h5 style='color:white'>Exito</h5>",
+                html: "<p style='color:white'>Accidente reportado exitosamente</p>",
+                icon: 'success',
+                background: '#272727',
+                showCancelButton: false,
+                confirmButtonColor: '#7BCA6F',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = window.location.origin + "/dashboard/dashboardOption1"
+                }
+            })
+        );
     }
 
   return (

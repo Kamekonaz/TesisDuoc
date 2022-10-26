@@ -5,7 +5,7 @@ import axios from "axios";
 import Cookies from 'universal-cookie';
 import guro_icon from './guro_icon.png'
 const LOGIN_URL = "http://localhost:3001/login"
-const EXPECTED_USERS = [1]
+const EXPECTED_USERS = [1, 2]
 
 
 
@@ -42,7 +42,14 @@ function LoginView() {
               window.location.href = window.location.origin + "/adminDashboard"
           
           } 
-          if(resultData["idTipo"] === 2) return // Vista de profesional
+          if(resultData["idTipo"] === 2) {
+            const data = {
+                sessionKey:  cookies.get("sessionKey")
+            }
+            const userData = (await axios.post('http://localhost:3001/getselfuserdata', data)).data
+            localStorage.setItem('userData', JSON.stringify(userData))
+            window.location.href = window.location.origin + "/professionalDashboard"
+          }
         }
         else{
           // Error datos incorrectos

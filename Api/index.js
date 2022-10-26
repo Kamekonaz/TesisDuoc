@@ -64,7 +64,7 @@ app.post('/anular', TransbankController.refundPayment);
 
 app.post('/report_accident', async (req, res) =>{
     try {
-        const { id_accidente, rut_usuario, descripcion, asunto, sessionKey } = req.body
+        const { rut_usuario, descripcion, asunto, sessionKey } = req.body
 
 
         const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
@@ -72,7 +72,7 @@ app.post('/report_accident', async (req, res) =>{
 
         if(userData["ID_TIPO"] != "3") res.send({ error: "Usuario incorrecto"})
 
-        await BdManager.report_accident(id_accidente, rut_usuario, descripcion, asunto)
+        await BdManager.report_accident(rut_usuario, descripcion, asunto)
 
         res.send({
             result: "done"
@@ -93,6 +93,23 @@ app.post('/editUser', async (req, res) =>{
     await BdManager.updateUserData(f_accountID, f_image, 
         f_username, f_nombres, f_apellidos, 
         f_email, f_telefono, f_estado)
+
+
+    res.send({
+        result: "done"
+    })
+       
+})
+
+app.post('/crearCapacitacion', async (req, res) =>{
+    const { descripcion, material, fecha, rut_usuario, sessionKey } = req.body
+
+    const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
+    const userData = await BdManager.getUserDataById(accountID);
+
+    if(userData["ID_TIPO"] != "2") res.send({ error: "Usuario incorrecto"})
+
+    await BdManager.crearCapacitacion(descripcion, material, fecha, rut_usuario)
 
 
     res.send({
@@ -326,7 +343,7 @@ app.post('/listUsersByUserType', async (req, res) =>{
         // Profesional
         case 2:
             // No puede obtener información de otros usuarios 
-            return { error: "Ha ocurrido un error" }
+            return res.send(targetUsersData)
             break;
 
         // Cliente

@@ -341,12 +341,12 @@ end pkg_list;
 
 
 create or replace package pkg_client as
-    procedure pcr_report_accident(f_id_accidente number, f_rut_usuario varchar, f_descripcion varchar, f_asunto varchar);
+    procedure pcr_report_accident(f_rut_usuario varchar, f_descripcion varchar, f_asunto varchar);
 end pkg_client;
 /
 
 create or replace package body pkg_client as
-    procedure pcr_report_accident(f_id_accidente number, f_rut_usuario varchar, f_descripcion varchar, f_asunto varchar)
+    procedure pcr_report_accident(f_rut_usuario varchar, f_descripcion varchar, f_asunto varchar)
     is
         v_id_accidente number(12);
         v_accidentes_count number(12);
@@ -363,8 +363,165 @@ create or replace package body pkg_client as
             f_descripcion,
             f_asunto
         );
+        
+        commit work;
     end;
 end pkg_client;
+/
+
+create or replace package pkg_util as
+    procedure sp_add_participante(id_actividad number, rut_usuario varchar2);
+end pkg_util;
+
+/
+
+create or replace package body pkg_util as
+    procedure sp_add_participante(id_actividad number, rut_usuario varchar2)
+    
+    is
+        v_maintable_id number(12);
+        v_maintablerow_count number(12);
+        v_maintablemax_id number(12);
+
+    begin
+        select count(*), max(to_number(id_asignacion)) into v_maintablerow_count, v_maintablemax_id from participante;
+            if v_maintablerow_count > 0 then v_maintable_id := v_maintablemax_id+1;
+            else v_maintable_id := 1;
+            end if;
+        
+        insert into participante values(v_maintable_id, id_actividad, rut_usuario);
+        commit work;
+    end;
+end pkg_util;
+
+/
+
+create or replace package pkg_function_profesional AS 
+
+PROCEDURE SP_CREAR_CAPACITACION (
+F_DESCRIPCION_CAPACITACION VARCHAR2,
+F_DESCRIPCION_MATERIAL VARCHAR2, F_FECHA_CAPACITACION varchar2, f_rut_usuario varchar2);
+
+procedure SP_CREAR_ASESORIA (
+        f_especial char, f_fecha varchar2);
+        
+procedure SP_CREAR_VISITA (f_fecha varchar2);
+
+end pkg_function_profesional;
+/
+-- PROCEDIMIENTO CREAR CAPACITACION
+
+create or replace package body pkg_function_profesional AS 
+    PROCEDURE SP_CREAR_CAPACITACION (
+        F_DESCRIPCION_CAPACITACION VARCHAR2,
+        F_DESCRIPCION_MATERIAL VARCHAR2, F_FECHA_CAPACITACION varchar2, f_rut_usuario varchar2)
+        IS
+            v_fecha_datetime timestamp;
+            v_id_actividad number(12);
+            v_actividades_count number(12);
+            v_max_actividades number(12);
+            
+            v_maintable_id number(12);
+            v_maintablerow_count number(12);
+            v_maintablemax_id number(12);
+        BEGIN
+            select to_date(F_FECHA_CAPACITACION,'ddmmyyyy HH24:MI:SS') into v_fecha_datetime from dual;
+            
+            select count(*), max(to_number(id_actividad)) into v_actividades_count, v_max_actividades from actividad;
+                if v_actividades_count > 0 then v_id_actividad := v_max_actividades+1;
+                else v_id_actividad := 1;
+                end if;
+                
+            insert into actividad values(v_id_actividad, v_fecha_datetime, 2);
+            
+            commit work;
+            
+            select count(*), max(to_number(id_capacitacion)) into v_maintablerow_count, v_maintablemax_id from capacitacion;
+                if v_maintablerow_count > 0 then v_maintable_id := v_maintablemax_id+1;
+                else v_maintable_id := 1;
+                end if;
+            
+            
+            pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario);
+            INSERT INTO CAPACITACION VALUES (v_maintable_id, F_DESCRIPCION_CAPACITACION,F_DESCRIPCION_MATERIAL, 0, v_id_actividad);
+        EXCEPTION
+            WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(SQLERRM);
+        END ;
+        
+    PROCEDURE SP_CREAR_ASESORIA(
+        f_especial char, f_fecha varchar2)
+        IS
+            v_fecha_datetime timestamp;
+            v_id_actividad number(12);
+            v_actividades_count number(12);
+            v_max_actividades number(12);
+            
+            v_maintable_id number(12);
+            v_maintablerow_count number(12);
+            v_maintablemax_id number(12);
+        BEGIN
+            select to_date(f_fecha,'ddmmyyyy HH24:MI:SS') into v_fecha_datetime from dual;
+            
+            select count(*), max(to_number(id_actividad)) into v_actividades_count, v_max_actividades from actividad;
+                if v_actividades_count > 0 then v_id_actividad := v_max_actividades+1;
+                else v_id_actividad := 1;
+                end if;
+                
+            insert into actividad values(v_id_actividad, v_fecha_datetime, 2);
+            
+            commit work;
+            
+            select count(*), max(to_number(id_asesoria)) into v_maintablerow_count, v_maintablemax_id from asesoria;
+                if v_maintablerow_count > 0 then v_maintable_id := v_maintablemax_id+1;
+                else v_maintable_id := 1;
+                end if;
+                
+            INSERT INTO asesoria VALUES (v_maintable_id, f_especial, 0, v_id_actividad);
+        EXCEPTION
+            WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(SQLERRM);
+        END ;
+        
+        PROCEDURE SP_CREAR_VISITA (f_fecha varchar2)
+        IS
+            v_fecha_datetime timestamp;
+            v_id_actividad number(12);
+            v_actividades_count number(12);
+            v_max_actividades number(12);
+            
+            v_maintable_id number(12);
+            v_maintablerow_count number(12);
+            v_maintablemax_id number(12);
+        BEGIN
+            select to_date(f_fecha,'ddmmyyyy HH24:MI:SS') into v_fecha_datetime from dual;
+            
+            select count(*), max(to_number(id_actividad)) into v_actividades_count, v_max_actividades from actividad;
+                if v_actividades_count > 0 then v_id_actividad := v_max_actividades+1;
+                else v_id_actividad := 1;
+                end if;
+                
+            insert into actividad values(v_id_actividad, v_fecha_datetime, 2);
+            
+            commit work;
+            
+            select count(*), max(to_number(id_visita)) into v_maintablerow_count, v_maintablemax_id from visita;
+                if v_maintablerow_count > 0 then v_maintable_id := v_maintablemax_id+1;
+                else v_maintable_id := 1;
+                end if;
+                
+            INSERT INTO visita VALUES (v_maintable_id, 0, v_id_actividad);
+        EXCEPTION
+            WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(SQLERRM);
+        END ;
+        
+        
+        
+
+
+
+end pkg_function_profesional;
 /
 
 

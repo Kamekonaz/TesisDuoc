@@ -3,12 +3,16 @@ truncate table contrato;
 truncate table usuario;
 truncate table cuenta;
 truncate table tipo_usuario;
+truncate table tipo_actividad;
 
 -- Tipos de usuario: No tocar
 insert into tipo_usuario values(1, 'ADMINISTRADOR');
 insert into tipo_usuario values(2, 'PROFESIONAL');
 insert into tipo_usuario values(3, 'CLIENTE');
 
+insert into tipo_actividad values(1, 'VISITA');
+insert into tipo_actividad values(2, 'CAPACITACION');
+insert into tipo_actividad values(3, 'ASESORIA');
 
 -- CREAR CUENTAS
 -------ADMINISTRADORES--------------------------------------------------------------------------------------------------------------------------
