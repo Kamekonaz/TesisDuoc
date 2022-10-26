@@ -23,7 +23,7 @@ function isNumeric(str) {
          !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
 }
 
-function CrearCapacitacion() {
+function CrearVisita() {
     const cookies = new Cookies()
     const [browserValue, setBrowserValue] = React.useState('');
     const [lastCheckedValue, setLastCheckedValue] = React.useState('');
@@ -34,8 +34,6 @@ function CrearCapacitacion() {
 
 
     const [startDate, setStartDate] = React.useState(new Date());
-    const [detalleCapacitacion, setDetalleCapacitacion] = React.useState('');
-    const [material, setMaterial] = React.useState('');
     const [clientsList, setClientsList] = React.useState();
 
     const [clients, setClients] = React.useState("");
@@ -78,7 +76,6 @@ function CrearCapacitacion() {
     setLastCheckedValue(browserValue)
     if(!clientsList) await getUsersList()
     if(!clientsList) return;
-    const clientListContainer = document.getElementById("clientListContainer")
     
 
 
@@ -137,8 +134,6 @@ function CrearCapacitacion() {
     const sumbitDatetime = `${sumbitDate} ${hour}${minutes}00`
 
     const data = {
-      descripcion: detalleCapacitacion,
-      material: material,
       fecha: sumbitDatetime,
       rut_usuario: selectedClient["RUT_USUARIO"] ? selectedClient["RUT_USUARIO"] : "",
       sessionKey: cookies.get("sessionKey")
@@ -147,7 +142,8 @@ function CrearCapacitacion() {
     const hasVoidAttribute = !Object.values(data).every(value => value !== "")
     if(hasVoidAttribute) return;
 
-    await axios.post('http://localhost:3001/crearCapacitacion', data
+
+    await axios.post('http://localhost:3001/crearVisita', data
         ).then(
             Swal.fire({
                 title: "<h5 style='color:white'>Exito</h5>",
@@ -188,7 +184,7 @@ function CrearCapacitacion() {
 
         <div id="viewContent border" className="h-full ml-64">
             <div className="dashboardOptionsBody bg-gray-700 flex flex-col text-gray-200 overflow-y-auto" style={{height: "100vh", maxHeight: "100vh"}}>
-                <div className="mx-auto text-3xl mt-2 font-medium mb-20">Crear capacitación</div>
+                <div className="mx-auto text-3xl mt-2 font-medium mb-20">Planificar Visita</div>
 
                 <div className="mx-auto text-xl">Cliente:</div>
                 <div className="mx-auto h-16 bg-gray-600 flex hover:bg-gray-500 rounded-xl border border-gray-400" style={{width: "500px"}}>               
@@ -216,14 +212,7 @@ function CrearCapacitacion() {
                     
                 </div>
 
-                <div className="w-full flex mt-2 flex-col w-full text-xl">
-                  <div className="mx-auto">Detalle de capacitación</div>
-                  <div className="mx-auto mt-2 text-black"><textarea onChange={(e) => setDetalleCapacitacion(e.target.value)} className="mx-auto w-96 h-36 p-2"></textarea></div>
-                </div>
-                <div className="w-full flex mt-2 flex-col w-full text-xl">
-                  <div className="mx-auto">Material a utilizar</div>
-                  <div className="mx-auto mt-2 text-black"><textarea onChange={(e) => setMaterial(e.target.value)} className="mx-auto w-96 h-36 p-2"></textarea></div>
-                </div>
+
                 <div className="w-full flex mt-6 w-full text-xl justify-center space-x-2">
                   <div className="">Fecha</div>
                   
@@ -250,4 +239,4 @@ function CrearCapacitacion() {
   );
 }
 
-export default CrearCapacitacion;
+export default CrearVisita;

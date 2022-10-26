@@ -118,6 +118,23 @@ app.post('/crearCapacitacion', async (req, res) =>{
        
 })
 
+app.post('/crearVisita', async (req, res) =>{
+    const { fecha, rut_usuario, sessionKey } = req.body
+
+    const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
+    const userData = await BdManager.getUserDataById(accountID);
+
+    if(userData["ID_TIPO"] != "2") res.send({ error: "Usuario incorrecto"})
+
+    await BdManager.crearVisita(fecha, rut_usuario)
+
+
+    res.send({
+        result: "done"
+    })
+       
+})
+
 app.post('/createUser', async (req, res) =>{
     try {
         

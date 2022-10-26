@@ -8,6 +8,7 @@ import AdminProfesionales from './Components/AdminDashboard/Options/AdminProfesi
 import AdminClientes from './Components/AdminDashboard/Options/AdminClientes';
 import EditUser from './Components/AdminDashboard/EditUser';
 import CreateUser from './Components/AdminDashboard/CreateUser';
+import CrearVisita from './Components/ProfessionalDashboard/Options/CrearVisita';
 import CrearCapacitacion from './Components/ProfessionalDashboard/Options/CrearCapacitacion';
 
 
@@ -37,7 +38,7 @@ root.render(
         <CrearCapacitacion/>
       } />
       <Route path="/professionalDashboard/dashboardOption2" element={
-        <ProfessionalSidebar/>
+        <CrearVisita/>
       } />
       <Route path="/professionalDashboard/dashboardOption3" element={
         <ProfessionalSidebar/>

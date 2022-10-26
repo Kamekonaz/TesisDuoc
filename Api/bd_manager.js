@@ -115,6 +115,31 @@ class BdManager {
     }     
 }
 
+static async crearVisita(fecha, rut_usuario){
+  try {
+      const Connection = await oracledb.getConnection(db_credentials);
+      //console.log("alo?", f_accountID)
+      const result = await Connection.execute(
+          `BEGIN
+          pkg_function_profesional.SP_CREAR_VISITA(:v_fecha, :v_rut_usuario);
+           END;`,
+          {  
+            v_fecha: fecha,
+            v_rut_usuario: rut_usuario
+          }
+        );
+
+        
+      await Connection.commit()
+      await Connection.close()
+      return {
+          error: false
+      };
+
+  } catch (error) {
+      console.log(error)
+  }     
+}
 
     static async createUser(f_imagen, f_id_tipo, f_estado, f_rut, f_username,  f_password,  f_nombres, f_apellidos, f_email, f_telefono){
         try {
