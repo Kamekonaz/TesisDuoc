@@ -116,6 +116,33 @@ class BdManager {
     }     
 }
 
+static async crearAsesoria(especial, fecha, rut_usuario, rut_profesional){
+  try {
+      const Connection = await oracledb.getConnection(db_credentials);
+      const result = await Connection.execute(
+          `BEGIN
+          pkg_function_profesional.SP_CREAR_ASESORIA(:v_especial, :v_fecha, :v_rut_usuario, :v_rut_profesional);
+           END;`,
+          {  
+            v_especial: especial,
+            v_fecha: fecha,
+            v_rut_usuario: rut_usuario,
+            v_rut_profesional: rut_profesional
+          }
+        );
+
+        
+      await Connection.commit()
+      await Connection.close()
+      return {
+          error: false
+      };
+
+  } catch (error) {
+      console.log(error)
+  }     
+}
+
 static async crearVisita(fecha, rut_usuario, rut_profesional){
   try {
       const Connection = await oracledb.getConnection(db_credentials);

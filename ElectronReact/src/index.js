@@ -10,6 +10,7 @@ import EditUser from './Components/AdminDashboard/EditUser';
 import CreateUser from './Components/AdminDashboard/CreateUser';
 import CrearVisita from './Components/ProfessionalDashboard/Options/CrearVisita';
 import CrearCapacitacion from './Components/ProfessionalDashboard/Options/CrearCapacitacion';
+import CrearAsesoria from './Components/ProfessionalDashboard/Options/CrearAsesoria';
 
 
 import {
@@ -50,7 +51,7 @@ root.render(
         <ProfessionalSidebar/>
       } />
       <Route path="/professionalDashboard/dashboardOption6" element={
-        <ProfessionalSidebar/>
+        <CrearAsesoria/>
       } />
       <Route path="/professionalDashboard/dashboardOption7" element={
         <ProfessionalSidebar/>
