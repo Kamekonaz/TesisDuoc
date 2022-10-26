@@ -132,10 +132,12 @@ function CrearVisita() {
     const sumbitDate = startDate.toLocaleDateString().split("/").join("")
 
     const sumbitDatetime = `${sumbitDate} ${hour}${minutes}00`
+    const gottenUserData = JSON.parse(localStorage.getItem('userData'))
 
     const data = {
       fecha: sumbitDatetime,
       rut_usuario: selectedClient["RUT_USUARIO"] ? selectedClient["RUT_USUARIO"] : "",
+      rut_profesional: gottenUserData["RUT_USUARIO"]? gottenUserData["RUT_USUARIO"] : "",
       sessionKey: cookies.get("sessionKey")
     }
 

@@ -102,14 +102,14 @@ app.post('/editUser', async (req, res) =>{
 })
 
 app.post('/crearCapacitacion', async (req, res) =>{
-    const { descripcion, material, fecha, rut_usuario, sessionKey } = req.body
+    const { descripcion, material, fecha, rut_usuario, rut_profesional, sessionKey } = req.body
 
     const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
     const userData = await BdManager.getUserDataById(accountID);
 
     if(userData["ID_TIPO"] != "2") res.send({ error: "Usuario incorrecto"})
 
-    await BdManager.crearCapacitacion(descripcion, material, fecha, rut_usuario)
+    await BdManager.crearCapacitacion(descripcion, material, fecha, rut_usuario, rut_profesional)
 
 
     res.send({
@@ -119,14 +119,14 @@ app.post('/crearCapacitacion', async (req, res) =>{
 })
 
 app.post('/crearVisita', async (req, res) =>{
-    const { fecha, rut_usuario, sessionKey } = req.body
+    const { fecha, rut_usuario, rut_profesional, sessionKey } = req.body
 
     const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
     const userData = await BdManager.getUserDataById(accountID);
 
     if(userData["ID_TIPO"] != "2") res.send({ error: "Usuario incorrecto"})
 
-    await BdManager.crearVisita(fecha, rut_usuario)
+    await BdManager.crearVisita(fecha, rut_usuario, rut_profesional)
 
 
     res.send({

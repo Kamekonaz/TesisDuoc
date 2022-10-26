@@ -87,19 +87,20 @@ class BdManager {
       }     
   }
 
-  static async crearCapacitacion(descripcion, material, fecha, rut_usuario){
+  static async crearCapacitacion(descripcion, material, fecha, rut_usuario, rut_profesional){
     try {
         const Connection = await oracledb.getConnection(db_credentials);
         //console.log("alo?", f_accountID)
         const result = await Connection.execute(
             `BEGIN
-            pkg_function_profesional.SP_CREAR_CAPACITACION(:v_descripcion, :v_material, :v_fecha, :v_rut_usuario);
+            pkg_function_profesional.SP_CREAR_CAPACITACION(:v_descripcion, :v_material, :v_fecha, :v_rut_usuario, :v_rut_profesional);
              END;`,
             {  
               v_descripcion: descripcion,
               v_material: material,
               v_fecha: fecha,
-              v_rut_usuario: rut_usuario
+              v_rut_usuario: rut_usuario,
+              v_rut_profesional: rut_profesional
             }
           );
 
@@ -115,17 +116,18 @@ class BdManager {
     }     
 }
 
-static async crearVisita(fecha, rut_usuario){
+static async crearVisita(fecha, rut_usuario, rut_profesional){
   try {
       const Connection = await oracledb.getConnection(db_credentials);
       //console.log("alo?", f_accountID)
       const result = await Connection.execute(
           `BEGIN
-          pkg_function_profesional.SP_CREAR_VISITA(:v_fecha, :v_rut_usuario);
+          pkg_function_profesional.SP_CREAR_VISITA(:v_fecha, :v_rut_usuario, :v_rut_profesional);
            END;`,
           {  
             v_fecha: fecha,
-            v_rut_usuario: rut_usuario
+            v_rut_usuario: rut_usuario,
+            v_rut_profesional: rut_profesional
           }
         );
 

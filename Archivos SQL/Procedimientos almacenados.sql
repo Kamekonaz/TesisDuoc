@@ -370,13 +370,13 @@ end pkg_client;
 /
 
 create or replace package pkg_util as
-    procedure sp_add_participante(id_actividad number, rut_usuario varchar2);
+    procedure sp_add_participante(id_actividad number, rut_usuario varchar2, f_rut_profesional varchar2);
 end pkg_util;
 
 /
 
 create or replace package body pkg_util as
-    procedure sp_add_participante(id_actividad number, rut_usuario varchar2)
+    procedure sp_add_participante(id_actividad number, rut_usuario varchar2, f_rut_profesional varchar2)
     
     is
         v_maintable_id number(12);
@@ -390,6 +390,7 @@ create or replace package body pkg_util as
             end if;
         
         insert into participante values(v_maintable_id, id_actividad, rut_usuario);
+        insert into participante values(v_maintable_id+1, id_actividad, f_rut_profesional);
         commit work;
     end;
 end pkg_util;
@@ -400,12 +401,12 @@ create or replace package pkg_function_profesional AS
 
 PROCEDURE SP_CREAR_CAPACITACION (
 F_DESCRIPCION_CAPACITACION VARCHAR2,
-F_DESCRIPCION_MATERIAL VARCHAR2, F_FECHA_CAPACITACION varchar2, f_rut_usuario varchar2);
+F_DESCRIPCION_MATERIAL VARCHAR2, F_FECHA_CAPACITACION varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2);
 
 procedure SP_CREAR_ASESORIA (
-        f_especial char, f_fecha varchar2, f_rut_usuario varchar2);
+        f_especial char, f_fecha varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2);
         
-procedure SP_CREAR_VISITA (f_fecha varchar2, f_rut_usuario varchar2);
+procedure SP_CREAR_VISITA (f_fecha varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2);
 
 end pkg_function_profesional;
 /
@@ -414,7 +415,7 @@ end pkg_function_profesional;
 create or replace package body pkg_function_profesional AS 
     PROCEDURE SP_CREAR_CAPACITACION (
         F_DESCRIPCION_CAPACITACION VARCHAR2,
-        F_DESCRIPCION_MATERIAL VARCHAR2, F_FECHA_CAPACITACION varchar2, f_rut_usuario varchar2)
+        F_DESCRIPCION_MATERIAL VARCHAR2, F_FECHA_CAPACITACION varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2)
         IS
             v_fecha_datetime timestamp;
             v_id_actividad number(12);
@@ -442,7 +443,7 @@ create or replace package body pkg_function_profesional AS
                 end if;
             
             
-            pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario);
+            pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario, f_rut_profesional);
             INSERT INTO CAPACITACION VALUES (v_maintable_id, F_DESCRIPCION_CAPACITACION,F_DESCRIPCION_MATERIAL, 0, v_id_actividad);
         EXCEPTION
             WHEN OTHERS THEN
@@ -450,7 +451,7 @@ create or replace package body pkg_function_profesional AS
         END ;
         
     PROCEDURE SP_CREAR_ASESORIA(
-        f_especial char, f_fecha varchar2, f_rut_usuario varchar2)
+        f_especial char, f_fecha varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2)
         IS
             v_fecha_datetime timestamp;
             v_id_actividad number(12);
@@ -477,14 +478,14 @@ create or replace package body pkg_function_profesional AS
                 else v_maintable_id := 1;
                 end if;
                 
-            pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario);
+            pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario, f_rut_profesional);
             INSERT INTO asesoria VALUES (v_maintable_id, f_especial, 0, v_id_actividad);
         EXCEPTION
             WHEN OTHERS THEN
             DBMS_OUTPUT.PUT_LINE(SQLERRM);
         END ;
         
-        PROCEDURE SP_CREAR_VISITA (f_fecha varchar2, f_rut_usuario varchar2)
+        PROCEDURE SP_CREAR_VISITA (f_fecha varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2)
         IS
             v_fecha_datetime timestamp;
             v_id_actividad number(12);
@@ -511,7 +512,7 @@ create or replace package body pkg_function_profesional AS
                 else v_maintable_id := 1;
                 end if;
                 
-            pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario);
+            pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario, f_rut_profesional);
             INSERT INTO visita VALUES (v_maintable_id, 0, v_id_actividad);
         EXCEPTION
             WHEN OTHERS THEN
