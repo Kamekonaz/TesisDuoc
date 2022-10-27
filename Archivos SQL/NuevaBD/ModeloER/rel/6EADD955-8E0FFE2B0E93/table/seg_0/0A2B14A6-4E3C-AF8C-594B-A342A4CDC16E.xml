@@ -44,18 +44,6 @@
 <ownDataTypeParameters>2000,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="estado" id="67D4C9B2-8A35-4A0A-3042-8C5CE4021B8F">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>C1762793-C9ED-6A73-959D-E45018B2EA6F</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT006</logicalDatatype>
-<dataTypeSize>1</dataTypeSize>
-<ownDataTypeParameters>1,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="id_actividad" id="E8A81158-E1C4-7E4E-1522-875C395A6927">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-10-19 17:40:33 UTC</createdTime>

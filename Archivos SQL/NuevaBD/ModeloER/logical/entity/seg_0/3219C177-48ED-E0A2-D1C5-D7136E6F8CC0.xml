@@ -28,19 +28,6 @@
 <dataTypePrecision>12</dataTypePrecision>
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="estado" id="EE877386-6346-0CEC-353E-0547D9797BA1">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-08-28 00:13:14 UTC</createdTime>
-<ownerDesignName>ModeloER</ownerDesignName>
-<engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT006</logicalDatatype>
-<dataTypeSize>1</dataTypeSize>
-<ownDataTypeParameters>1,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="id_actividad" id="A37E62CC-609D-D275-54A6-FE5FA31561FE">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-10-19 17:40:14 UTC</createdTime>

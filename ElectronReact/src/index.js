@@ -11,6 +11,8 @@ import CreateUser from './Components/AdminDashboard/CreateUser';
 import CrearVisita from './Components/ProfessionalDashboard/Options/CrearVisita';
 import CrearCapacitacion from './Components/ProfessionalDashboard/Options/CrearCapacitacion';
 import CrearAsesoria from './Components/ProfessionalDashboard/Options/CrearAsesoria';
+import ViewActivities from './Components/AdminDashboard/Options/ViewActivities';
+import NotificarAtrasos from './Components/AdminDashboard/Options/NotificarAtrasos';
 
 
 import {
@@ -63,7 +65,7 @@ root.render(
         <AdminSidebar/>
       } />
       <Route path="/adminDashboard/dashboardOption0" element={
-        <AdminProfesionales/>
+        <AdminSidebar/>
       } />
       <Route path="/adminDashboard/dashboardOption1" element={
         <AdminProfesionales/>
@@ -78,10 +80,10 @@ root.render(
         <AdminSidebar/>
       } />
       <Route path="/adminDashboard/dashboardOption5" element={
-        <AdminSidebar/>
+        <ViewActivities/>
       } />
       <Route path="/adminDashboard/dashboardOption6" element={
-        <AdminSidebar/>
+        <NotificarAtrasos/>
       } />
       <Route path="/adminDashboard/dashboardOption7" element={
         <AdminSidebar/>

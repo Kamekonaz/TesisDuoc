@@ -40,6 +40,19 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="estado" id="EB8CA2D3-400F-FC7C-142D-7CD2D0DBC558">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-27 03:41:37 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="id_tipoactividad" id="F58C96BE-CFCD-7FAC-2ED5-E756662E3AE2">
 <createdBy>CETECOM</createdBy>
 <createdTime>2022-09-29 12:58:58 UTC</createdTime>

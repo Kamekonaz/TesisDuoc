@@ -317,6 +317,8 @@ end pkg_register;
 /
 create or replace package pkg_list as
     procedure pcr_list_by_usertype(f_usertype number, p_recordset OUT SYS_REFCURSOR);
+    procedure pcr_list_activities(p_recordset OUT SYS_REFCURSOR);
+    procedure pcr_list_participants(p_recordset OUT SYS_REFCURSOR);
 end pkg_list;
 
 /
@@ -332,6 +334,30 @@ create or replace package body pkg_list as
         join tipo_usuario on
         tipo_usuario.id_tipo = cuenta.id_tipo
         where cuenta.id_tipo = f_usertype;
+
+    end;
+    
+    procedure pcr_list_activities(p_recordset OUT SYS_REFCURSOR)
+    is
+    begin
+        open p_recordset for
+        select * from actividad
+        join tipo_actividad on
+        actividad.ID_TIPOACTIVIDAD = tipo_actividad.ID_TIPOACTIVIDAD;
+
+    end;
+    
+    procedure pcr_list_participants(p_recordset OUT SYS_REFCURSOR)
+    is
+    begin
+        open p_recordset for
+        select * from participante
+        join usuario on
+        participante.RUT_USUARIO = usuario.RUT_USUARIO
+        join cuenta on
+        usuario.id_cuenta = cuenta.id_cuenta
+        join tipo_usuario on
+        tipo_usuario.id_tipo = cuenta.id_tipo;
 
     end;
     
@@ -433,7 +459,7 @@ create or replace package body pkg_function_profesional AS
                 else v_id_actividad := 1;
                 end if;
                 
-            insert into actividad values(v_id_actividad, v_fecha_datetime, 2);
+            insert into actividad values(v_id_actividad, v_fecha_datetime, 2, 0);
             
             commit work;
             
@@ -444,7 +470,7 @@ create or replace package body pkg_function_profesional AS
             
             
             pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario, f_rut_profesional);
-            INSERT INTO CAPACITACION VALUES (v_maintable_id, F_DESCRIPCION_CAPACITACION,F_DESCRIPCION_MATERIAL, 0, v_id_actividad);
+            INSERT INTO CAPACITACION VALUES (v_maintable_id, F_DESCRIPCION_CAPACITACION,F_DESCRIPCION_MATERIAL, v_id_actividad);
         EXCEPTION
             WHEN OTHERS THEN
             DBMS_OUTPUT.PUT_LINE(SQLERRM);
@@ -469,7 +495,7 @@ create or replace package body pkg_function_profesional AS
                 else v_id_actividad := 1;
                 end if;
                 
-            insert into actividad values(v_id_actividad, v_fecha_datetime, 2);
+            insert into actividad values(v_id_actividad, v_fecha_datetime, 3, 0);
             
             commit work;
             
@@ -479,7 +505,7 @@ create or replace package body pkg_function_profesional AS
                 end if;
                 
             pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario, f_rut_profesional);
-            INSERT INTO asesoria VALUES (v_maintable_id, f_especial, 0, v_id_actividad);
+            INSERT INTO asesoria VALUES (v_maintable_id, f_especial, v_id_actividad);
         EXCEPTION
             WHEN OTHERS THEN
             DBMS_OUTPUT.PUT_LINE(SQLERRM);
@@ -503,7 +529,7 @@ create or replace package body pkg_function_profesional AS
                 else v_id_actividad := 1;
                 end if;
                 
-            insert into actividad values(v_id_actividad, v_fecha_datetime, 2);
+            insert into actividad values(v_id_actividad, v_fecha_datetime, 1, 0);
             
             commit work;
             
@@ -513,7 +539,7 @@ create or replace package body pkg_function_profesional AS
                 end if;
                 
             pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario, f_rut_profesional);
-            INSERT INTO visita VALUES (v_maintable_id, 0, v_id_actividad);
+            INSERT INTO visita VALUES (v_maintable_id, v_id_actividad);
         EXCEPTION
             WHEN OTHERS THEN
             DBMS_OUTPUT.PUT_LINE(SQLERRM);

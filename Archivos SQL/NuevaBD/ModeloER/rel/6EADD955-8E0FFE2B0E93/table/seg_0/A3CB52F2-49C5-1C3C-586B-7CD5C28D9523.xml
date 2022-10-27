@@ -40,12 +40,24 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="1E59BA27-460F-879B-0043-4A7CF3698F90" referredColumn="955EB0E5-BBAC-2CC9-F6B6-28FCC7228F43"/>
 </associations>
+</Column>
+<Column name="estado" id="8B3F497A-DA4B-4905-C852-C4D0CF95CBDF">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-27 03:41:53 UTC</createdTime>
+<generatorID>EB8CA2D3-400F-FC7C-142D-7CD2D0DBC558</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

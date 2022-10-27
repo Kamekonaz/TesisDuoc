@@ -60,7 +60,7 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id_accidente1" id="1FF4607C-1B07-75DE-5020-7EC7AF5E49FA">
+<Column name="id_accidente2" id="1FF4607C-1B07-75DE-5020-7EC7AF5E49FA">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-10-19 17:19:52 UTC</createdTime>
 <generatorID>6B86B591-A4A3-BA6A-33BB-340FBB4C8446</generatorID>

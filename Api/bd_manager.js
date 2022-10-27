@@ -254,6 +254,41 @@ static async crearVisita(fecha, rut_usuario, rut_profesional){
         }
     }
 
+    static async get_activities(){
+      try{
+          const Connection = await oracledb.getConnection(db_credentials);
+      
+          const result = await Connection.execute(
+            `BEGIN
+              pkg_list.pcr_list_activities(:v_activities);
+             END;`,
+            {  
+              v_activities: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+            }
+          );
+          const cursor = result.outBinds.v_activities;
+          const actividades = await cursor.getRows();
+
+          const result2 = await Connection.execute(
+            `BEGIN
+              pkg_list.pcr_list_participants(:v_participants);
+             END;`,
+            {  
+              v_participants: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+            }
+          );
+          const cursor2 = result2.outBinds.v_participants;
+          const participants = await cursor2.getRows();
+  
+          await Connection.close()
+  
+          return [actividades, participants];
+
+        } catch(err){
+            console.log(err)
+        }
+    }
+
     
     static async updateUserData(f_accountID, f_image, 
       f_username, f_nombres, f_apellidos, 

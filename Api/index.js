@@ -389,6 +389,36 @@ app.post('/listUsersByUserType', async (req, res) =>{
 })
 
 
+app.post('/listActivities', async (req, res) =>{
+    const { sessionKey } = req.body
+    
+    const signedUserAccountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
+    if (signedUserAccountID == 0) return { error: "Ha ocurrido un error" }
+
+    const signedUserData = await BdManager.getUserDataById(signedUserAccountID);
+    const activities = await BdManager.get_activities();
+
+    switch (signedUserData["ID_TIPO"]){
+        // Admin
+        case 1:
+            return res.send(activities)
+            break;
+
+        // Profesional
+        case 2:
+            // No puede obtener información de otros usuarios 
+            return { error: "Ha ocurrido un error" }
+            break;
+
+        // Cliente
+        case 3:
+            // No puede obtener información de otros usuarios
+            return { error: "Ha ocurrido un error" }
+            break;
+        } 
+})
+
+
 app.listen(
     PORT,
     () => console.log(`Api corriendo en http://localhost:${PORT}`)

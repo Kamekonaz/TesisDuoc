@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 22.2.0.165.1149
---   en:        2022-10-26 13:37:33 CLST
+--   en:        2022-10-27 00:42:17 CLST
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -71,7 +71,8 @@ ALTER TABLE accidente ADD CONSTRAINT accidente_pk PRIMARY KEY ( id_accidente );
 CREATE TABLE actividad (
     id_actividad     NUMBER(12) NOT NULL,
     fecha_actividad  DATE NOT NULL,
-    id_tipoactividad NUMBER(12) NOT NULL
+    id_tipoactividad NUMBER(12) NOT NULL,
+    estado           CHAR(1) NOT NULL
 );
 
 ALTER TABLE actividad ADD CONSTRAINT actividad_pk PRIMARY KEY ( id_actividad );
@@ -79,7 +80,6 @@ ALTER TABLE actividad ADD CONSTRAINT actividad_pk PRIMARY KEY ( id_actividad );
 CREATE TABLE asesoria (
     id_asesoria  NUMBER(12) NOT NULL,
     especial     CHAR(1) NOT NULL,
-    estado       CHAR(1) NOT NULL,
     id_actividad NUMBER(12) NOT NULL
 );
 
@@ -89,7 +89,6 @@ CREATE TABLE capacitacion (
     id_capacitacion          NUMBER(12) NOT NULL,
     descripcion_capacitacion VARCHAR2(2000) NOT NULL,
     descripcion_material     VARCHAR2(2000) NOT NULL,
-    estado                   CHAR(1) NOT NULL,
     id_actividad             NUMBER(12) NOT NULL
 );
 
@@ -228,7 +227,7 @@ CREATE TABLE sala_chat (
     asunto_sala   VARCHAR2(300) NOT NULL,
     id_accidente  NUMBER(12) NOT NULL,
     estado        CHAR(1) NOT NULL,
-    id_accidente1 NUMBER(12) NOT NULL
+    id_accidente2 NUMBER(12) NOT NULL
 );
 
 ALTER TABLE sala_chat ADD CONSTRAINT sala_chat_pk PRIMARY KEY ( id_sala );
@@ -279,7 +278,6 @@ ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY ( rut_usuario );
 
 CREATE TABLE visita (
     id_visita    NUMBER(12) NOT NULL,
-    estado       CHAR(1) NOT NULL,
     id_actividad NUMBER(12) NOT NULL
 );
 
