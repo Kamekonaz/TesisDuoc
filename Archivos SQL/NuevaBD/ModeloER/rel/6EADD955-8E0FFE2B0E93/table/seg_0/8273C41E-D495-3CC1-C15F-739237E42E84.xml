@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8273C41E-D495-3CC1-C15F-739237E42E84" name="CHECKBOX">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-23 19:58:10 UTC</createdTime>
+<generatorID>6B78D98C-5679-447E-A92F-9B8C5E8BCD77</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_checkbox" id="E8920937-E130-C29F-5747-9E71AAE1C114">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-23 19:58:10 UTC</createdTime>
+<generatorID>E8D21413-AF43-6DED-390F-06A9441E167E</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="09B48A17-DB30-3776-C2F3-80EAC70ADFAD">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-23 19:58:10 UTC</createdTime>
+<generatorID>73D82C09-757E-2009-F41C-2A397A037BDD</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2000</dataTypeSize>
+<ownDataTypeParameters>2000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="estado" id="279333E4-DF71-373C-AF02-0084CD37B464">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-23 19:58:10 UTC</createdTime>
+<generatorID>D7BB7EAE-2E5C-8A89-DD94-C8F1DA630E59</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_checklist" id="602AA709-24D9-D29A-5A17-CF50B43087BA">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-23 19:58:10 UTC</createdTime>
+<generatorID>2105D649-783B-ED56-C387-4FD9AD0A7943</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5D64355C-FD89-AEDD-8234-0FA5BA5424DE" referredColumn="07A1060A-BB0B-AD47-8AFA-F532C6A6C2C1"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DE838A2E-C9BE-B7FF-0C9C-EB63582905B0" name="CHECKBOX_PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-23 19:58:10 UTC</createdTime>
+<generatorID>D09F78A0-D8CC-ED92-C178-2D3D12601D87</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E8920937-E130-C29F-5747-9E71AAE1C114"/>
+<colUsage columnID="602AA709-24D9-D29A-5A17-CF50B43087BA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0025A586-6C3B-C7FD-302C-0FBAF3054B64" name="CHECKBOX_CHECKLIST_VISITA_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-23 19:58:10 UTC</createdTime>
+<generatorID>825C297B-EB08-C6B7-0248-5EE65F088D66</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="602AA709-24D9-D29A-5A17-CF50B43087BA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

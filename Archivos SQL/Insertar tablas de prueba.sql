@@ -14,6 +14,10 @@ insert into tipo_actividad values(1, 'VISITA');
 insert into tipo_actividad values(2, 'CAPACITACION');
 insert into tipo_actividad values(3, 'ASESORIA');
 
+insert into coste_act values(1, 10000, 2000, 1);
+insert into coste_act values(2, 0, 2500, 2);
+insert into coste_act values(3, 12000, 1800, 3);
+
 -- CREAR CUENTAS
 -------ADMINISTRADORES--------------------------------------------------------------------------------------------------------------------------
 insert into cuenta(id_cuenta, username, password, estado, id_tipo)

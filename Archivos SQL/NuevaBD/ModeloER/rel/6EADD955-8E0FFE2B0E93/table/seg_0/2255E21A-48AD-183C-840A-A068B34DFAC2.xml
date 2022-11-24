@@ -67,42 +67,6 @@
 <ownDataTypeParameters>255,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="orden_compra" id="08D5149F-754C-788C-F2B7-4F8204F28C44">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>AAA94D8A-0BE2-CC23-A71E-1A89D6F86F34</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>24</dataTypePrecision>
-<ownDataTypeParameters>,24,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="codigo_comercio" id="6CEB48B6-A051-14ED-7618-5CEEA88EAC12">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>54415E76-2CC6-03B9-5B8D-D674783C79D0</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>24</dataTypePrecision>
-<ownDataTypeParameters>,24,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="token" id="A112B414-8485-3E49-4BA2-0172AE104E1D">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>341FEC91-5F0D-25A9-2073-34DF341AE701</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>255</dataTypeSize>
-<ownDataTypeParameters>255,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="id_contrato" id="76C49703-97EE-A0D1-46D8-5A948905AA59">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-10-13 22:48:03 UTC</createdTime>

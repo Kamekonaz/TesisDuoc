@@ -13,7 +13,7 @@ function Header() {
     const [isSessionValid, setIsSessionValid] = React.useState(userData ? true : false);
     const [showProfileMenu, setShowProfileMenu] = React.useState(false);
 
-    console.log(isSessionValid)
+    //console.log(isSessionValid)
     async function handleIsSessionValid(){
         const sessionKey = cookies.get("sessionKey")
         if(!sessionKey) return setIsSessionValid(false)

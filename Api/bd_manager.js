@@ -3,6 +3,7 @@ const oracledb = require('oracledb')
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 
 var crypto = require('crypto');
+const { Console } = require('console');
 
 var generate_key = function() {
     return crypto.randomBytes(32).toString('base64');
@@ -254,6 +255,49 @@ static async crearVisita(fecha, rut_usuario, rut_profesional){
         }
     }
 
+    static async get_contract_info(user_rut){
+      try{
+        const Connection = await oracledb.getConnection(db_credentials);
+    
+        const result = await Connection.execute(
+          `BEGIN
+            :status := pkg_client.pcr_get_contract_status(:v_user_rut);
+            :debt := pkg_client.pcr_get_contract_debt(:v_user_rut);
+           END;`,
+          {  
+            v_user_rut: user_rut,
+            status: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER, maxSize: 12 },
+            debt: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER, maxSize: 12 }
+          }
+        );
+
+  
+          const result2 = await Connection.execute(
+            `BEGIN
+                pkg_client.pcr_get_contract_info(:v_user_rut, :v_contract);
+            END;`,
+            {  
+              v_user_rut: user_rut,
+              v_contract: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+            }
+          );
+          const cursor2 = result2.outBinds.v_contract;
+          const contract = await cursor2.getRows();
+
+
+          const data = {
+            status: result.outBinds.status,
+            debt: result.outBinds.debt,
+            contract_info: contract[0]
+              
+          }
+          return data
+
+      } catch(err){
+          console.log(err)
+      }
+    }
+
     static async get_activities(){
       try{
           const Connection = await oracledb.getConnection(db_credentials);
@@ -392,6 +436,7 @@ static async crearVisita(fecha, rut_usuario, rut_profesional){
         
 
         const filas = result.rows[0]
+
 
         if (filas["IMAGEN"]) filas["IMAGEN"] = await filas["IMAGEN"].getData()
 

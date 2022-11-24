@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Header from './Components/Header/Header.js';
-import LoginView from './Components/LoginView.js';
-import Home from './Components/Home/Home.js';
-import ClientSidebar from './Components/Dashboard/ClientSidebar.js';
-import ReportarAccidente from './Components/Dashboard/ReportarAccidente.js';
+import Header from './Components/Header/Header.jsx';
+import LoginView from './Components/LoginView.jsx';
+import Home from './Components/Home/Home.jsx';
+import ClientSidebar from './Components/Dashboard/ClientSidebar.jsx';
+import ReportarAccidente from './Components/Dashboard/ReportarAccidente.jsx';
+
+import Contrato from './Components/Dashboard/Contrato.jsx';
 
 import './index.css';
 import {
@@ -38,7 +40,7 @@ root.render(
         <ClientSidebar />
       }/>
       <Route path="/dashboard/dashboardOption3" element={
-        <ClientSidebar />
+        <Contrato />
       }/>
       
     </Routes>

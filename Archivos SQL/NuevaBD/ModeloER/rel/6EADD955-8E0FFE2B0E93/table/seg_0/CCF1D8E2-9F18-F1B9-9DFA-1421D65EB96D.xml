@@ -53,12 +53,24 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="CB51D271-497C-C06D-A5C6-5AA88B1D15FE" referredColumn="2BF0F22E-D60C-804C-91DF-82E181A072AD"/>
 </associations>
+</Column>
+<Column name="modificaciones" id="E9606523-A781-2720-44E7-CC56D4F19587">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-23 19:54:18 UTC</createdTime>
+<generatorID>14136EF3-5C89-7A52-9922-541502552B8E</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

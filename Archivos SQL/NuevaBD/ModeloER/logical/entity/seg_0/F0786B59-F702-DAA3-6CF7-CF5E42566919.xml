@@ -28,7 +28,7 @@
 <dataTypePrecision>12</dataTypePrecision>
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="coste_servicios_fijos" id="46617829-AB49-6EEB-C9E4-A807DBE19BE4">
+<Attribute name="nombre_servicio" id="46617829-AB49-6EEB-C9E4-A807DBE19BE4">
 <createdBy>CETECOM</createdBy>
 <createdTime>2022-09-29 13:08:47 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
@@ -37,11 +37,11 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>25</dataTypePrecision>
-<ownDataTypeParameters>,25,</ownDataTypeParameters>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="coste_servicios_extras" id="A020F578-4CE4-B0F0-8EEB-CDCD491A705B">
+<Attribute name="coste_servicio" id="A020F578-4CE4-B0F0-8EEB-CDCD491A705B">
 <createdBy>CETECOM</createdBy>
 <createdTime>2022-09-29 13:11:05 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
@@ -54,9 +54,9 @@
 <dataTypePrecision>25</dataTypePrecision>
 <ownDataTypeParameters>,25,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_pago" id="2D3CF399-7350-F436-CC2C-6EA05EC77AC5">
-<createdBy>CETECOM</createdBy>
-<createdTime>2022-09-29 12:52:32 UTC</createdTime>
+<Attribute name="id_pago" id="EF91BE8A-43A4-446A-403E-B4BF08031545">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-20 18:45:22 UTC</createdTime>
 <generatorID>AC585B2F-E4B7-6296-E9E9-9093EF8CE120</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
@@ -67,7 +67,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="92DC4295-0688-3297-4B20-530B83A0F189" name="PLAN_MEJORA">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="6B78D98C-5679-447E-A92F-9B8C5E8BCD77" name="CHECKBOX">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-08-26 19:14:57 UTC</createdTime>
+<createdTime>2022-11-23 19:55:37 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_plan" id="AB80E6BB-1097-99C2-6EDA-533462E85733">
+<Attribute name="id_checkbox" id="E8D21413-AF43-6DED-390F-06A9441E167E">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-08-28 19:12:53 UTC</createdTime>
+<createdTime>2022-11-23 19:55:59 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
@@ -28,9 +28,9 @@
 <dataTypePrecision>12</dataTypePrecision>
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="descripcion" id="67C92DBE-645D-3A2D-38AB-6BC93F96F2B6">
+<Attribute name="descripcion" id="73D82C09-757E-2009-F41C-2A397A037BDD">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-08-28 19:13:49 UTC</createdTime>
+<createdTime>2022-11-23 19:56:39 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
@@ -41,24 +41,9 @@
 <dataTypeSize>2000</dataTypeSize>
 <ownDataTypeParameters>2000,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_visita" id="C8CD4EAE-F097-7631-774B-83D8EB5361ED">
-<createdBy>CETECOM</createdBy>
-<createdTime>2022-09-29 12:14:45 UTC</createdTime>
-<generatorID>B61406A2-20AB-1AD1-8C39-D161F8953D70</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
-</engineerTo>
-<referedAttribute>31845068-F333-76B4-AFCD-41B21607419C</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,12,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="estado" id="07A7B28D-7A7B-A792-5AED-BF9412801785">
-<createdBy>CETECOM</createdBy>
-<createdTime>2022-09-29 12:41:20 UTC</createdTime>
+<Attribute name="estado" id="D7BB7EAE-2E5C-8A89-DD94-C8F1DA630E59">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-23 19:56:51 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
@@ -69,19 +54,34 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_checklist" id="2105D649-783B-ED56-C387-4FD9AD0A7943">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-23 19:57:24 UTC</createdTime>
+<generatorID>825C297B-EB08-C6B7-0248-5EE65F088D66</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>EAF6B64B-D6B2-F0DA-6132-3FA57B68125A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="00407CFB-6343-EFFE-B030-3682F524A19D" name="PLAN_MEJORA PK">
+<identifier id="D09F78A0-D8CC-ED92-C178-2D3D12601D87" name="CHECKBOX PK">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-08-28 19:13:01 UTC</createdTime>
+<createdTime>2022-11-23 19:56:35 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
-<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="false"/>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>AB80E6BB-1097-99C2-6EDA-533462E85733</attributeRef>
+<attributeRef>E8D21413-AF43-6DED-390F-06A9441E167E</attributeRef>
+<attributeRef>2105D649-783B-ED56-C387-4FD9AD0A7943</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

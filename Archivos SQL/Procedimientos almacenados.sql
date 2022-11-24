@@ -351,9 +351,9 @@ create or replace package body pkg_list as
     is
     begin
         open p_recordset for
-        select * from participante
+        select * from participante_actividad pa
         join usuario on
-        participante.RUT_USUARIO = usuario.RUT_USUARIO
+        pa.RUT_USUARIO = usuario.RUT_USUARIO
         join cuenta on
         usuario.id_cuenta = cuenta.id_cuenta
         join tipo_usuario on
@@ -368,10 +368,22 @@ end pkg_list;
 
 create or replace package pkg_client as
     procedure pcr_report_accident(f_rut_usuario varchar, f_descripcion varchar, f_asunto varchar);
+    function pcr_get_contract_status(f_user_rut varchar) return number;
+    function pcr_get_contract_debt(f_rut_usuario varchar) return number;
+    procedure pcr_get_contract_info(f_rut_usuario varchar, p_recordset OUT SYS_REFCURSOR);
 end pkg_client;
 /
 
+
 create or replace package body pkg_client as
+    procedure pcr_get_contract_info(f_rut_usuario varchar, p_recordset OUT SYS_REFCURSOR)
+    is
+    begin
+        open p_recordset for
+        select * from contrato
+        where contrato.rut_usuario = f_rut_usuario;
+    end;
+
     procedure pcr_report_accident(f_rut_usuario varchar, f_descripcion varchar, f_asunto varchar)
     is
         v_id_accidente number(12);
@@ -392,6 +404,73 @@ create or replace package body pkg_client as
         
         commit work;
     end;
+    
+    function pcr_get_contract_status(f_user_rut varchar) return number
+    is 
+        v_valid_contract_count number(10);
+        
+    begin
+        select count(*) into v_valid_contract_count from contrato
+            join pago 
+            on pago.id_contrato = contrato.id_contrato
+            where contrato.rut_usuario = f_user_rut
+            and rownum = 1
+            and pago.estado = 'AUTHORIZED'
+            order by contrato.fecha_inicio desc;
+        
+        if v_valid_contract_count = 1 then
+            return 1;
+        else return 0;
+        end if;
+        
+    end;
+    
+    function pcr_get_contract_debt(f_rut_usuario varchar) return number
+    is
+        v_visita_amount number(10) := 0;
+        v_capacitacion_amount number(10) := 0;
+        v_asesoria_amount number(10) := 0;
+        
+        v_contract_cost number(10) := 0;
+        v_extra_service_cost number(10) := 0;
+        
+        
+    begin
+        select nvl(sum(case when actividad.id_tipoactividad=1 then 1 end),0) into v_visita_amount from actividad
+            join visita on actividad.id_actividad = visita.id_actividad
+            join checklist_visita on checklist_visita.id_visita = visita.id_visita
+            join participante_actividad pa on pa.id_actividad = actividad.id_actividad
+            where pa.rut_usuario = '11.987.158-k';
+            
+        select count(case when actividad.id_tipoactividad=2 then 1 end) into v_capacitacion_amount from actividad
+            join participante_actividad pa on pa.id_actividad = actividad.id_actividad
+            where pa.rut_usuario = f_rut_usuario;
+            
+        select count(case when actividad.id_tipoactividad=3 then 1 end) into v_asesoria_amount from actividad
+            join participante_actividad pa on pa.id_actividad = actividad.id_actividad
+            where pa.rut_usuario = f_rut_usuario;
+        
+        select sum(costo_fijo) into v_contract_cost from coste_act;
+        
+        
+        if v_visita_amount > 2 then
+            select costo_extra into v_extra_service_cost from coste_act where id_tipoactividad = 1;
+            v_contract_cost := v_contract_cost + ((v_visita_amount - 2) * v_extra_service_cost);
+        end if;
+        
+        select costo_extra into v_extra_service_cost from coste_act where id_tipoactividad = 2;
+        v_contract_cost := v_contract_cost + (v_capacitacion_amount * v_extra_service_cost);
+        
+         if v_asesoria_amount > 10 then
+            select costo_extra into v_extra_service_cost from coste_act where id_tipoactividad = 3;
+            v_contract_cost := v_contract_cost + ((v_asesoria_amount - 10) * v_extra_service_cost);
+        end if;
+
+        
+        return v_contract_cost;
+        
+        exception when others then return 1;
+    end;
 end pkg_client;
 /
 
@@ -410,13 +489,13 @@ create or replace package body pkg_util as
         v_maintablemax_id number(12);
 
     begin
-        select count(*), max(to_number(id_asignacion)) into v_maintablerow_count, v_maintablemax_id from participante;
+        select count(*), max(to_number(id_asignacion)) into v_maintablerow_count, v_maintablemax_id from participante_actividad;
             if v_maintablerow_count > 0 then v_maintable_id := v_maintablemax_id+1;
             else v_maintable_id := 1;
             end if;
         
-        insert into participante values(v_maintable_id, id_actividad, rut_usuario);
-        insert into participante values(v_maintable_id+1, id_actividad, f_rut_profesional);
+        insert into participante_actividad values(v_maintable_id, id_actividad, rut_usuario);
+        insert into participante_actividad values(v_maintable_id+1, id_actividad, f_rut_profesional);
         commit work;
     end;
 end pkg_util;

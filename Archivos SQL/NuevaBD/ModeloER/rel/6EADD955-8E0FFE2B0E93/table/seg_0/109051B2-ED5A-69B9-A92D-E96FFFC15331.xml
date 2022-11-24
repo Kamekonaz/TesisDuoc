@@ -20,19 +20,19 @@
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="coste_servicios_fijos" id="E696F533-DE6B-D201-7CD6-67D1EC7B87C6">
+<Column name="nombre_servicio" id="E696F533-DE6B-D201-7CD6-67D1EC7B87C6">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-10-13 22:48:03 UTC</createdTime>
 <generatorID>46617829-AB49-6EEB-C9E4-A807DBE19BE4</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>25</dataTypePrecision>
-<ownDataTypeParameters>,25,</ownDataTypeParameters>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="coste_servicios_extras" id="1649BC11-518D-DE8A-2C74-76D88080272A">
+<Column name="coste_servicio" id="1649BC11-518D-DE8A-2C74-76D88080272A">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-10-13 22:48:03 UTC</createdTime>
 <generatorID>A020F578-4CE4-B0F0-8EEB-CDCD491A705B</generatorID>
@@ -53,12 +53,25 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="ABFC75EF-DFE3-74A7-B4D0-1C058102E33D" referredColumn="FD5C7518-C904-3C05-2C1A-3D1C31F1DC2D"/>
 </associations>
+</Column>
+<Column name="id_pago2" id="456F699E-1795-746D-83B5-C7854C16BCD3">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-23 19:54:18 UTC</createdTime>
+<generatorID>EF91BE8A-43A4-446A-403E-B4BF08031545</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

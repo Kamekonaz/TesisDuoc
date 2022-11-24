@@ -17,6 +17,12 @@ import InputsValidator from "../../Customscripts/InputsValidator";
 //     NavLink 
 //   } from "react-router-dom";
 
+function isNumeric(str) {
+    if (typeof str !== "string") return false // we only process strings!  
+    return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+           !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+  }
+
 function CreateUser() {
     const cookies = new Cookies()
     const urlparams = new URLSearchParams(window.location.search);
@@ -35,6 +41,7 @@ function CreateUser() {
         email:"",
         telefono:"",
     });
+
 
     async function createUserPost(){
         const creationDataCopy = JSON.parse(JSON.stringify(creationData))
@@ -114,19 +121,34 @@ function CreateUser() {
         return image
     }
 
-    function formatRut(rut) {
-        if(!rut) return ""
-        // Despejar Puntos
-        var valor = rut.replace('.','');
-        // Despejar Guión
-        valor = valor.replace('-','');
-    
-        // Aislar Cuerpo y Dígito Verificador
-        const cuerpo = valor.slice(0,-1);
-        const dv = valor.slice(-1).toUpperCase();
-        
-        return cuerpo + '-'+ dv
-    }
+    function formatRut(rut){
+        // XX.XXX.XXX-X
+
+        const newRut = rut.replace(/\./g,'').replace(/-/g, '').trim().toLowerCase();
+        if(newRut.length === 0) return setCreationData(creationData=>({...creationData, ...{rut: "" } }))
+        if(newRut.length > 9) return;
+
+        const lastDigit = newRut.substr(-1, 1);
+        const rutDigit = newRut.substr(0, newRut.length-1)
+
+        if (!isNumeric(rutDigit) && rutDigit.length > 0) return;
+        if (!isNumeric(lastDigit) && lastDigit !== "k") return;
+
+
+        let format = '';
+        for (let i = rutDigit.length; i > 0; i--) {
+          const e = rutDigit.charAt(i-1);
+          format = e.concat(format);
+          if ((i+ (newRut.length <= 8 ? 1 : 0)) % 3 === 0){
+            format = '.'.concat(format);
+          }
+        }
+
+        return setCreationData(creationData=>({...creationData, ...{rut: format.concat('-').concat(lastDigit)} }))
+      }
+
+
+
 
     React.useEffect(() => {
 
@@ -199,27 +221,27 @@ function CreateUser() {
                             
                             <div className="grid" style={{gridTemplateColumns: "160px 1fr"}}>
                                 <div className={`my-auto ${InputsValidator.isRutValid(creationData.rut) ? "text-white" : "text-red-500"}`}>Rut:</div>
-                                <input onChange={(e)=>setCreationData(creationData=>({...creationData, ...{rut: e.target.value} }))} 
-                                value={formatRut(creationData.rut)}
+                                <input onChange={(e)=>formatRut(e.target.value)} 
+                                value={creationData.rut}
                                 className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="text"/>
                             </div>
                             <div className="grid" style={{gridTemplateColumns: "160px 1fr"}}>
                                 <div className={`my-auto ${InputsValidator.isUsernameValid(creationData.username) ? "text-white" : "text-red-500"}`}>Username:</div>
                                 <input onChange={(e)=>setCreationData(creationData=>({...creationData, ...{username: e.target.value} }))} 
-                                defaultValue={creationData.nombres}
+                                defaultValue={creationData.username}
                                 className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="text"/>
                             </div>
                             <div className="grid" style={{gridTemplateColumns: "160px 1fr"}}>
                                 <div className={`my-auto ${InputsValidator.isPasswordValid(creationData.contraseña) ? "text-white" : "text-red-500"}`}>Contraseña:</div>
                                 <input onChange={(e)=>setCreationData(creationData=>({...creationData, ...{contraseña: e.target.value} }))} 
-                                defaultValue={creationData.nombres}
-                                className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="text"/>
+                                defaultValue={creationData.contraseña}
+                                className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="password"/>
                             </div>
                             <div className="grid" style={{gridTemplateColumns: "160px 1fr"}}>
                                 <div className={`my-auto ${(creationData.contraseña === creationData.checkcontraseña) ? "text-white" : "text-red-500"}`}>Confirmar Contraseña:</div>
                                 <input onChange={(e)=>setCreationData(creationData=>({...creationData, ...{checkcontraseña: e.target.value} }))} 
-                                defaultValue={creationData.nombres}
-                                className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="text"/>
+                                defaultValue={creationData.checkcontraseña}
+                                className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="password"/>
                             </div>
 
                             <div className="grid" style={{gridTemplateColumns: "160px 1fr"}}>

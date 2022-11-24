@@ -4,7 +4,7 @@ const app = express();
 var https = require('https');
 const PORT = 3001;
 const BdManager = require('./bd_manager')
-const cors = require('cors')
+
 const bodyParser = require('body-parser')
 const TransbankController = require('./TransbankControler')
 
@@ -61,6 +61,28 @@ app.post('/deleteUser', async (req, res) =>{
 app.post("/pagar", TransbankController.doPayment);
 app.post("/verificar", TransbankController.verifyPayment);
 app.post('/anular', TransbankController.refundPayment);
+
+app.post('/self_contract_info', async (req, res) =>{
+    try {
+        const { sessionKey } = req.body
+
+
+        const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
+        const userData = await BdManager.getUserDataById(accountID);
+
+        if(userData["ID_TIPO"] != "3") res.send({ error: "Usuario incorrecto"})
+
+        const result = await BdManager.get_contract_info(userData["RUT_USUARIO"])
+
+
+        res.send(result)
+    } catch (error) {
+        res.send({
+            result: "error"
+        })  
+    }
+       
+})
 
 app.post('/report_accident', async (req, res) =>{
     try {
