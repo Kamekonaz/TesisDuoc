@@ -333,6 +333,7 @@ create or replace package body pkg_list as
         usuario.id_cuenta = cuenta.id_cuenta
         join tipo_usuario on
         tipo_usuario.id_tipo = cuenta.id_tipo
+        join contrato on usuario.rut_usuario = contrato.rut_usuario
         where cuenta.id_tipo = f_usertype;
 
     end;

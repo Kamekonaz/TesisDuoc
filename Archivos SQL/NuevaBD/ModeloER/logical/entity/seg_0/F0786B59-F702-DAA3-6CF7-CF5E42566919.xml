@@ -54,6 +54,45 @@
 <dataTypePrecision>25</dataTypePrecision>
 <ownDataTypeParameters>,25,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="cantidad_extra" id="5521B993-71F4-F24F-E8F0-2673707C9181">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-27 13:54:01 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="coste_extra" id="030F4572-7263-045E-08BF-26F940C37390">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-27 13:55:18 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="coste_total" id="CBB2001C-1FFF-AE4B-0CD3-2891E6398517">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-27 13:56:33 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="id_pago" id="EF91BE8A-43A4-446A-403E-B4BF08031545">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-11-20 18:45:22 UTC</createdTime>

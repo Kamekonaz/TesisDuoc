@@ -60,6 +60,12 @@ function LoginView() {
       toggleBorders(true)
     }
 
+    React.useEffect(()=>{
+      window.addEventListener("keydown", (e)=>{
+        if(e.key === "Enter") login()
+      })
+    },[])
+
     
     const normalBorderClass = "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none";
     const errorBorderClass = "border-red-500 form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none";
