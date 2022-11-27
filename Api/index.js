@@ -62,6 +62,7 @@ app.post("/pagar", TransbankController.doPayment);
 app.post("/verificar", TransbankController.verifyPayment);
 app.post('/anular', TransbankController.refundPayment);
 
+
 app.post('/self_contract_info', async (req, res) =>{
     try {
         const { sessionKey } = req.body

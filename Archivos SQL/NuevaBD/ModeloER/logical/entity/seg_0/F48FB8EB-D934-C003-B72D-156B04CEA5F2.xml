@@ -83,6 +83,21 @@
 <logicalDatatype>LOGDT028</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_estado_contrato" id="33A46142-46C8-76D5-5F03-8BB4FE0472E6">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-26 23:45:07 UTC</createdTime>
+<generatorID>44FF4CAD-8C31-1779-707A-55AC9D66A53D</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>CCF781E4-0CA3-3E8A-3AF5-57EA50A060F3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="8D3A9C92-5F43-7939-6A65-73DAC0F1B72B" name="CONTRATO PK">

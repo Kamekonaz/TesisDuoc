@@ -55,7 +55,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -74,6 +74,22 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="id_estado_contrato" id="6289F3B2-E9BC-78A7-F74D-7D8A0047E615">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-26 23:49:18 UTC</createdTime>
+<generatorID>33A46142-46C8-76D5-5F03-8BB4FE0472E6</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="73E3E27A-C7F2-EC90-030D-72081792DDD4" referredColumn="6B207F12-2AA0-6976-531D-3A8DEB00D1DD"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="8C58070A-832F-8161-8EBA-DD5DF72B4366" name="CONTRATO_PK">
@@ -88,6 +104,17 @@
 <colUsage columnID="7C6CA2BA-F134-E2D8-9FD5-01EE170C9620"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="822D44AB-B84B-CCF7-B956-8FB253B32CD7" name="CONTRATO__IDX">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-26 23:49:18 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>44FF4CAD-8C31-1779-707A-55AC9D66A53D</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="6289F3B2-E9BC-78A7-F74D-7D8A0047E615"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="E7500304-17BE-D22E-8DFE-F482C579A68C" name="CONTRATO_USUARIO_FK">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-10-13 22:48:03 UTC</createdTime>
@@ -97,6 +124,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="07284271-9AA6-30DA-D872-B421A65FF950"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4E9192B5-6D6B-B554-AAE1-DE71797DB202" name="CONTRATO_ESTADO_CONTRATO_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-26 23:49:18 UTC</createdTime>
+<generatorID>44FF4CAD-8C31-1779-707A-55AC9D66A53D</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6289F3B2-E9BC-78A7-F74D-7D8A0047E615"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

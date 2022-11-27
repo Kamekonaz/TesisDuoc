@@ -1,6 +1,7 @@
 const WebPay = require('transbank-sdk').WebpayPlus;
 const BdManager = require('./bd_manager')
 
+
 const axios = require('axios')
 const { v4 : uuidv4 } = require('uuid');
 
@@ -68,7 +69,7 @@ class TransbankController {
         try {
             console.log(req.body)
             let token = req.body.token_ws;
-            let returnURL = 'http://localhost:3002'
+            let returnURL = 'http://localhost:3002/dashboard/dashboardOption3'
     
             console.log('pre token', token);
             WebPay.MallTransaction.commit(token).then((transactionResult) => {
@@ -108,7 +109,6 @@ class TransbankController {
                         <form action="/anular" method="post">
                             <input type="hidden" name="session_id" value="${transaction.session_id}">
                             <input type="hidden" name="token" value="${token}">
-                            <input type="submit" value="Anular (Solo T. de Crédito)">
                         </form>
     
                         <form action="${returnURL}" method="get">
@@ -133,13 +133,14 @@ class TransbankController {
                 }
                 //BdManager.owo
                 const data = {
-                    estado: transaction.details.status,
-                    monto: transaction.details.amount,
-                    tipo_recibo: transaction.details.payment_type_code,
-                    orden_compra: transaction.details.buy_order,
-                    codigo_comercio: transaction.details.commerce_code,
-                    userID: userID
+                    estado: transaction.details[0].status,
+                    monto: transaction.details[0].amount,
+                    tipo_recibo: transaction.details[0].payment_type_code,
+                    userID: userID.userID
                 }
+                console.log(data)
+                await BdManager.db_payment(data.userID, data.estado, data.monto, data.tipo_recibo)
+
                 return res.send(html);
             }).catch(err => new Error(err));
 

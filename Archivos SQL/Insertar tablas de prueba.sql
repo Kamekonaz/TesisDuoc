@@ -4,11 +4,16 @@ truncate table usuario;
 truncate table cuenta;
 truncate table tipo_usuario;
 truncate table tipo_actividad;
+truncate table estado_contrato;
 
 -- Tipos de usuario: No tocar
 insert into tipo_usuario values(1, 'ADMINISTRADOR');
 insert into tipo_usuario values(2, 'PROFESIONAL');
 insert into tipo_usuario values(3, 'CLIENTE');
+
+insert into estado_contrato values(1, 'CREADO');
+insert into estado_contrato values(2, 'PENDIENTE');
+insert into estado_contrato values(3, 'PAGADO');
 
 insert into tipo_actividad values(1, 'VISITA');
 insert into tipo_actividad values(2, 'CAPACITACION');

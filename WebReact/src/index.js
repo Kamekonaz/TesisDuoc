@@ -5,7 +5,7 @@ import LoginView from './Components/LoginView.jsx';
 import Home from './Components/Home/Home.jsx';
 import ClientSidebar from './Components/Dashboard/ClientSidebar.jsx';
 import ReportarAccidente from './Components/Dashboard/ReportarAccidente.jsx';
-
+import Perfil from './Components/Dashboard/Perfil.jsx';
 import Contrato from './Components/Dashboard/Contrato.jsx';
 
 import './index.css';
@@ -31,7 +31,7 @@ root.render(
         <ClientSidebar />
       }/>
       <Route path="/dashboard/dashboardOption0" element={
-        <ClientSidebar />
+        <Perfil />
       }/>
       <Route path="/dashboard/dashboardOption1" element={
         <ReportarAccidente />

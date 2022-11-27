@@ -225,6 +225,33 @@ static async crearVisita(fecha, rut_usuario, rut_profesional){
         }
     }
 
+    static async db_payment(f_id_cuenta, f_estado, f_monto, f_tipo_recibo){
+      try{
+        const Connection = await oracledb.getConnection(db_credentials);
+        
+        console.log("holi u///////u")
+        const result = await Connection.execute(
+          `BEGIN
+              pkg_client.pcr_pay_contract(:v_id_cuenta, :v_estado, :v_monto, :v_tipo_recibo);
+           END;`,
+          {  
+            v_id_cuenta: f_id_cuenta, 
+            v_estado: f_estado, 
+            v_monto: f_monto,
+            v_tipo_recibo: f_tipo_recibo
+          }
+        );
+        console.log("ALO uwwwwwwu")
+
+        await Connection.close()
+
+      } catch(err){
+          console.log(err)
+      }
+    }
+
+
+
     static async get_users_by_usertype(usertype){
       try{
           const Connection = await oracledb.getConnection(db_credentials);
@@ -335,8 +362,8 @@ static async crearVisita(fecha, rut_usuario, rut_profesional){
 
     
     static async updateUserData(f_accountID, f_image, 
-      f_username, f_nombres, f_apellidos, 
-      f_email, f_telefono, f_estado){
+          f_username, f_nombres, f_apellidos, 
+          f_email, f_telefono, f_estado){
       try{
           const Connection = await oracledb.getConnection(db_credentials);
       

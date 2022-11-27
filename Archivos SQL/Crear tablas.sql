@@ -1,61 +1,9 @@
 -- Generado por Oracle SQL Developer Data Modeler 22.2.0.165.1149
---   en:        2022-11-23 16:58:28 CLST
+--   en:        2022-11-26 20:52:47 CLST
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
 
-
-DROP TABLE accidente CASCADE CONSTRAINTS;
-
-DROP TABLE actividad CASCADE CONSTRAINTS;
-
-DROP TABLE asesoria CASCADE CONSTRAINTS;
-
-DROP TABLE capacitacion CASCADE CONSTRAINTS;
-
-DROP TABLE checkbox CASCADE CONSTRAINTS;
-
-DROP TABLE checklist_visita CASCADE CONSTRAINTS;
-
-DROP TABLE comuna CASCADE CONSTRAINTS;
-
-DROP TABLE contrato CASCADE CONSTRAINTS;
-
-DROP TABLE coste_act CASCADE CONSTRAINTS;
-
-DROP TABLE cuenta CASCADE CONSTRAINTS;
-
-DROP TABLE detalle_pago CASCADE CONSTRAINTS;
-
-DROP TABLE empresa CASCADE CONSTRAINTS;
-
-DROP TABLE evento_asesoria CASCADE CONSTRAINTS;
-
-DROP TABLE mensaje CASCADE CONSTRAINTS;
-
-DROP TABLE pago CASCADE CONSTRAINTS;
-
-DROP TABLE participante_actividad CASCADE CONSTRAINTS;
-
-DROP TABLE participante_chat CASCADE CONSTRAINTS;
-
-DROP TABLE plan_mejora CASCADE CONSTRAINTS;
-
-DROP TABLE region CASCADE CONSTRAINTS;
-
-DROP TABLE sala_chat CASCADE CONSTRAINTS;
-
-DROP TABLE sesion CASCADE CONSTRAINTS;
-
-DROP TABLE sucursal CASCADE CONSTRAINTS;
-
-DROP TABLE tipo_actividad CASCADE CONSTRAINTS;
-
-DROP TABLE tipo_usuario CASCADE CONSTRAINTS;
-
-DROP TABLE usuario CASCADE CONSTRAINTS;
-
-DROP TABLE visita CASCADE CONSTRAINTS;
 
 -- predefined type, no DDL - MDSYS.SDO_GEOMETRY
 
@@ -125,11 +73,12 @@ CREATE TABLE comuna (
 ALTER TABLE comuna ADD CONSTRAINT comuna_pk PRIMARY KEY ( id_comuna );
 
 CREATE TABLE contrato (
-    id_contrato      NUMBER(12) NOT NULL,
-    fecha_inicio     DATE,
-    fecha_termino    DATE,
-    rut_usuario      VARCHAR2(20),
-    archivo_contrato CLOB
+    id_contrato        NUMBER(12) NOT NULL,
+    fecha_inicio       DATE,
+    fecha_termino      DATE,
+    rut_usuario        VARCHAR2(20),
+    archivo_contrato   CLOB,
+    id_estado_contrato NUMBER(12) NOT NULL
 );
 
 ALTER TABLE contrato ADD CONSTRAINT contrato_pk PRIMARY KEY ( id_contrato );
@@ -173,6 +122,13 @@ CREATE TABLE empresa (
 
 ALTER TABLE empresa ADD CONSTRAINT empresa_pk PRIMARY KEY ( rut_empresa );
 
+CREATE TABLE estado_contrato (
+    id_estado_contrato NUMBER(12) NOT NULL,
+    descripcion        VARCHAR2(255) NOT NULL
+);
+
+ALTER TABLE estado_contrato ADD CONSTRAINT estado_contrato_pk PRIMARY KEY ( id_estado_contrato );
+
 CREATE TABLE evento_asesoria (
     id_evento   NUMBER(12) NOT NULL,
     detalle     VARCHAR2(2000),
@@ -201,13 +157,13 @@ CREATE TABLE pago (
 
 ALTER TABLE pago ADD CONSTRAINT pago_pk PRIMARY KEY ( id_pago );
 
-CREATE TABLE participante_actividad (
+CREATE TABLE participante_act (
     id_asignacion NUMBER(12) NOT NULL,
     id_actividad  NUMBER(12) NOT NULL,
     rut_usuario   VARCHAR2(20) NOT NULL
 );
 
-ALTER TABLE participante_actividad ADD CONSTRAINT participante_pk PRIMARY KEY ( id_asignacion );
+ALTER TABLE participante_act ADD CONSTRAINT participante_pk PRIMARY KEY ( id_asignacion );
 
 CREATE TABLE participante_chat (
     id_participantechat NUMBER(12) NOT NULL,
@@ -323,6 +279,10 @@ ALTER TABLE comuna
         REFERENCES region ( id_region );
 
 ALTER TABLE contrato
+    ADD CONSTRAINT contrato_estado_contrato_fk FOREIGN KEY ( id_estado_contrato )
+        REFERENCES estado_contrato ( id_estado_contrato );
+
+ALTER TABLE contrato
     ADD CONSTRAINT contrato_usuario_fk FOREIGN KEY ( rut_usuario )
         REFERENCES usuario ( rut_usuario );
 
@@ -343,7 +303,7 @@ ALTER TABLE empresa
         REFERENCES usuario ( rut_usuario );
 
 ALTER TABLE evento_asesoria
-    ADD CONSTRAINT evento_asesoria_fk FOREIGN KEY ( id_asesoria )
+    ADD CONSTRAINT evento_asesoria_asesoria_fk FOREIGN KEY ( id_asesoria )
         REFERENCES asesoria ( id_asesoria );
 
 ALTER TABLE mensaje
@@ -358,9 +318,15 @@ ALTER TABLE pago
     ADD CONSTRAINT pago_contrato_fk FOREIGN KEY ( id_contrato )
         REFERENCES contrato ( id_contrato );
 
-ALTER TABLE participante_actividad
-    ADD CONSTRAINT participante_actividad_fk FOREIGN KEY ( id_actividad )
+--  ERROR: FK name length exceeds maximum allowed length(30) 
+ALTER TABLE participante_act
+    ADD CONSTRAINT participante_act_actividad_fk FOREIGN KEY ( id_actividad )
         REFERENCES actividad ( id_actividad );
+
+--  ERROR: FK name length exceeds maximum allowed length(30) 
+ALTER TABLE participante_act
+    ADD CONSTRAINT participante_act_usuario_fk FOREIGN KEY ( rut_usuario )
+        REFERENCES usuario ( rut_usuario );
 
 ALTER TABLE participante_chat
     ADD CONSTRAINT participante_chat_sala_chat_fk FOREIGN KEY ( id_sala )
@@ -368,10 +334,6 @@ ALTER TABLE participante_chat
 
 ALTER TABLE participante_chat
     ADD CONSTRAINT participante_chat_usuario_fk FOREIGN KEY ( rut_usuario )
-        REFERENCES usuario ( rut_usuario );
-
-ALTER TABLE participante_actividad
-    ADD CONSTRAINT participante_usuario_fk FOREIGN KEY ( rut_usuario )
         REFERENCES usuario ( rut_usuario );
 
 ALTER TABLE plan_mejora
@@ -408,9 +370,9 @@ CREATE SEQUENCE contrato_id_contrato_seq START WITH 1 NOCACHE ORDER;
 
 -- Informe de Resumen de Oracle SQL Developer Data Modeler: 
 -- 
--- CREATE TABLE                            26
+-- CREATE TABLE                            27
 -- CREATE INDEX                             0
--- ALTER TABLE                             53
+-- ALTER TABLE                             55
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
 -- CREATE PACKAGE                           0
@@ -446,5 +408,5 @@ CREATE SEQUENCE contrato_id_contrato_seq START WITH 1 NOCACHE ORDER;
 -- ORDS ENABLE SCHEMA                       0
 -- ORDS ENABLE OBJECT                       0
 -- 
--- ERRORS                                   0
+-- ERRORS                                   2
 -- WARNINGS                                 0
