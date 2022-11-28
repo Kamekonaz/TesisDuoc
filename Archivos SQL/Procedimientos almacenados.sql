@@ -319,6 +319,7 @@ create or replace package pkg_list as
     procedure pcr_list_by_usertype(f_usertype number, p_recordset OUT SYS_REFCURSOR);
     procedure pcr_list_activities(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_list_participants(p_recordset OUT SYS_REFCURSOR);
+    procedure pcr_list_clients_with_contract(p_recordset OUT SYS_REFCURSOR);
 end pkg_list;
 
 /
@@ -327,14 +328,45 @@ create or replace package body pkg_list as
     procedure pcr_list_by_usertype(f_usertype number, p_recordset OUT SYS_REFCURSOR)
     is
     begin
+    
         open p_recordset for
         select * from usuario
         join cuenta on
         usuario.id_cuenta = cuenta.id_cuenta
         join tipo_usuario on
         tipo_usuario.id_tipo = cuenta.id_tipo
-        join contrato on usuario.rut_usuario = contrato.rut_usuario
         where cuenta.id_tipo = f_usertype;
+
+    end;
+    
+    procedure pcr_list_clients_with_contract(p_recordset OUT SYS_REFCURSOR)
+    is
+    begin
+    
+        open p_recordset for
+        select 
+            *
+        from usuario
+                join cuenta on
+                usuario.id_cuenta = cuenta.id_cuenta
+                join tipo_usuario on
+                tipo_usuario.id_tipo = cuenta.id_tipo
+                join contrato on contrato.rut_usuario = usuario.rut_usuario
+                join (
+                    select 
+                   
+                        contrato.rut_usuario as rut_usuario,
+                        contrato.id_contrato,
+                        contrato.fecha_inicio
+                    
+                        
+                    from contrato
+                        WHERE contrato.fecha_inicio = ( SELECT MAX( g2.fecha_inicio )
+                          FROM contrato g2
+                          WHERE contrato.rut_usuario = g2.rut_usuario )
+                    ) sq on contrato.id_contrato = sq.id_contrato 
+  
+        where cuenta.id_tipo = 3;
 
     end;
     
@@ -383,6 +415,9 @@ create or replace package body pkg_client as
         v_id_contract number(12);
         v_id_pago number(12);
         v_rut_usuario varchar(50);
+        
+        v_inicio_contrato timestamp;
+        v_expiration timestamp;
     begin
         select rut_usuario into v_rut_usuario from usuario where id_cuenta = f_id_cuenta;
     
@@ -404,6 +439,11 @@ create or replace package body pkg_client as
         update contrato
             set id_estado_contrato = 3
         where id_contrato = v_id_contract;
+        
+        select max(fecha_termino) into v_inicio_contrato from contrato where rut_usuario = v_rut_usuario;
+            
+        v_expiration := v_inicio_contrato  +  numtodsinterval(30, 'day');
+        insert into contrato values (null, v_inicio_contrato, v_expiration, v_rut_usuario, null, 1);
         
         commit work;
     end;

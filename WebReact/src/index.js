@@ -7,6 +7,7 @@ import ClientSidebar from './Components/Dashboard/ClientSidebar.jsx';
 import ReportarAccidente from './Components/Dashboard/ReportarAccidente.jsx';
 import Perfil from './Components/Dashboard/Perfil.jsx';
 import Contrato from './Components/Dashboard/Contrato.jsx';
+import Boleta from './Components/Boleta.jsx';
 
 import './index.css';
 import {
@@ -26,6 +27,9 @@ root.render(
       }/>
       <Route path="/login" element={
         <LoginView />
+      }/>
+      <Route path="/boleta" element={
+        <Boleta />
       }/>
       <Route path="/dashboard" element={
         <ClientSidebar />

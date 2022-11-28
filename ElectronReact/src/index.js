@@ -13,6 +13,7 @@ import CrearCapacitacion from './Components/ProfessionalDashboard/Options/CrearC
 import CrearAsesoria from './Components/ProfessionalDashboard/Options/CrearAsesoria';
 import ViewActivities from './Components/AdminDashboard/Options/ViewActivities';
 import NotificarAtrasos from './Components/AdminDashboard/Options/NotificarAtrasos';
+import ControlarPagos from './Components/AdminDashboard/Options/ControlarPagos';
 
 
 import {
@@ -74,7 +75,7 @@ root.render(
         <AdminClientes/>
       } />
       <Route path="/adminDashboard/dashboardOption3" element={
-        <AdminSidebar/>
+        <ControlarPagos/>
       } />
       <Route path="/adminDashboard/dashboardOption4" element={
         <AdminSidebar/>

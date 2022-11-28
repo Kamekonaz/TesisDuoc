@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const oracledb = require('oracledb')
+const BdValidation = require('./bd_validation')
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 
 var crypto = require('crypto');
@@ -19,6 +20,42 @@ const db_credentials = {
 
 
 class BdManager {
+
+    static async get_clients_with_contract(req, res){
+      try {
+
+        const { sessionKey } = req.body
+
+        if (!BdValidation.is_key_valid(BdManager, sessionKey, ["1"])) return res.send("Usuario incorrecto")
+
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+            pkg_list.pcr_list_clients_with_contract(:v_users);
+           END;`,
+          {  
+            v_users: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+          }
+        );
+        const cursor = result.outBinds.v_users;
+        const filas = await cursor.getRows();
+        
+        for (const fila of filas){
+          if (fila["IMAGEN"]) fila["IMAGEN"] = await fila["IMAGEN"].getData()
+        }
+
+        await Connection.close()
+
+        res.send(filas);
+
+
+    } catch (error) {
+        return res.send("Error")
+    }
+    }
+
     static async get_accountID_by_sessionKey(sessionKey){
         try {
             const Connection = await oracledb.getConnection(db_credentials);
@@ -41,6 +78,8 @@ class BdManager {
             
         }
     }
+
+    static async 
 
     static async createSession(f_accountID){
         const sessionKey = generate_key()
