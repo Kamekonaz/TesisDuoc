@@ -1,0 +1,70 @@
+.titulo{
+ color:rgb(0, 0, 0);
+ font-size: 50px;
+ margin-left: 15%;
+ margin-top: 5%;
+ font-weight: bold;
+}
+
+.Boleta{
+
+display: flex;
+flex-direction: column ;
+
+
+}
+.rectangulo
+{
+    margin-top: -100px;
+    width: 300px; 
+    height: 100px; 
+    border: 3px solid rgb(255, 0, 0);
+    background: #ffffff;
+    margin-left: 70%;
+    text-align: center;
+    display: flex ;
+    justify-content: center;
+    flex-direction: column;
+   font-weight: bold;
+}
+.s-i-i
+{
+margin-left: 1060px;
+margin-top: 15px;
+color: crimson;
+font-weight: bold;
+}
+
+.empresa
+{
+
+display: flex;
+flex-direction: column;
+background-color: #25d87b;
+width: 900px;
+height: 25px;
+margin-left: 10px;
+
+
+
+}
+
+.datoempresa
+{
+display: flex;
+flex-direction: column;
+
+
+}
+
+
+.datoboleta
+{
+display: flex;
+}
+.titulodato
+{
+   min-width: 100px;
+    color: #25d87b;
+    font-weight: bold;
+}
