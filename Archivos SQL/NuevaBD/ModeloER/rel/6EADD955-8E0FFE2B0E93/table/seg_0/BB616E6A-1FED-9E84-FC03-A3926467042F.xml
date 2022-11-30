@@ -20,10 +20,34 @@
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="nombre" id="DE143D23-6773-0429-E0A2-B2653DB72EBD">
+<Column name="region" id="DE143D23-6773-0429-E0A2-B2653DB72EBD">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-10-13 22:48:03 UTC</createdTime>
 <generatorID>A28B88CB-D2A6-EA4F-BBF4-DD95B16BA678</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="abreviatura" id="8D519BE4-723F-F18C-B5B8-76CA0D9D42E2">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 02:07:14 UTC</createdTime>
+<generatorID>FE99CDA0-CFC7-9494-DF8F-A2901BCACF14</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="capital" id="2917CC1C-7442-EEEE-7500-D01C1CFFD419">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 02:07:14 UTC</createdTime>
+<generatorID>986F505F-EC85-368F-D739-3A613749218A</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>

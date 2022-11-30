@@ -14,6 +14,7 @@ import CrearAsesoria from './Components/ProfessionalDashboard/Options/CrearAseso
 import ViewActivities from './Components/AdminDashboard/Options/ViewActivities';
 import NotificarAtrasos from './Components/AdminDashboard/Options/NotificarAtrasos';
 import ControlarPagos from './Components/AdminDashboard/Options/ControlarPagos';
+import CrearEmpresa from './Components/AdminDashboard/CrearEmpresa';
 
 
 import {
@@ -99,6 +100,9 @@ root.render(
 
       <Route path="/createUser" element={
         <CreateUser/>
+      } />
+      <Route path="/createBussiness" element={
+        <CrearEmpresa/>
       } />
     </Routes>
   </BrowserRouter>,

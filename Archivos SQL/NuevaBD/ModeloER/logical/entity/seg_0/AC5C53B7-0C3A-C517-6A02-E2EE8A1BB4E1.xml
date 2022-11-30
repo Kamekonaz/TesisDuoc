@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8AF503FF-56EC-9516-B4EE-1B6F214566EE" name="REGION">
-<createdBy>CETECOM</createdBy>
-<createdTime>2022-09-29 12:14:58 UTC</createdTime>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="AC5C53B7-0C3A-C517-6A02-E2EE8A1BB4E1" name="PROVINCIA">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 02:03:35 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_region" id="0F5CDDC7-4FF1-BD66-E3A7-CA9E4B88FC2B">
-<createdBy>CETECOM</createdBy>
-<createdTime>2022-09-29 12:23:38 UTC</createdTime>
+<Attribute name="id_provincia" id="04194A1C-9AA2-884C-5946-006C277B9A1E">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 02:03:40 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
@@ -28,9 +28,9 @@
 <dataTypePrecision>12</dataTypePrecision>
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="region" id="A28B88CB-D2A6-EA4F-BBF4-DD95B16BA678">
-<createdBy>CETECOM</createdBy>
-<createdTime>2022-09-29 12:24:55 UTC</createdTime>
+<Attribute name="provincia" id="C9C50F1F-DA9C-629B-9DB2-54273550A8AF">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 02:04:04 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
@@ -41,45 +41,33 @@
 <dataTypeSize>255</dataTypeSize>
 <ownDataTypeParameters>255,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="abreviatura" id="FE99CDA0-CFC7-9494-DF8F-A2901BCACF14">
+<Attribute name="id_region" id="E512CA49-4967-4B03-0C89-3258289D007F">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-11-30 02:06:28 UTC</createdTime>
+<createdTime>2022-11-30 02:04:43 UTC</createdTime>
+<generatorID>DF927383-0788-71CD-38ED-22C7CE49BA04</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
 </engineerTo>
+<referedAttribute>0F5CDDC7-4FF1-BD66-E3A7-CA9E4B88FC2B</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>255</dataTypeSize>
-<ownDataTypeParameters>255,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="capital" id="986F505F-EC85-368F-D739-3A613749218A">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-11-30 02:06:46 UTC</createdTime>
-<ownerDesignName>ModeloER</ownerDesignName>
-<engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>255</dataTypeSize>
-<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="3B866306-2F70-C75F-4926-7CA559E85F3A" name="REGION PK">
-<createdBy>CETECOM</createdBy>
-<createdTime>2022-09-29 12:24:54 UTC</createdTime>
+<identifier id="E492871D-8934-008D-8E60-653ABB4B0F6B" name="PROVINCIA PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 02:05:15 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
-<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="false"/>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>0F5CDDC7-4FF1-BD66-E3A7-CA9E4B88FC2B</attributeRef>
+<attributeRef>04194A1C-9AA2-884C-5946-006C277B9A1E</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

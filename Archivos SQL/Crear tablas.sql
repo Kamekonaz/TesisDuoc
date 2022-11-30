@@ -1,9 +1,63 @@
 -- Generado por Oracle SQL Developer Data Modeler 22.2.0.165.1149
---   en:        2022-11-26 20:52:47 CLST
+--   en:        2022-11-30 01:00:42 CLST
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
 
+
+DROP TABLE accidente CASCADE CONSTRAINTS;
+
+DROP TABLE actividad CASCADE CONSTRAINTS;
+
+DROP TABLE asesoria CASCADE CONSTRAINTS;
+
+DROP TABLE capacitacion CASCADE CONSTRAINTS;
+
+DROP TABLE checkbox CASCADE CONSTRAINTS;
+
+DROP TABLE checklist_visita CASCADE CONSTRAINTS;
+
+DROP TABLE comuna CASCADE CONSTRAINTS;
+
+DROP TABLE contrato CASCADE CONSTRAINTS;
+
+DROP TABLE coste_act CASCADE CONSTRAINTS;
+
+DROP TABLE cuenta CASCADE CONSTRAINTS;
+
+DROP TABLE detalle_pago CASCADE CONSTRAINTS;
+
+DROP TABLE empresa CASCADE CONSTRAINTS;
+
+DROP TABLE estado_contrato CASCADE CONSTRAINTS;
+
+DROP TABLE evento_asesoria CASCADE CONSTRAINTS;
+
+DROP TABLE mensaje CASCADE CONSTRAINTS;
+
+DROP TABLE pago CASCADE CONSTRAINTS;
+
+DROP TABLE participante_act CASCADE CONSTRAINTS;
+
+DROP TABLE participante_chat CASCADE CONSTRAINTS;
+
+DROP TABLE plan_mejora CASCADE CONSTRAINTS;
+
+DROP TABLE provincia CASCADE CONSTRAINTS;
+
+DROP TABLE region CASCADE CONSTRAINTS;
+
+DROP TABLE sala_chat CASCADE CONSTRAINTS;
+
+DROP TABLE sesion CASCADE CONSTRAINTS;
+
+DROP TABLE tipo_actividad CASCADE CONSTRAINTS;
+
+DROP TABLE tipo_usuario CASCADE CONSTRAINTS;
+
+DROP TABLE usuario CASCADE CONSTRAINTS;
+
+DROP TABLE visita CASCADE CONSTRAINTS;
 
 -- predefined type, no DDL - MDSYS.SDO_GEOMETRY
 
@@ -65,9 +119,9 @@ CREATE TABLE checklist_visita (
 ALTER TABLE checklist_visita ADD CONSTRAINT checklist_visita_pk PRIMARY KEY ( id_checklist );
 
 CREATE TABLE comuna (
-    id_comuna NUMBER(12) NOT NULL,
-    nombre    VARCHAR2(255) NOT NULL,
-    id_region NUMBER(12) NOT NULL
+    id_comuna    NUMBER(12) NOT NULL,
+    comuna       VARCHAR2(255) NOT NULL,
+    id_provincia NUMBER(12) NOT NULL
 );
 
 ALTER TABLE comuna ADD CONSTRAINT comuna_pk PRIMARY KEY ( id_comuna );
@@ -107,7 +161,9 @@ CREATE TABLE detalle_pago (
     nombre_servicio VARCHAR2(255) NOT NULL,
     coste_servicio  NUMBER(25) NOT NULL,
     id_pago         NUMBER(12) NOT NULL,
-    id_pago2        NUMBER(12) NOT NULL
+    cantidad_extra  NUMBER(12) NOT NULL,
+    coste_extra     NUMBER(12) NOT NULL,
+    coste_total     NUMBER(12) NOT NULL
 );
 
 ALTER TABLE detalle_pago ADD CONSTRAINT detalle_pago_pk PRIMARY KEY ( id_detallepago );
@@ -117,7 +173,9 @@ CREATE TABLE empresa (
     razon_social VARCHAR2(255) NOT NULL,
     telefono     NUMBER(20),
     nombre       VARCHAR2(255) NOT NULL,
-    rut_usuario  VARCHAR2(20)
+    rut_usuario  VARCHAR2(20),
+    calle        VARCHAR2(255) NOT NULL,
+    id_comuna    NUMBER(12) NOT NULL
 );
 
 ALTER TABLE empresa ADD CONSTRAINT empresa_pk PRIMARY KEY ( rut_empresa );
@@ -182,9 +240,19 @@ CREATE TABLE plan_mejora (
 
 ALTER TABLE plan_mejora ADD CONSTRAINT plan_mejora_pk PRIMARY KEY ( id_plan );
 
+CREATE TABLE provincia (
+    id_provincia NUMBER(12) NOT NULL,
+    provincia    VARCHAR2(255) NOT NULL,
+    id_region    NUMBER(12) NOT NULL
+);
+
+ALTER TABLE provincia ADD CONSTRAINT provincia_pk PRIMARY KEY ( id_provincia );
+
 CREATE TABLE region (
-    id_region NUMBER(12) NOT NULL,
-    nombre    VARCHAR2(255) NOT NULL
+    id_region   NUMBER(12) NOT NULL,
+    region      VARCHAR2(255) NOT NULL,
+    abreviatura VARCHAR2(255) NOT NULL,
+    capital     VARCHAR2(255) NOT NULL
 );
 
 ALTER TABLE region ADD CONSTRAINT region_pk PRIMARY KEY ( id_region );
@@ -194,7 +262,7 @@ CREATE TABLE sala_chat (
     asunto_sala   VARCHAR2(300) NOT NULL,
     id_accidente  NUMBER(12) NOT NULL,
     estado        CHAR(1) NOT NULL,
-    id_accidente1 NUMBER(12) NOT NULL
+    id_accidente2 NUMBER(12) NOT NULL
 );
 
 ALTER TABLE sala_chat ADD CONSTRAINT sala_chat_pk PRIMARY KEY ( id_sala );
@@ -207,15 +275,6 @@ CREATE TABLE sesion (
 );
 
 ALTER TABLE sesion ADD CONSTRAINT sesion_pk PRIMARY KEY ( id_sesion );
-
-CREATE TABLE sucursal (
-    id_sucursal NUMBER(12) NOT NULL,
-    ubicacion   VARCHAR2(255) NOT NULL,
-    rut_empresa VARCHAR2(20),
-    id_comuna   NUMBER(12)
-);
-
-ALTER TABLE sucursal ADD CONSTRAINT sucursal_pk PRIMARY KEY ( id_sucursal );
 
 CREATE TABLE tipo_actividad (
     id_tipoactividad NUMBER(12) NOT NULL,
@@ -275,8 +334,8 @@ ALTER TABLE checklist_visita
         REFERENCES visita ( id_visita );
 
 ALTER TABLE comuna
-    ADD CONSTRAINT comuna_region_fk FOREIGN KEY ( id_region )
-        REFERENCES region ( id_region );
+    ADD CONSTRAINT comuna_provincia_fk FOREIGN KEY ( id_provincia )
+        REFERENCES provincia ( id_provincia );
 
 ALTER TABLE contrato
     ADD CONSTRAINT contrato_estado_contrato_fk FOREIGN KEY ( id_estado_contrato )
@@ -299,6 +358,10 @@ ALTER TABLE detalle_pago
         REFERENCES pago ( id_pago );
 
 ALTER TABLE empresa
+    ADD CONSTRAINT empresa_comuna_fkv2 FOREIGN KEY ( id_comuna )
+        REFERENCES comuna ( id_comuna );
+
+ALTER TABLE empresa
     ADD CONSTRAINT empresa_usuario_fk FOREIGN KEY ( rut_usuario )
         REFERENCES usuario ( rut_usuario );
 
@@ -318,12 +381,10 @@ ALTER TABLE pago
     ADD CONSTRAINT pago_contrato_fk FOREIGN KEY ( id_contrato )
         REFERENCES contrato ( id_contrato );
 
---  ERROR: FK name length exceeds maximum allowed length(30) 
 ALTER TABLE participante_act
     ADD CONSTRAINT participante_act_actividad_fk FOREIGN KEY ( id_actividad )
         REFERENCES actividad ( id_actividad );
 
---  ERROR: FK name length exceeds maximum allowed length(30) 
 ALTER TABLE participante_act
     ADD CONSTRAINT participante_act_usuario_fk FOREIGN KEY ( rut_usuario )
         REFERENCES usuario ( rut_usuario );
@@ -340,6 +401,10 @@ ALTER TABLE plan_mejora
     ADD CONSTRAINT plan_mejora_visita_fk FOREIGN KEY ( id_visita )
         REFERENCES visita ( id_visita );
 
+ALTER TABLE provincia
+    ADD CONSTRAINT provincia_region_fk FOREIGN KEY ( id_region )
+        REFERENCES region ( id_region );
+
 ALTER TABLE sala_chat
     ADD CONSTRAINT sala_chat_accidente_fk FOREIGN KEY ( id_accidente )
         REFERENCES accidente ( id_accidente );
@@ -347,14 +412,6 @@ ALTER TABLE sala_chat
 ALTER TABLE sesion
     ADD CONSTRAINT sesion_cuenta_fk FOREIGN KEY ( id_cuenta )
         REFERENCES cuenta ( id_cuenta );
-
-ALTER TABLE sucursal
-    ADD CONSTRAINT sucursal_comuna_fk FOREIGN KEY ( id_comuna )
-        REFERENCES comuna ( id_comuna );
-
-ALTER TABLE sucursal
-    ADD CONSTRAINT sucursal_empresa_fk FOREIGN KEY ( rut_empresa )
-        REFERENCES empresa ( rut_empresa );
 
 ALTER TABLE usuario
     ADD CONSTRAINT usuario_cuenta_fk FOREIGN KEY ( id_cuenta )
@@ -365,6 +422,7 @@ ALTER TABLE visita
         REFERENCES actividad ( id_actividad );
 
 CREATE SEQUENCE contrato_id_contrato_seq START WITH 1 NOCACHE ORDER;
+
 
 
 
@@ -408,5 +466,5 @@ CREATE SEQUENCE contrato_id_contrato_seq START WITH 1 NOCACHE ORDER;
 -- ORDS ENABLE SCHEMA                       0
 -- ORDS ENABLE OBJECT                       0
 -- 
--- ERRORS                                   2
+-- ERRORS                                   0
 -- WARNINGS                                 0

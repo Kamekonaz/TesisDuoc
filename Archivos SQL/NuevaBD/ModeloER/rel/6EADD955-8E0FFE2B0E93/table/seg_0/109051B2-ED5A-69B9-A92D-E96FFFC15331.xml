@@ -53,24 +53,47 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="ABFC75EF-DFE3-74A7-B4D0-1C058102E33D" referredColumn="FD5C7518-C904-3C05-2C1A-3D1C31F1DC2D"/>
 </associations>
 </Column>
-<Column name="id_pago2" id="456F699E-1795-746D-83B5-C7854C16BCD3">
+<Column name="cantidad_extra" id="987814E0-E22E-B5EE-0DC6-615FEE5C5D2C">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-11-23 19:54:18 UTC</createdTime>
-<generatorID>EF91BE8A-43A4-446A-403E-B4BF08031545</generatorID>
+<createdTime>2022-11-30 00:55:08 UTC</createdTime>
+<generatorID>5521B993-71F4-F24F-E8F0-2673707C9181</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="coste_extra" id="91E89CC8-5706-C8DB-E1E4-3EC8E7D81F1C">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 00:55:08 UTC</createdTime>
+<generatorID>030F4572-7263-045E-08BF-26F940C37390</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="coste_total" id="12DC654E-3BD9-6EF0-9CFE-3AF52F6653B5">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 00:55:08 UTC</createdTime>
+<generatorID>CBB2001C-1FFF-AE4B-0CD3-2891E6398517</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>

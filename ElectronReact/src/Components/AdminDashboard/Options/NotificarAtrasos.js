@@ -118,7 +118,7 @@ function NotificarAtrasos() {
 
     async function getActivitiesList(){
         const data ={
-            sessionKey: cookies.get("sessionKey"),
+            sessionKey: cookies.get("appsessionKey"),
         }
         const activities = await axios.post('http://localhost:3001/listActivities', data)
         setActivitiesList(activities.data)

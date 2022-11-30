@@ -74,6 +74,34 @@
 <colAssociation fkAssociation="0824E72D-E6B0-79AF-50A0-C3D108379091" referredColumn="8F21080E-3C40-4043-46D8-B4FFB17FE19B"/>
 </associations>
 </Column>
+<Column name="calle" id="0E147348-30D7-0417-5835-FB6C83806AAA">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 00:55:08 UTC</createdTime>
+<generatorID>73EED68A-E851-6DC7-0355-616C8248330D</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_comuna" id="7F8B403C-2F93-36CA-3877-3CECE81EEDBA">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 02:24:04 UTC</createdTime>
+<generatorID>981DB1BC-AA8D-677D-D2E3-9AB201893DB0</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="145F96C9-B21A-0C0A-33AB-55DD7BE59C8D" referredColumn="F83D8D28-D433-1DEA-2104-71581C786666"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="E1DA256B-4F4C-0606-7400-2413E5247CFC" name="EMPRESA_PK">
@@ -97,6 +125,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="9CD7B3B2-975E-9383-F1AE-76D6C753FDEE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0EC0357D-3F85-3B4F-66C1-7E6705EB23BA" name="EMPRESA_COMUNA_FKv2">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 02:24:04 UTC</createdTime>
+<generatorID>4298BE00-8E37-424A-3C46-F19138947D0E</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7F8B403C-2F93-36CA-3877-3CECE81EEDBA"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

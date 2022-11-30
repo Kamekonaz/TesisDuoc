@@ -36,7 +36,7 @@ function EditUser() {
         const userID = urlparams.get("userID")
         const data ={
             accountID: userID,
-            sessionKey: cookies.get("sessionKey")
+            sessionKey: cookies.get("appsessionKey")
         }
         const userData = (await axios.post('http://localhost:3001/getwholeuserdata', data)).data
         if(userData["ID_TIPO"] === 3) setIsClient(true)

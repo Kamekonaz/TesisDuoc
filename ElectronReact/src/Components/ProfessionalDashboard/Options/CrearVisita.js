@@ -57,7 +57,7 @@ function CrearVisita() {
 
   async function getUsersList(){
       const data ={
-          sessionKey: cookies.get("sessionKey"),
+          sessionKey: cookies.get("appsessionKey"),
           usertype: 3
       }
       const usersList = await axios.post('http://localhost:3001/listUsersByUserType', data)
@@ -104,7 +104,7 @@ function CrearVisita() {
                       <div className="italic text-xs text-gray-200">{client["RUT_USUARIO"]}</div>
                   </div>
                   <div className="flex m-auto">
-                      Sin empresa (cs)
+                      {client["NOMBRE_1"]}
                   </div>
 
               </div>
@@ -116,15 +116,16 @@ function CrearVisita() {
 
 }
 
-  function toggleClientSelector(client=""){
-    if(client) {
-      setSelectedClient(client)
-      setIsSelecting(false)
-      return;
-    }
-
-    setIsSelecting(true)
+function toggleClientSelector(client="", justClose=false){
+  if(justClose) return setIsSelecting(false)
+  if(client !== "") {
+    setSelectedClient(client)
+    setIsSelecting(false)
+    return;
   }
+
+  setIsSelecting(true)
+}
   
 
   async function submit(){
@@ -132,13 +133,13 @@ function CrearVisita() {
     const sumbitDate = startDate.toLocaleDateString().split("/").join("")
 
     const sumbitDatetime = `${sumbitDate} ${hour}${minutes}00`
-    const gottenUserData = JSON.parse(localStorage.getItem('userData'))
+    const gottenUserData = JSON.parse(localStorage.getItem('appuserData'))
 
     const data = {
       fecha: sumbitDatetime,
       rut_usuario: selectedClient["RUT_USUARIO"] ? selectedClient["RUT_USUARIO"] : "",
       rut_profesional: gottenUserData["RUT_USUARIO"]? gottenUserData["RUT_USUARIO"] : "",
-      sessionKey: cookies.get("sessionKey")
+      sessionKey: cookies.get("appsessionKey")
     }
 
     const hasVoidAttribute = !Object.values(data).every(value => value !== "")
@@ -172,7 +173,10 @@ function CrearVisita() {
             <div className="ml-64 h-full flex" style={{background: 'rgba(0, 0, 0, 0.9)'}}>
 
                 <div className="m-auto bg-gray-700 flex flex-col text-white text-xl rounded-xl" style={{width: '600px'}}>
-                  <div className="mx-auto pb-8 pt-3">Seleccionar cliente</div>
+                <div className="py-5 pt-3 flex items-center">
+                      <div className="pl-8 mx-auto">Seleccionar cliente</div>
+                      <div onClick={() => toggleClientSelector("", true)} className="mr-8 border px-2 rounded-lg pb-1 font-bold hover:bg-gray-800 select-none">x</div>
+                  </div>
 
                   <input onChange={(e) => {setBrowserValue(e.target.value); clientSearch()}} id="clientesSearch" className="mx-2 border rounded-lg h-12 pl-2 text-gray-200 text-xl bg-gray-800 border-gray-900 border-2 focus:border-black focus:outline-none focus:border-3" type="text" placeholder="Buscar"/>
 
@@ -189,10 +193,10 @@ function CrearVisita() {
                 <div className="mx-auto text-3xl mt-2 font-medium mb-20">Planificar Visita</div>
 
                 <div className="mx-auto text-xl">Cliente:</div>
-                <div className="mx-auto h-16 bg-gray-600 flex hover:bg-gray-500 rounded-xl border border-gray-400" style={{width: "500px"}}>               
+                <div className="mx-auto h-16 bg-gray-600 flex hover:bg-gray-500 rounded-xl border border-gray-400 select-none" onClick={() => toggleClientSelector()} style={{width: "500px"}}>               
                     {
                       selectedClient ? 
-                      <div className="border-gray-600 border-t h-full mx-auto" onClick={() => toggleClientSelector()} style={{width:"98%",
+                      <div className="border-gray-600 border-t h-full mx-auto" style={{width:"98%",
                         display: "grid", gridTemplateColumns: "64px 1.5fr 1fr"}}>
                             <div className="flex m-auto">
                                 <img src={selectedClient["IMAGEN"] ? selectedClient["IMAGEN"]: "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png"} className="h-12 w-12 object-cover rounded-full" alt=""/>
@@ -202,7 +206,7 @@ function CrearVisita() {
                                 <div className="italic text-xs text-gray-200">{selectedClient["RUT_USUARIO"]}</div>
                             </div>
                             <div className="flex m-auto">
-                                Sin empresa (cs)
+                              {selectedClient["NOMBRE_1"]}
                             </div>
           
                         </div>

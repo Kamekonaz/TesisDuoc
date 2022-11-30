@@ -30,7 +30,7 @@ function ProfessionalSidebar() {
     const selectedDashboardOptionClass = "flex items-center p-2 text-base font-normal rounded-lg text-white bg-gray-900 select-none dashboardOptions"
 
     async function handleIsSessionValid(){
-        const sessionKey = cookies.get("sessionKey")
+        const sessionKey = cookies.get("appsessionKey")
         if(!sessionKey) return setIsSessionValid(false)
         try {
             const data = {
@@ -46,14 +46,14 @@ function ProfessionalSidebar() {
     }
     async function reloadUserData(){
         const data = {
-            sessionKey:  cookies.get("sessionKey")
+            sessionKey:  cookies.get("appsessionKey")
         }
         const userData = (await axios.post('http://localhost:3001/getselfuserdata', data)).data
-        localStorage.setItem('userData', JSON.stringify(userData))
+        localStorage.setItem('appuserData', JSON.stringify(userData))
     }
 
     function loadUserData(){
-        const gottenUserData = JSON.parse(localStorage.getItem('userData'))
+        const gottenUserData = JSON.parse(localStorage.getItem('appuserData'))
         return gottenUserData
     }
 

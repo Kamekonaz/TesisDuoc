@@ -21,7 +21,7 @@ function LoginView() {
         const loginData = {
           username: usernameInput.value,
           password: passwordInput.value,
-          keySession: cookies.get("sessionKey"),
+          keySession: cookies.get("appsessionKey"),
           expectedUserTypes: EXPECTED_USERS
         }
 
@@ -31,23 +31,23 @@ function LoginView() {
         const resultData = result.data
         if(resultData["apiError"] === true) return show_login_error("Error con el servidor") // Error con el servidor 
         if(resultData["loginSuccesful"] === true){
-          if(resultData["wasSessionValid"] === false) cookies.set('sessionKey', resultData["sessionKey"], { path: '/', expires: new Date(Date.now()+25920000) });
+          if(resultData["wasSessionValid"] === false) cookies.set('appsessionKey', resultData["sessionKey"], { path: '/', expires: new Date(Date.now()+25920000) });
           // Login exitoso
           if(resultData["idTipo"] === 1){
               const data = {
-                  sessionKey:  cookies.get("sessionKey")
+                  sessionKey:  cookies.get("appsessionKey")
               }
               const userData = (await axios.post('http://localhost:3001/getselfuserdata', data)).data
-              localStorage.setItem('userData', JSON.stringify(userData))
+              localStorage.setItem('appuserData', JSON.stringify(userData))
               window.location.href = window.location.origin + "/adminDashboard"
           
           } 
           if(resultData["idTipo"] === 2) {
             const data = {
-                sessionKey:  cookies.get("sessionKey")
+                sessionKey:  cookies.get("appsessionKey")
             }
             const userData = (await axios.post('http://localhost:3001/getselfuserdata', data)).data
-            localStorage.setItem('userData', JSON.stringify(userData))
+            localStorage.setItem('appuserData', JSON.stringify(userData))
             window.location.href = window.location.origin + "/professionalDashboard"
           }
         }

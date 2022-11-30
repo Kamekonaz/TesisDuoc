@@ -68,6 +68,19 @@
 <dataTypeSize>255</dataTypeSize>
 <ownDataTypeParameters>255,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="calle" id="73EED68A-E851-6DC7-0355-616C8248330D">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 00:53:38 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="rut_usuario" id="D0EBBDCE-8418-C248-5DE7-3E340EDB8A38">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-10-10 01:49:11 UTC</createdTime>
@@ -84,6 +97,21 @@
 <dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_comuna" id="981DB1BC-AA8D-677D-D2E3-9AB201893DB0">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 02:04:59 UTC</createdTime>
+<generatorID>4298BE00-8E37-424A-3C46-F19138947D0E</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>9EEC1BB4-17CF-E155-CB07-AF0D1B304245</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="849D9B93-8B03-BDBA-2AAE-6DD00F282592" name="EMPRESA PK">
@@ -97,6 +125,7 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>44E3BE78-1036-09A5-1671-4B1DAD99660F</attributeRef>
+<attributeRef>981DB1BC-AA8D-677D-D2E3-9AB201893DB0</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

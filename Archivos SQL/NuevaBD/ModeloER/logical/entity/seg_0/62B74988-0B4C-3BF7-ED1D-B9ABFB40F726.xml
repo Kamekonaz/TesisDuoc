@@ -28,7 +28,7 @@
 <dataTypePrecision>12</dataTypePrecision>
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nombre" id="B6913550-252A-E217-71D2-94EEE9D03FAC">
+<Attribute name="comuna" id="B6913550-252A-E217-71D2-94EEE9D03FAC">
 <createdBy>CETECOM</createdBy>
 <createdTime>2022-09-29 12:26:39 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
@@ -41,20 +41,20 @@
 <dataTypeSize>255</dataTypeSize>
 <ownDataTypeParameters>255,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_region" id="3FFA55C4-1A43-822D-680C-EC619D86FB33">
-<createdBy>CETECOM</createdBy>
-<createdTime>2022-09-29 12:28:26 UTC</createdTime>
-<generatorID>39739564-D324-E31D-FBFE-33BF55A469DB</generatorID>
+<Attribute name="id_provincia" id="E651CFBD-5523-ADE0-6789-552FC2E8321A">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-11-30 02:05:16 UTC</createdTime>
+<generatorID>5E36A31D-BE84-6A9C-60E9-E1BF1B86DC34</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
 </engineerTo>
-<referedAttribute>0F5CDDC7-4FF1-BD66-E3A7-CA9E4B88FC2B</referedAttribute>
+<referedAttribute>04194A1C-9AA2-884C-5946-006C277B9A1E</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

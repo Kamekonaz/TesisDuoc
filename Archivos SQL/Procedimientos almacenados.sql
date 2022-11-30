@@ -48,7 +48,7 @@ create or replace package body pkg_login as
             if v_sesionID > 1 then
                 select (max(id_sesion)+1) into v_sesionID from sesion;
             end if;
-            v_expiration := systimestamp  +  numtodsinterval(7, 'day');
+            v_expiration := LOCALTIMESTAMP  +  numtodsinterval(7, 'day');
             
             insert into sesion
             values(
@@ -164,7 +164,7 @@ create or replace package pkg_register as
         f_email varchar,
         f_telefono number
     );
-    procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar);
+    procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar, f_calle varchar, f_id_comuna number);
     procedure pcr_delete_user(f_id_cuenta varchar);
 end pkg_register;
 -------------------------------------------------------------
@@ -291,7 +291,7 @@ create or replace package body pkg_register as
     end;
     
     
-    procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar)
+    procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar, f_calle varchar, f_id_comuna number)
     is
         v_rut_count number(10);
     begin
@@ -303,7 +303,9 @@ create or replace package body pkg_register as
                 f_razon_social,
                 f_telefono,
                 f_nombre,
-                f_rut_usuario
+                f_rut_usuario,
+                f_calle , 
+                f_id_comuna
             );
         end if;
         commit work;
@@ -320,10 +322,26 @@ create or replace package pkg_list as
     procedure pcr_list_activities(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_list_participants(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_list_clients_with_contract(p_recordset OUT SYS_REFCURSOR);
+    procedure pcr_list_payments(p_recordset OUT SYS_REFCURSOR);
 end pkg_list;
 
 /
 create or replace package body pkg_list as
+
+    procedure pcr_list_payments(p_recordset OUT SYS_REFCURSOR)
+    is
+    begin
+        open p_recordset for
+        select * from pago
+        join contrato on pago.id_contrato = contrato.id_contrato
+        join usuario on contrato.rut_usuario = usuario.rut_usuario
+        join empresa on empresa.rut_usuario = usuario.rut_usuario
+        join cuenta on usuario.id_cuenta = cuenta.id_cuenta
+        left join empresa on usuario.rut_usuario = empresa.rut_usuario
+        order by pago.fecha_pago desc;
+    end;
+    
+    
     
     procedure pcr_list_by_usertype(f_usertype number, p_recordset OUT SYS_REFCURSOR)
     is
@@ -335,6 +353,7 @@ create or replace package body pkg_list as
         usuario.id_cuenta = cuenta.id_cuenta
         join tipo_usuario on
         tipo_usuario.id_tipo = cuenta.id_tipo
+        left join empresa on usuario.rut_usuario = empresa.rut_usuario
         where cuenta.id_tipo = f_usertype;
 
     end;
@@ -351,6 +370,7 @@ create or replace package body pkg_list as
                 usuario.id_cuenta = cuenta.id_cuenta
                 join tipo_usuario on
                 tipo_usuario.id_tipo = cuenta.id_tipo
+                left join empresa on usuario.rut_usuario = empresa.rut_usuario
                 join contrato on contrato.rut_usuario = usuario.rut_usuario
                 join (
                     select 
@@ -365,6 +385,14 @@ create or replace package body pkg_list as
                           FROM contrato g2
                           WHERE contrato.rut_usuario = g2.rut_usuario )
                     ) sq on contrato.id_contrato = sq.id_contrato 
+                join (
+                    select 
+                   
+                        usuario.rut_usuario as rut_usuario,
+                        pkg_client.pcr_get_contract_debt(usuario.rut_usuario) as deuda                    
+                    from usuario
+                    ) qs on usuario.rut_usuario = qs.rut_usuario 
+
   
         where cuenta.id_tipo = 3;
 
@@ -418,6 +446,19 @@ create or replace package body pkg_client as
         
         v_inicio_contrato timestamp;
         v_expiration timestamp;
+        
+        v_visita_amount number(12);
+        v_capacitacion_amount number(12);
+        v_asesoria_amount number(12);
+        
+        v_normal_service_cost number(12);
+        v_contract_cost number(12);
+        v_extra_service_cost number(12);
+        v_id_detalle number(12);
+        
+        v_visita_extra number(12);
+        v_capacitacion_extra number(12);
+        v_asesoria_extra number(12);
     begin
         select rut_usuario into v_rut_usuario from usuario where id_cuenta = f_id_cuenta;
     
@@ -429,12 +470,97 @@ create or replace package body pkg_client as
         
         insert into pago values(
             v_id_pago,
-            systimestamp,
+            LOCALTIMESTAMP,
             f_estado,
             f_monto,
             f_tipo_recibo,
             v_id_contract
         );
+        
+        select 
+        nvl(sum(case when checklist_visita.modificaciones>0 then checklist_visita.modificaciones end),0) as modificaciones_visita,
+        count(case when actividad.id_tipoactividad=2 then 1 end) as capacitaciones,
+        count(case when actividad.id_tipoactividad=3 then 1 end) as asesorias
+        into
+            v_visita_amount,
+            v_capacitacion_amount,
+            v_asesoria_amount 
+        from actividad
+                    left join visita on actividad.id_actividad = visita.id_actividad
+                    left join checklist_visita on checklist_visita.id_visita = visita.id_visita
+                    join participante_act pa on pa.id_actividad = actividad.id_actividad
+                    join contrato on contrato.rut_usuario = pa.rut_usuario
+                    where pa.rut_usuario = v_rut_usuario
+                    and actividad.fecha_actividad >= contrato.fecha_inicio
+                    and actividad.fecha_actividad <= contrato.fecha_termino
+                    and contrato.id_estado_contrato = 2;
+                
+        select sum(costo_fijo) into v_contract_cost from coste_act;
+        
+        select nvl(max(id_detallepago),0) into v_id_detalle from detalle_pago;
+        
+        select costo_fijo into v_normal_service_cost from coste_act where id_tipoactividad = 1;
+        select costo_extra into v_extra_service_cost from coste_act where id_tipoactividad = 1;
+        
+        if v_visita_amount > 2 then      
+            v_visita_extra := (v_visita_amount - 2) * v_extra_service_cost;
+            v_contract_cost := v_contract_cost + ((v_visita_amount - 2) * v_extra_service_cost);  
+            
+            v_visita_amount:= v_visita_amount-2;
+        else v_visita_amount:= 0;
+        end if;
+        
+        insert into detalle_pago
+                values(
+                    v_id_detalle + 1,
+                    'Modificaciones a checklist de visita',
+                    v_normal_service_cost,
+                    v_id_pago,
+                    v_visita_amount,
+                    v_extra_service_cost * v_visita_amount,
+                    v_normal_service_cost + v_extra_service_cost
+                );
+        
+        select costo_extra into v_extra_service_cost from coste_act where id_tipoactividad = 2;
+        select costo_fijo into v_normal_service_cost from coste_act where id_tipoactividad = 2;
+        if v_capacitacion_amount > 0 then
+            v_capacitacion_extra := v_capacitacion_amount * v_extra_service_cost;
+            v_contract_cost := v_contract_cost + (v_capacitacion_amount * v_extra_service_cost);
+            
+        end if;
+        
+        insert into detalle_pago
+                values(
+                    v_id_detalle + 2,
+                    'Capacitaciónes',
+                    v_normal_service_cost,
+                    v_id_pago,
+                    v_capacitacion_amount,
+                    v_extra_service_cost * v_capacitacion_amount,
+                    v_normal_service_cost + v_extra_service_cost
+                );
+                
+        select costo_fijo into v_normal_service_cost from coste_act where id_tipoactividad = 3;
+        select costo_extra into v_extra_service_cost from coste_act where id_tipoactividad = 3;
+         if v_asesoria_amount > 10 then
+            
+            v_asesoria_extra := (v_asesoria_amount - 10) * v_extra_service_cost;
+            v_contract_cost := v_contract_cost + ((v_asesoria_amount - 10) * v_extra_service_cost);
+            
+            v_asesoria_amount:= v_asesoria_amount-10;
+        else v_asesoria_amount:= 0;
+        end if;
+        
+        insert into detalle_pago
+                values(
+                    v_id_detalle + 3,
+                    'Asesorías',
+                    v_normal_service_cost,
+                    v_id_pago,
+                    v_asesoria_amount,
+                    v_extra_service_cost * v_asesoria_amount,
+                    v_normal_service_cost + v_extra_service_cost
+                );
         
         update contrato
             set id_estado_contrato = 3
@@ -508,25 +634,31 @@ create or replace package body pkg_client as
         
         
     begin
-        select nvl(sum(case when actividad.id_tipoactividad=1 then 1 end),0) into v_visita_amount from actividad
+        select nvl(sum(case when checklist_visita.modificaciones>0 then checklist_visita.modificaciones end),0) into v_visita_amount from actividad
             join visita on actividad.id_actividad = visita.id_actividad
             join checklist_visita on checklist_visita.id_visita = visita.id_visita
             join participante_act pa on pa.id_actividad = actividad.id_actividad
             join contrato on contrato.rut_usuario = pa.rut_usuario
             where pa.rut_usuario = f_rut_usuario
-            and contrato.id_estado_contrato = 2;
+            and actividad.fecha_actividad >= contrato.fecha_inicio
+            and actividad.fecha_actividad <= contrato.fecha_termino
+            and contrato.id_estado_contrato != 3;
             
         select count(case when actividad.id_tipoactividad=2 then 1 end) into v_capacitacion_amount from actividad
             join participante_act pa on pa.id_actividad = actividad.id_actividad
              join contrato on contrato.rut_usuario = pa.rut_usuario
             where pa.rut_usuario = f_rut_usuario
-            and contrato.id_estado_contrato = 2;
+            and actividad.fecha_actividad >= contrato.fecha_inicio
+            and actividad.fecha_actividad <= contrato.fecha_termino
+            and contrato.id_estado_contrato != 3;
             
         select count(case when actividad.id_tipoactividad=3 then 1 end) into v_asesoria_amount from actividad
             join participante_act pa on pa.id_actividad = actividad.id_actividad
              join contrato on contrato.rut_usuario = pa.rut_usuario
             where pa.rut_usuario = f_rut_usuario
-            and contrato.id_estado_contrato = 2;
+            and actividad.fecha_actividad >= contrato.fecha_inicio
+            and actividad.fecha_actividad <= contrato.fecha_termino
+            and contrato.id_estado_contrato != 3;
         
         select sum(costo_fijo) into v_contract_cost from coste_act;
         
@@ -551,14 +683,69 @@ create or replace package body pkg_client as
     end;
 end pkg_client;
 /
-
 create or replace package pkg_util as
     procedure sp_add_participante(id_actividad number, rut_usuario varchar2, f_rut_profesional varchar2);
+    procedure sp_change_contract_status(f_id_contract number, f_new_status number);
+    procedure sp_get_costs_by_rut(f_rut_usuario varchar, rf_cur out sys_refcursor);
 end pkg_util;
 
 /
 
 create or replace package body pkg_util as
+
+    procedure sp_get_costs_by_rut(f_rut_usuario varchar, rf_cur out sys_refcursor)
+        is
+
+            
+            
+        begin
+            open rf_cur for 
+            select 
+                *
+                from dual
+                cross join 
+                (
+                select 
+                    nvl(sum(case when checklist_visita.modificaciones>0 then checklist_visita.modificaciones end),0) as modificaciones_visita,
+                    count(case when actividad.id_tipoactividad=2 then 1 end) as capacitaciones,
+                    count(case when actividad.id_tipoactividad=3 then 1 end) as asesorias
+                from actividad
+                            left join visita on actividad.id_actividad = visita.id_actividad
+                            left join checklist_visita on checklist_visita.id_visita = visita.id_visita
+                            join participante_act pa on pa.id_actividad = actividad.id_actividad
+                            join contrato on contrato.rut_usuario = pa.rut_usuario
+                            where pa.rut_usuario = f_rut_usuario
+                            and actividad.fecha_actividad >= contrato.fecha_inicio
+                            and actividad.fecha_actividad <= contrato.fecha_termino
+                            and contrato.id_estado_contrato != 3
+                ) actividad
+                cross join
+                (
+                select 
+                    sum(case when coste_act.id_tipoactividad=1 then costo_fijo end) as coste_visita,
+                    sum(case when coste_act.id_tipoactividad=2 then costo_fijo end) as coste_capacitacion,
+                    sum(case when coste_act.id_tipoactividad=3 then costo_fijo end) as coste_asesoria,
+                    sum(case when coste_act.id_tipoactividad=1 then costo_extra end) as coste_extra_visita,
+                    sum(case when coste_act.id_tipoactividad=2 then costo_extra end) as coste_extra_capacitacion,
+                    sum(case when coste_act.id_tipoactividad=3 then costo_extra end) as coste_extra_asesoria
+                from coste_act
+                ) costes;
+          
+        end;
+
+    procedure sp_change_contract_status(f_id_contract number, f_new_status number)
+        is
+        begin
+
+            
+            
+            update contrato
+                set id_estado_contrato = f_new_status
+            where id_contrato = f_id_contract;
+  
+
+            commit work;
+    end;
     procedure sp_add_participante(id_actividad number, rut_usuario varchar2, f_rut_profesional varchar2)
     
     is

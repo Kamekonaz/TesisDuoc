@@ -1,8 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F4F8FAD6-D6D4-A9DE-AA49-69AD7C48BBC1" containerWithKeyObject="48C09CEA-3260-B00A-C943-F8EA2BBC4451" localFKIndex="E0C12DD5-7943-56DD-1EF2-6A8D6B1C0FDE" name="COMUNA_REGION_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="999DEAEC-A2CD-6253-508C-BF5C54B92B80" containerWithKeyObject="2BA1FEC5-97A2-959C-F4A6-ACE24377A6E7" localFKIndex="182555A6-44C0-31C5-F570-291E5B2BAFED" name="PROVINCIA_REGION_FK">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>39739564-D324-E31D-FBFE-33BF55A469DB</generatorID>
+<createdTime>2022-11-30 02:07:14 UTC</createdTime>
+<generatorID>DF927383-0788-71CD-38ED-22C7CE49BA04</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <referredTableLongName>REGION</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>

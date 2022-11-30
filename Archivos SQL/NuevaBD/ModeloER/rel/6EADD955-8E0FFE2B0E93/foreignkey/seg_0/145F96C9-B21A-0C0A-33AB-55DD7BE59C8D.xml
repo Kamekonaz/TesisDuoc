@@ -1,15 +1,15 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_1" id="88AC8742-59D6-AA31-F6F2-17F7781C76B1" containerWithKeyObject="CB89E4F1-F8B1-2259-BC2D-3867FCA6FAC5" localFKIndex="68F3A088-BE83-61F8-6363-416748D1E66C" name="SUCURSAL_COMUNA_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="145F96C9-B21A-0C0A-33AB-55DD7BE59C8D" containerWithKeyObject="2260D841-AF94-28FF-7209-F804C8BDED9C" localFKIndex="0EC0357D-3F85-3B4F-66C1-7E6705EB23BA" name="EMPRESA_COMUNA_FKv2">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>A1227163-D36D-4D4B-4876-6A12244AB122</generatorID>
+<createdTime>2022-11-30 02:24:04 UTC</createdTime>
+<generatorID>4298BE00-8E37-424A-3C46-F19138947D0E</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <referredTableLongName>COMUNA</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>48C09CEA-3260-B00A-C943-F8EA2BBC4451</referredTableID>
 <keyObject>8F4DF33F-A87C-9E25-167D-D05D34C7C23F</keyObject>
 <referredKeyID>8F4DF33F-A87C-9E25-167D-D05D34C7C23F</referredKeyID>
-<mandatory>false</mandatory>
+<mandatory>true</mandatory>
 <refColNames>id_comuna</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>

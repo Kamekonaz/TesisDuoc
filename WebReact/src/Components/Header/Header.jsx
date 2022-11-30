@@ -7,11 +7,12 @@ import { NavLink, Link } from "react-router-dom";
 function Header() {
     const cookies = new Cookies();
 
-    
-    //if(isSessionValid === false) window.location.href = window.origin
+
     const userData = React.useMemo(()=> loadUserData())
-    const [isSessionValid, setIsSessionValid] = React.useState(userData ? true : false);
+    const [isSessionValid, setIsSessionValid] = React.useState(false);
     const [showProfileMenu, setShowProfileMenu] = React.useState(false);
+
+    //if(isSessionValid === false) window.location.href = window.origin
 
     //console.log(isSessionValid)
     async function handleIsSessionValid(){
@@ -23,7 +24,8 @@ function Header() {
                 expectedUserTypes: [3]
             }
             const isValid = (await axios.post('http://localhost:3001/isSessionValid', data)).data
-            return setIsSessionValid(isValid.valid)
+            //console.log(isValid.valid ? isValid.valid : false)
+            return setIsSessionValid(isValid.valid ? isValid.valid : false)
         } catch (error) {
             return setIsSessionValid(false)
         }

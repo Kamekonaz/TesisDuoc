@@ -22,7 +22,7 @@ function AdminProfesionales() {
     
     async function getUsersList(){
         const data ={
-            sessionKey: cookies.get("sessionKey"),
+            sessionKey: cookies.get("appsessionKey"),
             usertype: 2
         }
         
@@ -57,7 +57,7 @@ function AdminProfesionales() {
                             if (result.isConfirmed) {
                                 const data = {
                                     accountID: userID,
-                                    sessionKey: cookies.get("sessionKey")
+                                    sessionKey: cookies.get("appsessionKey")
                                 }
                                 await axios.post('http://localhost:3001/deleteUser', data)
                                 getUsersList()

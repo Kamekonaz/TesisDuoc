@@ -44,6 +44,12 @@ function Contrato() {
         return gottenUserData
     }
 
+    useEffect(()=>{
+        setInterval(()=>{
+            loadContractData()
+        }, 3000)
+    },[])
+
     async function loadContractData(){
         
         const data = {

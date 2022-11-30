@@ -58,7 +58,7 @@ function CreateUser() {
             ...{usertype: parseInt(creationData.usertype)},
             ...{estado: parseInt(creationData.estado)},        
             ...{telefono: parseInt(creationData.telefono)},
-            sessionKey: cookies.get("sessionKey")
+            sessionKey: cookies.get("appsessionKey")
         }
         delete data.checkcontraseña
 

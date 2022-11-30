@@ -1,17 +1,17 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="48C09CEA-3260-B00A-C943-F8EA2BBC4451" name="COMUNA">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2BA1FEC5-97A2-959C-F4A6-ACE24377A6E7" name="PROVINCIA">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>62B74988-0B4C-3BF7-ED1D-B9ABFB40F726</generatorID>
+<createdTime>2022-11-30 02:07:14 UTC</createdTime>
+<generatorID>AC5C53B7-0C3A-C517-6A02-E2EE8A1BB4E1</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_comuna" id="F83D8D28-D433-1DEA-2104-71581C786666">
+<Column name="id_provincia" id="1809B150-88D3-4BD4-9FEE-61F60CADA572">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>9EEC1BB4-17CF-E155-CB07-AF0D1B304245</generatorID>
+<createdTime>2022-11-30 02:07:14 UTC</createdTime>
+<generatorID>04194A1C-9AA2-884C-5946-006C277B9A1E</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -20,10 +20,10 @@
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="comuna" id="C950188E-B09A-1033-86B7-CC6E8A040D95">
+<Column name="provincia" id="78F52144-E652-895D-962D-51EA7ED571C5">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>B6913550-252A-E217-71D2-94EEE9D03FAC</generatorID>
+<createdTime>2022-11-30 02:07:14 UTC</createdTime>
+<generatorID>C9C50F1F-DA9C-629B-9DB2-54273550A8AF</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -32,10 +32,10 @@
 <ownDataTypeParameters>255,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id_provincia" id="8C618BE9-2A21-CF18-E409-34D304DBDE0C">
+<Column name="id_region" id="4644F39C-2D1A-6AA1-E4A1-8818DDA2B8C4">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-11-30 02:07:14 UTC</createdTime>
-<generatorID>E651CFBD-5523-ADE0-6789-552FC2E8321A</generatorID>
+<generatorID>E512CA49-4967-4B03-0C89-3258289D007F</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -45,32 +45,32 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="2376892B-33DA-70FB-4F89-65156A313992" referredColumn="1809B150-88D3-4BD4-9FEE-61F60CADA572"/>
+<colAssociation fkAssociation="999DEAEC-A2CD-6253-508C-BF5C54B92B80" referredColumn="CCD20578-F8E8-2961-9362-6ED214DAC7D2"/>
 </associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="8F4DF33F-A87C-9E25-167D-D05D34C7C23F" name="COMUNA_PK">
+<ind_PK_UK id="AC108909-554E-1B52-E0DB-6159719F38F5" name="PROVINCIA_PK">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>FD348018-E467-FC1C-BCFC-23F94B185991</generatorID>
+<createdTime>2022-11-30 02:07:14 UTC</createdTime>
+<generatorID>E492871D-8934-008D-8E60-653ABB4B0F6B</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="F83D8D28-D433-1DEA-2104-71581C786666"/>
+<colUsage columnID="1809B150-88D3-4BD4-9FEE-61F60CADA572"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="8230B79B-AC2C-B4F5-B021-B28695AD723E" name="COMUNA_PROVINCIA_FK">
+<ind_PK_UK id="182555A6-44C0-31C5-F570-291E5B2BAFED" name="PROVINCIA_REGION_FK">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-11-30 02:07:14 UTC</createdTime>
-<generatorID>5E36A31D-BE84-6A9C-60E9-E1BF1B86DC34</generatorID>
+<generatorID>DF927383-0788-71CD-38ED-22C7CE49BA04</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="8C618BE9-2A21-CF18-E409-34D304DBDE0C"/>
+<colUsage columnID="4644F39C-2D1A-6AA1-E4A1-8818DDA2B8C4"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -4,6 +4,7 @@ import AdminSidebar from "../AdminSidebar";
 import Cookies from 'universal-cookie';
 import axios from "axios";
 import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
 // import {
 //     BrowserRouter,
 //     Routes,
@@ -16,6 +17,7 @@ function AdminClientes() {
     const [browserValue, setBrowserValue] = React.useState('');
     const [displayOption, setDisplayOption] = React.useState('1');
     const [clientsList, setClientsList] = React.useState();
+    const navigate = useNavigate()
   
     const normalDisplayClasses = "px-2 rounded-lg hover:bg-gray-600"
     const selectedDisplayClasses = "px-2 rounded-lg bg-gray-800"
@@ -30,10 +32,11 @@ function AdminClientes() {
 
     async function getUsersList(){
         const data ={
-            sessionKey: cookies.get("sessionKey"),
+            sessionKey: cookies.get("appsessionKey"),
             usertype: 3
         }
         const usersList = await axios.post('http://localhost:3001/listUsersByUserType', data)
+        console.log(usersList.data)
         setClientsList(usersList.data)
         return;
     }
@@ -64,7 +67,7 @@ function AdminClientes() {
                             if (result.isConfirmed) {
                                 const data = {
                                     accountID: userID,
-                                    sessionKey: cookies.get("sessionKey")
+                                    sessionKey: cookies.get("appsessionKey")
                                 }
                                 await axios.post('http://localhost:3001/deleteUser', data)
                                 getUsersList()
@@ -110,11 +113,13 @@ function AdminClientes() {
         for (const client of filteredClientsList){
             const imageSRC = (client["IMAGEN"]) ? client["IMAGEN"]
              : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png";
+             const nombreEmpresa = (client["NOMBRE_1"]) ? client["NOMBRE_1"]
+             : "Sin empresa";
             usersHTML+=`
             <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl" 
             onclick="window.location.href = window.location.origin + '/editUser/?userID=${client["ID_CUENTA"]}&dashboardOption=${window.location.pathname.split("/")[2]}'">
                 <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
-                display: grid; grid-template-columns: 64px 1.3fr 1fr 0.5fr 0.5fr;">
+                display: grid; grid-template-columns: 64px 350px 300px 300px 0.5fr 0.5fr;">
                     <div class="flex m-auto">
                         <img src="${imageSRC}" class="h-12 w-12 object-cover rounded-full">
                     </div>
@@ -122,9 +127,18 @@ function AdminClientes() {
                         <div>${client["NOMBRES"]} ${client["APELLIDOS"]}</div> 
                         <div class="italic text-xs text-gray-200">${client["RUT_USUARIO"]}</div>
                     </div>
-                    <div class="flex m-auto">
-                        Sin empresa (cs)
+                    <div class="flex flex-col justify-center items-start">
+                        <div class="font-bold">Empresa:</div>
+                        <div class="${(client["NOMBRE_1"]) ? "" : "text-red-500"}">${nombreEmpresa}</div>
+                        
                     </div>
+
+                    <div class="flex m-auto font-medium"  onclick="event.stopPropagation()">
+                    ${client["NOMBRE_1"] ? '<div class="px-3 py-1 rounded-lg bg-orange-700 hover:bg-orange-800">Editar empresa</div>'
+                        : ""}
+                        
+                    </div>
+
                     <div class="flex m-auto font-medium">
                         ${(client["ESTADO"] === "1") ? activeUserHTML : disabledUserHTML} 
                     </div>
@@ -171,7 +185,7 @@ function AdminClientes() {
                         onClick={()=>window.location.href = `${window.location.origin}/createUser/?userType=3&dashboardOption=${window.location.pathname.split("/")[2]}`}
                         >Añadir cliente</div>
 
-                        <div className="px-3 py-1 rounded-lg bg-orange-700 hover:bg-orange-800 my-auto">Añadir Empresa</div>
+                        <div onClick={() => navigate("/createBussiness")} className="px-3 py-1 rounded-lg bg-orange-700 hover:bg-orange-800 my-auto">Añadir Empresa</div>
                     </div>      
                 </div>
 

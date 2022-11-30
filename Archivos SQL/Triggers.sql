@@ -9,8 +9,8 @@ v_id_tipo number(10);
 begin
     select id_tipo into v_id_tipo from cuenta where id_cuenta = :new.id_cuenta;
     if v_id_tipo = 3 then
-        v_expiration := systimestamp  +  numtodsinterval(30, 'day');
-        insert into contrato values (null, systimestamp, v_expiration, :new.rut_usuario, null, 1);
+        v_expiration := LOCALTIMESTAMP  +  numtodsinterval(30, 'day');
+        insert into contrato values (null, LOCALTIMESTAMP, v_expiration, :new.rut_usuario, null, 1);
     end if;
 end tgr_create_contract;
 

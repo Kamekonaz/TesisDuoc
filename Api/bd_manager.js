@@ -21,6 +21,106 @@ const db_credentials = {
 
 class BdManager {
 
+    static async change_contract_status(req, res){
+      try {
+
+        const { sessionKey } = req.body
+        const { rut_usuario } = req.body
+        const { newStatus } = req.body
+
+        if (!BdValidation.is_key_valid(BdManager, sessionKey, ["1"])) return res.send("Usuario incorrecto")
+
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+            pkg_util.sp_change_contract_status(:v_rut_usuario, :v_newStatus);
+          END;`,
+          {  
+            v_rut_usuario: rut_usuario,
+            v_newStatus: newStatus
+          }
+        );
+        await Connection.close()
+
+        res.send("Actualizado exitosamente");
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
+
+  
+    static async get_detail_by_rut(req, res){
+      try {
+
+        const { sessionKey } = req.body
+        const { rut_usuario } = req.body
+
+        if (!BdValidation.is_key_valid(BdManager, sessionKey, ["1"])) return res.send("Usuario incorrecto")
+
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+          pkg_util.sp_get_costs_by_rut(:v_rut_usuario,:v_users);
+           END;`,
+          {  
+            v_rut_usuario: rut_usuario,
+            v_users: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+          }
+        );
+        const cursor = result.outBinds.v_users;
+        const filas = await cursor.getRows();
+
+        await Connection.close()
+
+        res.send(filas);
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
+
+    static async get_payments(req, res){
+      try {
+
+        const { sessionKey } = req.body
+
+        if (!BdValidation.is_key_valid(BdManager, sessionKey, ["1"])) return res.send("Usuario incorrecto")
+
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+            pkg_list.pcr_list_payments(:v_users);
+           END;`,
+          {  
+            v_users: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+          }
+        );
+        const cursor = result.outBinds.v_users;
+        const filas = await cursor.getRows();
+        
+        for (const fila of filas){
+          if (fila["IMAGEN"]) fila["IMAGEN"] = await fila["IMAGEN"].getData()
+        }
+
+        await Connection.close()
+
+        res.send(filas);
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
+
     static async get_clients_with_contract(req, res){
       try {
 
@@ -212,30 +312,38 @@ static async crearVisita(fecha, rut_usuario, rut_profesional){
 
     static async createUser(f_imagen, f_id_tipo, f_estado, f_rut, f_username,  f_password,  f_nombres, f_apellidos, f_email, f_telefono){
         try {
-            console.log(f_telefono)
+
+            
             const Connection = await oracledb.getConnection(db_credentials);
             //console.log("alo?", f_accountID)
-            const result = await Connection.execute(
-                `BEGIN
-                  pkg_register.pcr_create_user(:f_imagen, :f_id_tipo, :f_estado, :f_rut, :f_username, :f_password, :f_nombres, :f_apellidos, :f_email, :f_telefono);
-                END;`,
-                {  
-                  f_imagen: f_imagen, 
-                  f_id_tipo: f_id_tipo, 
-                  f_estado: f_estado, 
-                  f_rut: f_rut,
-                  f_username: f_username,  
-                  f_password: f_password,  
-                  f_nombres: f_nombres, 
-                  f_apellidos: f_apellidos, 
-                  f_email: f_email, 
-                  f_telefono: f_telefono
-                }
-              );
-            await Connection.commit()
-            await Connection.close()
-            console.log(result)
-            return result
+            bcrypt.hash(f_password, 10)
+            .then(async (hash) => {
+            // Store hash in the database
+           
+              const result = await Connection.execute(
+                  `BEGIN
+                    pkg_register.pcr_create_user(:f_imagen, :f_id_tipo, :f_estado, :f_rut, :f_username, :f_password, :f_nombres, :f_apellidos, :f_email, :f_telefono);
+                  END;`,
+                  {  
+                    f_imagen: f_imagen, 
+                    f_id_tipo: f_id_tipo, 
+                    f_estado: f_estado, 
+                    f_rut: f_rut,
+                    f_username: f_username,  
+                    f_password: hash,  
+                    f_nombres: f_nombres, 
+                    f_apellidos: f_apellidos, 
+                    f_email: f_email, 
+                    f_telefono: f_telefono
+                  }
+                );
+            
+              await Connection.commit()
+              await Connection.close()
+              console.log(result)
+              return result
+
+            })
 
         } catch (error) {
             console.log(error)
