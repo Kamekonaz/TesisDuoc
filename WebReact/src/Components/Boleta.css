@@ -1,8 +1,8 @@
 .titulo{
  color:rgb(0, 0, 0);
  font-size: 50px;
- margin-left: 15%;
- margin-top: 5%;
+ margin-left: 150px;
+ margin-top: 50px;
  font-weight: bold;
 }
 
@@ -20,7 +20,7 @@ flex-direction: column ;
     height: 100px; 
     border: 3px solid rgb(255, 0, 0);
     background: #ffffff;
-    margin-left: 70%;
+    margin-left: 1060px;
     text-align: center;
     display: flex ;
     justify-content: center;
@@ -67,4 +67,147 @@ display: flex;
    min-width: 100px;
     color: #25d87b;
     font-weight: bold;
+    margin-left: 15px;
+}
+
+.tituloempresa
+{
+color: red;
+font-weight: bold;
+margin-left: 15px;
+}
+
+.empresa2
+{
+
+display: flex;
+flex-direction: column;
+background-color: #25d87b;
+height: 25px;
+margin-left: 10px;
+width: 98%;
+text-align: center;
+color: #ffffff;
+}
+
+.rectangulo2
+{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    width: 98%; 
+    height: 100px; 
+    border: 3px solid rgba(12, 218, 26, 0.621);
+    background: #ffffff;
+    margin-left: 10px;
+
+}
+.datoboleta2
+{
+display: flex;
+}
+
+.titulodato2
+{
+   min-width: 100px;
+    color: #25d87b;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.empresa3
+{
+    margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    background-color: #25d87b;
+    height: 25px;
+    margin-left: 10px;
+    width: 98%;
+    text-align: center;
+    color: #ffffff;
+
+}
+.rectangulo3
+{
+    display: flex;
+    width: 98%; 
+    height: fit-content; 
+    border: 3px solid rgba(12, 218, 26, 0.621);
+    background: #ffffff;
+    margin-left: 10px;
+    flex-direction: column;
+
+}
+.cabeceras
+{
+display: grid;
+width: 100%;
+grid-template-columns: 1fr  1fr 1fr 1fr 1fr ;
+height: 30px;
+text-align: center;
+}
+
+.columnacabeceras
+{
+border: 1px solid #09341e;
+
+
+}
+
+.filas
+{
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr  1fr 1fr 1fr 1fr ;
+        height: 30px;
+        text-align: center;
+
+}
+.columnafila
+{
+border: 1px solid #09341e;
+
+}
+
+.contenedormonto
+{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 15px;
+   
+}
+
+.imagen-1
+{
+background-image: url("https://developers.nubox.com/hubfs/Captura%20de%20Pantalla%202020-06-25%20a%20la(s)%2019.05.18.png");
+width: 350px;
+height: 150px;
+background-size: cover;
+margin:auto;
+}
+.rectangulo5
+{
+    display:flex;
+    flex-direction: column;
+    width: 95%; 
+    height: 60px; 
+    border: 3px solid rgba(12, 218, 26, 0.621);
+    background: #ffffff;
+}
+
+.filas2
+{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr  1fr 1fr  ;
+    margin-left: 12px;
+    text-align: left;
+}
+.signos
+{
+    text-align: center;
+}
+.montopago
+{
+    text-align: center;
 }
