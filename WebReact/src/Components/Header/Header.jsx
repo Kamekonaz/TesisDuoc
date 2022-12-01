@@ -129,8 +129,9 @@ function Header() {
                 <div className="flex flex-shrink-0 items-center ml-auto">
                     <div className="border-l pl-3 ml-3 space-x-1">
                         <a href="/login">
-                            <button className="relative p-2 bg-green-600 rounded-md text-white hover:bg-green-700 focus:bg-green-800" style={{width: "70px"}}>
-                            Login
+                            <button className="relative p-2 bg-green-600 rounded-md text-white hover:bg-green-700 focus:bg-green-800" 
+                            style={{width: "140px"}}>
+                            Iniciar Sesión
                             </button>
                         </a>
                     </div>
