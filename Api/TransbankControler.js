@@ -140,8 +140,9 @@ class TransbankController {
                 }
                 console.log(data)
                 await BdManager.db_payment(data.userID, data.estado, data.monto, data.tipo_recibo)
+                const id_pago = await BdManager.getPaymentID(data.userID)
 
-                return res.send(html);
+                return res.redirect("http://localhost:3002/boleta?id_pago="+id_pago);
             }).catch(err => new Error(err));
 
         } catch (error) {

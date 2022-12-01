@@ -9,10 +9,12 @@ function Header() {
 
 
     const userData = React.useMemo(()=> loadUserData())
-    const [isSessionValid, setIsSessionValid] = React.useState(false);
+    const [isSessionValid, setIsSessionValid] = React.useState(true);
     const [showProfileMenu, setShowProfileMenu] = React.useState(false);
 
-    //if(isSessionValid === false) window.location.href = window.origin
+    if(isSessionValid === false && window.location.href !== window.origin+"/") window.location.href = window.origin
+
+    
 
     //console.log(isSessionValid)
     async function handleIsSessionValid(){
@@ -33,6 +35,8 @@ function Header() {
 
     React.useEffect(()=>{
         handleIsSessionValid();
+        //console.log(isSessionValid)
+        
         reloadUserData()
     })
     async function reloadUserData(){

@@ -518,7 +518,7 @@ create or replace package body pkg_client as
                     v_id_pago,
                     v_visita_amount,
                     v_extra_service_cost * v_visita_amount,
-                    v_normal_service_cost + v_extra_service_cost
+                    v_normal_service_cost + v_extra_service_cost*v_visita_amount
                 );
         
         select costo_extra into v_extra_service_cost from coste_act where id_tipoactividad = 2;
@@ -537,7 +537,7 @@ create or replace package body pkg_client as
                     v_id_pago,
                     v_capacitacion_amount,
                     v_extra_service_cost * v_capacitacion_amount,
-                    v_normal_service_cost + v_extra_service_cost
+                    v_normal_service_cost + v_extra_service_cost*v_capacitacion_amount
                 );
                 
         select costo_fijo into v_normal_service_cost from coste_act where id_tipoactividad = 3;
@@ -559,7 +559,7 @@ create or replace package body pkg_client as
                     v_id_pago,
                     v_asesoria_amount,
                     v_extra_service_cost * v_asesoria_amount,
-                    v_normal_service_cost + v_extra_service_cost
+                    v_normal_service_cost + v_extra_service_cost*v_asesoria_amount
                 );
         
         update contrato
@@ -687,6 +687,7 @@ create or replace package pkg_util as
     procedure sp_add_participante(id_actividad number, rut_usuario varchar2, f_rut_profesional varchar2);
     procedure sp_change_contract_status(f_id_contract number, f_new_status number);
     procedure sp_get_costs_by_rut(f_rut_usuario varchar, rf_cur out sys_refcursor);
+    procedure sp_get_detalle_boleta(f_id_pago number, rf_cur out sys_refcursor);
 end pkg_util;
 
 /
@@ -762,6 +763,22 @@ create or replace package body pkg_util as
         insert into participante_act values(v_maintable_id, id_actividad, rut_usuario);
         insert into participante_act values(v_maintable_id+1, id_actividad, f_rut_profesional);
         commit work;
+    end;
+    
+    procedure sp_get_detalle_boleta(f_id_pago number, rf_cur out sys_refcursor) 
+    is
+    begin
+        open rf_cur for
+        select * from detalle_pago
+            join pago on detalle_pago.id_pago = pago.id_pago
+            join contrato on pago.id_contrato = contrato.id_contrato
+            join usuario on usuario.rut_usuario = contrato.rut_usuario
+            join empresa on usuario.rut_usuario = empresa.rut_usuario
+            join comuna on comuna.id_comuna = empresa.id_comuna
+            join provincia on provincia.id_provincia = comuna.id_provincia
+            join region on provincia.id_region = region.id_region
+            where
+        detalle_pago.id_pago = f_id_pago;
     end;
 end pkg_util;
 

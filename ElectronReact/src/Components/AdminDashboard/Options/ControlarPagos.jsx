@@ -4,6 +4,7 @@ import AdminSidebar from "../AdminSidebar";
 import Cookies from 'universal-cookie';
 import axios from "axios";
 import Swal from 'sweetalert2'
+import {useNavigate} from 'react-router-dom'
 // import {
 //     BrowserRouter,
 //     Routes,
@@ -23,7 +24,7 @@ function ControlarPagos() {
     const [displayClients, setDisplayClients] = React.useState('')
 
 
-
+    const navigate = useNavigate()
   
     const normalDisplayClasses = "px-2 rounded-lg hover:bg-gray-600"
     const selectedDisplayClasses = "px-2 rounded-lg bg-gray-800"
@@ -166,6 +167,7 @@ function ControlarPagos() {
                         </div>
 
                         <div 
+                        onClick={()=> window.location.href = "http://localhost:3002/boleta?returnUrl="+window.location.href+"&id_pago="+client["ID_PAGO"]}
                         className={`bg-orange-700 hover:bg-orange-800 select-none m-auto rounded-lg text-center py-1`} style={{width: "115px"}}> 
                             Ver boleta
                         </div>

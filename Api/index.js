@@ -29,6 +29,7 @@ app.post('/getClientsWithContract', BdManager.get_clients_with_contract)
 app.post('/changeContractStatus', BdManager.change_contract_status)
 app.post('/getPayments', BdManager.get_payments)
 app.post('/getDetailByRut', BdManager.get_detail_by_rut)
+app.post('/getBoletaDetails', BdManager.get_detalle_boleta)
 
 
 

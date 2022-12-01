@@ -52,6 +52,35 @@ class BdManager {
       }
     }
 
+    static async get_detalle_boleta(req, res){
+      try {
+
+        const { id_pago } = req.body
+
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+          pkg_util.sp_get_detalle_boleta(:v_id_pago,:v_users);
+           END;`,
+          {  
+            v_id_pago: id_pago,
+            v_users: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+          }
+        );
+        const cursor = result.outBinds.v_users;
+        const filas = await cursor.getRows();
+
+        await Connection.close()
+
+        res.send(filas);
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
   
     static async get_detail_by_rut(req, res){
       try {
@@ -586,6 +615,34 @@ static async crearVisita(fecha, rut_usuario, rut_profesional){
       
 
         return filas;
+  
+        } catch(err){
+        console.log(err)
+      }    
+    }
+
+    static async getPaymentID(account_id){
+      try{
+        const Connection = await oracledb.getConnection(db_credentials);
+  
+        const query = `
+        select max(pago.id_pago) as ID_PAGO from pago
+        join contrato on contrato.id_contrato = pago.id_contrato
+        join usuario on usuario.rut_usuario = contrato.rut_usuario
+        join cuenta on cuenta.id_cuenta = usuario.id_cuenta
+        where cuenta.id_cuenta = '${account_id}'
+                `
+  
+        const result = await Connection.execute(query, [], { outFormat: oracledb.OUT_FORMAT_OBJECT });
+
+        const filas = result.rows[0]
+
+        console.log(filas)
+
+        await Connection.close()
+      
+
+        return filas["ID_PAGO"];
   
         } catch(err){
         console.log(err)
