@@ -12,6 +12,7 @@ const EXPECTED_USERS = [1, 2]
 
 function LoginView() {
   const cookies = new Cookies();
+  const [isDarkMode, setIsDarkMode] = React.useState(cookies.get("isDarkMode"))
   const [hasLoginError, setHasLoginError] = React.useState(0);
   
     async function login(){
@@ -85,14 +86,14 @@ function LoginView() {
   return (
     <div className="LoginView">
       <section className="h-screen">
-    <div className="px-6 h-full text-gray-800">
+    <div className={`px-6 h-full ${isDarkMode ? "text-gray-800" : "text-white"}`}>
       <div
         className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"
       >
         <div
           className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0"
         >
-          {/* Cambiar esta imagen del asco */}
+ 
           <img
             src={guro_icon}
             className="w-full m-auto"
@@ -110,7 +111,7 @@ function LoginView() {
                   onClick={() => toggleBorders(false)}
                   className={hasLoginError ? errorBorderClass : normalBorderClass}
                   id="guro_username"
-                  placeholder="Username"
+                  placeholder="Usuario"
                 />
               </div>
             </div>
@@ -121,7 +122,7 @@ function LoginView() {
                 onClick={() => toggleBorders(false)}
                 className={hasLoginError ? errorBorderClass : normalBorderClass}                
                 id="password"
-                placeholder="Password"
+                placeholder="Contraseña"
               />
             </div>
   
@@ -132,7 +133,7 @@ function LoginView() {
                 onClick={login}
                 className="inline-block px-7 py-3 bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out"
               >
-                Login
+                Iniciar sesión
               </button>
             </div>
           </form>

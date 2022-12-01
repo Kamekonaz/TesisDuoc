@@ -7,6 +7,8 @@ import Header from "../Header/Header";
 
 function Home() {
     const cookies = new Cookies();
+    const [isDarkMode, setIsDarkMode] = React.useState(cookies.get("isDarkMode"))
+    
 
     const [isSessionValid, setIsSessionValid] = React.useState(true);
     //if(isSessionValid === false) window.location.href = window.origin
@@ -84,7 +86,7 @@ function Home() {
     return (
         <div className="Home">
             <Header/>
-            <section className="px-2 py-32 bg-white md:px-0">
+            <section className={`px-2 py-32 bg-white${isDarkMode ? "text-gray-800" : "text-white"} md:px-0"`}>
                 <div className="container items-center max-w-6xl px-8 mx-auto xl:px-5">
                     <div className="flex flex-wrap items-center sm:-mx-3">
                     <div className="w-full md:w-1/2 md:px-3">

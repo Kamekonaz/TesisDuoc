@@ -12,6 +12,8 @@ const EXPECTED_USERS = [3]
 
 function LoginView() {
   const cookies = new Cookies();
+  const [isDarkMode, setIsDarkMode] = React.useState(cookies.get("isDarkMode"))
+  
   const [hasLoginError, setHasLoginError] = React.useState(0);
   
     async function login(){
@@ -102,7 +104,7 @@ function LoginView() {
                   onClick={() => toggleBorders(false)}
                   className={hasLoginError ? errorBorderClass : normalBorderClass}
                   id="guro_username"
-                  placeholder="Username"
+                  placeholder="Usuario"
                 />
               </div>
             </div>
@@ -113,7 +115,7 @@ function LoginView() {
                 onClick={() => toggleBorders(false)}
                 className={hasLoginError ? errorBorderClass : normalBorderClass}                
                 id="password"
-                placeholder="Password"
+                placeholder="Contraseña"
               />
             </div>
   
@@ -124,7 +126,7 @@ function LoginView() {
                 onClick={login}
                 className="inline-block px-7 py-3 bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out"
               >
-                Login
+                Iniciar sesión
               </button>
             </div>
           </form>

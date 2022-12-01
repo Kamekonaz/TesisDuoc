@@ -6,7 +6,7 @@ import { NavLink, Link } from "react-router-dom";
 
 function Header() {
     const cookies = new Cookies();
-
+    const [isDarkMode, setIsDarkMode] = React.useState(cookies.get("isDarkMode"))
 
     const userData = React.useMemo(()=> loadUserData())
     const [isSessionValid, setIsSessionValid] = React.useState(true);
@@ -14,6 +14,11 @@ function Header() {
 
     if(isSessionValid === false && window.location.href !== window.origin+"/") window.location.href = window.origin
 
+
+    async function handleSetDarkMode(darkModeValue){
+        cookies.set("isDarkMode", darkModeValue)
+        setIsDarkMode(darkModeValue)
+    }
     
 
     //console.log(isSessionValid)
@@ -61,6 +66,9 @@ function Header() {
                 <a href="/">
                     <img src={guro_icon} alt="" width="65px"/>
                 </a>
+            </div>
+            <div>
+                <input checked={isDarkMode} onChange={(e)=>{e.preventDefault(); handleSetDarkMode(!isDarkMode)}} type="checkbox" />
             </div>
          
             {
