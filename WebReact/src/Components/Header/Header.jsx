@@ -72,7 +72,7 @@ function Header() {
             </div>
          
             {
-                isSessionValid ?
+                isSessionValid && userData?
                 <div className="flex w-full bg-gray-800 h-full">
                     <div className="my-auto relative w-full max-w-md sm:-ml-2 hidden md:flex ">
                         <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="absolute h-6 w-6 mt-2.5 ml-2 text-gray-400">
