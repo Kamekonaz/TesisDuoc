@@ -22,6 +22,7 @@ function ProfessionalSidebar() {
     // if(isSessionValid === false) window.location.href = window.location.origin
     const navigate = useNavigate()
     if(isSessionValid === false) window.location.href = window.origin
+    if(isSessionValid) console.log(cookies.get("sessionKey"))
     if(window.location.pathname === "/professionalDashboard") navigate("dashboardOption0")
     const paramDashboardOption = window.location.pathname.split("/")[2]
     const [activeDashboardOption, setActiveDashboardOption] = React.useState((paramDashboardOption) ? paramDashboardOption : 0);

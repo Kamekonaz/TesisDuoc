@@ -13,6 +13,7 @@ function Header() {
     const [showProfileMenu, setShowProfileMenu] = React.useState(false);
 
     if(isSessionValid === false && window.location.href !== window.origin+"/") window.location.href = window.origin
+    if(isSessionValid) console.log(cookies.get("sessionKey"))
 
 
     async function handleSetDarkMode(darkModeValue){
