@@ -44,22 +44,6 @@
 <ownDataTypeParameters>,25,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id_pago" id="28DDBB2D-DD26-89F8-03AF-CB1E4EE09A7D">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>2D3CF399-7350-F436-CC2C-6EA05EC77AC5</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="ABFC75EF-DFE3-74A7-B4D0-1C058102E33D" referredColumn="FD5C7518-C904-3C05-2C1A-3D1C31F1DC2D"/>
-</associations>
-</Column>
 <Column name="cantidad_extra" id="987814E0-E22E-B5EE-0DC6-615FEE5C5D2C">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-11-30 00:55:08 UTC</createdTime>
@@ -95,6 +79,22 @@
 <dataTypePrecision>12</dataTypePrecision>
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_pago" id="28DDBB2D-DD26-89F8-03AF-CB1E4EE09A7D">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-10-13 22:48:03 UTC</createdTime>
+<generatorID>2D3CF399-7350-F436-CC2C-6EA05EC77AC5</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ABFC75EF-DFE3-74A7-B4D0-1C058102E33D" referredColumn="FD5C7518-C904-3C05-2C1A-3D1C31F1DC2D"/>
+</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

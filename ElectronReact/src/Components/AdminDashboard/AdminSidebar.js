@@ -4,6 +4,7 @@ import React from "react";
 // import axios from "axios";
 import Cookies from 'universal-cookie';
 // const LOGIN_URL = "http://localhost:3001/login"
+import {useNavigate} from 'react-router-dom'
 // const EXPECTED_USERS = [1]
 import {
     BrowserRouter,
@@ -19,7 +20,9 @@ function AdminSidebar() {
     const cookies = new Cookies();
     const [isSessionValid, setIsSessionValid] = React.useState(true);
     // if(isSessionValid === false) window.location.href = window.location.origin
+    const navigate = useNavigate()
     if(isSessionValid === false) window.location.href = window.origin
+    if(window.location.pathname === "/adminDashboard") navigate("dashboardOption0")
     const paramDashboardOption = window.location.pathname.split("/")[2]
     const [activeDashboardOption, setActiveDashboardOption] = React.useState((paramDashboardOption) ? paramDashboardOption : 0);
     const userData = React.useMemo(()=> loadUserData())

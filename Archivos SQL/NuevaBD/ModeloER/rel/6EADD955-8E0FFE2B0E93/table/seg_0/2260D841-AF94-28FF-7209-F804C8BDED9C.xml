@@ -67,7 +67,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -95,7 +95,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -127,7 +127,7 @@
 <colUsage columnID="9CD7B3B2-975E-9383-F1AE-76D6C753FDEE"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="0EC0357D-3F85-3B4F-66C1-7E6705EB23BA" name="EMPRESA_COMUNA_FKv2">
+<ind_PK_UK id="0EC0357D-3F85-3B4F-66C1-7E6705EB23BA" name="EMPRESA_COMUNA_FK">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-11-30 02:24:04 UTC</createdTime>
 <generatorID>4298BE00-8E37-424A-3C46-F19138947D0E</generatorID>

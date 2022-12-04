@@ -21,6 +21,37 @@ const db_credentials = {
 
 class BdManager {
 
+  static async create_checklist(req, res){
+    try {
+
+      const { sessionKey } = req.body
+      const { tittle } = req.body
+      const { options } = req.body
+
+      if (!BdValidation.is_key_valid(BdManager, sessionKey, ["2"])) return res.send("Usuario incorrecto")
+
+
+      const Connection = await oracledb.getConnection(db_credentials);
+
+      const result = await Connection.execute(
+        `BEGIN
+          pkg_util.sp_change_contract_status(:v_rut_usuario, :v_newStatus);
+        END;`,
+        {  
+          v_rut_usuario: rut_usuario,
+          v_newStatus: newStatus
+        }
+      );
+      await Connection.close()
+
+      res.send("Actualizado exitosamente");
+
+
+    } catch (error) {
+        return res.send("Error")
+    }
+  }
+
     static async change_contract_status(req, res){
       try {
 
@@ -620,6 +651,9 @@ static async crearVisita(fecha, rut_usuario, rut_profesional){
         console.log(err)
       }    
     }
+
+
+  
 
     static async getPaymentID(account_id){
       try{

@@ -29,11 +29,28 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="12984C3C-1A1A-F7D7-52C0-D245F0ED760A" referredColumn="38678420-11CA-B540-D709-8EF61F375D8A"/>
+</associations>
+</Column>
+<Column name="id_checklist" id="9FC70BCB-5249-7B5F-2493-D698EA3B4C18">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-02 17:48:08 UTC</createdTime>
+<generatorID>2E569D5E-75AD-7EC1-4037-6F85906380E3</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="85D45EDC-1E72-EBAA-2ADC-9B83B6977943" referredColumn="07A1060A-BB0B-AD47-8AFA-F532C6A6C2C1"/>
 </associations>
 </Column>
 </columns>
@@ -70,6 +87,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="C7FDC0D9-D774-D751-8164-2525A79CA120"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E79389AD-C374-F17E-B317-B1B2275A3328" name="VISITA_CHECKLIST_VISITA_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-02 17:48:08 UTC</createdTime>
+<generatorID>C49BEFB8-4F0A-3176-A1FF-B2987E09BA95</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9FC70BCB-5249-7B5F-2493-D698EA3B4C18"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

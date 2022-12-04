@@ -487,7 +487,7 @@ create or replace package body pkg_client as
             v_asesoria_amount 
         from actividad
                     left join visita on actividad.id_actividad = visita.id_actividad
-                    left join checklist_visita on checklist_visita.id_visita = visita.id_visita
+                    left join checklist_visita on checklist_visita.id_checklist = visita.id_checklist
                     join participante_act pa on pa.id_actividad = actividad.id_actividad
                     join contrato on contrato.rut_usuario = pa.rut_usuario
                     where pa.rut_usuario = v_rut_usuario
@@ -636,7 +636,7 @@ create or replace package body pkg_client as
     begin
         select nvl(sum(case when checklist_visita.modificaciones>0 then checklist_visita.modificaciones end),0) into v_visita_amount from actividad
             join visita on actividad.id_actividad = visita.id_actividad
-            join checklist_visita on checklist_visita.id_visita = visita.id_visita
+            join checklist_visita on checklist_visita.id_checklist = visita.id_checklist
             join participante_act pa on pa.id_actividad = actividad.id_actividad
             join contrato on contrato.rut_usuario = pa.rut_usuario
             where pa.rut_usuario = f_rut_usuario
@@ -712,7 +712,7 @@ create or replace package body pkg_util as
                     count(case when actividad.id_tipoactividad=3 then 1 end) as asesorias
                 from actividad
                             left join visita on actividad.id_actividad = visita.id_actividad
-                            left join checklist_visita on checklist_visita.id_visita = visita.id_visita
+                            left join checklist_visita on checklist_visita.id_checklist = visita.id_checklist
                             join participante_act pa on pa.id_actividad = actividad.id_actividad
                             join contrato on contrato.rut_usuario = pa.rut_usuario
                             where pa.rut_usuario = f_rut_usuario
@@ -786,20 +786,80 @@ end pkg_util;
 
 create or replace package pkg_function_profesional AS 
 
-PROCEDURE SP_CREAR_CAPACITACION (
-F_DESCRIPCION_CAPACITACION VARCHAR2,
-F_DESCRIPCION_MATERIAL VARCHAR2, F_FECHA_CAPACITACION varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2);
-
-procedure SP_CREAR_ASESORIA (
-        f_especial char, f_fecha varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2);
-        
-procedure SP_CREAR_VISITA (f_fecha varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2);
+    PROCEDURE SP_CREAR_CAPACITACION (F_DESCRIPCION_CAPACITACION VARCHAR2,F_DESCRIPCION_MATERIAL VARCHAR2, F_FECHA_CAPACITACION varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2);
+    procedure SP_CREAR_ASESORIA (f_especial char, f_fecha varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2);     
+    procedure SP_CREAR_VISITA (f_fecha varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2, f_checklist_id number);
+    procedure sp_create_checklist(f_titulo varchar);
+    procedure sp_edit_checklist(f_id_checklist number, f_titulo varchar);
+    procedure sp_add_checkbox_to_checklist(f_id_checklist number, f_descripcion varchar);
+    procedure sp_edit_checkbox(f_id_checkbox number, f_descripcion varchar, f_estado char);
 
 end pkg_function_profesional;
 /
 -- PROCEDIMIENTO CREAR CAPACITACION
 
 create or replace package body pkg_function_profesional AS 
+
+    procedure sp_add_checkbox_to_checklist(f_id_checklist number, f_descripcion varchar)
+    is
+        v_id_checkbox number(12);
+    begin
+        select nvl(max(case when ID_CHECKBOX>0 then ID_CHECKBOX end),0)+1 into v_id_checkbox from checkbox;
+        
+        insert into checkbox
+        values(
+            v_id_checkbox,
+            f_descripcion,
+            0,
+            f_id_checklist
+        );
+        commit work;
+    end;
+    
+    procedure sp_edit_checkbox(f_id_checkbox number, f_descripcion varchar, f_estado char)
+    is
+    begin
+        update checkbox
+            set
+                estado = f_estado,
+                descripcion = f_descripcion
+        where id_checkbox = f_id_checkbox;
+        commit work;
+    end;
+
+    procedure sp_create_checklist(f_titulo varchar)
+    is
+        v_id_checklist number(12);
+    begin
+        select nvl(max(case when id_checklist>0 then id_checklist end),0)+1 into v_id_checklist from checklist_visita;
+        
+        insert into checklist_visita
+        values(
+            v_id_checklist,
+            f_titulo,
+            0
+        );
+        commit work;
+    end;
+    
+    procedure sp_edit_checklist(f_id_checklist number, f_titulo varchar)
+    is
+        v_modificaciones number(12);
+    begin
+        select modificaciones+1 into v_modificaciones from checklist_visita where id_checklist = f_id_checklist;
+        
+        update checklist_visita
+            set
+                modificaciones = v_modificaciones,
+                titulo = f_titulo
+        where id_checklist = f_id_checklist;
+        commit work;
+    end;
+    
+
+
+
+
     PROCEDURE SP_CREAR_CAPACITACION (
         F_DESCRIPCION_CAPACITACION VARCHAR2,
         F_DESCRIPCION_MATERIAL VARCHAR2, F_FECHA_CAPACITACION varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2)
@@ -872,7 +932,7 @@ create or replace package body pkg_function_profesional AS
             DBMS_OUTPUT.PUT_LINE(SQLERRM);
         END ;
         
-        PROCEDURE SP_CREAR_VISITA (f_fecha varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2)
+        PROCEDURE SP_CREAR_VISITA (f_fecha varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2, f_checklist_id number)
         IS
             v_fecha_datetime timestamp;
             v_id_actividad number(12);
@@ -900,7 +960,7 @@ create or replace package body pkg_function_profesional AS
                 end if;
                 
             pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario, f_rut_profesional);
-            INSERT INTO visita VALUES (v_maintable_id, v_id_actividad);
+            INSERT INTO visita VALUES (v_maintable_id, v_id_actividad, f_checklist_id);
         EXCEPTION
             WHEN OTHERS THEN
             DBMS_OUTPUT.PUT_LINE(SQLERRM);

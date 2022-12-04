@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 22.2.0.165.1149
---   en:        2022-11-30 01:00:42 CLST
+--   en:        2022-12-02 14:50:45 CLST
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -110,9 +110,7 @@ ALTER TABLE checkbox ADD CONSTRAINT checkbox_pk PRIMARY KEY ( id_checkbox,
 
 CREATE TABLE checklist_visita (
     id_checklist   NUMBER(12) NOT NULL,
-    descripcion    VARCHAR2(2000) NOT NULL,
-    estado         CHAR(1) NOT NULL,
-    id_visita      NUMBER(12) NOT NULL,
+    titulo         VARCHAR2(255) NOT NULL,
     modificaciones NUMBER(12) NOT NULL
 );
 
@@ -160,10 +158,10 @@ CREATE TABLE detalle_pago (
     id_detallepago  NUMBER(12) NOT NULL,
     nombre_servicio VARCHAR2(255) NOT NULL,
     coste_servicio  NUMBER(25) NOT NULL,
-    id_pago         NUMBER(12) NOT NULL,
     cantidad_extra  NUMBER(12) NOT NULL,
     coste_extra     NUMBER(12) NOT NULL,
-    coste_total     NUMBER(12) NOT NULL
+    coste_total     NUMBER(12) NOT NULL,
+    id_pago         NUMBER(12) NOT NULL
 );
 
 ALTER TABLE detalle_pago ADD CONSTRAINT detalle_pago_pk PRIMARY KEY ( id_detallepago );
@@ -304,7 +302,8 @@ ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY ( rut_usuario );
 
 CREATE TABLE visita (
     id_visita    NUMBER(12) NOT NULL,
-    id_actividad NUMBER(12) NOT NULL
+    id_actividad NUMBER(12) NOT NULL,
+    id_checklist NUMBER(12)
 );
 
 ALTER TABLE visita ADD CONSTRAINT visita_pk PRIMARY KEY ( id_visita );
@@ -328,10 +327,6 @@ ALTER TABLE capacitacion
 ALTER TABLE checkbox
     ADD CONSTRAINT checkbox_checklist_visita_fk FOREIGN KEY ( id_checklist )
         REFERENCES checklist_visita ( id_checklist );
-
-ALTER TABLE checklist_visita
-    ADD CONSTRAINT checklist_visita_visita_fk FOREIGN KEY ( id_visita )
-        REFERENCES visita ( id_visita );
 
 ALTER TABLE comuna
     ADD CONSTRAINT comuna_provincia_fk FOREIGN KEY ( id_provincia )
@@ -358,7 +353,7 @@ ALTER TABLE detalle_pago
         REFERENCES pago ( id_pago );
 
 ALTER TABLE empresa
-    ADD CONSTRAINT empresa_comuna_fkv2 FOREIGN KEY ( id_comuna )
+    ADD CONSTRAINT empresa_comuna_fk FOREIGN KEY ( id_comuna )
         REFERENCES comuna ( id_comuna );
 
 ALTER TABLE empresa
@@ -420,6 +415,10 @@ ALTER TABLE usuario
 ALTER TABLE visita
     ADD CONSTRAINT visita_actividad_fk FOREIGN KEY ( id_actividad )
         REFERENCES actividad ( id_actividad );
+
+ALTER TABLE visita
+    ADD CONSTRAINT visita_checklist_visita_fk FOREIGN KEY ( id_checklist )
+        REFERENCES checklist_visita ( id_checklist );
 
 CREATE SEQUENCE contrato_id_contrato_seq START WITH 1 NOCACHE ORDER;
 

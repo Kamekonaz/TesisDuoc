@@ -4,12 +4,17 @@ import ProfessionalSidebar from "../ProfessionalSidebar";
 import Cookies from 'universal-cookie';
 import axios from "axios";
 import Swal from 'sweetalert2'
-import DatePicker, { registerLocale } from "react-datepicker";
-import es from 'date-fns/locale/es'
+
+
+import {es} from 'date-fns/locale'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import TextField from '@mui/material/TextField';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import "react-datepicker/dist/react-datepicker.css";
 
-registerLocale("es", es)
+// registerLocale("es", es)
 // import {
 //     BrowserRouter,
 //     Routes,
@@ -27,6 +32,7 @@ function CrearAsesoria() {
     const cookies = new Cookies()
     const [browserValue, setBrowserValue] = React.useState('');
     const [lastCheckedValue, setLastCheckedValue] = React.useState('');
+    const [value, setValue] = React.useState(null);
 
     const [tipoAsesoria, setTipoAsesoria] = React.useState('0');
 
@@ -234,7 +240,19 @@ function CrearAsesoria() {
                   <div className="">Fecha</div>
                   
                   <div className="flex items-center justify-center text-black">
-                    <DatePicker dateFormat="dd/MM/yyyy" selected={startDate} onChange={(date) => setStartDate(date)} />
+                  <LocalizationProvider locale={es} dateAdapter={AdapterDateFns}>
+                      <DatePicker
+                        className="text-white"
+                        label="Seleccionar fecha"
+                        inputFormat="dd-MM-yyyy"
+                        value={value}
+                        onChange={(newValue) => {
+                          setValue(newValue);
+                        }}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                  </LocalizationProvider>
+
                   </div>
                 </div>
                 <div className="w-full flex mt-6 w-full text-xl justify-center space-x-2">
