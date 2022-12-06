@@ -16,6 +16,7 @@ import NotificarAtrasos from './Components/AdminDashboard/Options/NotificarAtras
 import ControlarPagos from './Components/AdminDashboard/Options/ControlarPagos';
 import CrearEmpresa from './Components/AdminDashboard/CrearEmpresa';
 import CreateChecklist from './Components/ProfessionalDashboard/Options/CreateChecklist';
+import ResponderChecklist from './Components/ProfessionalDashboard/Options/ResponderChecklist';
 
 
 import {
@@ -62,7 +63,7 @@ root.render(
         <CreateChecklist/>
       } />
       <Route path="/professionalDashboard/dashboardOption8" element={
-        <ProfessionalSidebar/>
+        <ResponderChecklist/>
       } />
       <Route path="/adminDashboard" element={
         <AdminSidebar/>

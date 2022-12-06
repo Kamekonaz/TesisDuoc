@@ -28,7 +28,7 @@
 <dataTypePrecision>12</dataTypePrecision>
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="descripcion" id="67C92DBE-645D-3A2D-38AB-6BC93F96F2B6">
+<Attribute name="pdf" id="67C92DBE-645D-3A2D-38AB-6BC93F96F2B6">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-08-28 19:13:49 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
@@ -37,24 +37,8 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>2000</dataTypeSize>
-<ownDataTypeParameters>2000,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_visita" id="C8CD4EAE-F097-7631-774B-83D8EB5361ED">
-<createdBy>CETECOM</createdBy>
-<createdTime>2022-09-29 12:14:45 UTC</createdTime>
-<generatorID>B61406A2-20AB-1AD1-8C39-D161F8953D70</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<engineerTo>
-<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
-</engineerTo>
-<referedAttribute>31845068-F333-76B4-AFCD-41B21607419C</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>12</dataTypePrecision>
-<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="estado" id="07A7B28D-7A7B-A792-5AED-BF9412801785">
 <createdBy>CETECOM</createdBy>
@@ -69,6 +53,33 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="fecha_creacion" id="F6C1C870-E7CE-A71C-1AAE-2512A16CB99C">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-06 04:00:31 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rut_usuario" id="E77A2DA9-D70C-F687-683B-88C90D52A821">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-06 04:01:09 UTC</createdTime>
+<generatorID>12F001EC-6439-B6CA-18A5-71FD06B9636B</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<referedAttribute>091B978B-7DE0-031A-9F07-13B6C7977ED1</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="00407CFB-6343-EFFE-B030-3682F524A19D" name="PLAN_MEJORA PK">
@@ -82,6 +93,7 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>AB80E6BB-1097-99C2-6EDA-533462E85733</attributeRef>
+<attributeRef>E77A2DA9-D70C-F687-683B-88C90D52A821</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

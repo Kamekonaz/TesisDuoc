@@ -239,7 +239,7 @@ function CrearAsesoria() {
                 <div className="w-full flex mt-6 w-full text-xl justify-center space-x-2">
                   <div className="">Fecha</div>
                   
-                  <div className="flex items-center justify-center text-black">
+                  <div className="flex items-center justify-center text-white">
                   <LocalizationProvider locale={es} dateAdapter={AdapterDateFns}>
                       <DatePicker
                         className="text-white"
@@ -249,7 +249,12 @@ function CrearAsesoria() {
                         onChange={(newValue) => {
                           setValue(newValue);
                         }}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => <TextField {...params} sx={{
+                          '.MuiInputBase-colorPrimary': {backgroundColor: "white"},
+                          '.MuiInputLabel-animated': {marginTop: "5px"},
+                          '.MuiInputLabel-focused': {display: ""},
+                          //'.MuiInputLabel-animated': {backgroundColor: ""}
+                       }}/>}
                       />
                   </LocalizationProvider>
 

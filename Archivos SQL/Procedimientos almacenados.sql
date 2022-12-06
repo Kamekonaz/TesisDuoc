@@ -323,11 +323,21 @@ create or replace package pkg_list as
     procedure pcr_list_participants(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_list_clients_with_contract(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_list_payments(p_recordset OUT SYS_REFCURSOR);
+    procedure pcr_list_checklists(p_recordset OUT SYS_REFCURSOR);
 end pkg_list;
 
 /
 create or replace package body pkg_list as
 
+    procedure pcr_list_checklists(p_recordset OUT SYS_REFCURSOR)
+    is
+    begin
+        open p_recordset for
+        select * from checklist_visita join checkbox on checklist_visita.id_checklist = checkbox.id_checklist
+        order by checklist_visita.id_checklist;
+    end;
+    
+    
     procedure pcr_list_payments(p_recordset OUT SYS_REFCURSOR)
     is
     begin
@@ -789,10 +799,10 @@ create or replace package pkg_function_profesional AS
     PROCEDURE SP_CREAR_CAPACITACION (F_DESCRIPCION_CAPACITACION VARCHAR2,F_DESCRIPCION_MATERIAL VARCHAR2, F_FECHA_CAPACITACION varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2);
     procedure SP_CREAR_ASESORIA (f_especial char, f_fecha varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2);     
     procedure SP_CREAR_VISITA (f_fecha varchar2, f_rut_usuario varchar2, f_rut_profesional varchar2, f_checklist_id number);
-    procedure sp_create_checklist(f_titulo varchar);
+    function sp_create_checklist(f_titulo varchar) return number;
     procedure sp_edit_checklist(f_id_checklist number, f_titulo varchar);
     procedure sp_add_checkbox_to_checklist(f_id_checklist number, f_descripcion varchar);
-    procedure sp_edit_checkbox(f_id_checkbox number, f_descripcion varchar, f_estado char);
+    procedure sp_edit_checkbox(f_id_checkbox number, f_estado char);
 
 end pkg_function_profesional;
 /
@@ -816,18 +826,17 @@ create or replace package body pkg_function_profesional AS
         commit work;
     end;
     
-    procedure sp_edit_checkbox(f_id_checkbox number, f_descripcion varchar, f_estado char)
+    procedure sp_edit_checkbox(f_id_checkbox number, f_estado char)
     is
     begin
         update checkbox
             set
-                estado = f_estado,
-                descripcion = f_descripcion
+                estado = f_estado
         where id_checkbox = f_id_checkbox;
         commit work;
     end;
 
-    procedure sp_create_checklist(f_titulo varchar)
+    function sp_create_checklist(f_titulo varchar) return number
     is
         v_id_checklist number(12);
     begin
@@ -840,6 +849,7 @@ create or replace package body pkg_function_profesional AS
             0
         );
         commit work;
+        return v_id_checklist;
     end;
     
     procedure sp_edit_checklist(f_id_checklist number, f_titulo varchar)

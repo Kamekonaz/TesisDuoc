@@ -25,8 +25,11 @@ class BdManager {
     try {
 
       const { sessionKey } = req.body
-      const { tittle } = req.body
+      const { title } = req.body
       const { options } = req.body
+
+      console.log(title)
+      console.log(options)
 
       if (!BdValidation.is_key_valid(BdManager, sessionKey, ["2"])) return res.send("Usuario incorrecto")
 
@@ -35,19 +38,38 @@ class BdManager {
 
       const result = await Connection.execute(
         `BEGIN
-          pkg_util.sp_change_contract_status(:v_rut_usuario, :v_newStatus);
-        END;`,
+          :return := pkg_function_profesional.sp_create_checklist(:v_title);
+         END;`,
         {  
-          v_rut_usuario: rut_usuario,
-          v_newStatus: newStatus
+          v_title: title,
+          return: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER, maxSize: 12 }
         }
       );
+
+      const checklist_id = result.outBinds["return"];
+
+
+      console.log("hasta aca okay")
+
+      for (const option of options){
+        const option_content = option["content"];
+        await Connection.execute(
+          `BEGIN
+            pkg_function_profesional.sp_add_checkbox_to_checklist(:v_id_checklist, :v_descripcion);
+           END;`,
+          {  
+            v_id_checklist: checklist_id,
+            v_descripcion: option_content
+          }
+        );
+      }
       await Connection.close()
 
       res.send("Actualizado exitosamente");
 
 
     } catch (error) {
+      console.log(error)
         return res.send("Error")
     }
   }
@@ -76,6 +98,61 @@ class BdManager {
         await Connection.close()
 
         res.send("Actualizado exitosamente");
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
+
+    static async edit_checkbox(req, res){
+      try {
+        const { id_checkbox } = req.body
+        const { estado } = req.body
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+          pkg_function_profesional.sp_edit_checkbox(:v_checkbox_id, :v_estado);
+           END;`,
+          {  
+            v_checkbox_id: id_checkbox,
+            v_estado: estado
+          }
+        );
+
+
+        await Connection.close()
+
+        res.send("Exito");
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
+
+    static async get_checklists_visitas(req, res){
+      try {
+
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+          pkg_list.pcr_list_checklists(:v_users);
+           END;`,
+          {  
+            v_users: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+          }
+        );
+        const cursor = result.outBinds.v_users;
+        const filas = await cursor.getRows();
+
+        await Connection.close()
+
+        res.send(filas);
 
 
       } catch (error) {

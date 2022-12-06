@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 22.2.0.165.1149
---   en:        2022-12-02 14:50:45 CLST
+--   en:        2022-12-06 01:01:55 CLST
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -161,7 +161,8 @@ CREATE TABLE detalle_pago (
     cantidad_extra  NUMBER(12) NOT NULL,
     coste_extra     NUMBER(12) NOT NULL,
     coste_total     NUMBER(12) NOT NULL,
-    id_pago         NUMBER(12) NOT NULL
+    id_pago         NUMBER(12) NOT NULL,
+    id_pago1        NUMBER NOT NULL
 );
 
 ALTER TABLE detalle_pago ADD CONSTRAINT detalle_pago_pk PRIMARY KEY ( id_detallepago );
@@ -230,10 +231,12 @@ CREATE TABLE participante_chat (
 ALTER TABLE participante_chat ADD CONSTRAINT participante_chat_pk PRIMARY KEY ( id_participantechat );
 
 CREATE TABLE plan_mejora (
-    id_plan     NUMBER(12) NOT NULL,
-    descripcion VARCHAR2(2000) NOT NULL,
-    id_visita   NUMBER(12) NOT NULL,
-    estado      CHAR(1) NOT NULL
+    id_plan        NUMBER(12) NOT NULL,
+    pdf            CLOB NOT NULL,
+    id_visita      NUMBER(12) NOT NULL,
+    estado         CHAR(1) NOT NULL,
+    fecha_creacion DATE NOT NULL,
+    rut_usuario    VARCHAR2(20) NOT NULL
 );
 
 ALTER TABLE plan_mejora ADD CONSTRAINT plan_mejora_pk PRIMARY KEY ( id_plan );
@@ -260,7 +263,7 @@ CREATE TABLE sala_chat (
     asunto_sala   VARCHAR2(300) NOT NULL,
     id_accidente  NUMBER(12) NOT NULL,
     estado        CHAR(1) NOT NULL,
-    id_accidente2 NUMBER(12) NOT NULL
+    id_accidente1 NUMBER(12) NOT NULL
 );
 
 ALTER TABLE sala_chat ADD CONSTRAINT sala_chat_pk PRIMARY KEY ( id_sala );
@@ -393,6 +396,10 @@ ALTER TABLE participante_chat
         REFERENCES usuario ( rut_usuario );
 
 ALTER TABLE plan_mejora
+    ADD CONSTRAINT plan_mejora_usuario_fk FOREIGN KEY ( rut_usuario )
+        REFERENCES usuario ( rut_usuario );
+
+ALTER TABLE plan_mejora
     ADD CONSTRAINT plan_mejora_visita_fk FOREIGN KEY ( id_visita )
         REFERENCES visita ( id_visita );
 
@@ -429,7 +436,7 @@ CREATE SEQUENCE contrato_id_contrato_seq START WITH 1 NOCACHE ORDER;
 -- 
 -- CREATE TABLE                            27
 -- CREATE INDEX                             0
--- ALTER TABLE                             55
+-- ALTER TABLE                             56
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
 -- CREATE PACKAGE                           0

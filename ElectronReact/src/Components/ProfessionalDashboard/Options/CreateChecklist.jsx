@@ -28,12 +28,30 @@ function CreateChecklist() {
   }
 
   async function guardar(){
+    //console.log(title, "titleee")
     const data = {
       sessionKey: cookies.get("appsessionKey"),
       title: title,
       options: displayOptions
     }
-    const result = await axios.post()
+    //console.log(data)
+    await axios.post("http://localhost:3001/makeChecklist",data).then(
+      Swal.fire({
+          title: "<h5 style='color:white'>Exito</h5>",
+          html: "<p style='color:white'>Checklist creado exitosamente</p>",
+          icon: 'success',
+          background: '#272727',
+          showCancelButton: false,
+          confirmButtonColor: '#7BCA6F',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Aceptar'
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  window.location.reload()
+          }
+      })
+  );
+    
   }
 
   function addOption(value){
