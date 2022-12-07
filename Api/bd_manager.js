@@ -105,6 +105,149 @@ class BdManager {
       }
     }
 
+    static async crear_plan_mejora(req, res){
+      try {
+        const { rut_usuario } = req.body
+        const { base64pdf } = req.body
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+          pkg_function_profesional.sp_crear_plan_mejora(:v_rut_usuario, :v_pdf_clob);
+           END;`,
+          {  
+            v_rut_usuario: rut_usuario,
+            v_pdf_clob: base64pdf
+          }
+        );
+
+
+        await Connection.close()
+
+        res.send("Exito");
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
+
+    static async editar_solicitud_asesoria(req, res){
+      try {
+        const { id_solicitud } = req.body
+        const { resolucion } = req.body
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+          pkg_client.pcr_edit_solicitud(:v_id_solicitud, :v_resolucion);
+           END;`,
+          {  
+            v_id_solicitud: id_solicitud,
+            v_resolucion: resolucion
+          }
+        );
+
+
+        await Connection.close()
+
+        res.send("Exito");
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
+
+    static async listar_solicitudes_asesoria(req, res){
+      try {
+
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+          pkg_list.pcr_solicitudes_asesoria(:v_users);
+           END;`,
+          {  
+            v_users: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+          }
+        );
+        const cursor = result.outBinds.v_users;
+        const filas = await cursor.getRows();
+
+        for (const fila of filas){
+          if (fila["IMAGEN"]) fila["IMAGEN"] = await fila["IMAGEN"].getData()
+        }
+
+        await Connection.close()
+
+        res.send(filas);
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
+
+    static async solicitar_asesoria_especial(req, res){
+      try {
+        const { rut_usuario } = req.body
+        const { motivo } = req.body
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+          pkg_client.pcr_solicitar_asesoria(:v_motivo, :v_rut_usuario);
+           END;`,
+          {  
+            v_motivo: motivo,
+            v_rut_usuario: rut_usuario
+          }
+        );
+
+
+        await Connection.close()
+
+        res.send("Exito");
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
+
+    static async edit_plan(req, res){
+      try {
+        const { id_plan } = req.body
+        const { estado } = req.body
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+          pkg_function_profesional.sp_editar_plan_mejora(:v_id_plan, :v_estado);
+           END;`,
+          {  
+            v_id_plan: id_plan,
+            v_estado: estado
+          }
+        );
+
+
+        await Connection.close()
+
+        res.send("Exito");
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
+
     static async edit_checkbox(req, res){
       try {
         const { id_checkbox } = req.body
@@ -607,6 +750,35 @@ static async crearVisita(fecha, rut_usuario, rut_profesional){
       } catch(err){
           console.log(err)
       }
+    }
+
+    static async get_planes(req, res){
+      try{
+          const Connection = await oracledb.getConnection(db_credentials);
+      
+          const result = await Connection.execute(
+            `BEGIN
+              pkg_list.pcr_list_planes(:v_activities);
+             END;`,
+            {  
+              v_activities: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+            }
+          );
+          const cursor = result.outBinds.v_activities;
+          const filas = await cursor.getRows();
+
+          for (const fila of filas){
+            if (fila["PDF"]) fila["PDF"] = await fila["PDF"].getData()
+          }
+
+  
+          await Connection.close()
+  
+          res.send(filas);
+
+        } catch(err){
+            console.log(err)
+        }
     }
 
     static async get_activities(){

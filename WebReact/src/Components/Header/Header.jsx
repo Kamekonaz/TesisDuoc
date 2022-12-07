@@ -12,7 +12,7 @@ function Header() {
     const [isSessionValid, setIsSessionValid] = React.useState(true);
     const [showProfileMenu, setShowProfileMenu] = React.useState(false);
 
-    if(isSessionValid === false && window.location.href !== window.origin+"/") window.location.href = window.origin
+    if(isSessionValid === false && window.location.href !== window.origin+"/") window.location.href = window.origin    
     if(isSessionValid) console.log(cookies.get("sessionKey"))
 
 
@@ -73,7 +73,9 @@ function Header() {
             </div>
          
             {
-                isSessionValid && userData?
+               
+                isSessionValid && userData ?
+                
                 <div className="flex w-full bg-gray-800 h-full">
                     <div className="my-auto relative w-full max-w-md sm:-ml-2 hidden md:flex ">
                         <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="absolute h-6 w-6 mt-2.5 ml-2 text-gray-400">

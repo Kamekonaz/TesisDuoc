@@ -146,21 +146,27 @@ function ProfessionalSidebar() {
                     <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
                         <div className="fa-solid fa-layer-group"></div>
                     </div>
-                    <span className="ml-3">Ingresar actividad de mejora</span>
+                    <span className="ml-3">Ingresar plan de mejora</span>
                 </NavLink>
-                <NavLink to="/professionalDashboard/dashboardOption6" className={activeDashboardOption === "dashboardOption6" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption6">
+                <NavLink to="/professionalDashboard/dashboardOption6" className={activeDashboardOption === "dashboardOption6" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption5">
+                    <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
+                        <div className="fa-solid fa-layer-group"></div>
+                    </div>
+                    <span className="ml-3">Visualizar plan de mejora</span>
+                </NavLink>
+                <NavLink to="/professionalDashboard/dashboardOption7" className={activeDashboardOption === "dashboardOption7" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption6">
                     <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
                         <div className="fa-solid fa-clock"></div>
                     </div>
                     <span className="ml-3">Ingresar asesoria</span>
                 </NavLink>
-                <NavLink to="/professionalDashboard/dashboardOption7" className={activeDashboardOption === "dashboardOption7" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption7">
+                <NavLink to="/professionalDashboard/dashboardOption8" className={activeDashboardOption === "dashboardOption8" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption7">
                     <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
                         <div className="fa-solid fa-chart-simple"></div>
                     </div>
                     <span className="ml-3">Crear checklist</span>
                 </NavLink>
-                <NavLink to="/professionalDashboard/dashboardOption8" className={activeDashboardOption === "dashboardOption8" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption8">
+                <NavLink to="/professionalDashboard/dashboardOption9" className={activeDashboardOption === "dashboardOption9" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption8">
                     <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
                         <div className="fa-solid fa-chart-simple"></div>
                     </div>

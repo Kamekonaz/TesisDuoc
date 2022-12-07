@@ -209,6 +209,8 @@ create or replace package body pkg_register as
         return v_is_available;
     end;
     
+    
+    
     function fn_business_rut_available (f_business_rut varchar)
     return boolean as
         v_rut_count number(5);
@@ -324,11 +326,29 @@ create or replace package pkg_list as
     procedure pcr_list_clients_with_contract(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_list_payments(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_list_checklists(p_recordset OUT SYS_REFCURSOR);
+    procedure pcr_list_planes(p_recordset OUT SYS_REFCURSOR);
+    procedure pcr_solicitudes_asesoria(p_recordset OUT SYS_REFCURSOR);
 end pkg_list;
 
 /
 create or replace package body pkg_list as
-
+    
+    procedure pcr_solicitudes_asesoria(p_recordset OUT SYS_REFCURSOR)
+        is
+        begin
+            open p_recordset for
+            select * from solicitud_asesoria join usuario on usuario.rut_usuario = solicitud_asesoria.rut_usuario 
+                left join empresa on empresa.rut_usuario = usuario.rut_usuario order by fecha_emision desc;
+    end;
+    
+    procedure pcr_list_planes(p_recordset OUT SYS_REFCURSOR)
+    is
+    begin
+        open p_recordset for
+        select * from plan_mejora join usuario on usuario.rut_usuario = plan_mejora.rut_usuario 
+            left join empresa on empresa.rut_usuario = usuario.rut_usuario order by fecha_creacion desc;
+    end;
+    
     procedure pcr_list_checklists(p_recordset OUT SYS_REFCURSOR)
     is
     begin
@@ -443,11 +463,39 @@ create or replace package pkg_client as
     function pcr_get_contract_debt(f_rut_usuario varchar) return number;
     procedure pcr_get_contract_info(f_rut_usuario varchar, p_recordset OUT SYS_REFCURSOR);
     procedure pcr_pay_contract(f_id_cuenta number, f_estado varchar, f_monto number, f_tipo_recibo varchar);
+    procedure pcr_solicitar_asesoria(f_motivo varchar, f_rut_usuario varchar);
+    procedure pcr_edit_solicitud(f_id_solicitud number, f_resolucion char);
 end pkg_client;
 /
 
 
 create or replace package body pkg_client as
+    procedure pcr_edit_solicitud(f_id_solicitud number, f_resolucion char)
+    is
+    begin
+        update solicitud_asesoria
+            set resolucion = f_resolucion
+        where id_solicitud = f_id_solicitud;
+        commit work;
+    end;
+
+    procedure pcr_solicitar_asesoria(f_motivo varchar, f_rut_usuario varchar)    
+    is
+        v_id_solicitud number(12);
+    begin
+        select nvl(max(id_solicitud),0) into v_id_solicitud from solicitud_asesoria;
+        
+        insert into solicitud_asesoria
+        values(
+            v_id_solicitud,
+            f_motivo,
+            0,
+            LOCALTIMESTAMP,
+            f_rut_usuario
+        );
+        commit work;
+    end;
+
     procedure pcr_pay_contract(f_id_cuenta number, f_estado varchar, f_monto number, f_tipo_recibo varchar)
     is
         v_id_contract number(12);
@@ -803,12 +851,39 @@ create or replace package pkg_function_profesional AS
     procedure sp_edit_checklist(f_id_checklist number, f_titulo varchar);
     procedure sp_add_checkbox_to_checklist(f_id_checklist number, f_descripcion varchar);
     procedure sp_edit_checkbox(f_id_checkbox number, f_estado char);
+    procedure sp_crear_plan_mejora(f_rut_usuario varchar, f_pdf_clob clob);
+    procedure sp_editar_plan_mejora(f_id_plan number, f_estado char);
 
 end pkg_function_profesional;
 /
 -- PROCEDIMIENTO CREAR CAPACITACION
 
 create or replace package body pkg_function_profesional AS 
+
+     procedure sp_editar_plan_mejora(f_id_plan number, f_estado char)
+     is
+     begin
+        update plan_mejora
+            set estado = f_estado
+        where id_plan = f_id_plan;
+        commit work;
+     end;
+     
+     procedure sp_crear_plan_mejora(f_rut_usuario varchar, f_pdf_clob clob)
+     is
+        v_id_plan number(12);
+     begin
+        select nvl(max(case when id_plan>0 then id_plan end),0)+1 into v_id_plan from plan_mejora;
+        insert into plan_mejora
+        values(
+            v_id_plan,
+            f_pdf_clob,
+            0,
+            LOCALTIMESTAMP,
+            f_rut_usuario
+        );
+        commit work;
+     end;
 
     procedure sp_add_checkbox_to_checklist(f_id_checklist number, f_descripcion varchar)
     is

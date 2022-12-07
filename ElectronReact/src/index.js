@@ -17,6 +17,10 @@ import ControlarPagos from './Components/AdminDashboard/Options/ControlarPagos';
 import CrearEmpresa from './Components/AdminDashboard/CrearEmpresa';
 import CreateChecklist from './Components/ProfessionalDashboard/Options/CreateChecklist';
 import ResponderChecklist from './Components/ProfessionalDashboard/Options/ResponderChecklist';
+import CrearPlan from './Components/ProfessionalDashboard/Options/CrearPlan';
+import VisualizarPlan from './Components/ProfessionalDashboard/Options/VisualizarPlan';
+import AsesoriaEspecial from './Components/ProfessionalDashboard/Options/AsesoriaEspecial';
+
 
 
 import {
@@ -51,18 +55,21 @@ root.render(
         <ProfessionalSidebar/>
       } />
       <Route path="/professionalDashboard/dashboardOption4" element={
-        <ProfessionalSidebar/>
+        <AsesoriaEspecial/>
       } />
       <Route path="/professionalDashboard/dashboardOption5" element={
-        <ProfessionalSidebar/>
+        <CrearPlan/>
       } />
       <Route path="/professionalDashboard/dashboardOption6" element={
-        <CrearAsesoria/>
+        <VisualizarPlan/>
       } />
       <Route path="/professionalDashboard/dashboardOption7" element={
-        <CreateChecklist/>
+        <CrearAsesoria/>
       } />
       <Route path="/professionalDashboard/dashboardOption8" element={
+        <CreateChecklist/>
+      } />
+      <Route path="/professionalDashboard/dashboardOption9" element={
         <ResponderChecklist/>
       } />
       <Route path="/adminDashboard" element={

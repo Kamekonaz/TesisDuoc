@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EA8BDB4C-5C41-40B2-C120-62DF8420D9AA" name="SOLICITUD_ASESORIA">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-07 01:33:19 UTC</createdTime>
+<generatorID>FF60D7C9-1DED-0482-3939-F3EF227E5CEA</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_solicitud" id="0584ABA6-395A-D3D0-110B-E6C2C9E47DE5">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-07 01:33:19 UTC</createdTime>
+<generatorID>199B0804-B80F-0751-39A4-2C7BD4423284</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="motivo" id="FA9E2FAB-0DE8-5289-B225-EBBF0063D47F">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-07 01:33:19 UTC</createdTime>
+<generatorID>D3B0C890-3C55-98BA-013F-23820D2A0294</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2000</dataTypeSize>
+<ownDataTypeParameters>2000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="resolucion" id="7BE5FDF4-C041-7467-D44C-856301D7E1DE">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-07 01:33:19 UTC</createdTime>
+<generatorID>5A3A5078-0D5F-C373-9237-8A158710B2CB</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_emision" id="F37009DF-4723-751F-A608-73545B22993B">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-07 01:33:19 UTC</createdTime>
+<generatorID>7E0F03C3-9577-ED10-CDA1-57985BA6F835</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rut_usuario" id="FE9840EF-330B-D58A-C2CD-7DBE051EBBBB">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-07 01:33:19 UTC</createdTime>
+<generatorID>959F60E7-C67F-3729-B8AF-8931DD5EB98F</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CA99438B-21E9-9FFE-23D8-8D355441541C" referredColumn="8F21080E-3C40-4043-46D8-B4FFB17FE19B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="17F712E8-261E-26D6-122E-F97628577CA7" name="SOLICITUD_ASESORIA_PK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-07 01:33:19 UTC</createdTime>
+<generatorID>DDED5370-6699-3343-EF8C-7D3B5BAC6041</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FE9840EF-330B-D58A-C2CD-7DBE051EBBBB"/>
+<colUsage columnID="0584ABA6-395A-D3D0-110B-E6C2C9E47DE5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="488EAEF9-B453-9C76-8BDB-50B7696E8560" name="SOLICITUD_ASESORIA_USUARIO_FK">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-07 01:33:19 UTC</createdTime>
+<generatorID>5A0D0351-2FC1-2026-A35A-FD6F31229508</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FE9840EF-330B-D58A-C2CD-7DBE051EBBBB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

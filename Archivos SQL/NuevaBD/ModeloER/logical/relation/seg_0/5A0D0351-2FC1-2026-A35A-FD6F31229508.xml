@@ -1,19 +1,19 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relacion_Pago_Detalle" directorySegmentName="seg_0" id="AC585B2F-E4B7-6296-E9E9-9093EF8CE120">
-<createdBy>CETECOM</createdBy>
-<createdTime>2022-09-29 12:52:32 UTC</createdTime>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_31" directorySegmentName="seg_0" id="5A0D0351-2FC1-2026-A35A-FD6F31229508">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-07 01:32:39 UTC</createdTime>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
 </engineerTo>
-<sourcePk>03185EAE-AED2-BA09-4E39-F5A0152E7AEA</sourcePk>
+<sourcePk>B6F1A9C7-560C-B950-AF3A-358AF3450B54</sourcePk>
 <identifying>true</identifying>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
-<sourceEntity>07C1B8E5-3FA0-A969-64C4-AF0E678104DD</sourceEntity>
+<sourceEntity>526B77B5-313C-9F70-4E1F-13EFEDFEA8F0</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>
-<targetEntity>F0786B59-F702-DAA3-6CF7-CF5E42566919</targetEntity>
+<targetEntity>FF60D7C9-1DED-0482-3939-F3EF227E5CEA</targetEntity>
 <transferable>true</transferable>
 <deleteRule>NO ACTION</deleteRule>
 </Relation>

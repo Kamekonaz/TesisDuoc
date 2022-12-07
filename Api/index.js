@@ -21,8 +21,8 @@ var allowCrossDomain = function(req, res, next) {
     };
     
 app.use(allowCrossDomain);
-app.use(bodyParser.json()) // handle json data
-app.use(bodyParser.urlencoded({ extended: true })) // handle URL-encoded data
+app.use(bodyParser.json({limit: '50mb'})) // handle json data
+app.use(bodyParser.urlencoded({ extended: true, limit:"50mb" })) // handle URL-encoded data
 
 
 app.post('/getClientsWithContract', BdManager.get_clients_with_contract)
@@ -33,6 +33,13 @@ app.post('/getBoletaDetails', BdManager.get_detalle_boleta)
 app.post('/makeChecklist', BdManager.create_checklist)
 app.post('/getChecklists', BdManager.get_checklists_visitas)
 app.post('/editCheckbox', BdManager.edit_checkbox)
+app.post('/crearPlanMejora', BdManager.crear_plan_mejora)
+app.post('/getPlanes', BdManager.get_planes)
+app.post('/editPlan', BdManager.edit_plan)
+
+app.post('/solicitarAsesoria', BdManager.solicitar_asesoria_especial)
+app.post('/editarSolicitudAsesoria', BdManager.editar_solicitud_asesoria)
+app.post('/getSolicitudesAsesoria', BdManager.listar_solicitudes_asesoria)
 
 
 

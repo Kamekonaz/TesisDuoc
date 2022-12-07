@@ -8,6 +8,7 @@ import ReportarAccidente from './Components/Dashboard/ReportarAccidente.jsx';
 import Perfil from './Components/Dashboard/Perfil.jsx';
 import Contrato from './Components/Dashboard/Contrato.jsx';
 import Boleta from './Components/Boleta.jsx';
+import SolicitarAsesoria from './Components/Dashboard/SolicitarAsesoria.jsx';
 
 import './index.css';
 import {
@@ -41,7 +42,7 @@ root.render(
         <ReportarAccidente />
       }/>
       <Route path="/dashboard/dashboardOption2" element={
-        <ClientSidebar />
+        <SolicitarAsesoria />
       }/>
       <Route path="/dashboard/dashboardOption3" element={
         <Contrato />

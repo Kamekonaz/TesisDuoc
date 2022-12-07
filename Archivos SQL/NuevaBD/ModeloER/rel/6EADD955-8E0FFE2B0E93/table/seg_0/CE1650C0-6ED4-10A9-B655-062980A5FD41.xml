@@ -20,33 +20,16 @@
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="descripcion" id="8527E141-65F0-81CF-2FE7-FFE79D53A9F5">
+<Column name="pdf" id="8527E141-65F0-81CF-2FE7-FFE79D53A9F5">
 <createdBy>ROYALE</createdBy>
 <createdTime>2022-10-13 22:48:03 UTC</createdTime>
 <generatorID>67C92DBE-645D-3A2D-38AB-6BC93F96F2B6</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>2000</dataTypeSize>
-<ownDataTypeParameters>2000,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="id_visita" id="6906D881-3B4B-06CF-EC2B-031AE1E504AE">
-<createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>C8CD4EAE-F097-7631-774B-83D8EB5361ED</generatorID>
-<ownerDesignName>ModeloER</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>12</dataTypePrecision>
+<logicalDatatype>LOGDT028</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="B219BDE2-20D0-78E8-5AB9-008595D09B04" referredColumn="2BF0F22E-D60C-804C-91DF-82E181A072AD"/>
-</associations>
 </Column>
 <Column name="estado" id="3C69D25A-2384-235B-31F3-DBE38DE303CF">
 <createdBy>ROYALE</createdBy>
@@ -59,6 +42,33 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_creacion" id="176A5ECE-80D7-141D-F88E-25FA6C62ED74">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-06 04:01:46 UTC</createdTime>
+<generatorID>F6C1C870-E7CE-A71C-1AAE-2512A16CB99C</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rut_usuario" id="9684BC5A-F16E-5B7A-3FE8-B237C1143F17">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-06 04:01:46 UTC</createdTime>
+<generatorID>E77A2DA9-D70C-F687-683B-88C90D52A821</generatorID>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8A936F37-7D64-E05C-B1A9-99DE1EE918B9" referredColumn="8F21080E-3C40-4043-46D8-B4FFB17FE19B"/>
+</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -81,19 +91,16 @@
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>B61406A2-20AB-1AD1-8C39-D161F8953D70</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="6906D881-3B4B-06CF-EC2B-031AE1E504AE"/>
-</indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="C1712A90-B99C-9E5B-58D5-A4700C9E4C0A" name="PLAN_MEJORA_VISITA_FK">
+<ind_PK_UK id="2A930254-2980-221A-54FA-43F011D21FE8" name="PLAN_MEJORA_USUARIO_FK">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>B61406A2-20AB-1AD1-8C39-D161F8953D70</generatorID>
+<createdTime>2022-12-06 04:01:46 UTC</createdTime>
+<generatorID>12F001EC-6439-B6CA-18A5-71FD06B9636B</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="6906D881-3B4B-06CF-EC2B-031AE1E504AE"/>
+<colUsage columnID="9684BC5A-F16E-5B7A-3FE8-B237C1143F17"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 22.2.0.165.1149
---   en:        2022-12-06 01:01:55 CLST
+--   en:        2022-12-06 22:33:52 CLST
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -50,6 +50,8 @@ DROP TABLE region CASCADE CONSTRAINTS;
 DROP TABLE sala_chat CASCADE CONSTRAINTS;
 
 DROP TABLE sesion CASCADE CONSTRAINTS;
+
+DROP TABLE solicitud_asesoria CASCADE CONSTRAINTS;
 
 DROP TABLE tipo_actividad CASCADE CONSTRAINTS;
 
@@ -161,8 +163,7 @@ CREATE TABLE detalle_pago (
     cantidad_extra  NUMBER(12) NOT NULL,
     coste_extra     NUMBER(12) NOT NULL,
     coste_total     NUMBER(12) NOT NULL,
-    id_pago         NUMBER(12) NOT NULL,
-    id_pago1        NUMBER NOT NULL
+    id_pago         NUMBER(12) NOT NULL
 );
 
 ALTER TABLE detalle_pago ADD CONSTRAINT detalle_pago_pk PRIMARY KEY ( id_detallepago );
@@ -233,7 +234,6 @@ ALTER TABLE participante_chat ADD CONSTRAINT participante_chat_pk PRIMARY KEY ( 
 CREATE TABLE plan_mejora (
     id_plan        NUMBER(12) NOT NULL,
     pdf            CLOB NOT NULL,
-    id_visita      NUMBER(12) NOT NULL,
     estado         CHAR(1) NOT NULL,
     fecha_creacion DATE NOT NULL,
     rut_usuario    VARCHAR2(20) NOT NULL
@@ -263,7 +263,7 @@ CREATE TABLE sala_chat (
     asunto_sala   VARCHAR2(300) NOT NULL,
     id_accidente  NUMBER(12) NOT NULL,
     estado        CHAR(1) NOT NULL,
-    id_accidente1 NUMBER(12) NOT NULL
+    id_accidente2 NUMBER(12) NOT NULL
 );
 
 ALTER TABLE sala_chat ADD CONSTRAINT sala_chat_pk PRIMARY KEY ( id_sala );
@@ -276,6 +276,17 @@ CREATE TABLE sesion (
 );
 
 ALTER TABLE sesion ADD CONSTRAINT sesion_pk PRIMARY KEY ( id_sesion );
+
+CREATE TABLE solicitud_asesoria (
+    id_solicitud  NUMBER(12) NOT NULL,
+    motivo        VARCHAR2(2000) NOT NULL,
+    resolucion    CHAR(1),
+    fecha_emision DATE NOT NULL,
+    rut_usuario   VARCHAR2(20) NOT NULL
+);
+
+ALTER TABLE solicitud_asesoria ADD CONSTRAINT solicitud_asesoria_pk PRIMARY KEY ( rut_usuario,
+                                                                                  id_solicitud );
 
 CREATE TABLE tipo_actividad (
     id_tipoactividad NUMBER(12) NOT NULL,
@@ -399,10 +410,6 @@ ALTER TABLE plan_mejora
     ADD CONSTRAINT plan_mejora_usuario_fk FOREIGN KEY ( rut_usuario )
         REFERENCES usuario ( rut_usuario );
 
-ALTER TABLE plan_mejora
-    ADD CONSTRAINT plan_mejora_visita_fk FOREIGN KEY ( id_visita )
-        REFERENCES visita ( id_visita );
-
 ALTER TABLE provincia
     ADD CONSTRAINT provincia_region_fk FOREIGN KEY ( id_region )
         REFERENCES region ( id_region );
@@ -414,6 +421,10 @@ ALTER TABLE sala_chat
 ALTER TABLE sesion
     ADD CONSTRAINT sesion_cuenta_fk FOREIGN KEY ( id_cuenta )
         REFERENCES cuenta ( id_cuenta );
+
+ALTER TABLE solicitud_asesoria
+    ADD CONSTRAINT solicitud_asesoria_usuario_fk FOREIGN KEY ( rut_usuario )
+        REFERENCES usuario ( rut_usuario );
 
 ALTER TABLE usuario
     ADD CONSTRAINT usuario_cuenta_fk FOREIGN KEY ( id_cuenta )
@@ -432,11 +443,12 @@ CREATE SEQUENCE contrato_id_contrato_seq START WITH 1 NOCACHE ORDER;
 
 
 
+
 -- Informe de Resumen de Oracle SQL Developer Data Modeler: 
 -- 
--- CREATE TABLE                            27
+-- CREATE TABLE                            28
 -- CREATE INDEX                             0
--- ALTER TABLE                             56
+-- ALTER TABLE                             57
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
 -- CREATE PACKAGE                           0
