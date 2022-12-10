@@ -9,15 +9,15 @@ class InputsValidator{
     static isNameValid(value){
         if(!value) return true
         try {
-        // if (value.length > 30 ) {
-        //    return false;
+        if (value.length > 30 ) {
+           return false;
             
-        // } else if (!/^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+$/i.test(value) ) {
-        //     return false;
+        } else if (!/^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+$/i.test(value) ) {
+            return false;
         
-        // } else{
-        //     return true
-        // }
+        } else{
+            return true
+        }
         return true
         } catch (error) {
             console.log(error)
@@ -40,16 +40,16 @@ class InputsValidator{
     static isUsernameValid(value){
         if(!value) return true
         try{
-            // let user = value.length;
-            // let userSinSpace = value.replace(/\s+/g, "");
-            // userSinSpace = userSinSpace.length;
-            // if(user != userSinSpace){
-            //     return false
-            // }
-            // else{
-            //     return true
-            // }
-            return true
+            let user = value.length;
+            let userSinSpace = value.replace(/\s+/g, "");
+            userSinSpace = userSinSpace.length;
+            if(user != userSinSpace){
+                return false
+            }
+            else{
+                return true
+            }
+           
         } catch (error) {
             console.log(error)
             return false
@@ -58,22 +58,27 @@ class InputsValidator{
 
     static isEmailValid(value){
         if(!value) return true
-        try{
-            return true
-        } catch (error) {
-            console.log(error)
-            return false
+       
+        let re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+        if(!re.exec(value)){
+            return false;
         }
+        else return true;
     }
 
     static isPhoneNumberValid(value){
         if(!value) return true
         try{
-            if(value.length==0 || (value.length>=8&&value.length<=9)){
-            return true
-            }else{
-                return false
-            }
+           
+            if(Number.isInteger(parseInt(value))){
+                if(value.length==0 || (value.length>=8&&value.length<=9)){
+                    return true ;
+                } else{
+                    return false
+                }
+               
+            }else return false;
+           
         } catch (error) {
             console.log(error)
             return false
