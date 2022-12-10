@@ -56,10 +56,22 @@
 <dataTypePrecision>12</dataTypePrecision>
 <ownDataTypeParameters>,12,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="rut_usuario" id="1942DF11-72C1-FB56-1E36-C35A67C52F74">
-<createdBy>CETECOM</createdBy>
-<createdTime>2022-09-29 13:26:26 UTC</createdTime>
-<generatorID>A3D31A22-CFD5-CAED-00F0-E5E34478CBD4</generatorID>
+<Attribute name="fecha" id="7CEC7DC6-7975-372C-5FBE-244FFBE98A9A">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-08 21:04:29 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<engineerTo>
+<item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rut_usuario" id="D41826AB-E6F9-E33B-8D7D-594A1EDFEC54">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-08 21:14:51 UTC</createdTime>
+<generatorID>0ACFFCEC-EC63-D701-92A8-B3135C2B1522</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
@@ -69,7 +81,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -84,6 +96,7 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>01BCD7AD-CA98-B042-CDC0-0E8F7BC2EB60</attributeRef>
+<attributeRef>D41826AB-E6F9-E33B-8D7D-594A1EDFEC54</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

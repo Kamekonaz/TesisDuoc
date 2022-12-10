@@ -54,6 +54,7 @@ function ClientSidebar() {
   return (
     <div>
         <Header/>
+        
         <div className="fixed grid w-64 bg-gray-800" style={{gridTemplateRows: "250px 1fr 60px", height: "100vh"}}>
         
             <div className="flex items-center flex-col border-4 border-gray-900" style={{gridTemplateRows: "20px 1fr 20px"}}>
@@ -106,21 +107,29 @@ function ClientSidebar() {
                     </div>
                     <span className="ml-3">Contrato</span>
                 </NavLink>
+                <NavLink to="/dashboard/dashboardOption4" className={activeDashboardOption === "dashboardOption4" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption3">
+                    <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
+                        <div className="fa-sharp fa-solid fa-house"></div>
+                    </div>
+                    <span className="ml-3">Casos de asesoria</span>
+                </NavLink>
+                <NavLink to="/dashboard/dashboardOption5" className={activeDashboardOption === "dashboardOption5" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption3">
+                    <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
+                        <div className="fa-sharp fa-solid fa-house"></div>
+                    </div>
+                    <span className="ml-3">Actividades</span>
+                </NavLink>
 
             
             </div>
             <div className="flex text-gray-400 border-t-2 mt-2 border-gray-900">
-                {/* <div className="flex w-full items-left pl-4 space-x-6">
-                    <i className="hover:text-white text-2xl my-auto fa-solid fa-gear"
-                    onClick={()=> window.location.href = window.location.origin + '/editUser/?userID='+userData["ID_CUENTA"]}></i>
-                    <i className="hover:text-white text-2xl my-auto fa-solid fa-arrow-up-right-from-square" 
-                    onClick={()=> {cookies.remove("sessionKey"); window.location.href = window.origin}}></i>
-                </div>
-                 */}
+
             </div>
         </div>
+        
     </div>
     
+
   );
 }
 

@@ -1,8 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_1" id="DD05095C-F4AF-F0EB-5D17-0D880FA7AD71" containerWithKeyObject="10DBC310-449C-9B1E-C596-B1FC6D766FD2" localFKIndex="0F92FC58-B377-78AB-025B-33844D38E430" name="PARTICIPANTE_CHAT_USUARIO_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="58823FE1-BBAF-555E-DB02-10BB031C9B60" containerWithKeyObject="FC20893F-6B8D-6312-03C0-208CF3DDD37B" localFKIndex="1C4E791E-5E23-6F6E-5C82-A87E7950EB9D" name="MENSAJE_USUARIO_FK">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>96CB73A5-645B-DA94-6F8E-5BEB94D7B1CA</generatorID>
+<createdTime>2022-12-08 21:15:07 UTC</createdTime>
+<generatorID>0ACFFCEC-EC63-D701-92A8-B3135C2B1522</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <referredTableLongName>USUARIO</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>

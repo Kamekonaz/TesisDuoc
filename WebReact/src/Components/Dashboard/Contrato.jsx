@@ -68,9 +68,9 @@ function Contrato() {
   return (
     <div className="bg-gray-700 grid" style={{minHeight: "100vh", gridTemplateColumns: "256px 1fr"}}>
         <ClientSidebar/>
-        <div className="flex mt-20 bg-gray-100">
+        <div className="flex mt-20 bg-white">
 
-            <div className="flex mx-auto mt-20 bg-white rounded-lg shadow-lg border-gray-900" style={{width: "500px", height:"300px"}}>
+            <div className="flex mx-auto mt-20 bg-gray-50 rounded-lg shadow-lg border-2 border-gray-900" style={{width: "500px", height:"300px"}}>
                 {
                     !contractData ?  "" :
                     

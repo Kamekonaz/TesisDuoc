@@ -82,8 +82,24 @@ function VisualizarPlan() {
        
         <div id="viewContent border" className="h-full ml-64">
             <div className="dashboardOptionsBody bg-gray-700 flex flex-col text-gray-200 overflow-y-auto" style={{height: "100vh", maxHeight: "100vh"}}>
-               
-                <div className="flex flex-col overflow-y-auto" style={{maxHeight: "100vh"}}>
+
+
+
+                <div className="border-b border-gray-800 shadow-lg w-full h-16 grid select-none" style={{gridTemplateColumns: "220px 1fr"}}>
+                    <div className="flex ml-4 mr-auto my-auto space-x-2">
+                        <i className="m-auto text-gray-200 fa-solid fa-pen-to-square"></i>
+                        <div className="italic text-white font-bold">Planes de mejora</div>
+                    </div>
+
+                    <div className="text-gray-200 font-medium flex mr-auto my-auto space-x-4" id="clientDisplayOptionContainer">
+                        {/* <div className={(displayOption === "1") ? selectedDisplayClasses : normalDisplayClasses} onClick={()=>setDisplayOption("1")}>Todos</div>
+                        <div className={(displayOption === "2") ? selectedDisplayClasses : normalDisplayClasses} onClick={()=>setDisplayOption("2")}>Visitas</div>
+                        <div className={(displayOption === "3") ? selectedDisplayClasses : normalDisplayClasses} onClick={()=>setDisplayOption("3")}>Capacitaciones</div>
+                        <div className={(displayOption === "4") ? selectedDisplayClasses : normalDisplayClasses} onClick={()=>setDisplayOption("4")}>Asesoria</div> */}
+                    </div>
+   
+                </div>
+                <div className="flex flex-col overflow-y-auto mt-20" style={{maxHeight: "100vh"}}>
                     {  mejoraPlanes !== "" ?
                     mejoraPlanes.map((client, i) =>
                         <div key={client["ID_PLAN"]} 

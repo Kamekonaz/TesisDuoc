@@ -20,7 +20,7 @@ import ResponderChecklist from './Components/ProfessionalDashboard/Options/Respo
 import CrearPlan from './Components/ProfessionalDashboard/Options/CrearPlan';
 import VisualizarPlan from './Components/ProfessionalDashboard/Options/VisualizarPlan';
 import AsesoriaEspecial from './Components/ProfessionalDashboard/Options/AsesoriaEspecial';
-
+import ProChat from './Components/ProfessionalDashboard/Options/ProChats';
 
 
 import {
@@ -112,6 +112,10 @@ root.render(
       } />
       <Route path="/createBussiness" element={
         <CrearEmpresa/>
+      } />
+
+    <Route path="/professionalDashboard/dashboardOption4/chat" element={
+        <ProChat/>
       } />
     </Routes>
   </BrowserRouter>,

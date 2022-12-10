@@ -42,6 +42,10 @@ app.post('/editarSolicitudAsesoria', BdManager.editar_solicitud_asesoria)
 app.post('/getSolicitudesAsesoria', BdManager.listar_solicitudes_asesoria)
 
 
+app.post('/list_chats', BdManager.listar_chats)
+app.post('/sendMessage', BdManager.enviar_mensaje)
+
+
 
 
 

@@ -199,7 +199,7 @@ function CrearAsesoria() {
 
         <div id="viewContent border" className="h-full ml-64">
             <div className="dashboardOptionsBody bg-gray-700 flex flex-col text-gray-200 overflow-y-auto" style={{height: "100vh", maxHeight: "100vh"}}>
-                <div className="mx-auto text-3xl mt-2 font-medium mb-20">Ingresar Asesoria</div>
+                <div className="mx-auto text-3xl mt-2 font-medium mb-20">Crear Asesoria Normal</div>
 
                 <div className="mx-auto text-xl">Cliente:</div>
                 <div className="mx-auto h-16 bg-gray-600 flex hover:bg-gray-500 rounded-xl border border-gray-400 select-none" onClick={() => toggleClientSelector()} style={{width: "500px"}}>               
@@ -227,14 +227,14 @@ function CrearAsesoria() {
                     
                 </div>
                 
-                <div className="mt-4 grid mx-auto" style={{gridTemplateColumns: "160px 1fr"}}>
+                {/* <div className="mt-4 grid mx-auto" style={{gridTemplateColumns: "160px 1fr"}}>
                     <div className="my-auto">Tipo de asesoría:</div>
                     <select onChange={(e)=>setTipoAsesoria(e.target.value)} 
                     className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2 mr-2" style={{width:"300px"}}>
                           <option value="0">Normal</option>
                           <option value="1">Especial</option>
                       </select>
-                </div>
+                </div> */}
 
                 <div className="w-full flex mt-6 w-full text-xl justify-center space-x-2">
                   <div className="">Fecha</div>

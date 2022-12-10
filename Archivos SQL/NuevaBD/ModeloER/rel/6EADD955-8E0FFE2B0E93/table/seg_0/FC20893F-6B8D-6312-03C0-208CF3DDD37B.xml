@@ -48,10 +48,20 @@
 <colAssociation fkAssociation="92A0558B-6CE7-89A0-2081-15D38318DB43" referredColumn="6813CCEB-0260-FA32-BB0A-20C8CF44D986"/>
 </associations>
 </Column>
-<Column name="rut_usuario" id="2AFDECC7-4E08-6F9A-B331-7A65FD2D1F00">
+<Column name="fecha" id="EFAD1D06-F59C-857B-04CC-BF975AC1D1C7">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>1942DF11-72C1-FB56-1E36-C35A67C52F74</generatorID>
+<createdTime>2022-12-08 21:05:00 UTC</createdTime>
+<ownerDesignName>ModeloER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rut_usuario" id="53F69304-C517-4C3C-FBC9-5F4785340E80">
+<createdBy>ROYALE</createdBy>
+<createdTime>2022-12-08 21:15:07 UTC</createdTime>
+<generatorID>D41826AB-E6F9-E33B-8D7D-594A1EDFEC54</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -61,7 +71,7 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="2C0049B4-3AC4-379A-6318-AF0552AB36CF" referredColumn="8F21080E-3C40-4043-46D8-B4FFB17FE19B"/>
+<colAssociation fkAssociation="58823FE1-BBAF-555E-DB02-10BB031C9B60" referredColumn="8F21080E-3C40-4043-46D8-B4FFB17FE19B"/>
 </associations>
 </Column>
 </columns>
@@ -89,15 +99,15 @@
 <colUsage columnID="6060AA30-A2DC-9C48-2E61-9E3C989487A5"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="E73895E7-1175-3533-BD1D-7E49F2C7016C" name="MENSAJE_USUARIO_FK">
+<ind_PK_UK id="1C4E791E-5E23-6F6E-5C82-A87E7950EB9D" name="MENSAJE_USUARIO_FK">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-10-13 22:48:03 UTC</createdTime>
-<generatorID>A3D31A22-CFD5-CAED-00F0-E5E34478CBD4</generatorID>
+<createdTime>2022-12-08 21:15:07 UTC</createdTime>
+<generatorID>0ACFFCEC-EC63-D701-92A8-B3135C2B1522</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="2AFDECC7-4E08-6F9A-B331-7A65FD2D1F00"/>
+<colUsage columnID="53F69304-C517-4C3C-FBC9-5F4785340E80"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

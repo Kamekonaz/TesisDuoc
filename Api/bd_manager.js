@@ -133,6 +133,37 @@ class BdManager {
       }
     }
 
+
+    static async enviar_mensaje(req, res){
+      try {
+        const { rut_usuario } = req.body
+        const { id_sala } = req.body
+        const { mensaje } = req.body
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+          pkg_util.sp_send_message(:v_rut_usuario, :v_id_sala, :v_mensaje);
+           END;`,
+          {  
+            v_rut_usuario: rut_usuario,
+            v_id_sala: id_sala,
+            v_mensaje: mensaje
+          }
+        );
+
+
+        await Connection.close()
+
+        res.send("Exito");
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
+
     static async editar_solicitud_asesoria(req, res){
       try {
         const { id_solicitud } = req.body
@@ -154,6 +185,38 @@ class BdManager {
         await Connection.close()
 
         res.send("Exito");
+
+
+      } catch (error) {
+          return res.send("Error")
+      }
+    }
+
+    static async listar_chats(req, res){
+      try {
+
+
+        const Connection = await oracledb.getConnection(db_credentials);
+
+        const result = await Connection.execute(
+          `BEGIN
+          pkg_list.pcr_list_chat(:v_users);
+           END;`,
+          {  
+            v_users: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+          }
+        );
+        const cursor = result.outBinds.v_users;
+        const filas = await cursor.getRows();
+
+        for (const fila of filas){
+          if (fila["IMAGEN"]) fila["IMAGEN"] = await fila["IMAGEN"].getData()
+          if (fila["IMAGEN_1"]) fila["IMAGEN_1"] = await fila["IMAGEN_1"].getData()
+        }
+
+        await Connection.close()
+
+        res.send(filas);
 
 
       } catch (error) {
@@ -952,7 +1015,10 @@ static async crearVisita(fecha, rut_usuario, rut_profesional){
         const filas = result.rows[0]
 
 
-        if (filas["IMAGEN"]) filas["IMAGEN"] = await filas["IMAGEN"].getData()
+        if (filas){
+          if (filas["IMAGEN"]) filas["IMAGEN"] = await filas["IMAGEN"].getData()
+        }
+        
 
 
         await Connection.close()

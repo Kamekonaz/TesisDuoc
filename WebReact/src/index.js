@@ -9,6 +9,8 @@ import Perfil from './Components/Dashboard/Perfil.jsx';
 import Contrato from './Components/Dashboard/Contrato.jsx';
 import Boleta from './Components/Boleta.jsx';
 import SolicitarAsesoria from './Components/Dashboard/SolicitarAsesoria.jsx';
+import CasosAsesoria from './Components/Dashboard/CasosAsesoria.jsx';
+import Chats from './Components/Dashboard/Chats.jsx';
 
 import './index.css';
 import {
@@ -46,6 +48,17 @@ root.render(
       }/>
       <Route path="/dashboard/dashboardOption3" element={
         <Contrato />
+      }/>
+      <Route path="/dashboard/dashboardOption4" element={
+        <CasosAsesoria />
+      }/>
+      <Route path="/dashboard/dashboardOption5" element={
+        <Contrato />
+      }/>
+
+
+    <Route path="/dashboard/dashboardOption4/chat" element={
+        <Chats />
       }/>
       
     </Routes>

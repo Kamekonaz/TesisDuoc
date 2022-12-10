@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 22.2.0.165.1149
---   en:        2022-12-06 22:33:52 CLST
+--   en:        2022-12-08 18:15:33 CLST
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -38,8 +38,6 @@ DROP TABLE mensaje CASCADE CONSTRAINTS;
 DROP TABLE pago CASCADE CONSTRAINTS;
 
 DROP TABLE participante_act CASCADE CONSTRAINTS;
-
-DROP TABLE participante_chat CASCADE CONSTRAINTS;
 
 DROP TABLE plan_mejora CASCADE CONSTRAINTS;
 
@@ -199,6 +197,7 @@ CREATE TABLE mensaje (
     id_mensaje  NUMBER(12) NOT NULL,
     mensaje     VARCHAR2(2000) NOT NULL,
     id_sala     NUMBER(12) NOT NULL,
+    fecha       DATE NOT NULL,
     rut_usuario VARCHAR2(20) NOT NULL
 );
 
@@ -222,14 +221,6 @@ CREATE TABLE participante_act (
 );
 
 ALTER TABLE participante_act ADD CONSTRAINT participante_pk PRIMARY KEY ( id_asignacion );
-
-CREATE TABLE participante_chat (
-    id_participantechat NUMBER(12) NOT NULL,
-    rut_usuario         VARCHAR2(20) NOT NULL,
-    id_sala             NUMBER(12) NOT NULL
-);
-
-ALTER TABLE participante_chat ADD CONSTRAINT participante_chat_pk PRIMARY KEY ( id_participantechat );
 
 CREATE TABLE plan_mejora (
     id_plan        NUMBER(12) NOT NULL,
@@ -259,11 +250,10 @@ CREATE TABLE region (
 ALTER TABLE region ADD CONSTRAINT region_pk PRIMARY KEY ( id_region );
 
 CREATE TABLE sala_chat (
-    id_sala       NUMBER(12) NOT NULL,
-    asunto_sala   VARCHAR2(300) NOT NULL,
-    id_accidente  NUMBER(12) NOT NULL,
-    estado        CHAR(1) NOT NULL,
-    id_accidente2 NUMBER(12) NOT NULL
+    id_sala      NUMBER(12) NOT NULL,
+    asunto_sala  VARCHAR2(300) NOT NULL,
+    id_accidente NUMBER(12) NOT NULL,
+    estado       CHAR(1) NOT NULL
 );
 
 ALTER TABLE sala_chat ADD CONSTRAINT sala_chat_pk PRIMARY KEY ( id_sala );
@@ -398,14 +388,6 @@ ALTER TABLE participante_act
     ADD CONSTRAINT participante_act_usuario_fk FOREIGN KEY ( rut_usuario )
         REFERENCES usuario ( rut_usuario );
 
-ALTER TABLE participante_chat
-    ADD CONSTRAINT participante_chat_sala_chat_fk FOREIGN KEY ( id_sala )
-        REFERENCES sala_chat ( id_sala );
-
-ALTER TABLE participante_chat
-    ADD CONSTRAINT participante_chat_usuario_fk FOREIGN KEY ( rut_usuario )
-        REFERENCES usuario ( rut_usuario );
-
 ALTER TABLE plan_mejora
     ADD CONSTRAINT plan_mejora_usuario_fk FOREIGN KEY ( rut_usuario )
         REFERENCES usuario ( rut_usuario );
@@ -443,12 +425,11 @@ CREATE SEQUENCE contrato_id_contrato_seq START WITH 1 NOCACHE ORDER;
 
 
 
-
 -- Informe de Resumen de Oracle SQL Developer Data Modeler: 
 -- 
--- CREATE TABLE                            28
+-- CREATE TABLE                            27
 -- CREATE INDEX                             0
--- ALTER TABLE                             57
+-- ALTER TABLE                             54
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
 -- CREATE PACKAGE                           0

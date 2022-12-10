@@ -328,10 +328,22 @@ create or replace package pkg_list as
     procedure pcr_list_checklists(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_list_planes(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_solicitudes_asesoria(p_recordset OUT SYS_REFCURSOR);
+    procedure pcr_list_chat(p_recordset OUT SYS_REFCURSOR);
 end pkg_list;
 
 /
 create or replace package body pkg_list as
+    
+    procedure pcr_list_chat(p_recordset OUT SYS_REFCURSOR)
+        is
+        begin
+            open p_recordset for
+               select * from sala_chat left join mensaje on mensaje.id_sala = sala_chat.id_sala join accidente on accidente.id_accidente = sala_chat.id_accidente
+left join usuario on accidente.rut_usuario = usuario.rut_usuario
+left join usuario on mensaje.rut_usuario = usuario.rut_usuario
+order by mensaje.fecha desc;
+
+    end;
     
     procedure pcr_solicitudes_asesoria(p_recordset OUT SYS_REFCURSOR)
         is
@@ -483,13 +495,13 @@ create or replace package body pkg_client as
     is
         v_id_solicitud number(12);
     begin
-        select nvl(max(id_solicitud),0) into v_id_solicitud from solicitud_asesoria;
+        select nvl(max(id_solicitud),0)+1 into v_id_solicitud from solicitud_asesoria;
         
         insert into solicitud_asesoria
         values(
             v_id_solicitud,
             f_motivo,
-            0,
+            null,
             LOCALTIMESTAMP,
             f_rut_usuario
         );
@@ -660,6 +672,8 @@ create or replace package body pkg_client as
             f_asunto
         );
         
+        pkg_util.sp_create_chat_room(v_id_accidente);
+        
         commit work;
     end;
     
@@ -746,11 +760,47 @@ create or replace package pkg_util as
     procedure sp_change_contract_status(f_id_contract number, f_new_status number);
     procedure sp_get_costs_by_rut(f_rut_usuario varchar, rf_cur out sys_refcursor);
     procedure sp_get_detalle_boleta(f_id_pago number, rf_cur out sys_refcursor);
+    procedure sp_create_chat_room(f_id_accidente number);
+    procedure sp_send_message(f_rut_usuario varchar, f_id_sala number, f_mensaje varchar);
 end pkg_util;
 
 /
 
 create or replace package body pkg_util as
+    procedure sp_send_message(f_rut_usuario varchar, f_id_sala number, f_mensaje varchar)
+    is
+        v_message_id number(12);
+    begin
+        select nvl(max(to_number(id_mensaje)),0)+1 into v_message_id from mensaje;
+        insert into mensaje
+        values(
+            v_message_id,
+            f_mensaje,
+            f_id_sala,
+            LOCALTIMESTAMP,
+            f_rut_usuario
+        );
+        commit work;
+    end;
+    
+    
+    procedure sp_create_chat_room(f_id_accidente number) 
+    is
+        v_id_sala number(12);
+        v_asunto_sala varchar(300);
+    begin
+        select asunto into v_asunto_sala from accidente where id_accidente = f_id_accidente;
+        select nvl(max(to_number(id_sala)),0)+1 into v_id_sala from sala_chat;
+        
+        insert into sala_chat
+            values(
+                v_id_sala,
+                v_asunto_sala,
+                f_id_accidente,
+                1
+            );
+        commit work;
+    end;
 
     procedure sp_get_costs_by_rut(f_rut_usuario varchar, rf_cur out sys_refcursor)
         is
