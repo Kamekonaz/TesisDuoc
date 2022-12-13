@@ -678,7 +678,8 @@ create or replace package body pkg_client as
             v_id_accidente,
             f_rut_usuario,
             f_descripcion,
-            f_asunto
+            f_asunto,
+            localtimestamp
         );
         
         pkg_util.sp_create_chat_room(v_id_accidente);

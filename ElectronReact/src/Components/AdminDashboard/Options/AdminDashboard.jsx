@@ -50,9 +50,7 @@ function AdminDashboard() {
         const data ={
             sessionKey: cookies.get("appsessionKey"),
         }
-        console.log("b")
         const accidentes = await axios.post('http://localhost:3001/get_accidentes', data)
-        console.log("a")
         console.log(accidentes.data)
 
         

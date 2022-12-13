@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 22.2.0.165.1149
---   en:        2022-12-08 18:15:33 CLST
+--   en:        2022-12-13 10:35:55 CLST
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -67,7 +67,8 @@ CREATE TABLE accidente (
     id_accidente NUMBER(12) NOT NULL,
     rut_usuario  VARCHAR2(20),
     descripcion  VARCHAR2(2000) NOT NULL,
-    asunto       VARCHAR2(255) NOT NULL
+    asunto       VARCHAR2(255) NOT NULL,
+    fecha        DATE NOT NULL
 );
 
 ALTER TABLE accidente ADD CONSTRAINT accidente_pk PRIMARY KEY ( id_accidente );
