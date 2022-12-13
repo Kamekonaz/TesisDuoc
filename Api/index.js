@@ -168,14 +168,14 @@ app.post('/crearCapacitacion', async (req, res) =>{
 })
 
 app.post('/crearVisita', async (req, res) =>{
-    const { fecha, rut_usuario, rut_profesional, sessionKey } = req.body
+    const { fecha, rut_usuario, rut_profesional, sessionKey, id_checklist } = req.body
 
     const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
     const userData = await BdManager.getUserDataById(accountID);
 
     if(userData["ID_TIPO"] != "2") res.send({ error: "Usuario incorrecto"})
 
-    await BdManager.crearVisita(fecha, rut_usuario, rut_profesional)
+    await BdManager.crearVisita(fecha, rut_usuario, rut_profesional, id_checklist)
 
 
     res.send({
@@ -440,7 +440,7 @@ app.post('/listUsersByUserType', async (req, res) =>{
 
 app.post('/listActivities', async (req, res) =>{
     const { sessionKey } = req.body
-    
+    console.log("gotten")
     const signedUserAccountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
     if (signedUserAccountID == 0) return { error: "Ha ocurrido un error" }
 
@@ -456,7 +456,7 @@ app.post('/listActivities', async (req, res) =>{
         // Profesional
         case 2:
             // No puede obtener información de otros usuarios 
-            return { error: "Ha ocurrido un error" }
+            return res.send(activities)
             break;
 
         // Cliente

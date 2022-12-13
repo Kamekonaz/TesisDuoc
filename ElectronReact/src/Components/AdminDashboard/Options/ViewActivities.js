@@ -36,6 +36,8 @@ function ViewActivities() {
     
     function filterActivities(){
         if (!activitiesList) return;
+        //console.log(activitiesList)
+        //return
         const displayActivity = []
 
         let filteredActivitiesList = activitiesList[0]

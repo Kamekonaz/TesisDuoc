@@ -29,15 +29,13 @@ function Inicio() {
 
     async function getActivitiesList(){
         const data ={
-            sessionKey: cookies.get("appsessionKey"),
+            sessionKey: cookies.get("appsessionKey")
         }
+        console.log("bruh1")
         const activities = await axios.post('http://localhost:3001/listActivities', data)
         console.log("bruh")
         console.log(activities.data)
-        //setActivitiesList(activities.data)
 
-        
-        //return;
     }
 
     React.useEffect(()=>{

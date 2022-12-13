@@ -22,7 +22,7 @@ function ResponderChecklist() {
             estado: newEstado
         }
         const response = await axios.post("http://localhost:3001/editCheckbox", data)
-        window.location.reload()
+        getChecklists()
     }
   
     async function getChecklists(){

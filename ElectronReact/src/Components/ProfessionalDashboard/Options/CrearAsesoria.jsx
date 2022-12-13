@@ -32,7 +32,7 @@ function CrearAsesoria() {
     const cookies = new Cookies()
     const [browserValue, setBrowserValue] = React.useState('');
     const [lastCheckedValue, setLastCheckedValue] = React.useState('');
-    const [value, setValue] = React.useState(null);
+    const [value, setValue] = React.useState(new Date());
 
     const [tipoAsesoria, setTipoAsesoria] = React.useState('0');
 
@@ -41,7 +41,6 @@ function CrearAsesoria() {
     const [selectedClient, setSelectedClient] = React.useState('');
 
 
-    const [startDate, setStartDate] = React.useState(new Date());
     const [clientsList, setClientsList] = React.useState();
 
     const [clients, setClients] = React.useState("");
@@ -138,7 +137,7 @@ function CrearAsesoria() {
 
   async function submit(){
 
-    const sumbitDate = startDate.toLocaleDateString().split("/").join("")
+    const sumbitDate = value.toLocaleDateString().split("/").join("")
 
     const sumbitDatetime = `${sumbitDate} ${hour}${minutes}00`
     const gottenUserData = JSON.parse(localStorage.getItem('userData'))

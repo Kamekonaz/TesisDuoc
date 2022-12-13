@@ -66,7 +66,7 @@ function AdminDashboard() {
         // const paidContractCount = toUseData.filter(user  => user["ID_ESTADO_CONTRATO"] === 1).length
         // const unpaidContractCount = toUseData.filter(user  => user["ID_ESTADO_CONTRATO"] === 2).length
 
-        const montoTotal = toUseData.map(item => item.MONTO).reduce((prev, next) => prev + next)
+        const montoTotal = toUseData.length > 0 ? toUseData.map(item => item.MONTO).reduce((prev, next) => prev + next) : []
         const cantidadPagos = toUseData.length
    
         setGainsChart(

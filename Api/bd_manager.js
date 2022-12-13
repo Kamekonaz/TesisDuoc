@@ -626,18 +626,19 @@ static async crearAsesoria(especial, fecha, rut_usuario, rut_profesional){
   }     
 }
 
-static async crearVisita(fecha, rut_usuario, rut_profesional){
+static async crearVisita(fecha, rut_usuario, rut_profesional, id_checklist){
   try {
       const Connection = await oracledb.getConnection(db_credentials);
       //console.log("alo?", f_accountID)
       const result = await Connection.execute(
           `BEGIN
-          pkg_function_profesional.SP_CREAR_VISITA(:v_fecha, :v_rut_usuario, :v_rut_profesional);
+          pkg_function_profesional.SP_CREAR_VISITA(:v_fecha, :v_rut_usuario, :v_rut_profesional, :v_id_checklist);
            END;`,
           {  
             v_fecha: fecha,
             v_rut_usuario: rut_usuario,
-            v_rut_profesional: rut_profesional
+            v_rut_profesional: rut_profesional,
+            v_id_checklist: id_checklist
           }
         );
 
