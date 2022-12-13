@@ -94,7 +94,8 @@ function Perfil() {
             e.target.value = null;
         }
     React.useEffect(() => {
-        getUserData()
+        if(editData["estado"] === "") getUserData()
+        
         // MySwal.fire({
         //     title: "<h5 style='color:white'>" + "Exito" + "</h5>",
         //     html: "<p style='color:white'>" + "Cambios realizados exitosamente" + "</p>",
@@ -110,7 +111,7 @@ function Perfil() {
         //     }
         // })
         
-    }, []);
+    });
     async function getUserData(){
         const gottenUserData = JSON.parse(localStorage.getItem('userData'))
         const userRutDisplay = document.getElementById("userRutDisplay")
@@ -159,7 +160,7 @@ function Perfil() {
                         </div>
 
                         <div className="flex flex-col">
-                            <div className="text-gray-300 italic mt-12 text-xl" id="userRutDisplay">Rut: 11.111.111-1</div>
+                            <div className="text-gray-300 italic mt-12 text-xl" id="userRutDisplay">Rut: </div>
                             <div className="flex space-x-2">
                                 <div className="my-auto">Username:</div>
                                 <input onChange={(e)=>setEditData(editData=>({...editData, ...{username: e.target.value} }))} 
