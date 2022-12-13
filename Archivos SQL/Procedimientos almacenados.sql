@@ -329,6 +329,7 @@ create or replace package pkg_list as
     procedure pcr_list_planes(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_solicitudes_asesoria(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_list_chat(p_recordset OUT SYS_REFCURSOR);
+    procedure pcr_get_accidentes(p_recordset OUT SYS_REFCURSOR);
 end pkg_list;
 
 /
@@ -347,11 +348,18 @@ order by mensaje.fecha desc;
     
     procedure pcr_solicitudes_asesoria(p_recordset OUT SYS_REFCURSOR)
         is
-        begin
-            open p_recordset for
-            select * from solicitud_asesoria join usuario on usuario.rut_usuario = solicitud_asesoria.rut_usuario 
-                left join empresa on empresa.rut_usuario = usuario.rut_usuario order by fecha_emision desc;
-    end;
+            begin
+                open p_recordset for
+                select * from solicitud_asesoria join usuario on usuario.rut_usuario = solicitud_asesoria.rut_usuario 
+                    left join empresa on empresa.rut_usuario = usuario.rut_usuario order by fecha_emision desc;
+        end;
+        
+    procedure pcr_get_accidentes(p_recordset OUT SYS_REFCURSOR)
+        is
+            begin
+                open p_recordset for
+                select * from accidente join usuario on accidente.rut_usuario = usuario.rut_usuario;
+        end;
     
     procedure pcr_list_planes(p_recordset OUT SYS_REFCURSOR)
     is

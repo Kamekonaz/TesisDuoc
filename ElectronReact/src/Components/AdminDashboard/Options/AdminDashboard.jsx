@@ -46,12 +46,27 @@ function AdminDashboard() {
 
     }
 
+    async function getAccidentes(){
+        const data ={
+            sessionKey: cookies.get("appsessionKey"),
+        }
+        console.log("b")
+        const accidentes = await axios.post('http://localhost:3001/get_accidentes', data)
+        console.log("a")
+        console.log(accidentes.data)
+
+        
+        return;
+    }
+
+
+
     async function getActivitiesList(){
         const data ={
             sessionKey: cookies.get("appsessionKey"),
         }
         const activities = await axios.post('http://localhost:3001/listActivities', data)
-        console.log(activities.data)
+        //console.log(activities.data)
 
         
         return;
@@ -99,6 +114,7 @@ function AdminDashboard() {
         getPaymentData()
         getDayPaymentData()
         getActivitiesList()
+        getAccidentes()
     },[])
     
 

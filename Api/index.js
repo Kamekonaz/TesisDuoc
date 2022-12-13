@@ -45,6 +45,8 @@ app.post('/getSolicitudesAsesoria', BdManager.listar_solicitudes_asesoria)
 app.post('/list_chats', BdManager.listar_chats)
 app.post('/sendMessage', BdManager.enviar_mensaje)
 
+app.post('/get_accidentes', BdManager.get_accidentes)
+
 
 
 
@@ -440,7 +442,7 @@ app.post('/listUsersByUserType', async (req, res) =>{
 
 app.post('/listActivities', async (req, res) =>{
     const { sessionKey } = req.body
-    console.log("gotten")
+    //console.log("gotten")
     const signedUserAccountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
     if (signedUserAccountID == 0) return { error: "Ha ocurrido un error" }
 

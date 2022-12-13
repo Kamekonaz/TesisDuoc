@@ -845,6 +845,35 @@ static async crearVisita(fecha, rut_usuario, rut_profesional, id_checklist){
         }
     }
 
+    static async get_accidentes(req, res){
+      try{
+          const Connection = await oracledb.getConnection(db_credentials);
+          
+      
+          const result = await Connection.execute(
+            `BEGIN
+              pkg_list.pcr_get_accidentes(:v_activities);
+             END;`,
+            {  
+              v_activities: {dir: oracledb.BIND_OUT, type: oracledb.CURSOR}
+            }
+          );
+         
+          const cursor = result.outBinds.v_activities;
+          
+          const actividades = await cursor.getRows();
+          //console.log(actividades)
+
+          
+          await Connection.close()
+  
+          res.send(actividades);
+
+        } catch(err){
+            console.log(err)
+        }
+    }
+
     static async get_activities(){
       try{
           const Connection = await oracledb.getConnection(db_credentials);
