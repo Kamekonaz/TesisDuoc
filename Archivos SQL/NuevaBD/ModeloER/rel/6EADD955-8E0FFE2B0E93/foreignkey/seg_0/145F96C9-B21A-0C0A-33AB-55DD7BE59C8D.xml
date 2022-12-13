@@ -9,7 +9,7 @@
 <referredTableID>48C09CEA-3260-B00A-C943-F8EA2BBC4451</referredTableID>
 <keyObject>8F4DF33F-A87C-9E25-167D-D05D34C7C23F</keyObject>
 <referredKeyID>8F4DF33F-A87C-9E25-167D-D05D34C7C23F</referredKeyID>
-<mandatory>true</mandatory>
+<mandatory>false</mandatory>
 <refColNames>id_comuna</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>

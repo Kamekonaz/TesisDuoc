@@ -164,7 +164,7 @@ create or replace package pkg_register as
         f_email varchar,
         f_telefono number
     );
-    procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar, f_calle varchar, f_id_comuna number);
+    procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar, f_calle varchar);
     procedure pcr_delete_user(f_id_cuenta varchar);
 end pkg_register;
 -------------------------------------------------------------
@@ -293,7 +293,7 @@ create or replace package body pkg_register as
     end;
     
     
-    procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar, f_calle varchar, f_id_comuna number)
+    procedure pcr_create_business(f_rut varchar, f_razon_social varchar, f_telefono number,  f_nombre varchar, f_rut_usuario varchar, f_calle varchar)
     is
         v_rut_count number(10);
     begin
@@ -306,8 +306,8 @@ create or replace package body pkg_register as
                 f_telefono,
                 f_nombre,
                 f_rut_usuario,
-                f_calle , 
-                f_id_comuna
+                f_calle,
+                1
             );
         end if;
         commit work;

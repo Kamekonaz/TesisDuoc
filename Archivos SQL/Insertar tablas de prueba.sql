@@ -554,19 +554,19 @@ INSERT INTO comuna VALUES (346,'Antártica',56);
 
 
 insert into empresa(rut_empresa, razon_social, telefono, nombre, rut_usuario, calle, id_comuna)
-values('71.352.444-2', 'Empresa test 4', 912344323, 'Cordillera', '11.987.158-k', 'test', 1);
+values('71.352.444-2', 'Empresa test 4', 912344323, 'Cordillera', '11.987.158-k', 'test');
 
 insert into empresa(rut_empresa, razon_social, telefono, nombre, rut_usuario, calle, id_comuna)
-values('72.996.584-7', 'Empresa test 5', 912344323, 'Maestra', '19.852.563-4', 'test', 2);
+values('72.996.584-7', 'Empresa test 5', 912344323, 'Maestra', '19.852.563-4', 'test');
 
 insert into empresa(rut_empresa, razon_social, telefono, nombre, rut_usuario, calle, id_comuna)
-values('65.463.248-7', 'Empresa test 6', 912344323, 'Swan', '10.349.167-4', 'test', 3);
+values('65.463.248-7', 'Empresa test 6', 912344323, 'Swan', '10.349.167-4', 'test');
 
 insert into empresa(rut_empresa, razon_social, telefono, nombre, rut_usuario, calle, id_comuna)
-values('57.733.549-2', 'Empresa test 7', 912344323, 'Los del NorteChico', '14.843.164-6', 'test', 4);
+values('57.733.549-2', 'Empresa test 7', 912344323, 'Los del NorteChico', '14.843.164-6', 'test');
 
 insert into empresa(rut_empresa, razon_social, telefono, nombre, rut_usuario, calle, id_comuna)
-values('39.853.241-5', 'Empresa test 8', 912344323, 'Constructora San Luis', '12.811.735-8', 'test', 5);
+values('39.853.241-5', 'Empresa test 8', 912344323, 'Constructora San Luis', '12.811.735-8', 'test');
 
 
 COMMIT WORK;

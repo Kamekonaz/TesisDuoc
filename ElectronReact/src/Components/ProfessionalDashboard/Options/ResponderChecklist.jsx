@@ -85,7 +85,7 @@ function ResponderChecklist() {
                                 return <div key={i} className="grid text-white border mt-2" style={{gridTemplateColumns:"30px 1fr 100px"}}> 
                                     <div className="pl-2">{i+1}</div>
                                     <div>{object["DESCRIPCION"]}</div>
-                                    <div onClick={() => changeCheckbox(object["ID_CHECKBOX"], object["ESTADO"])} className={`text-center select-none ${object["ESTADO"] === "0"? "bg-green-500 hover:bg-green-600" : "bg-red-500 hover:bg-red-600"}`}>{object["ESTADO"] === "0" ? "Hecho" : "Pendiente"}</div>
+                                    <div onClick={() => changeCheckbox(object["ID_CHECKBOX"], object["ESTADO"])} className={`text-center select-none ${object["ESTADO"] === "0"? "bg-red-500 hover:bg-red-600" : "bg-green-500 hover:bg-green-600"}`}>{object["ESTADO"] === "0" ? "Pendiente" : "Hecho"}</div>
                                 </div>;
                             })
                         }

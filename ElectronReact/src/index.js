@@ -23,6 +23,7 @@ import AsesoriaEspecial from './Components/ProfessionalDashboard/Options/Asesori
 import ProChat from './Components/ProfessionalDashboard/Options/ProChats';
 import AdminDashboard from './Components/AdminDashboard/Options/AdminDashboard';
 import Inicio from './Components/ProfessionalDashboard/Options/Inicio';
+import VisualizarClientes from './Components/ProfessionalDashboard/Options/VisualizarClientes';
 
 import {
   BrowserRouter,
@@ -53,7 +54,7 @@ root.render(
         <CrearVisita/>
       } />
       <Route path="/professionalDashboard/dashboardOption3" element={
-        <ProfessionalSidebar/>
+        <VisualizarClientes/>
       } />
       <Route path="/professionalDashboard/dashboardOption4" element={
         <AsesoriaEspecial/>

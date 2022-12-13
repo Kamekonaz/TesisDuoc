@@ -8,8 +8,10 @@ class BdValidation {
         //console.log(sessionKey)
         const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
         const userData = await BdManager.getUserDataById(accountID);
-
-        if(accepted_users.includes(userData["ID_TIPO"])) return true;
+        if(userData){
+            if(accepted_users.includes(userData["ID_TIPO"])) return true;
+        }
+        
         return false;
     }
 

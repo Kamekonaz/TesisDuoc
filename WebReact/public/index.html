@@ -26,6 +26,46 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <style>
+      .profile-pic {
+     color: transparent;
+     transition: all 0.3s ease;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: relative;
+     transition: all 0.3s ease;
+    }
+    .profile-pic input {
+     display: none;
+    }
+    .profile-pic img {
+     position: absolute;
+     object-fit: cover;
+     width: 80px;
+     height: 80px;
+     box-shadow: 0 0 10px 0 rgba(255, 255, 255, .35);
+     border-radius: 100px;
+     z-index: 0;
+    }
+    .profile-pic .-label {
+     cursor: pointer;
+     height: 80px;
+     width: 80px;
+    }
+    .profile-pic:hover .-label {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: rgba(0, 0, 0, .5);
+     z-index: 10000;
+     /* color: #fafafa; */
+     /* transition: background-color 0.2s ease-in-out; */
+     border-radius: 100px;
+     margin-bottom: 0;
+    }
+    
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

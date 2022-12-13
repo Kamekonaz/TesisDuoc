@@ -11,7 +11,7 @@ import Boleta from './Components/Boleta.jsx';
 import SolicitarAsesoria from './Components/Dashboard/SolicitarAsesoria.jsx';
 import CasosAsesoria from './Components/Dashboard/CasosAsesoria.jsx';
 import Chats from './Components/Dashboard/Chats.jsx';
-
+import ViewActivities from './Components/Dashboard/ViewActividades.jsx';
 import Test from './Components/Header/Test.jsx';
 
 import './index.css';
@@ -55,7 +55,7 @@ root.render(
         <CasosAsesoria />
       }/>
       <Route path="/dashboard/dashboardOption5" element={
-        <Contrato />
+        <ViewActivities />
       }/>
 
 

@@ -97,14 +97,15 @@
 <dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_comuna" id="981DB1BC-AA8D-677D-D2E3-9AB201893DB0">
+<Attribute name="id_comuna" id="049FC7F0-CC77-8C8D-9C53-6E02B49570F5">
 <createdBy>ROYALE</createdBy>
-<createdTime>2022-11-30 02:04:59 UTC</createdTime>
+<createdTime>2022-12-13 20:31:36 UTC</createdTime>
 <generatorID>4298BE00-8E37-424A-3C46-F19138947D0E</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
 <engineerTo>
 <item key="6EADD955-6599-94BB-81AF-8E0FFE2B0E93" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <referedAttribute>9EEC1BB4-17CF-E155-CB07-AF0D1B304245</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -125,7 +126,6 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>44E3BE78-1036-09A5-1671-4B1DAD99660F</attributeRef>
-<attributeRef>981DB1BC-AA8D-677D-D2E3-9AB201893DB0</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

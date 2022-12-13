@@ -6,6 +6,8 @@ import Cookies from 'universal-cookie';
 import axios from "axios";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import Test from './Test'
+
 
 const MySwal = withReactContent(Swal)
 // import {
@@ -20,6 +22,7 @@ function EditUser() {
     const urlparams = new URLSearchParams(window.location.search);
     //console.log(urlparams.get("dashboardOption"))
     const previousRoute = window.location.origin + "/adminDashboard/" + (urlparams.get("dashboardOption") ? urlparams.get("dashboardOption") : "")
+    const [isEditingImage, setIsEditingImage] = React.useState(false)
     const [isClient, setIsClient] = React.useState(false)
     const [editData, setEditData] = React.useState({
         imagePFP:"", 
@@ -92,6 +95,22 @@ function EditUser() {
         return image
     }
 
+    function passFinalImage(image){
+        setEditData(editData=>({...editData,
+            ...{imagePFP: image}
+        }))
+        setIsEditingImage(false)
+      }
+
+      function pfpInputChange(e){
+        const profilePicture = document.getElementById("ImagePFP");
+        profilePicture.src = URL.createObjectURL(e.target.files[0]);
+        setEditData(editData=>({...editData,
+            ...{imagePFP: profilePicture.src}
+        }))
+            setIsEditingImage(true)
+            e.target.value = null;
+        }
     React.useEffect(() => {
         getUserData()
         // MySwal.fire({
@@ -108,30 +127,21 @@ function EditUser() {
         //             console.log("Uwu")
         //     }
         // })
-        const profilePicture = document.getElementById("ImagePFP");
-        const pfpInput = document.getElementById("file")
-        pfpInput.addEventListener("change", async (e) =>{
-            profilePicture.src = URL.createObjectURL(e.target.files[0]);
-            const imageFile = e.target.files[0]
-            const resizedImage = await resizeImage(imageFile)
-            setEditData(editData=>({...editData,
-                ...{imagePFP: resizedImage}
-            }))
-        })
+        
     }, []);
  
   return (
     <div style={{height: '100vh'}} >
         <AdminSidebar/>
         <div id="viewContent border" className="h-full ml-64">
-            <div className="grid h-full bg-gray-700 text-white" style={{gridTemplateRows: "1fr 100px"}}>
-                <div className="flex flex-col" >
+            <div className={`grid h-full ${isEditingImage ? "bg-gray-800" : "bg-gray-700"} text-white`} style={{gridTemplateRows: "1fr 100px"}}>
+                <div className={`flex flex-col ${isEditingImage ? "hidden" : ""}`} >
                     <div className="w-full h-36 grid" style={{gridTemplateColumns: "150px 1fr"}}>
                         <div className="ml-12 m-auto profile-pic flex">
                             <label className="-label bg-gray-200 rounded-full" htmlFor="file">
                             <span className="glyphicon glyphicon-camera"></span>
                             </label>
-                            <input id="file" type="file"  />
+                            <input id="file" type="file"  onChange={(e)=> pfpInputChange(e)} />
                             <img src={(editData.imagePFP) ? editData.imagePFP
                             : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png"} 
                             alt="" id="ImagePFP" width="200" />
@@ -147,58 +157,66 @@ function EditUser() {
                             </div>
                         </div>                     
                     </div>
+                      
                     
-                <div className="grid" style={{gridTemplateColumns:"1.4fr 1fr"}}>
-                        <div className="flex flex-col space-y-4 ml-12 mt-12">
-                            <div className="grid" style={{gridTemplateColumns: "120px 1fr"}}>
-                                <div className="my-auto">Nombres:</div>
-                                <input onChange={(e)=>setEditData(editData=>({...editData, ...{nombres: e.target.value} }))} 
-                                defaultValue={editData.nombres}
-                                className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="text"/>
-                            </div>
-                            <div className="grid" style={{gridTemplateColumns: "120px 1fr"}}>
-                                <div className="my-auto">Apellidos:</div>
-                                <input onChange={(e)=>setEditData(editData=>({...editData, ...{apellidos: e.target.value} }))} 
-                                defaultValue={editData.apellidos}
-                                className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="text"/>
-                            </div>
-                            <div className="grid" style={{gridTemplateColumns: "120px 1fr"}}>
-                                <div className="my-auto">Email:</div>
-                                <input  onChange={(e)=>setEditData(editData=>({...editData, ...{email: e.target.value} }))} 
-                                defaultValue={editData.email}
-                                className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="text"/>
-                            </div>
-                            <div className="grid" style={{gridTemplateColumns: "120px 1fr"}}>
-                                <div className="my-auto">Telefono:</div>
-                                <input onChange={(e)=>setEditData(editData=>({...editData, ...{telefono: e.target.value} }))} 
-                                defaultValue={editData.telefono}
-                                id="clientTelefonoInput" className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="text"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-col mt-12 space-y-4">
-                            <div className="mx-auto">Estado</div>
-                            <div className="mx-auto select-none"  onClick={(e)=>{setEditData(editData=>({...editData, ...{estado: (editData.estado === "1") ? "0" : "1"} }))}} > 
-                                <div className={`px-4 py-2 rounded-lg ${(editData.estado === "1") ? "bg-green-600 hover:bg-green-700" : "bg-red-600 hover:bg-red-700"}`}>
-                                    {(editData.estado === "1") ? "Activo" : "Inactivo"}
-                                </div> 
-                            </div> 
-                            <div className="mx-auto text-sm">Click para cambiar</div>
-                            {
-                                (isClient) ? 
-                                <div className="flex w-36 mx-auto bg-black rounded rounded-lg overflow-hidden border border-gray-900 shadow-sm">
-                                    <img className="opacity-75 hover:opacity-50"
-                                    src="https://img.freepik.com/vector-gratis/hombre-negocios-agitando-manos-sobre-contrato-firmado_3446-646.jpg?w=2000" alt=""/>
+                    <div className="grid" style={{gridTemplateColumns:"1.4fr 1fr"}}>
+                            <div className="flex flex-col space-y-4 ml-12 mt-12">
+                                <div className="grid" style={{gridTemplateColumns: "120px 1fr"}}>
+                                    <div className="my-auto">Nombres:</div>
+                                    <input onChange={(e)=>setEditData(editData=>({...editData, ...{nombres: e.target.value} }))} 
+                                    defaultValue={editData.nombres}
+                                    className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="text"/>
                                 </div>
-                                :
-                                ""
-                            }
-                            
-                        </div>
+                                <div className="grid" style={{gridTemplateColumns: "120px 1fr"}}>
+                                    <div className="my-auto">Apellidos:</div>
+                                    <input onChange={(e)=>setEditData(editData=>({...editData, ...{apellidos: e.target.value} }))} 
+                                    defaultValue={editData.apellidos}
+                                    className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="text"/>
+                                </div>
+                                <div className="grid" style={{gridTemplateColumns: "120px 1fr"}}>
+                                    <div className="my-auto">Email:</div>
+                                    <input  onChange={(e)=>setEditData(editData=>({...editData, ...{email: e.target.value} }))} 
+                                    defaultValue={editData.email}
+                                    className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="text"/>
+                                </div>
+                                <div className="grid" style={{gridTemplateColumns: "120px 1fr"}}>
+                                    <div className="my-auto">Telefono:</div>
+                                    <input onChange={(e)=>setEditData(editData=>({...editData, ...{telefono: e.target.value} }))} 
+                                    defaultValue={editData.telefono}
+                                    id="clientTelefonoInput" className="pl-2 font-medium border border-gray-900 bg-gray-800 h-10 rounded-lg shadow-lg focus:outline-0 focus:border-black focus:border-2" style={{width:"300px"}} type="text"/>
+                                </div>
+                            </div>
+                            <div className="flex flex-col mt-12 space-y-4">
+                                <div className="mx-auto">Estado</div>
+                                <div className="mx-auto select-none"  onClick={(e)=>{setEditData(editData=>({...editData, ...{estado: (editData.estado === "1") ? "0" : "1"} }))}} > 
+                                    <div className={`px-4 py-2 rounded-lg ${(editData.estado === "1") ? "bg-green-600 hover:bg-green-700" : "bg-red-600 hover:bg-red-700"}`}>
+                                        {(editData.estado === "1") ? "Activo" : "Inactivo"}
+                                    </div> 
+                                </div> 
+                                <div className="mx-auto text-sm">Click para cambiar</div>
+                                {
+                                    (isClient) ? 
+                                    <div className="flex w-36 mx-auto bg-black rounded rounded-lg overflow-hidden border border-gray-900 shadow-sm">
+                                        <img className="opacity-75 hover:opacity-50"
+                                        src="https://img.freepik.com/vector-gratis/hombre-negocios-agitando-manos-sobre-contrato-firmado_3446-646.jpg?w=2000" alt=""/>
+                                    </div>
+                                    :
+                                    ""
+                                }
+                                
+                            </div>
 
-                        
-                </div>
+                            
+                    </div>
                     
                 </div>
+
+                {
+                    isEditingImage ? 
+                        <Test  passFinalImage={passFinalImage} imagen={editData["imagePFP"]} setIsEditingImage={setIsEditingImage}/>
+                        :
+                        ""
+                    }    
                 
                 <div className="grid w-full grid-cols-3 select-none">
                     <div className="flex"><div className="my-auto mr-auto ml-8 px-3 py-1 rounded-lg shadow-lg bg-red-400 text-white font-medium 

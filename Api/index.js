@@ -48,6 +48,8 @@ app.post('/sendMessage', BdManager.enviar_mensaje)
 app.post('/get_accidentes', BdManager.get_accidentes)
 
 
+app.post('/creteBussiness', BdManager.createBussiness)
+
 
 
 

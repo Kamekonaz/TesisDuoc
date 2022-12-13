@@ -91,6 +91,7 @@
 <createdTime>2022-11-30 02:24:04 UTC</createdTime>
 <generatorID>981DB1BC-AA8D-677D-D2E3-9AB201893DB0</generatorID>
 <ownerDesignName>ModeloER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>

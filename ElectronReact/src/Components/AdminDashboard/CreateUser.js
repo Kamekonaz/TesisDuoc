@@ -56,6 +56,7 @@ function CreateUser() {
         let errors = 0;
         if(hasVoidAttribute) errors+=1
         if(creationData.contraseña !== creationData.checkcontraseña) errors+=1
+
         
         if (errors > 0) return;
 

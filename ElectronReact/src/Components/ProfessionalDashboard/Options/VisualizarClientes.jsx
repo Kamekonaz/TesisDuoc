@@ -1,6 +1,6 @@
 
 import React from "react";
-import AdminSidebar from "../AdminSidebar";
+import ProfessionalSidebar from "../ProfessionalSidebar";
 import Cookies from 'universal-cookie';
 import axios from "axios";
 import Swal from 'sweetalert2'
@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 //     NavLink 
 //   } from "react-router-dom";
 
-function AdminClientes() {
+function VisualizarClientes() {
     const cookies = new Cookies()
     const [browserValue, setBrowserValue] = React.useState('');
     const [displayOption, setDisplayOption] = React.useState('1');
@@ -116,8 +116,7 @@ function AdminClientes() {
              const nombreEmpresa = (client["NOMBRE_1"]) ? client["NOMBRE_1"]
              : "Sin empresa";
             usersHTML+=`
-            <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl" 
-            onclick="window.location.href = window.location.origin + '/editUser/?userID=${client["ID_CUENTA"]}&dashboardOption=${window.location.pathname.split("/")[2]}'">
+            <div class="h-16 bg-gray-700 flex hover:bg-gray-600 rounded-xl" >
                 <div class="border-gray-600 border-t h-full mx-auto" style="width:98%;
                 display: grid; grid-template-columns: 64px 350px 300px 300px 0.5fr 0.5fr;">
                     <div class="flex m-auto">
@@ -132,7 +131,6 @@ function AdminClientes() {
                         <div class="${(client["NOMBRE_1"]) ? "" : "text-red-500"}">${nombreEmpresa}</div>
                         
                     </div>
-
 
                     <div class="flex m-auto font-medium">
                         ${(client["ESTADO"] === "1") ? activeUserHTML : disabledUserHTML} 
@@ -156,7 +154,7 @@ function AdminClientes() {
 
   return (
     <div style={{height: '100vh'}} >
-        <AdminSidebar/>
+        <ProfessionalSidebar/>
         <div id="viewContent border" className="h-full ml-64">
             <div className="dashboardOptionsBody bg-gray-700" style={{height: "100vh"}}>
                 <div className="border-b border-gray-800 shadow-lg w-full h-16 grid select-none" style={{gridTemplateColumns: "200px 0.9fr 1fr"}}>
@@ -170,13 +168,6 @@ function AdminClientes() {
                         <div className={(displayOption === "2") ? selectedDisplayClasses : normalDisplayClasses} onClick={()=>setDisplayOption("2")}>Activos</div>
                         <div className={(displayOption === "3") ? selectedDisplayClasses : normalDisplayClasses} onClick={()=>setDisplayOption("3")}>Inactivos</div>
                     </div>
-                    <div className="text-gray-200 font-medium flex space-x-3 ml-auto pr-4">
-                        <div className="px-3 py-1 rounded-lg bg-green-600 hover:bg-green-700 my-auto"
-                        onClick={()=>window.location.href = `${window.location.origin}/createUser/?userType=3&dashboardOption=${window.location.pathname.split("/")[2]}`}
-                        >Añadir cliente</div>
-
-                        <div onClick={() => navigate("/createBussiness")} className="px-3 py-1 rounded-lg bg-orange-700 hover:bg-orange-800 my-auto">Añadir Empresa</div>
-                    </div>      
                 </div>
 
                 <div className="py-2 w-full flex my-auto px-6">
@@ -193,4 +184,4 @@ function AdminClientes() {
   );
 }
 
-export default AdminClientes;
+export default VisualizarClientes;

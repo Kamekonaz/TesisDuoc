@@ -118,11 +118,6 @@ function AdminProfesionales() {
                     <div class="flex m-auto font-medium">
                         ${(profesional["ESTADO"] === "1") ? activeUserHTML : disabledUserHTML} 
                     </div>
-                    <div class="flex my-auto ml-auto pr-4 space-x-4" onclick="event.stopPropagation()">
-                        <div class="userEdit h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-user-pen"></i></div>
-                        <div class="userMessage h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-comment"></i></div>
-                        <div userID="${profesional["ID_CUENTA"]}" class="userDelete h-8 w-8 bg-gray-800 rounded-full flex text-gray-300 hover:text-gray-100"><i class="m-auto fa-solid fa-eraser"></i></div>
-                    </div>
                 </div>
             </div>
             

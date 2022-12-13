@@ -653,6 +653,44 @@ static async crearVisita(fecha, rut_usuario, rut_profesional, id_checklist){
       console.log(error)
   }     
 }
+static async createBussiness(req, res){
+  try {
+    const {
+    rut,
+    razon,
+    telefono,
+    apodo,                                                                                
+    direccion,
+    rut_usuario } = req.body
+      
+      const Connection = await oracledb.getConnection(db_credentials);
+
+      // Store hash in the database
+     
+        const result = await Connection.execute(
+            `BEGIN
+              pkg_register.pcr_create_business(:f_rut,:f_razon_social,:f_telefono,:f_nombre,:f_rut_usuario,:f_calle);
+            END;`,
+            {  
+              f_rut: rut,
+              f_razon_social: razon,
+              f_telefono: telefono,
+              f_nombre: apodo,
+              f_rut_usuario: rut_usuario,
+              f_calle: direccion
+            }
+          );
+      
+        await Connection.commit()
+        await Connection.close()
+        console.log(result)
+        return result
+
+
+  } catch (error) {
+      console.log(error)
+  }     
+}
 
     static async createUser(f_imagen, f_id_tipo, f_estado, f_rut, f_username,  f_password,  f_nombres, f_apellidos, f_email, f_telefono){
         try {
@@ -833,6 +871,10 @@ static async crearVisita(fecha, rut_usuario, rut_profesional, id_checklist){
 
           for (const fila of filas){
             if (fila["PDF"]) fila["PDF"] = await fila["PDF"].getData()
+       
+              if (fila["IMAGEN"]) fila["IMAGEN"] = await fila["IMAGEN"].getData()
+              if (fila["IMAGEN_1"]) fila["IMAGEN_1"] = await fila["IMAGEN_1"].getData()
+            
           }
 
   
