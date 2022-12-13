@@ -40,7 +40,7 @@ function LoginView() {
               }
               const userData = (await axios.post('http://localhost:3001/getselfuserdata', data)).data
               localStorage.setItem('appuserData', JSON.stringify(userData))
-              window.location.href = window.location.origin + "/adminDashboard"
+              window.location.href = window.location.origin + "/adminDashboard/dashboardOption0"
           
           } 
           if(resultData["idTipo"] === 2) {
@@ -49,7 +49,7 @@ function LoginView() {
             }
             const userData = (await axios.post('http://localhost:3001/getselfuserdata', data)).data
             localStorage.setItem('appuserData', JSON.stringify(userData))
-            window.location.href = window.location.origin + "/professionalDashboard"
+            window.location.href = window.location.origin + "/professionalDashboard/dashboardOption0"
           }
         }
         else{

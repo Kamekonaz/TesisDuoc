@@ -22,7 +22,7 @@ function ProfessionalSidebar() {
     // if(isSessionValid === false) window.location.href = window.location.origin
     const navigate = useNavigate()
     if(isSessionValid === false) window.location.href = window.origin
-    if(isSessionValid) console.log(cookies.get("sessionKey"))
+    //if(isSessionValid) console.log(cookies.get("sessionKey"))
     if(window.location.pathname === "/professionalDashboard") navigate("dashboardOption0")
     const paramDashboardOption = window.location.pathname.split("/")[2]
     const [activeDashboardOption, setActiveDashboardOption] = React.useState((paramDashboardOption) ? paramDashboardOption : 0);
@@ -116,7 +116,7 @@ function ProfessionalSidebar() {
                     <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
                         <div className="fa-sharp fa-solid fa-house"></div>
                     </div>
-                    <span className="ml-3">Dashboard</span>
+                    <span className="ml-3">Inicio</span>
                 </NavLink>
                 <NavLink to="/professionalDashboard/dashboardOption1" className={activeDashboardOption === "dashboardOption1" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption1">
                     <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">

@@ -12,6 +12,8 @@ import SolicitarAsesoria from './Components/Dashboard/SolicitarAsesoria.jsx';
 import CasosAsesoria from './Components/Dashboard/CasosAsesoria.jsx';
 import Chats from './Components/Dashboard/Chats.jsx';
 
+import Test from './Components/Header/Test.jsx';
+
 import './index.css';
 import {
   BrowserRouter,
@@ -59,6 +61,11 @@ root.render(
 
     <Route path="/dashboard/dashboardOption4/chat" element={
         <Chats />
+      }/>
+      
+
+      <Route path="/test" element={
+        <Test />
       }/>
       
     </Routes>

@@ -1,5 +1,0 @@
-Pillow
-werkzeug
-cx_Oracle
-fpdf
-tkcalendar

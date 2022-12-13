@@ -21,7 +21,8 @@ import CrearPlan from './Components/ProfessionalDashboard/Options/CrearPlan';
 import VisualizarPlan from './Components/ProfessionalDashboard/Options/VisualizarPlan';
 import AsesoriaEspecial from './Components/ProfessionalDashboard/Options/AsesoriaEspecial';
 import ProChat from './Components/ProfessionalDashboard/Options/ProChats';
-
+import AdminDashboard from './Components/AdminDashboard/Options/AdminDashboard';
+import Inicio from './Components/ProfessionalDashboard/Options/Inicio';
 
 import {
   BrowserRouter,
@@ -40,10 +41,10 @@ root.render(
         <LoginView />
       }/>
       <Route path="/professionalDashboard" element={
-        <ProfessionalSidebar/>
+        <Inicio/>
       } />
       <Route path="/professionalDashboard/dashboardOption0" element={
-        <ProfessionalSidebar/>
+        <Inicio/>
       } />
       <Route path="/professionalDashboard/dashboardOption1" element={
         <CrearCapacitacion/>
@@ -76,7 +77,7 @@ root.render(
         <AdminSidebar/>
       } />
       <Route path="/adminDashboard/dashboardOption0" element={
-        <AdminSidebar/>
+        <AdminDashboard/>
       } />
       <Route path="/adminDashboard/dashboardOption1" element={
         <AdminProfesionales/>

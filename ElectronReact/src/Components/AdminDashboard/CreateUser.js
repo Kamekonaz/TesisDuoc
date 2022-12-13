@@ -5,6 +5,7 @@ import AdminSidebar from "./AdminSidebar";
 import Cookies from 'universal-cookie';
 import axios from "axios";
 import Swal from 'sweetalert2'
+import Test from './Test'
 
 import { parse } from "postcss";
 import InputsValidator from "../../Customscripts/InputsValidator";
@@ -26,6 +27,9 @@ function isNumeric(str) {
 function CreateUser() {
     const cookies = new Cookies()
     const urlparams = new URLSearchParams(window.location.search);
+    const [isEditingImage, setIsEditingImage] = React.useState(false)
+
+
     //console.log(urlparams.get("userType"))
     const previousRoute = window.location.origin + "/adminDashboard/" + urlparams.get("dashboardOption")
     const [creationData, setCreationData] = React.useState({
@@ -41,6 +45,8 @@ function CreateUser() {
         email:"",
         telefono:"",
     });
+
+
 
 
     async function createUserPost(){
@@ -148,28 +154,44 @@ function CreateUser() {
       }
 
 
+      function passFinalImage(image){
+        setCreationData(creationData=>({...creationData,
+            ...{imagePFP: image}
+        }))
+        setIsEditingImage(false)
+      }
 
 
-    React.useEffect(() => {
-
+      function pfpInputChange(e){
         const profilePicture = document.getElementById("ImagePFP");
-        const pfpInput = document.getElementById("file")
-        pfpInput.addEventListener("change", async (e) =>{
-            profilePicture.src = URL.createObjectURL(e.target.files[0]);
-            const imageFile = e.target.files[0]
-            const resizedImage = await resizeImage(imageFile)
-            setCreationData(creationData=>({...creationData,
-                ...{imagePFP: resizedImage}
-            }))
-        })
-    }, []);
+        profilePicture.src = URL.createObjectURL(e.target.files[0]);
+        setCreationData(creationData=>({...creationData,
+            ...{imagePFP: profilePicture.src}
+        }))
+        setIsEditingImage(true)
+        e.target.value = null;
+      }
+
+    // React.useEffect(() => {
+
+    //     const profilePicture = document.getElementById("ImagePFP");
+    //     const pfpInput = document.getElementById("file")
+    //     pfpInput.addEventListener("change", async (e) =>{
+    //         profilePicture.src = URL.createObjectURL(e.target.files[0]);
+    //         setCreationData(creationData=>({...creationData,
+    //             ...{imagePFP: profilePicture.src}
+    //         }))
+    //         setIsEditingImage(true)
+    //         e.target.value = null;
+    //     })
+    // }, []);
  
   return (
     <div style={{height: '100vh'}} >
         <AdminSidebar/>
         <div id="viewContent border" className="h-full ml-64">
             
-            <div className="grid h-full bg-gray-700 text-white" style={{gridTemplateRows: "64px 1fr 50px"}}>
+            <div className={`grid h-full  ${isEditingImage ? "bg-gray-800" : "bg-gray-700"} text-white`} style={{gridTemplateRows: "64px 1fr 50px"}}>
 
                 <div className="border-b border-gray-800 shadow-lg w-full h-16 grid select-none" style={{gridTemplateColumns: "200px 0.9fr 1fr"}}>
                     <div className="flex ml-4 mr-auto my-auto space-x-2">
@@ -183,15 +205,23 @@ function CreateUser() {
                     <div className="text-gray-200 font-medium flex space-x-3 ml-auto pr-4">
         
                     </div>
-                </div>             
-                <div className="flex-col mx-auto w-full overflow-y-auto">
+                </div>     
+                {
+                    isEditingImage ? 
+                        <Test  passFinalImage={passFinalImage} imagen={creationData["imagePFP"]} setIsEditingImage={setIsEditingImage}/>
+                        :
+                        ""
+                }        
+                
+                <div className={`${isEditingImage ? "hidden" : ""} flex-col mx-auto w-full overflow-y-auto`}>
                     <div className="flex mt-2">
                         <div className="m-auto profile-pic flex">
                             <label className="-label bg-gray-200 rounded-full" htmlFor="file">
                             <span className="glyphicon glyphicon-camera"></span>
                             </label>
-                            <input id="file" type="file"/>
-                            <img src={(creationData.imagePFP) ? creationData.imagePFP
+                            <input id="file" onChange={(e)=> pfpInputChange(e)} type="file"/>
+                            
+                            <img style={{objectFit:"cover"}} src={(creationData.imagePFP) ? creationData.imagePFP
                             : "https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png"} 
                             alt="" id="ImagePFP" width="200" />
                         </div>
@@ -300,7 +330,7 @@ function CreateUser() {
                     </div>
                         
                 </div>
-                <div className="grid w-full grid-cols-3 select-none">
+                <div className={`${isEditingImage ? "hidden" : ""} grid w-full grid-cols-3 select-none`}>
                     <div className="flex"><div className="my-auto mr-auto ml-8 px-3 py-1 rounded-lg shadow-lg bg-red-400 text-white font-medium 
                             hover:bg-red-500 transition duration-200" onClick={()=>window.location.href = previousRoute}>Cancelar</div></div>
                     <div className="flex">

@@ -546,6 +546,7 @@ create or replace package body pkg_client as
             f_tipo_recibo,
             v_id_contract
         );
+        commit work;
         
         select 
         nvl(sum(case when checklist_visita.modificaciones>0 then checklist_visita.modificaciones end),0) as modificaciones_visita,
@@ -585,10 +586,10 @@ create or replace package body pkg_client as
                     v_id_detalle + 1,
                     'Modificaciones a checklist de visita',
                     v_normal_service_cost,
-                    v_id_pago,
                     v_visita_amount,
                     v_extra_service_cost * v_visita_amount,
-                    v_normal_service_cost + v_extra_service_cost*v_visita_amount
+                    v_normal_service_cost + v_extra_service_cost*v_visita_amount,
+                    v_id_pago
                 );
         
         select costo_extra into v_extra_service_cost from coste_act where id_tipoactividad = 2;
@@ -604,10 +605,10 @@ create or replace package body pkg_client as
                     v_id_detalle + 2,
                     'Capacitaciónes',
                     v_normal_service_cost,
-                    v_id_pago,
                     v_capacitacion_amount,
                     v_extra_service_cost * v_capacitacion_amount,
-                    v_normal_service_cost + v_extra_service_cost*v_capacitacion_amount
+                    v_normal_service_cost + v_extra_service_cost*v_capacitacion_amount,
+                    v_id_pago
                 );
                 
         select costo_fijo into v_normal_service_cost from coste_act where id_tipoactividad = 3;
@@ -626,10 +627,10 @@ create or replace package body pkg_client as
                     v_id_detalle + 3,
                     'Asesorías',
                     v_normal_service_cost,
-                    v_id_pago,
                     v_asesoria_amount,
                     v_extra_service_cost * v_asesoria_amount,
-                    v_normal_service_cost + v_extra_service_cost*v_asesoria_amount
+                    v_normal_service_cost + v_extra_service_cost*v_asesoria_amount,
+                    v_id_pago
                 );
         
         update contrato
