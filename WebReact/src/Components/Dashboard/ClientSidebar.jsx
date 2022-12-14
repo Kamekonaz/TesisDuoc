@@ -120,6 +120,13 @@ function ClientSidebar() {
                     <span className="ml-3">Actividades</span>
                 </NavLink>
 
+                <NavLink to="/dashboard/dashboardOption6" className={activeDashboardOption === "dashboardOption6" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption3">
+                    <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
+                        <div className="fa-sharp fa-solid fa-house"></div>
+                    </div>
+                    <span className="ml-3">Planes de mejora</span>
+                </NavLink>
+
             
             </div>
             <div className="flex text-gray-400 border-t-2 mt-2 border-gray-900">

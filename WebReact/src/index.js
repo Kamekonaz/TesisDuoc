@@ -13,6 +13,7 @@ import CasosAsesoria from './Components/Dashboard/CasosAsesoria.jsx';
 import Chats from './Components/Dashboard/Chats.jsx';
 import ViewActivities from './Components/Dashboard/ViewActividades.jsx';
 import Test from './Components/Header/Test.jsx';
+import VisualizarPlanes from './Components/Dashboard/VisualizarPlanes.jsx';
 
 import './index.css';
 import {
@@ -56,6 +57,9 @@ root.render(
       }/>
       <Route path="/dashboard/dashboardOption5" element={
         <ViewActivities />
+      }/>
+      <Route path="/dashboard/dashboardOption6" element={
+        <VisualizarPlanes />
       }/>
 
 
