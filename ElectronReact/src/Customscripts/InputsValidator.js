@@ -7,6 +7,7 @@ class InputsValidator{
 
         
     static isNameValid(value){
+        return true
         if(!value) return true
         try {
         if (value.length > 30 ) {
@@ -18,7 +19,7 @@ class InputsValidator{
         } else{
             return true
         }
-        return true
+       
         } catch (error) {
             console.log(error)
             return false
