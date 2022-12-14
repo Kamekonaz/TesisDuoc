@@ -1,4 +1,5 @@
 const electron = require('electron');
+const globalShortcut = electron.globalShortcut
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
@@ -24,6 +25,10 @@ function createWindow() {
     //BrowserWindow.addDevToolsExtension('<location to your react chrome extension>');
     //mainWindow.webContents.openDevTools();
   }
+  globalShortcut.register('f5', function() {
+		console.log('f5 is pressed')
+		mainWindow.reload()
+	})
   mainWindow.on('closed', () => mainWindow = null);
 }
 

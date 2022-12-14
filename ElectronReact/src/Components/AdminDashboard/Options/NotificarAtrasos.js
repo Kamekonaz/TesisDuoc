@@ -58,7 +58,7 @@ function NotificarAtrasos() {
             && participant["ID_TIPO"] === 3))[0]
 
             console.log(activity)
-
+            if(profesional && cliente){
             const activityDate = new Date(activity["FECHA_ACTIVIDAD"])
 
             displayActivity.push(
@@ -112,6 +112,7 @@ function NotificarAtrasos() {
 
             
         }
+    }
 
         setActivitiesDisplay(displayActivity)
     }

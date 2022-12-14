@@ -26,7 +26,7 @@ function VisualizarPlanes() {
         const gottenUserData = JSON.parse(localStorage.getItem('userData'))
         const result = await axios.post("http://localhost:3001/getPlanes", {})
         let final_result = result.data.filter((client) => client["RUT_USUARIO"] === gottenUserData["RUT_USUARIO"])
-        final_result = result.data.filter((client) => client["ESTADO"] === "1")
+        final_result = final_result.filter((client) => client["ESTADO"] === "1")
         setMejoraPlanes(final_result)
         console.log(final_result)
         return;

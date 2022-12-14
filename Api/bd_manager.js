@@ -49,7 +49,7 @@ class BdManager {
       const checklist_id = result.outBinds["return"];
 
 
-      console.log("hasta aca okay")
+      //console.log("hasta aca okay")
 
       for (const option of options){
         const option_content = option["content"];
@@ -630,6 +630,7 @@ static async crearVisita(fecha, rut_usuario, rut_profesional, id_checklist){
   try {
       const Connection = await oracledb.getConnection(db_credentials);
       //console.log("alo?", f_accountID)
+      console.log(id_checklist)
       const result = await Connection.execute(
           `BEGIN
           pkg_function_profesional.SP_CREAR_VISITA(:v_fecha, :v_rut_usuario, :v_rut_profesional, :v_id_checklist);
@@ -638,9 +639,11 @@ static async crearVisita(fecha, rut_usuario, rut_profesional, id_checklist){
             v_fecha: fecha,
             v_rut_usuario: rut_usuario,
             v_rut_profesional: rut_profesional,
-            v_id_checklist: id_checklist
+            v_id_checklist: parseInt(id_checklist)
           }
         );
+
+        console.log("a")
 
         
       await Connection.commit()
@@ -757,8 +760,7 @@ static async createBussiness(req, res){
     static async db_payment(f_id_cuenta, f_estado, f_monto, f_tipo_recibo){
       try{
         const Connection = await oracledb.getConnection(db_credentials);
-        
-        console.log("holi u///////u")
+
         const result = await Connection.execute(
           `BEGIN
               pkg_client.pcr_pay_contract(:v_id_cuenta, :v_estado, :v_monto, :v_tipo_recibo);
@@ -770,7 +772,6 @@ static async createBussiness(req, res){
             v_tipo_recibo: f_tipo_recibo
           }
         );
-        console.log("ALO uwwwwwwu")
 
         await Connection.close()
 
@@ -1070,7 +1071,7 @@ static async createBussiness(req, res){
     static async getUserDataById(account_id){
       try{
         const Connection = await oracledb.getConnection(db_credentials);
-  
+        
         const query = `
         select * from cuenta
         join usuario on
@@ -1098,7 +1099,7 @@ static async createBussiness(req, res){
         return filas;
   
         } catch(err){
-        console.log(err)
+        //console.log(err)
       }    
     }
   }

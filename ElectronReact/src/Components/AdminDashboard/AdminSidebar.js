@@ -136,12 +136,7 @@ function AdminSidebar() {
                     </div>
                     <span className="ml-3">Controlar Pagos</span>
                 </NavLink>
-                <NavLink to="/adminDashboard/dashboardOption4" className={activeDashboardOption === "dashboardOption4" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption4">
-                    <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
-                        <div className="fa-solid fa-circle-info"></div>
-                    </div>
-                    <span className="ml-3">Calcular Accidentabilidad</span>
-                </NavLink>
+
                 <NavLink to="/adminDashboard/dashboardOption5" className={activeDashboardOption === "dashboardOption5" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption5">
                     <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
                         <div className="fa-solid fa-layer-group"></div>
@@ -152,19 +147,7 @@ function AdminSidebar() {
                     <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
                         <div className="fa-solid fa-clock"></div>
                     </div>
-                    <span className="ml-3">Notificar Atrasos</span>
-                </NavLink>
-                <NavLink to="/adminDashboard/dashboardOption7" className={activeDashboardOption === "dashboardOption7" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption7">
-                    <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
-                        <div className="fa-solid fa-chart-simple"></div>
-                    </div>
-                    <span className="ml-3">Generar reporte cliente</span>
-                </NavLink>
-                <NavLink to="/adminDashboard/dashboardOption8" className={activeDashboardOption === "dashboardOption8" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption8">
-                    <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
-                        <div className="fa-solid fa-chart-simple"></div>
-                    </div>
-                    <span className="ml-3">Generar reporte global</span>
+                    <span className="ml-3">Ver Atrasos</span>
                 </NavLink>
             
             </div>

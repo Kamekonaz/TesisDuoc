@@ -224,6 +224,7 @@ function toggleClientSelector(client="", justClose=false){
 
   async function submit(){
 
+
     const sumbitDate = value.toLocaleDateString().split("/").join("")
 
     const sumbitDatetime = `${sumbitDate} ${hour}${minutes}00`
@@ -236,6 +237,8 @@ function toggleClientSelector(client="", justClose=false){
       sessionKey: cookies.get("appsessionKey"),
       id_checklist: selectedChecklist["ID"]
     }
+
+    console.log(data)
 
     const hasVoidAttribute = !Object.values(data).every(value => value !== "")
     if(hasVoidAttribute) return;

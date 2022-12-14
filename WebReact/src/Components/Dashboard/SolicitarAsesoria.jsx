@@ -31,7 +31,7 @@ function SolicitarAsesoria() {
 
     function loadUserData(){
         const gottenUserData = JSON.parse(localStorage.getItem('userData'))
-        console.log(gottenUserData)
+        //console.log(gottenUserData)
         return gottenUserData
     }
 

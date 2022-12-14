@@ -174,10 +174,11 @@ app.post('/crearCapacitacion', async (req, res) =>{
 app.post('/crearVisita', async (req, res) =>{
     const { fecha, rut_usuario, rut_profesional, sessionKey, id_checklist } = req.body
 
+
     const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
     const userData = await BdManager.getUserDataById(accountID);
 
-    if(userData["ID_TIPO"] != "2") res.send({ error: "Usuario incorrecto"})
+    //if(userData["ID_TIPO"] != "2") res.send({ error: "Usuario incorrecto"})
 
     await BdManager.crearVisita(fecha, rut_usuario, rut_profesional, id_checklist)
 
@@ -193,8 +194,9 @@ app.post('/crearAsesoria', async (req, res) =>{
 
     const accountID = await BdManager.get_accountID_by_sessionKey(sessionKey)
     const userData = await BdManager.getUserDataById(accountID);
+   
 
-    if(userData["ID_TIPO"] != "2") res.send({ error: "Usuario incorrecto"})
+    //if(userData["ID_TIPO"] != "2") res.send({ error: "Usuario incorrecto"})
 
     await BdManager.crearAsesoria(especial, fecha, rut_usuario, rut_profesional)
 

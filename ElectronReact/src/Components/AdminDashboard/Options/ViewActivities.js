@@ -55,7 +55,9 @@ function ViewActivities() {
             const cliente = activitiesList[1].filter((participant) => (participant["ID_ACTIVIDAD"] === activity["ID_ACTIVIDAD"]
             && participant["ID_TIPO"] === 3))[0]
 
-            console.log(activity)
+            if(profesional && cliente){
+
+        
 
             const activityDate = new Date(activity["FECHA_ACTIVIDAD"])
 
@@ -92,8 +94,8 @@ function ViewActivities() {
                                     Fecha: {activityDate.toLocaleDateString()}
                                 </div>
                                 <div className="flex m-auto">
-                                    Hora: {activityDate.getHours().length === 1 ?  activityDate.getHours(): "0" + activityDate.getHours()}:{
-                                    activityDate.getMinutes().length === 1 ?  activityDate.getMinutes(): "0" + activityDate.getMinutes()}
+                                Hora: {activityDate.getHours().toString().length === 1 ? "0"+activityDate.getHours(): activityDate.getHours()}:{
+                                    activityDate.getMinutes().toString().length === 1 ? "0"+ activityDate.getMinutes(): activityDate.getMinutes()}
                                 </div>
                             </div>
                             <div className="flex">
@@ -109,6 +111,7 @@ function ViewActivities() {
                 </div>
           </div>
             )
+        }
 
             
         }

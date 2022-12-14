@@ -330,10 +330,19 @@ create or replace package pkg_list as
     procedure pcr_solicitudes_asesoria(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_list_chat(p_recordset OUT SYS_REFCURSOR);
     procedure pcr_get_accidentes(p_recordset OUT SYS_REFCURSOR);
+    procedure pcr_get_accidentes_por_cliente(p_recordset OUT SYS_REFCURSOR);
 end pkg_list;
 
 /
 create or replace package body pkg_list as
+    
+    procedure pcr_get_accidentes_por_cliente(p_recordset OUT SYS_REFCURSOR)
+            is
+            begin
+                open p_recordset for
+                   select usuario.rut_usuario, count(id_accidente) as accidentes from accidente join usuario on accidente.rut_usuario = usuario.rut_usuario
+                    group by usuario.rut_usuario;
+            end;
     
     procedure pcr_list_chat(p_recordset OUT SYS_REFCURSOR)
         is
@@ -342,6 +351,7 @@ create or replace package body pkg_list as
                select * from sala_chat left join mensaje on mensaje.id_sala = sala_chat.id_sala join accidente on accidente.id_accidente = sala_chat.id_accidente
 left join usuario on accidente.rut_usuario = usuario.rut_usuario
 left join usuario on mensaje.rut_usuario = usuario.rut_usuario
+left join empresa on empresa.rut_usuario = usuario.rut_usuario
 order by mensaje.fecha desc;
 
     end;
@@ -669,10 +679,8 @@ create or replace package body pkg_client as
         v_accidentes_count number(12);
         v_max_accidents number(12);
     begin
-        select count(*), max(to_number(id_accidente)) into v_accidentes_count, v_max_accidents from accidente;
-        if v_accidentes_count > 0 then v_id_accidente := v_max_accidents+1;
-        else v_id_accidente := 1;
-        end if;
+        select nvl(max(to_number(id_accidente)),0)+1 into v_id_accidente from accidente;
+
         
         insert into accidente values(
             v_id_accidente,
@@ -873,12 +881,11 @@ create or replace package body pkg_util as
         v_maintablemax_id number(12);
 
     begin
-        select count(*), max(to_number(id_asignacion)) into v_maintablerow_count, v_maintablemax_id from participante_act;
-            if v_maintablerow_count > 0 then v_maintable_id := v_maintablemax_id+1;
-            else v_maintable_id := 1;
-            end if;
+        select nvl(max(to_number(id_asignacion)),0)+1 into v_maintable_id  from participante_act;
+    
         
         insert into participante_act values(v_maintable_id, id_actividad, rut_usuario);
+        commit work;
         insert into participante_act values(v_maintable_id+1, id_actividad, f_rut_profesional);
         commit work;
     end;
@@ -1056,22 +1063,17 @@ create or replace package body pkg_function_profesional AS
         BEGIN
             select to_date(f_fecha,'ddmmyyyy HH24:MI:SS') into v_fecha_datetime from dual;
             
-            select count(*), max(to_number(id_actividad)) into v_actividades_count, v_max_actividades from actividad;
-                if v_actividades_count > 0 then v_id_actividad := v_max_actividades+1;
-                else v_id_actividad := 1;
-                end if;
+           select nvl(max(to_number(id_actividad)),0)+1 into v_id_actividad from actividad;
                 
             insert into actividad values(v_id_actividad, v_fecha_datetime, 3, 0);
             
             commit work;
             
-            select count(*), max(to_number(id_asesoria)) into v_maintablerow_count, v_maintablemax_id from asesoria;
-                if v_maintablerow_count > 0 then v_maintable_id := v_maintablemax_id+1;
-                else v_maintable_id := 1;
-                end if;
+            select nvl(max(to_number(id_asesoria)),0)+1 into v_maintable_id from asesoria;
                 
             pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario, f_rut_profesional);
             INSERT INTO asesoria VALUES (v_maintable_id, f_especial, v_id_actividad);
+             commit work;
         EXCEPTION
             WHEN OTHERS THEN
             DBMS_OUTPUT.PUT_LINE(SQLERRM);
@@ -1104,8 +1106,9 @@ create or replace package body pkg_function_profesional AS
                 else v_maintable_id := 1;
                 end if;
                 
+             INSERT INTO visita VALUES (v_maintable_id, v_id_actividad, f_checklist_id);
             pkg_util.sp_add_participante(v_id_actividad, f_rut_usuario, f_rut_profesional);
-            INSERT INTO visita VALUES (v_maintable_id, v_id_actividad, f_checklist_id);
+            
         EXCEPTION
             WHEN OTHERS THEN
             DBMS_OUTPUT.PUT_LINE(SQLERRM);

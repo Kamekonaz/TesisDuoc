@@ -107,20 +107,20 @@ function ClientSidebar() {
                     </div>
                     <span className="ml-3">Contrato</span>
                 </NavLink>
-                <NavLink to="/dashboard/dashboardOption4" className={activeDashboardOption === "dashboardOption4" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption3">
+                <NavLink to="/dashboard/dashboardOption4" className={activeDashboardOption === "dashboardOption4" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption4">
                     <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
                         <div className="fa-sharp fa-solid fa-house"></div>
                     </div>
                     <span className="ml-3">Casos de asesoria</span>
                 </NavLink>
-                <NavLink to="/dashboard/dashboardOption5" className={activeDashboardOption === "dashboardOption5" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption3">
+                <NavLink to="/dashboard/dashboardOption5" className={activeDashboardOption === "dashboardOption5" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption5">
                     <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
                         <div className="fa-sharp fa-solid fa-house"></div>
                     </div>
                     <span className="ml-3">Actividades</span>
                 </NavLink>
 
-                <NavLink to="/dashboard/dashboardOption6" className={activeDashboardOption === "dashboardOption6" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption3">
+                <NavLink to="/dashboard/dashboardOption6" className={activeDashboardOption === "dashboardOption6" ? selectedDashboardOptionClass : normalDashboardOptionClass} id="dashboardOption6">
                     <div className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white">
                         <div className="fa-sharp fa-solid fa-house"></div>
                     </div>

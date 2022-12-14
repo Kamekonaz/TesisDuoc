@@ -110,7 +110,7 @@ function Header() {
                                 
                                 <div className="border-l pl-3 ml-3 space-x-1 flex">
 
-                                    <div onClick={()=> {cookies.remove("sessionKey"); window.location.href = window.origin}}>
+                                    <div onClick={()=> {cookies.remove("sessionKey"); localStorage.removeItem('userData'); window.location.href = window.origin}}>
                                         <button className="relative p-2 text-gray-600 hover:bg-gray-300 hover:text-gray-500 rounded-full">
                                         <span className="sr-only">Log out</span>
                                         <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
